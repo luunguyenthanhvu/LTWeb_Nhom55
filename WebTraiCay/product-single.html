@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fix.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -48,10 +47,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Shop</a>
-                        <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                        <a class="dropdown-item" href="product-single.html">Single Product</a>
-                        <a class="dropdown-item" href="checkout.html">Checkout</a>
+                        <a class="dropdown-item" href="shop.html">Cửa hàng</a>
+                        <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
+                        <a class="dropdown-item" href="product-single.html">Chi tiết trái cây</a>
+                        <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="about.html" class="nav-link">Về Chúng Tôi</a></li>
@@ -62,19 +61,17 @@
             </ul>
         </div>
         <div class="navbar-account">
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Thông tin người dùng</a>
-                <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                    <a class="account dropdown-item" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                        Người Dùng
-                    </a>
-                    <a class="account dropdown-item" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-                        Đăng Xuất
-                    </a>
-                </div>
+            <div class="logged-user">
+                <a class="account" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+                    Người Dùng
+                </a>
+            </div>
+            <div class="logout-user">
+                <a class="account" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+                    Đăng Xuất
+                </a>
             </div>
             <!--            <div class="login-user">-->
             <!--                <a class="account" href="#">-->
@@ -87,13 +84,12 @@
 </nav>
 <!-- END nav -->
 
-<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url('images/bg1.jpg'); filter: brightness(0.8)">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a
-                        href="index.html">Product</a></span> <span>Product Single</span></p>
-                <h1 class="mb-0 bread">Product Single</h1>
+
+                <h1 class="mb-0 bread">Chi tiết trái cây</h1>
             </div>
         </div>
     </div>
@@ -174,9 +170,9 @@
     <div class="container">
         <div class="row justify-content-center mb-3 pb-3">
             <div class="col-md-12 heading-section text-center ftco-animate">
-                <span class="subheading">Products</span>
-                <h2 class="mb-4">Related Products</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                <span class="subheading">Trái cây</span>
+                <h2 class="mb-4">Những trái cây cùng giá</h2>
+
             </div>
         </div>
     </div>
@@ -308,24 +304,31 @@
     </div>
 </section>
 
+
+<!--Theo dõi tin tức-->
+
 <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
     <div class="container py-4">
         <div class="row d-flex justify-content-center py-5">
             <div class="col-md-6">
-                <h2 style="font-size: 22px;" class="mb-0">Subcribe to our Newsletter</h2>
-                <span>Get e-mail updates about our latest shops and special offers</span>
+                <h2 style="font-size: 22px;" class="mb-0">Theo dõi bản tin của chúng tôi</h2>
+                <span>Hãy đăng ký bằng email để biết thêm về các cửa hàng mới nhất và ưu đãi đặc biệt của chúng tôi</span>
             </div>
             <div class="col-md-6 d-flex align-items-center">
                 <form action="#" class="subscribe-form">
                     <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Enter email address">
-                        <input type="submit" value="Subscribe" class="submit px-3">
+                        <input type="text" class="form-control" placeholder="Nhập email tại đây">
+                        <input type="submit" value="Đăng ký" class="submit px-3">
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<!--Theo dõi tin tức-->
+
+
 <footer class="ftco-footer ftco-section">
     <div class="container">
         <div class="row">
@@ -338,8 +341,8 @@
         <div class="row mb-5">
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Vegefoods</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
+                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                         <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -351,10 +354,9 @@
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Shop</a></li>
-                        <li><a href="#" class="py-2 d-block">About</a></li>
-                        <li><a href="#" class="py-2 d-block">Journal</a></li>
-                        <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+                        <li><a href="#" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+                        <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
+                        <li><a href="#" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -363,28 +365,29 @@
                     <h2 class="ftco-heading-2">Help</h2>
                     <div class="d-flex">
                         <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-                            <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-                            <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-                            <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-                            <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+                            <li><a href="#" class="py-2 d-block">Thông tin vận chuyển</a></li>
+                            <li><a href="#" class="py-2 d-block">Hoàn trả và đổi sản phẩm</a></li>
+                            <li><a href="#" class="py-2 d-block">Điều khoản và điều kiện</a></li>
+                            <li><a href="#" class="py-2 d-block">Chính sách bảo mật</a></li>
                         </ul>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">FAQs</a></li>
-                            <li><a href="#" class="py-2 d-block">Contact</a></li>
+                            <li><a href="#" class="py-2 d-block">
+                                Câu hỏi thường gặp</a></li>
+                            <li><a href="#" class="py-2 d-block">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <h2 class="ftco-heading-2">Bạn có câu hỏi với chúng tôi ?</h2>
                     <div class="block-23 mb-3">
                         <ul>
-                            <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span>
+                            <li><span class="icon icon-map-marker"></span><span class="text">Trường Đại Học Nông Lâm Thành Phố Hồ Chí Minh, Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</span>
                             </li>
                             <li><a href="#"><span class="icon icon-phone"></span><span
-                                    class="text">+2 392 3929 210</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a>
+                                    class="text">028-38966780</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">pdaotao@hcmuaf.edu.vn</span></a>
                             </li>
                         </ul>
                     </div>
@@ -396,8 +399,8 @@
 
                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                    All rights reserved | This template is made with <i class="icon-heart color-danger"
-                                                                        aria-hidden="true"></i> by <a
+                    All rights reserved | Mẫu thiết kế của <i class="icon-heart color-danger"
+                                                              aria-hidden="true"></i>  <a
                             href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>

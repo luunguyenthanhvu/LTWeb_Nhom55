@@ -4534,6 +4534,26 @@ input[type="button"].btn-block {
     text-decoration: none;
 }
 
+.container ul {
+    justify-content: center;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    border: 1px solid #82ae46!important;
+    background-color: #82ae46;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0.25rem;
+}
+
+.container li button {
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: #82AE46;
+}
+
 .nav-link.disabled {
     color: #6c757d;
     pointer-events: none;

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/profile1.css">
+
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="sidebar close">
+    <div class="logo-details">
+        <i class='bx bxl-c-plus-plus'></i>
+        <span class="logo_name">Quản trị viên</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="#">
+                <i class='bx bx-grid-alt' ></i>
+                <span class="link_name">Thông tin</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Thông tin</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="#">
+                    <i class='bx bx-collection' ></i>
+                    <span class="link_name">Chức năng</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Chức năng</a></li>
+                <li><a href="ds-san-pham.html">Danh sách sản phẩm</a></li>
+                <li><a href="them-san-pham.html">Thêm sản phẩm</a></li>
+                <li><a href="#">PHP & MySQL</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="#">
+                    <i class='bx bx-book-alt' ></i>
+                    <span class="link_name">Posts</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Posts</a></li>
+                <li><a href="#">Web Design</a></li>
+                <li><a href="#">Login Form</a></li>
+                <li><a href="#">Card Design</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="link_name">Analytics</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Analytics</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-line-chart' ></i>
+                <span class="link_name">Chart</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Chart</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <a href="#">
+                    <i class='bx bx-plug' ></i>
+                    <span class="link_name">Plugins</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow' ></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Plugins</a></li>
+                <li><a href="#">UI Face</a></li>
+                <li><a href="#">Pigments</a></li>
+                <li><a href="#">Box Icons</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-compass' ></i>
+                <span class="link_name">Explore</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Explore</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-history'></i>
+                <span class="link_name">History</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">History</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-cog' ></i>
+                <span class="link_name">Setting</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="#">Setting</a></li>
+            </ul>
+        </li>
+        <li>
+            <div class="profile-details">
+                <div class="profile-content">
+                    <img src="image/profile.jpg" alt="profileImg">
+                </div>
+                <div class="name-job">
+                    <div class="profile_name">Prem Shahi</div>
+                    <div class="job">Web Desginer</div>
+                </div>
+                <i class='bx bx-log-out' ></i>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<section class="home-section">
+    <div class="home-content">
+        <i class='bx bx-menu' ></i>
+        <span class="text">Thông tin quản trị viên</span>
+    </div>
+
+    <div class="col-md-9 col-sm-8">
+        <div id="ctl00_mainContent_pnlUser" class="user-page clearfix" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_mainContent_btnUpdate')">
+            <h1 class="postname">
+                Thông tin cơ bản
+            </h1>
+            <div class="account-info clearfix">
+                <h2 class="posttitle">Cập nhật thông tin tài khoản</h2>
+                <div class="account-form clearfix">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div id="ctl00_mainContent_divUserName" class="form-group">
+                                <label for="ctl00_mainContent_txtName" class="control-label">Tài khoản</label>
+                                <input name="ctl00$mainContent$txtName" type="text" value="DH Nong Lam" maxlength="100" id="ctl00_mainContent_txtName" disabled="disabled" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="5dgu8k">
+                                <span id="ctl00_mainContent_rfvName" style="display:none;"></span>
+                                <span id="ctl00_mainContent_regexUserName" style="display:none;"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="ctl00_mainContent_txtEmail" class="control-label">Địa chỉ email</label>
+                                <input name="ctl00$mainContent$txtEmail" type="text" value="nonglam123@gmail.com" id="ctl00_mainContent_txtEmail" disabled="disabled" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="86sspn">
+                                <span id="ctl00_mainContent_regexEmail" style="display:none;"></span>
+                                <span id="ctl00_mainContent_rfvEmail" style="display:none;"></span>
+                                <p class="mrt5 mrb0">
+                                    <a onclick="return confirm('Đổi email sẽ có thể đăng nhập qua tài khoản Google. Bạn chắn chắn muốn thực hiện?');" id="ctl00_mainContent_lkbLinkGoogle" href="javascript:__doPostBack('ctl00$mainContent$lkbLinkGoogle','')">Thay đổi Email</a>
+                                </p>
+                            </div>
+
+
+                            <div id="ctl00_mainContent_divSDT" class="form-group">
+                                <label for="ctl00_mainContent_txtSDT" class="control-label">Số điện thoại</label>
+                                <input name="ctl00$mainContent$txtName" type="text" value="0123456789" maxlength="100" id="ctl00_mainContent_txtSDT" disabled="disabled" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="5dgu8k">
+                                <span id="ctl00_mainContent_rfvSDT" style="display:none;"></span>
+                                <span id="ctl00_mainContent_regexSDT" style="display:none;"></span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-3">
+                            <div id="ctl00_mainContent_divAvatar" class="form-group avatar-control">
+                                <label class="control-label">Ảnh nền</label>
+                                <div class="forminput">
+                                    <img alt="" src="/images/logo-icon-person-on-white-background-free-vector.jpg" class="avatar user-img" id="avatarImg">
+                                    <input type="file" name="ctl00$mainContent$fileUploader" id="ctl00_mainContent_fileUploader" class="hidden" accept=".jpg,.jpeg,.gif,.png" onchange="showImage(event)">
+                                    <span class="avatar-note">Ảnh jpg, jpeg, gif, png &lt;2MB</span>
+                                    <label for="ctl00_mainContent_fileUploader" class="btn btn-danger">Upload ảnh</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            var showImage = function(event) {
+                                var img = document.getElementById("avatarImg");
+                                img.src = URL.createObjectURL(event.target.files[0]);
+                                img.onload = function() {
+                                    URL.revokeObjectURL(img.src);
+                                    localStorage.setItem("avatar", img.src); // Lưu đường dẫn ảnh vào localStorage
+                                }
+                            }
+
+                            // Kiểm tra nếu đã có ảnh được lưu trong localStorage
+                            // var storedAvatar = localStorage.getItem("avatar");
+                            // if (storedAvatar) {
+                            //     var img = document.getElementById("avatarImg");
+                            //     img.src = storedAvatar;
+                            // }
+                        </script>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+<script>
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+        arrow[i].addEventListener("click", (e)=>{
+            let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+            arrowParent.classList.toggle("showMenu");
+        });
+    }
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", ()=>{
+        sidebar.classList.toggle("close");
+    });
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+    var ctl00_mainContent_rfvName = document.all ? document.all["ctl00_mainContent_rfvName"] : document.getElementById("ctl00_mainContent_rfvName");
+    ctl00_mainContent_rfvName.controltovalidate = "ctl00_mainContent_txtName";
+    ctl00_mainContent_rfvName.errormessage = "Tên không được để trống.";
+    ctl00_mainContent_rfvName.display = "None";
+    ctl00_mainContent_rfvName.validationGroup = "profile";
+    ctl00_mainContent_rfvName.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_mainContent_rfvName.initialvalue = "";
+    var ctl00_mainContent_regexUserName = document.all ? document.all["ctl00_mainContent_regexUserName"] : document.getElementById("ctl00_mainContent_regexUserName");
+    ctl00_mainContent_regexUserName.controltovalidate = "ctl00_mainContent_txtName";
+    ctl00_mainContent_regexUserName.display = "None";
+    ctl00_mainContent_regexUserName.enabled = "False";
+    ctl00_mainContent_regexUserName.validationGroup = "profile";
+    ctl00_mainContent_regexUserName.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    var ctl00_mainContent_regexEmail = document.all ? document.all["ctl00_mainContent_regexEmail"] : document.getElementById("ctl00_mainContent_regexEmail");
+    ctl00_mainContent_regexEmail.controltovalidate = "ctl00_mainContent_txtEmail";
+    ctl00_mainContent_regexEmail.errormessage = "Phải sử dụng địa chỉ email hợp lệ.";
+    ctl00_mainContent_regexEmail.display = "None";
+    ctl00_mainContent_regexEmail.validationGroup = "profile";
+    ctl00_mainContent_regexEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    ctl00_mainContent_regexEmail.validationexpression = "^([0-9a-zA-Z]([\'-.\\w]*[_0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\\w\']*[0-9a-zA-Z])*\\.)+[a-zA-Z]{2,9})$";
+    var ctl00_mainContent_rfvEmail = document.all ? document.all["ctl00_mainContent_rfvEmail"] : document.getElementById("ctl00_mainContent_rfvEmail");
+    ctl00_mainContent_rfvEmail.controltovalidate = "ctl00_mainContent_txtEmail";
+    ctl00_mainContent_rfvEmail.errormessage = "Vui lòng nhập email.";
+    ctl00_mainContent_rfvEmail.display = "None";
+    ctl00_mainContent_rfvEmail.validationGroup = "profile";
+    ctl00_mainContent_rfvEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_mainContent_rfvEmail.initialvalue = "";
+    var ctl00_mainContent_FirstNameRequired = document.all ? document.all["ctl00_mainContent_FirstNameRequired"] : document.getElementById("ctl00_mainContent_FirstNameRequired");
+    ctl00_mainContent_FirstNameRequired.controltovalidate = "ctl00_mainContent_txtFirstName";
+    ctl00_mainContent_FirstNameRequired.errormessage = "Vui lòng nhập ID";
+    ctl00_mainContent_FirstNameRequired.display = "Dynamic";
+    ctl00_mainContent_FirstNameRequired.validationGroup = "profile";
+    ctl00_mainContent_FirstNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_mainContent_FirstNameRequired.initialvalue = "";
+    var ctl00_mainContent_LastNameRequired = document.all ? document.all["ctl00_mainContent_LastNameRequired"] : document.getElementById("ctl00_mainContent_LastNameRequired");
+    ctl00_mainContent_LastNameRequired.controltovalidate = "ctl00_mainContent_txtLastName";
+    ctl00_mainContent_LastNameRequired.errormessage = "Vui lòng nhập Sdt";
+    ctl00_mainContent_LastNameRequired.display = "Dynamic";
+    ctl00_mainContent_LastNameRequired.validationGroup = "profile";
+    ctl00_mainContent_LastNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    ctl00_mainContent_LastNameRequired.initialvalue = "";
+</script>
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    var Page_ValidationActive = false;
+    if (typeof(ValidatorOnLoad) == "function") {
+        ValidatorOnLoad();
+    }
+
+    function ValidatorOnSubmit() {
+        if (Page_ValidationActive) {
+            return ValidatorCommonOnSubmit();
+        }
+        else {
+            return true;
+        }
+    }
+
+    theForm.oldSubmit = theForm.submit;
+    theForm.submit = WebForm_SaveScrollPositionSubmit;
+
+    theForm.oldOnSubmit = theForm.onsubmit;
+    theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+
+    document.getElementById('ctl00_mainContent_rfvName').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_rfvName'));
+    }
+
+    document.getElementById('ctl00_mainContent_regexUserName').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_regexUserName'));
+    }
+
+    document.getElementById('ctl00_mainContent_regexEmail').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_regexEmail'));
+    }
+
+    document.getElementById('ctl00_mainContent_rfvEmail').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_rfvEmail'));
+    }
+
+    document.getElementById('ctl00_mainContent_FirstNameRequired').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_FirstNameRequired'));
+    }
+
+    document.getElementById('ctl00_mainContent_LastNameRequired').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_LastNameRequired'));
+    }
+
+    document.getElementById('ctl00_mainContent_GenderRequired').dispose = function() {
+        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_GenderRequired'));
+    }
+    //]]>
+</script>
+
+
+</body>
+</html>

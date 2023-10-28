@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/admin-root.css">
+
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <div class="sidebar close">
     <div class="logo-details">
         <i class='bx bxl-c-plus-plus'></i>
@@ -129,14 +132,81 @@
         </li>
     </ul>
 </div>
+
 <section class="home-section">
     <div class="home-content">
         <i class='bx bx-menu' ></i>
         <span class="text">Thông tin quản trị viên</span>
     </div>
-    <div class="container">
-<!--       code thêm ở đây-->
+
+    <div class="content-container">
+        <div class="mhy-account-info">
+            <div class="sub-title">Thông Tin Cơ Bản</div>
+            <div class="account-info-container">
+                <p class="account-info-item">
+                    <span class="account-info-label">Tên Người Dùng</span>
+                    <span class="account-info-value">Nguyễn V** A*</span></p>
+                <p class="account-info-item">
+                    <span class="account-info-label">ID Người Dùng</span>
+                    <span class="account-info-value">12345678</span></p>
+                <p class="account-info-item"><span class="account-info-label">Số điện thoại</span>
+                    <span class="account-info-value">093****26</span></p><p class="account-info-item">
+                <span class="account-info-label">Email</span> <span class="account-info-value">an****12@gmail.com</span></p>
+
+
+                <div class="IQPHvE">
+                    <div class="scvgOW">
+
+                        <div class="ctl00_mainContent_divAvatar">
+                            <label class="control-label">Ảnh nền</label>
+
+                            <div class="forminput">
+                                <img alt="" src="../images/logo-icon-person-on-white-background-free-vector.jpg" class="avatar user-img">
+                            </div>
+
+                            <div class ="forminput2">
+                                <label for="ctl00_mainContent_fileUploader" class="btn btn-danger">Upload ảnh</label>
+                                <input type="file" name="ctl00$mainContent$fileUploader" id="ctl00_mainContent_fileUploader" class="hidden" accept=".jpg,.jpeg,.gif,.png" onchange="showImage(event)">
+
+                            </div>
+
+                            <script>
+                                var showImage = function(event) {
+                                    var img = document.getElementsByClassName("avatar user-img");
+                                    if (img.length > 1)
+                                    {
+                                        img[1].src = URL.createObjectURL(event.target.files[0]);
+                                        img[1].onload = function() {
+                                            URL.revokeObjectURL(img[1].src)
+                                        }
+                                    }
+                                }
+                            </script>
+
+                        </div>
+                        <!--                    <label for="ctl00_mainContent_fileUploader" class="btn btn-danger">Upload ảnh</label>-->
+                        <div class="L4SAGB">
+                            <div class="SlaeTm">Dụng lượng file tối đa 1 MB
+                            </div>
+                            <div class="SlaeTm">Định dạng: .JPG, .PNG
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+        </div>
     </div>
+
+
+
+
 </section>
 <script>
     let arrow = document.querySelectorAll(".arrow");

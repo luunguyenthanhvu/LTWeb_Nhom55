@@ -132,76 +132,24 @@
     </ul>
 </div>
 <section class="home-section">
-    <div class="home-content">
-        <i class='bx bx-menu'></i>
-        <span class="text">Thêm sản phẩm</span>
+  <div class="home-content">
+    <i class='bx bx-menu' ></i>
+    <span class="text">Thêm sản phẩm</span>
+  </div>
+  <div class="container">
+    <!--       code thêm ở đây-->
+    <div class="form-sp">
+      <form action="" method="post">
+        <table style="border-collapse:collapse;
+                border: none;">
+          <tr>
+            <td><label for="ten_sp">Tên sản phẩm*</label></td>
+            <td><input id="ten_sp" type="text"></td>
+          </tr>
+        </table>
+      </form>
     </div>
-    <div class="container">
-        <!--       code thêm ở đây-->
-        <div class="form-sp">
-            <form id="FormThemSanPham" action="" method="post">
-                <table style="border-collapse:collapse;
-                border: none; ">
-
-
-                    <tr>
-                        <td><label for="ten_sp">Tên sản phẩm <span style="color: red">*</span></label></td>
-                        <td><input name="ten_san_pham" style="width: 300px" id="ten_sp" type="text"></td>
-
-                    </tr>
-                    <td><br></td>
-
-                    <tr>
-                        <td><label for="mota_sp">Mô tả sản phẩm <span style="color: red">*</span></label></td>
-                        <td><textarea cols="44" rows="10" id="mota_sp" name="mo_ta_san_pham"></textarea></td>
-
-                    </tr>
-                    <td><br></td>
-
-                    <tr>
-                        <td><label for="giatien_sp">Giá tiền <span style="color: red">*</span></label></td>
-                        <td><input style="width: 300px" name="gia_tien_san_pham" id="giatien_sp" type="text"></td>
-
-                    </tr>
-                    <td><br></td>
-                    <tr>
-                        <td><label for="kl_sp">Khối lượng sản phẩm <span style="color: red">*</span></label></td>
-                        <td><input style="width: 300px" name="khoi_luong_san_pham" id="kl_sp" type="text"></td>
-
-                    </tr>
-                    <td><br></td>
-                    <tr>
-                        <td><label for="kgMacDinh_sp">Số kg mặc định của sản phẩm <span
-                                style="color: red">*</span></label></td>
-                        <td><input style="width: 300px" name="so_kg_mac_dinh" id="kgMacDinh_sp" type="text"></td>
-
-                    </tr>
-                    <td><br></td>
-
-                    <tr>
-                        <td><label for="dateNhapHang_sp">Ngày nhập hàng <span style="color: red">*</span></label></td>
-                        <td><input style="width: 300px" name="ngay_nhap_hang" id="dateNhapHang_sp" type="date"></td>
-
-                    </tr>
-                    <td><br></td>
-                    <tr>
-                        <td><label for="expired_day">Ngày hết hạn <span style="color: red">*</span></label></td>
-                        <td><input style="width: 300px" name="ngay_het_han" id="expired_day" type="date"></td>
-
-                    </tr>
-                    <td><br></td>
-                    <tr>
-                        <td><label for="upfileAnh">Up file ảnh sản phẩm <span style="color: red">*</span></label></td>
-                        <td><input style="width: 300px" name="upload_file_san_pham" id="upfileAnh" type="file"></td>
-
-                    </tr>
-
-                </table>
-                <button type="submit">Lưu thông tin</button>
-                <button onclick="resetData()">Làm mới lại</button>
-            </form>
-        </div>
-    </div>
+  </div>
 </section>
 <script>
     let arrow = document.querySelectorAll(".arrow");

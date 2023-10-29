@@ -34,3 +34,44 @@
 .function-product a {
     padding: 10px;
 }
+.find-product {
+    float: right;
+}
+.find-product form {
+    margin: 20px 30px;
+}
+.find-product form input, button {
+    padding: 5px 10px;
+}
+.find-product form input {
+    width: 300px;
+}
+.find-product form button {
+    cursor: pointer;
+    background-color: #11101d;
+    fill: #FFFFFF;
+    border: none;
+}
+.pagination {
+    margin:  50px 0;
+    display: inline-block;
+}
+
+.pagination a {
+    color: #11101d;
+    font-size: 16px;
+    font-weight: 500;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #11101d;
+}
+
+.pagination a.active {
+    background-color: #11101d;
+    color: white;
+    border: 1px solid #11101d;
+}
+
+.pagination a:hover:not(.active) {background-color: #fff;}

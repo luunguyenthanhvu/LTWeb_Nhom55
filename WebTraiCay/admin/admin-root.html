@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/admin-root.css">
+
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
 <div class="sidebar close">
     <div class="logo-details">
         <i class='bx bxl-c-plus-plus'></i>
@@ -129,14 +132,55 @@
         </li>
     </ul>
 </div>
+
 <section class="home-section">
     <div class="home-content">
         <i class='bx bx-menu' ></i>
         <span class="text">Thông tin quản trị viên</span>
     </div>
-    <div class="container">
-<!--       code thêm ở đây-->
+
+    <div class="content-container">
+        <div class="my-account-info">
+            <div class="sub-title">Thông Tin Cơ Bản</div>
+            <div class="account-info-container">
+                <p class="account-info-item">
+                    <span class="account-info-label">Tên Người Dùng</span>
+                    <span class="account-info-value">Nguyễn V** A*</span></p>
+                <p class="account-info-item">
+                    <span class="account-info-label">ID Người Dùng</span>
+                    <span class="account-info-value">12345678</span></p>
+                <p class="account-info-item"><span class="account-info-label">Số điện thoại</span>
+                    <span class="account-info-value">093****26</span></p><p class="account-info-item">
+                <span class="account-info-label">Email</span> <span class="account-info-value">an****12@gmail.com</span></p>
+
+
+                <div class="control-button">
+                    <a href="admin-profile1.html" >
+
+                        <button class="button-text">Chỉnh sửa</button>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="file-picture">
+                <div class="account-avatar">
+                    <label class="control-label">Ảnh nền</label>
+
+                    <div class="form-input">
+                        <img alt="" src="../images/logo-icon-person-on-white-background-free-vector.jpg" >
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
     </div>
+
+
+
+
 </section>
 <script>
     let arrow = document.querySelectorAll(".arrow");

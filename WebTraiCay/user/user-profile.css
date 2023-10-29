@@ -10,8 +10,14 @@
     margin: 50px 0;
 }
 .main-user-content .container .container-child-left {
-    width: 600px;
+    width: 280px;
     height: 300px;
+}
+.main-user-content .container .container-child-right {
+    width: 800px;
+}
+.main-user-content .container {
+    height: 100vh;
 }
 .container-child-left {
     float: left;
@@ -21,8 +27,16 @@
     list-style-type: none;
     padding: 20px;
 }
+.container-child-left ul li a {
+    color: #000000;
+    fill: #000000;
+}
+.container-child-left ul li a:hover {
+    color: #82ae46;
+    fill: #82ae46;
+}
 .container-child-left li {
-    padding: 10px 20px;
+    padding:10px 20px;
 }
 /*Của Tú*/
 .container-child-right{
@@ -52,4 +66,19 @@
 
 
 
+
+
+.quan-ly-user {
+    padding: 10px 20px;
+    background-color: #82ae46;
+    fill: #eeeeee;
+    color: #eeeeee;
+}
+.main-user-content .container .container-child-left .active {
+    border-left: solid 1px #82ae46;
+}
+.main-user-content .container .active a {
+    fill: #82ae46;
+    color: #82ae46;
+}
 

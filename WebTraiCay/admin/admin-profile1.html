@@ -133,6 +133,7 @@
     </ul>
 </div>
 
+<!--Giao diện Admin-->
 <section class="home-section">
     <div class="home-content">
         <i class='bx bx-menu' ></i>
@@ -140,48 +141,48 @@
     </div>
 
     <div class="col-md-9 col-sm-8">
-        <div id="ctl00_mainContent_pnlUser" class="user-page clearfix" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ctl00_mainContent_btnUpdate')">
-            <h1 class="postname">
+        <div id="account_User" class="user-page" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnUpdate')">
+            <h1 class="post-name">
                 Thông tin cơ bản
             </h1>
-            <div class="account-info clearfix">
-                <h2 class="posttitle">Cập nhật thông tin tài khoản</h2>
-                <div class="account-form clearfix">
+            <div class="account-info">
+                <h2 class="post-title">Cập nhật thông tin tài khoản</h2>
+                <div class="account-form">
                     <div class="row">
                         <div class="col-sm-9">
-                            <div id="ctl00_mainContent_divUserName" class="form-group">
-                                <label for="ctl00_mainContent_txtName" class="control-label">Tài khoản</label>
-                                <input name="ctl00$mainContent$txtName" type="text" value="DH Nong Lam" maxlength="100" id="ctl00_mainContent_txtName" disabled="disabled" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="5dgu8k">
-                                <span id="ctl00_mainContent_rfvName" style="display:none;"></span>
-                                <span id="ctl00_mainContent_regexUserName" style="display:none;"></span>
+                            <div id="account_UserName" class="form-admin">
+                                <label for="user_txtName" class="control-label">Tài khoản</label>
+                                <input name="userName" type="text" placeholder="Nhập tài khoản" maxlength="100" id="user_txtName" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="5dgu8k">
+                                <span id="user_rfvName" style="display:none;"></span>
+                                <span id="user_regexUserName" style="display:none;"></span>
                             </div>
-                            <div class="form-group">
-                                <label for="ctl00_mainContent_txtEmail" class="control-label">Địa chỉ email</label>
-                                <input name="ctl00$mainContent$txtEmail" type="text" value="nonglam123@gmail.com" id="ctl00_mainContent_txtEmail" disabled="disabled" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="86sspn">
-                                <span id="ctl00_mainContent_regexEmail" style="display:none;"></span>
-                                <span id="ctl00_mainContent_rfvEmail" style="display:none;"></span>
+                            <div class="form-admin">
+                                <label for="user_txtEmail" class="control-label">Địa chỉ email</label>
+                                <input name="email" type="text" placeholder="Nhập email" id="user_txtEmail"  tabindex="10" class="aspNetDisabled form-control" fdprocessedid="86sspn">
+                                <span id="user_regexEmail" style="display:none;"></span>
+                                <span id="user_rfvEmail" style="display:none;"></span>
                                 <p class="mrt5 mrb0">
                                     <a onclick="return confirm('Đổi email sẽ có thể đăng nhập qua tài khoản Google. Bạn chắn chắn muốn thực hiện?');" id="ctl00_mainContent_lkbLinkGoogle" href="javascript:__doPostBack('ctl00$mainContent$lkbLinkGoogle','')">Thay đổi Email</a>
                                 </p>
                             </div>
 
 
-                            <div id="ctl00_mainContent_divSDT" class="form-group">
-                                <label for="ctl00_mainContent_txtSDT" class="control-label">Số điện thoại</label>
-                                <input name="ctl00$mainContent$txtName" type="text" value="0123456789" maxlength="100" id="ctl00_mainContent_txtSDT" disabled="disabled" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="5dgu8k">
-                                <span id="ctl00_mainContent_rfvSDT" style="display:none;"></span>
-                                <span id="ctl00_mainContent_regexSDT" style="display:none;"></span>
+                            <div id="user-txtPhoneNum" class="form-admin">
+                                <label for="user_txtSDT" class="control-label">Số điện thoại</label>
+                                <input name="phoneNum" type="text" placeholder="Nhập sđt" maxlength="100" id="user_txtSDT" tabindex="10" class="aspNetDisabled form-control" fdprocessedid="5dgu8k">
+                                <span id="user_rfvSDT" style="display:none;"></span>
+                                <span id="user_regexSDT" style="display:none;"></span>
                             </div>
 
                         </div>
                         <div class="col-sm-3">
-                            <div id="ctl00_mainContent_divAvatar" class="form-group avatar-control">
+                            <div id="user_Avatar" class="form-group avatar-control">
                                 <label class="control-label">Ảnh nền</label>
-                                <div class="forminput">
+                                <div class="form-input">
                                     <img alt="" src="/images/logo-icon-person-on-white-background-free-vector.jpg" class="avatar user-img" id="avatarImg">
-                                    <input type="file" name="ctl00$mainContent$fileUploader" id="ctl00_mainContent_fileUploader" class="hidden" accept=".jpg,.jpeg,.gif,.png" onchange="showImage(event)">
+                                    <input type="file" name="fileUploader" id="user_fileUploader" class="hidden" accept=".jpg,.jpeg,.gif,.png" onchange="showImage(event)">
                                     <span class="avatar-note">Ảnh jpg, jpeg, gif, png &lt;2MB</span>
-                                    <label for="ctl00_mainContent_fileUploader" class="btn btn-danger">Upload ảnh</label>
+                                    <label for="user_fileUploader" class="btn btn-danger">Upload ảnh</label>
                                 </div>
                             </div>
                         </div>
@@ -214,6 +215,8 @@
 
 
 </section>
+
+
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
@@ -233,101 +236,99 @@
 
 <script type="text/javascript">
     //<![CDATA[
-    var ctl00_mainContent_rfvName = document.all ? document.all["ctl00_mainContent_rfvName"] : document.getElementById("ctl00_mainContent_rfvName");
-    ctl00_mainContent_rfvName.controltovalidate = "ctl00_mainContent_txtName";
-    ctl00_mainContent_rfvName.errormessage = "Tên không được để trống.";
-    ctl00_mainContent_rfvName.display = "None";
-    ctl00_mainContent_rfvName.validationGroup = "profile";
-    ctl00_mainContent_rfvName.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
-    ctl00_mainContent_rfvName.initialvalue = "";
-    var ctl00_mainContent_regexUserName = document.all ? document.all["ctl00_mainContent_regexUserName"] : document.getElementById("ctl00_mainContent_regexUserName");
-    ctl00_mainContent_regexUserName.controltovalidate = "ctl00_mainContent_txtName";
-    ctl00_mainContent_regexUserName.display = "None";
-    ctl00_mainContent_regexUserName.enabled = "False";
-    ctl00_mainContent_regexUserName.validationGroup = "profile";
-    ctl00_mainContent_regexUserName.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
-    var ctl00_mainContent_regexEmail = document.all ? document.all["ctl00_mainContent_regexEmail"] : document.getElementById("ctl00_mainContent_regexEmail");
-    ctl00_mainContent_regexEmail.controltovalidate = "ctl00_mainContent_txtEmail";
-    ctl00_mainContent_regexEmail.errormessage = "Phải sử dụng địa chỉ email hợp lệ.";
-    ctl00_mainContent_regexEmail.display = "None";
-    ctl00_mainContent_regexEmail.validationGroup = "profile";
-    ctl00_mainContent_regexEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
-    ctl00_mainContent_regexEmail.validationexpression = "^([0-9a-zA-Z]([\'-.\\w]*[_0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\\w\']*[0-9a-zA-Z])*\\.)+[a-zA-Z]{2,9})$";
-    var ctl00_mainContent_rfvEmail = document.all ? document.all["ctl00_mainContent_rfvEmail"] : document.getElementById("ctl00_mainContent_rfvEmail");
-    ctl00_mainContent_rfvEmail.controltovalidate = "ctl00_mainContent_txtEmail";
-    ctl00_mainContent_rfvEmail.errormessage = "Vui lòng nhập email.";
-    ctl00_mainContent_rfvEmail.display = "None";
-    ctl00_mainContent_rfvEmail.validationGroup = "profile";
-    ctl00_mainContent_rfvEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
-    ctl00_mainContent_rfvEmail.initialvalue = "";
-    var ctl00_mainContent_FirstNameRequired = document.all ? document.all["ctl00_mainContent_FirstNameRequired"] : document.getElementById("ctl00_mainContent_FirstNameRequired");
-    ctl00_mainContent_FirstNameRequired.controltovalidate = "ctl00_mainContent_txtFirstName";
-    ctl00_mainContent_FirstNameRequired.errormessage = "Vui lòng nhập ID";
-    ctl00_mainContent_FirstNameRequired.display = "Dynamic";
-    ctl00_mainContent_FirstNameRequired.validationGroup = "profile";
-    ctl00_mainContent_FirstNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
-    ctl00_mainContent_FirstNameRequired.initialvalue = "";
-    var ctl00_mainContent_LastNameRequired = document.all ? document.all["ctl00_mainContent_LastNameRequired"] : document.getElementById("ctl00_mainContent_LastNameRequired");
-    ctl00_mainContent_LastNameRequired.controltovalidate = "ctl00_mainContent_txtLastName";
-    ctl00_mainContent_LastNameRequired.errormessage = "Vui lòng nhập Sdt";
-    ctl00_mainContent_LastNameRequired.display = "Dynamic";
-    ctl00_mainContent_LastNameRequired.validationGroup = "profile";
-    ctl00_mainContent_LastNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
-    ctl00_mainContent_LastNameRequired.initialvalue = "";
+    var user_rfvName = document.all ? document.all["user_rfvName"] : document.getElementById("user_rfvName");
+    user_rfvName.controltovalidate = "user_txtName";
+    user_rfvName.errormessage = "Tên không được để trống.";
+    user_rfvName.display = "None";
+    user_rfvName.validationGroup = "profile";
+    user_rfvName.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    user_rfvName.initialvalue = "";
+    var user_regexUserName = document.all ? document.all["user_regexUserName"] : document.getElementById("user_regexUserName");
+    user_regexUserName.controltovalidate = "user_txtName";
+    user_regexUserName.display = "None";
+    user_regexUserName.enabled = "False";
+    user_regexUserName.validationGroup = "profile";
+    user_regexUserName.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    var user_regexEmail = document.all ? document.all["user_regexEmail"] : document.getElementById("user_regexEmail");
+    user_regexEmail.controltovalidate = "user_txtEmail";
+    user_regexEmail.errormessage = "Phải sử dụng địa chỉ email hợp lệ.";
+    user_regexEmail.display = "None";
+    user_regexEmail.validationGroup = "profile";
+    user_regexEmail.evaluationfunction = "RegularExpressionValidatorEvaluateIsValid";
+    user_regexEmail.validationexpression = "^([0-9a-zA-Z]([\'-.\\w]*[_0-9a-zA-Z])*@(([0-9a-zA-Z])+([-\\w\']*[0-9a-zA-Z])*\\.)+[a-zA-Z]{2,9})$";
+    var user_rfvEmail = document.all ? document.all["user_rfvEmail"] : document.getElementById("user_rfvEmail");
+    user_rfvEmail.controltovalidate = "user_txtEmail";
+    user_rfvEmail.errormessage = "Vui lòng nhập email.";
+    user_rfvEmail.display = "None";
+    user_rfvEmail.validationGroup = "profile";
+    user_rfvEmail.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    user_rfvEmail.initialvalue = "";
+    var user_FirstNameRequired = document.all ? document.all["user_FirstNameRequired"] : document.getElementById("user_FirstNameRequired");
+    user_FirstNameRequired.controltovalidate = "user_txtFirstName";
+    user_FirstNameRequired.errormessage = "Vui lòng nhập ID";
+    user_FirstNameRequired.display = "Dynamic";
+    user_FirstNameRequired.validationGroup = "profile";
+    user_FirstNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    user_FirstNameRequired.initialvalue = "";
+    var user_LastNameRequired = document.all ? document.all["user_LastNameRequired"] : document.getElementById("user_LastNameRequired");
+    user_LastNameRequired.controltovalidate = "user_txtLastName";
+    user_LastNameRequired.errormessage = "Vui lòng nhập Sdt";
+    user_LastNameRequired.display = "Dynamic";
+    user_LastNameRequired.validationGroup = "profile";
+    user_LastNameRequired.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+    user_LastNameRequired.initialvalue = "";
 </script>
 
-<script type="text/javascript">
-    //<![CDATA[
+<!--<script type="text/javascript">-->
+<!--    //<![CDATA[-->
 
-    var Page_ValidationActive = false;
-    if (typeof(ValidatorOnLoad) == "function") {
-        ValidatorOnLoad();
-    }
+<!--    var Page_ValidationActive = false;-->
+<!--    if (typeof(ValidatorOnLoad) == "function") {-->
+<!--        ValidatorOnLoad();-->
+<!--    }-->
 
-    function ValidatorOnSubmit() {
-        if (Page_ValidationActive) {
-            return ValidatorCommonOnSubmit();
-        }
-        else {
-            return true;
-        }
-    }
+<!--    function ValidatorOnSubmit() {-->
+<!--        if (Page_ValidationActive) {-->
+<!--            return ValidatorCommonOnSubmit();-->
+<!--        }-->
+<!--        else {-->
+<!--            return true;-->
+<!--        }-->
+<!--    }-->
 
-    theForm.oldSubmit = theForm.submit;
-    theForm.submit = WebForm_SaveScrollPositionSubmit;
+<!--    theForm.oldSubmit = theForm.submit;-->
+<!--    theForm.submit = WebForm_SaveScrollPositionSubmit;-->
 
-    theForm.oldOnSubmit = theForm.onsubmit;
-    theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;
+<!--    theForm.oldOnSubmit = theForm.onsubmit;-->
+<!--    theForm.onsubmit = WebForm_SaveScrollPositionOnSubmit;-->
 
-    document.getElementById('ctl00_mainContent_rfvName').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_rfvName'));
-    }
+<!--    document.getElementById('user_rfvName').dispose = function() {-->
+<!--        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_rfvName'));-->
+<!--    }-->
 
-    document.getElementById('ctl00_mainContent_regexUserName').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_regexUserName'));
-    }
+<!--    document.getElementById('ctl00_mainContent_regexUserName').dispose = function() {-->
+<!--        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_regexUserName'));-->
+<!--    }-->
 
-    document.getElementById('ctl00_mainContent_regexEmail').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_regexEmail'));
-    }
+<!--    document.getElementById('ctl00_mainContent_regexEmail').dispose = function() {-->
+<!--        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_regexEmail'));-->
+<!--    }-->
 
-    document.getElementById('ctl00_mainContent_rfvEmail').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_rfvEmail'));
-    }
+<!--    document.getElementById('ctl00_mainContent_rfvEmail').dispose = function() {-->
+<!--        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_rfvEmail'));-->
+<!--    }-->
 
-    document.getElementById('ctl00_mainContent_FirstNameRequired').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_FirstNameRequired'));
-    }
+<!--    document.getElementById('ctl00_mainContent_FirstNameRequired').dispose = function() {-->
+<!--        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_FirstNameRequired'));-->
+<!--    }-->
 
-    document.getElementById('ctl00_mainContent_LastNameRequired').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_LastNameRequired'));
-    }
+<!--    document.getElementById('ctl00_mainContent_LastNameRequired').dispose = function() {-->
+<!--        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_LastNameRequired'));-->
+<!--    }-->
 
-    document.getElementById('ctl00_mainContent_GenderRequired').dispose = function() {
-        Array.remove(Page_Validators, document.getElementById('ctl00_mainContent_GenderRequired'));
-    }
-    //]]>
-</script>
+<!--   -->
+<!--    //]]>-->
+<!--</script>-->
 
 
 </body>

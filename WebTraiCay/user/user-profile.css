@@ -1,0 +1,26 @@
+.main-user-content {
+    margin-bottom: 50px;
+}
+.main-user-content .container {
+    display: flex;
+    gap: 50px;
+}
+.main-user-content .container .container-child-right, .container-child-left {
+    background-color: #FFFFFF;
+    margin: 50px 0;
+}
+.main-user-content .container .container-child-left {
+    width: 600px;
+    height: 300px;
+}
+.container-child-left {
+    float: left;
+    text-align: left;
+}
+.container-child-left ul{
+    list-style-type: none;
+    padding: 20px;
+}
+.container-child-left li {
+    padding: 10px 20px;
+}

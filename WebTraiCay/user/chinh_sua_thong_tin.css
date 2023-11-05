@@ -1,0 +1,10 @@
+.invalid{
+    border: 1px red solid;
+}
+.ThongBao{
+    position: absolute;
+    font-size: 14px;
+    color: red;
+    top: 720px;
+
+}

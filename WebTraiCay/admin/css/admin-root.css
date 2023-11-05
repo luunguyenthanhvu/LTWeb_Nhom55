@@ -1,37 +1,56 @@
+
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    background-color: #11101d;
+    width: 1350px;
+    height: 430px;
+    margin-left: 50px;
+
+    border: 4px #11101d inset;
+
+
+}
+
+
 .my-account-info {
-    margin-left: 40px;
+    background-color: rgb(255 255 255);
     font-size: 20px;
+
 }
 
 .my-account-info .sub-title {
     flex-direction: row;
+    color: #11101d;
     display: flex;
     align-items: flex-start;
     margin-top: .3rem;
-    color: #a6a6a6
+    color: #a6a6a6;
 }
 
 .my-account-info .account-info-container {
     padding: 0 .16rem;
-    color: #37c12f
+
+
 }
 
 
 
 .my-account-info .account-info-item {
-    padding: .2rem 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: normal;
+padding: .2rem 0;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: normal;
 }
 
 .my-account-info .account-info-label {
-    width: 2.2rem;
-    padding-right: .05rem;
-    color: #333;
+width: 2.2rem;
+padding-right: .05rem;
+color: #333;
 }
 
 
@@ -41,7 +60,7 @@
     display: flex;
     align-items: flex-start;
     margin-top: .3rem;
-    color: #37c12f
+    color: #11101d;
 }
 
 .my-account-info .account-info-container {
@@ -71,7 +90,7 @@ account-info-item {
 .my-account-info .account-info-label {
     width: 2.2rem;
     padding-right: .05rem;
-    color: #333
+    color: #11101d;
 }
 
 body,html {
@@ -110,13 +129,16 @@ body,html {
 
 
 
+
+
 .file-picture {
     overflow: hidden;
     display: flex;
     float: right;
-    justify-content: right;
-    padding-right: 450px;
+    padding-right: 400px;
     padding-top: 50px;
+    padding-left: 150px;
+
 }
 
 
@@ -137,7 +159,8 @@ body,html {
 
 .button-text{
     font-size: 20px;
-    background-color: yellow;
+    color: #11101d;
+    background-color: #fff;
     width: 120px;
     height: auto;
 }
@@ -153,5 +176,6 @@ label {
 
 img {
     max-width: 70%;
+
 }
 

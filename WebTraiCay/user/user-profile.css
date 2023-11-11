@@ -36,6 +36,38 @@
 .container-child-left li {
     padding:10px 20px;
 }
+/*Của Tú*/
+.container-child-right{
+    padding: 20px;
+    width: 2000px;
+    height: auto;
+}
+.line_of_account{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 740px;
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.5);
+}
+.thong-tin-user-content {
+    display: flex;
+    justify-content: space-between;
+}
+.anhNguoiDung {
+    /*left: 1250px;*/
+    /*top: 320px;*/
+}
+.anhCuaNguoiDung{
+  width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+
+
+
+
 .quan-ly-user {
     padding: 10px 20px;
     background-color: #82ae46;

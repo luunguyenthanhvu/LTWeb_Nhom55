@@ -1,6 +1,3 @@
-.main-user-content {
-    margin-bottom: 50px;
-}
 .main-user-content .container {
     display: flex;
     gap: 50px;
@@ -11,7 +8,7 @@
 }
 .main-user-content .container .container-child-left {
     width: 280px;
-    height: 300px;
+    height: 360px;
 }
 .main-user-content .container .container-child-right {
     width: 800px;
@@ -52,21 +49,11 @@
     background-color: rgba(128, 128, 128, 0.5);
 }
 
-.anhNguoiDung{
-    position: absolute;
-    left: 1250px;
-    top: 320px;
-}
 .anhCuaNguoiDung{
   width: 200px;
     height: 200px;
-    object-fit: cover;
     border-radius: 100%;
 }
-
-
-
-
 
 .quan-ly-user {
     padding: 10px 20px;
@@ -82,3 +69,7 @@
     color: #82ae46;
 }
 
+.user-profile {
+    display: flex;
+    justify-content: space-between;
+}

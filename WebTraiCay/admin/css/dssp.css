@@ -10,6 +10,7 @@
 .table-sanpham  {
     width: 100%;
     border-collapse: collapse;
+    height: 100%;
 }
 .table-sanpham th, td {
     padding: 10px;
@@ -20,11 +21,14 @@
     background-color: #11101d;
     color: #fff;
 }
-.table-sanpham table tr:nth-child(even) {
+.table-sanpham table tr td{
     background-color: #fff;
 }
+/*.table-sanpham table tr td:last-child {*/
+/*    text-align: center;*/
+/*}*/
 .table-sanpham table tr:hover {
-    /* background-color:lightgray; */
+     background-color:lightgray;
 }
 
 .th-function-sanpham {
@@ -75,3 +79,7 @@
 }
 
 .pagination a:hover:not(.active) {background-color: #fff;}
+.img-product img{
+    width: 50px;
+    height: 50px;
+}

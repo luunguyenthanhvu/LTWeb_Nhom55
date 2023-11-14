@@ -24,25 +24,29 @@ table tr td:first-child {
 .img-admin {
     padding: 30px;
 }
-.save-update-admin {
+.update-admin {
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     background-color: #1d1b31;
     padding: 10px 20px;
-    margin: 20px 40px;
+    margin: 20px 0px 20px 40px;
     color: #FFFFFF;
     border-radius: 20px;
     font-size: 16px;
 }
-.save-update-admin svg {
+.update-admin svg {
     fill: #FFFFFF;
+}
+.update-admin:hover {
+    background-color: #FFFFFF;
+    color: #1d1b31;
+}
+.update-admin:hover svg {
+    fill: #1d1b31;
 }
 .radio-group {
     margin-bottom: 10px;
-}
-.gender-td {
-
 }
 
 input[type="radio"] {
@@ -59,9 +63,6 @@ label {
 input[type="radio"]:checked + label {
     background: #1d1b31;
     color: #fff;
-}
-.chose-new-img {
-    padding: 10px 20px;
 }
 table tr td:last-child input {
     padding: 10px;

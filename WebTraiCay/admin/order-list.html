@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Boxiocns CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="css/add-product.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body onload="myFunction()" style="margin:0;">
+<div id="loader"></div>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+<div class="sidebar close">
+  <div class="logo-details">
+    <i class='bx bxl-c-plus-plus'></i>
+    <span class="logo_name">Quản trị viên</span>
+  </div>
+  <ul class="nav-links">
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bx-book-alt' ></i>
+          <span class="link_name">Tài khoản</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Tài khoản</a></li>
+        <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
+        <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bx-collection' ></i>
+          <span class="link_name">Sản phẩm</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Chức năng</a></li>
+        <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+        <li><a href="add-product.html">Thêm sản phẩm</a></li>
+        <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+      <a href="#">
+        <i class='bx bx-pie-chart-alt-2' ></i>
+        <span class="link_name">Đơn hàng</span>
+      </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a class="link_name" href="#">Đơn hàng</a></li>
+        <li><a href="order-list.html">Quản lý đơn hàng</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="profile-details">
+        <div class="profile-content">
+          <img src="../user/accountPicture.png" alt="profileImg">
+        </div>
+        <div class="name-job">
+          <div class="profile_name">VuLuu</div>
+          <div class="job">Quản trị viên</div>
+        </div>
+        <i class='bx bx-log-out' ></i>
+      </div>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+  <div class="home-content">
+    <i class='bx bx-menu'></i>
+    <span class="text">Đơn hàng</span>
+  </div>
+  <div class="container">
+    <!--       code thêm ở đây-->
+
+  </div>
+</section>
+</div>
+<script>
+  let arrow = document.querySelectorAll(".arrow");
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener("click", (e) => {
+      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+      arrowParent.classList.toggle("showMenu");
+    });
+  }
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".bx-menu");
+  console.log(sidebarBtn);
+  sidebarBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("close");
+  });
+
+  $(document).ready(function(){
+    $('#upfileAnh').change(function(e) {
+      var file = e.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function(event) {
+        $('#previewImage').attr('src', event.target.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  var myVar;
+  function myFunction() {
+    myVar = setTimeout(showPage, 800);
+  }
+  function showPage() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("myDiv").style.display = "block";
+  }
+</script>
+</body>
+</html>

@@ -53,7 +53,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class="fa-solid fa-truck"></i>
+            <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="link_name">Đơn hàng</span>
           </a>
           <i class='bx bxs-chevron-down arrow' ></i>
@@ -77,6 +77,7 @@
           <li><a href="see-each-product-bought-in-a-month.html">Chi tiết</a></li>
         </ul>
       </li>
+
       <li>
         <div class="iocn-link">
           <a href="#">
@@ -90,6 +91,7 @@
           <li><a href="user-list.html">Danh sách người dùng</a></li>
         </ul>
       </li>
+
       <li>
         <div class="profile-details">
           <div class="profile-content">
@@ -107,18 +109,19 @@
   <section class="home-section" style="height: 100%">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
-      <span class="text">Đơn hàng</span>
+      <span class="text">Danh sách người dùng</span>
     </div>
     <div class="find-product">
       <form action="" method="get">
         <div class="fill-product">
           <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng">
 
-          <select class="fill-by">
-            <option value="" disabled selected class="font_bold"><span class="font_bold">Lọc theo</span></option>
-            <option value="service1">Tổng tiền</option>
-            <option value="service2">Ngày đặt hàng</option>
-          </select>
+            <select class="fill-by">
+              <option value="" disabled selected class="font_bold"><span class="font_bold">Lọc theo</span></option>
+              <option value="service1">ID</option>
+              <option value="service2">Ngày sinh</option>
+              <option value="service3">Ngày đăng ký</option>
+            </select>
 
           <button>
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
@@ -130,34 +133,44 @@
       <div class="table-sanpham">
         <table class="table-sanpham">
           <tr>
-            <th style="width: 100px;">Id</th>
+            <th style="width: 70px;">ID</th>
             <th style="width: 200px;">Tên người dùng</th>
-            <th style="width: 150px;">Ngày đặt hàng</th>
-            <th style="width: 150px;">Tổng tiền</th>
-            <th style="width: 150px;">Tình trạng</th>
-            <th style="width: 100px;"></th>
+            <th style="width: 100px;">Hình ảnh</th>
+            <th style="width: 150px;">Email</th>
+            <th style="width: 150px;">Số điện thoại</th>
+            <th style="width: 200px;">Địa chỉ</th>
+            <th style="width: 100px;">Tình trạng</th>
+            <th style="width: 100px;">Chức năng</th>
           </tr>
 
           <tr>
             <td>1</td>
             <td>Anh Long</td>
-            <td>20/06/2022</td>
-            <td>1350.000đ</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đang xử lý</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
-              <a href="update-order.html"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
+              <a href="update-user.html"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
               <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
             </td>
           </tr>
           <tr>
             <td>2</td>
-            <td>Nguyễn Văn Văn</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Nguyễn Văn A</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>nguyenvana@gmail.com</td>
+            <td>0123456789</td>
+            <td>HCM</td>
             <td>
-              <div class="order-status">Đang xử lý</div>
+              <div class="account">Đã khóa</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -166,11 +179,15 @@
           </tr>
           <tr>
             <td>3</td>
-            <td>Trần Thanh Hoàng</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Nguyễn Văn B</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>nguyenvanb@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đang xử lý</div>
+              <div class="account">Đã khóa</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -179,24 +196,32 @@
           </tr>
           <tr>
             <td>4</td>
-            <td>Nguyễn Văn Cươờng</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Phạm Thu Hà</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>phamthuha@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đang xử lý</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
-              <a href=#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
+              <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
               <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
             </td>
           </tr>
           <tr>
             <td>5</td>
-            <td>Nguyễn Hoàng Anh Tú</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Lê Chí Trường</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đã hủy</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -205,11 +230,15 @@
           </tr>
           <tr>
             <td>6</td>
-            <td>Lê Thu Hoài</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Lê Văn Luyện</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đang giao</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -218,11 +247,15 @@
           </tr>
           <tr>
             <td>7</td>
-            <td>Lê Chí Trường</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Phạm Quang Thái</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đã hủy</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -231,11 +264,15 @@
           </tr>
           <tr>
             <td>8</td>
-            <td>Lê Văn Anh</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Lê Đình Trọng</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đang giao</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -244,11 +281,15 @@
           </tr>
           <tr>
             <td>9</td>
-            <td>Lê Minh Trung</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Phạm Hoàng Nam</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đang giao</div>
+              <div class="account">Hoạt động</div>
             </td>
             <td class="function-product">
               <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
@@ -257,17 +298,22 @@
           </tr>
           <tr>
             <td>10</td>
-            <td>Hoàng Thị Thu Ngân</td>
-            <td>20/06/2022</td>
-            <td>20.000đ</td>
+            <td>Trần Anh Anh</td>
+            <td class="img-product">
+              <img src="../user/accountPicture.png">
+            </td>
+            <td>anhlong123@gmail.com</td>
+            <td>0123456789</td>
+            <td>120 Cầu Giấy, HCM</td>
             <td>
-              <div class="order-status">Đã giao</div>
+              <div class="account">Đã khóa</div>
             </td>
             <td class="function-product">
-              <a href="update-product.html"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
+              <a href="#"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
               <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
             </td>
           </tr>
+
         </table>
       </div>
       <div class="pagination">
@@ -300,7 +346,7 @@
 
   var myVar;
   function myFunction() {
-    myVar = setTimeout(showPage, 600);
+    myVar = setTimeout(showPage, 800);
   }
   function showPage() {
     document.getElementById("loader").style.display = "none";
@@ -308,21 +354,15 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    let orderStatusList = document.querySelectorAll(".order-status");
-
-    orderStatusList.forEach(function (status) {
-      if (status.innerHTML.toLowerCase() === "đang xử lý") {
-        status.classList.add('processing-order');
-      } else if (status.innerHTML.toLowerCase() === "đang giao") {
-        status.classList.add('on-delivering');
-      } else if (status.innerHTML.toLowerCase() === "đã giao") {
-        status.classList.add('delivered');
-      } else if (status.innerHTML.toLowerCase() === "đã hủy") {
-        status.classList.add('cancelled');
+    let active = document.querySelectorAll(".account");
+    active.forEach(function (all) {
+      if (all.innerHTML.toLowerCase() === "hoạt động") {
+        all.classList.add('active-account');
+      } else {
+        all.classList.add('block-account');
       }
     });
   });
-
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

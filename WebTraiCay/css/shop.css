@@ -1,0 +1,25 @@
+
+
+
+
+.flex {
+    color: #000000;
+    font-size: 14px;
+    padding-bottom: 15px;
+
+}
+
+.search-text {
+    margin: auto;
+    width: 250px;
+
+}
+
+.search {
+    background-color: limegreen;
+}
+
+.option-col {
+    height: 30px;
+
+}

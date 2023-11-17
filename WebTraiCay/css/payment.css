@@ -1,0 +1,94 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+
+}
+
+.container {
+    max-width: 750px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.title {
+    color: limegreen;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.payment-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.option {
+    flex-grow: 1;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+}
+
+.payment-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+
+.credit-card {
+    background-color: limegreen;
+    color: #fff;
+}
+
+.paypal {
+    background-color: #fff;
+    color: #000;
+}
+
+.card-details {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+
+
+
+}
+
+.card-details.active {
+    border-color: #007bff; /* Border color when active */
+}
+
+svg {
+    padding-right: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: limegreen;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+
+}
+/* Hover effect and active state for options */
+.option:hover, .option:active {
+    background-color: #27ae60;
+}
+
+

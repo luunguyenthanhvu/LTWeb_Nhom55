@@ -4,7 +4,7 @@
     justify-content: center;
     padding: 5px;
     background-color: #11101d;
-    width:600px;
+    width:605px;
     margin-left: auto;
     margin-right: auto;
     /*border: 3px #11101d inset;*/
@@ -38,10 +38,27 @@ td:nth-child(n) textarea:focus{
     padding: 10px;
     margin-left: 10px;
     margin-top: 30px;
-    border-radius: 5%;
+    border-radius: 20px;
     transition: background-color 0.5s ease-in;
+    background-color:#1d1b31;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.form-sp button svg {
+    fill:#FFFFFF;
 }
 
 .form-sp button:hover {
-    background-color:#7ecd8e
+    background-color: #FFFFFF;
+    color: #1d1b31;
+}
+.form-sp button:hover svg {
+    fill: #1d1b31;
+}
+.product-img {
+    margin-top: 20px;
+}
+.product-img img{
+    width: 100px;
+    height: 100px;
 }

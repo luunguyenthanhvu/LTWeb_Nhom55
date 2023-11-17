@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Thông tin người dùng</title>
+    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="css/user-profile.css">
-    <link rel="stylesheet" href="css/chinh_sua_thong_tin.css">
+    <link rel="stylesheet" href="css/ds-hoa-don.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -75,7 +75,7 @@
                         Thông tin người dùng
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="chinh-sua-thong-tin-user.html">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg>
                         Chỉnh sửa thông tin
@@ -93,7 +93,7 @@
                         Danh sách hóa đơn
                     </a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="tinh-trang-don-hang.html">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M112 0C85.5 0 64 21.5 64 48V96H16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 272c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 48c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 240c8.8 0 16 7.2 16 16s-7.2 16-16 16H64 16c-8.8 0-16 7.2-16 16s7.2 16 16 16H64 208c8.8 0 16 7.2 16 16s-7.2 16-16 16H64V416c0 53 43 96 96 96s96-43 96-96H384c0 53 43 96 96 96s96-43 96-96h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V288 256 237.3c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7H416V48c0-26.5-21.5-48-48-48H112zM544 237.3V256H416V160h50.7L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/></svg>
                         Tình trạng đơn hàng
@@ -109,81 +109,10 @@
             </ul>
         </div>
         <div class="container-child-right">
-            <h4>Chỉnh sửa thông tin </h4>
-            <div class="line_of_account"></div>
-            <span style="font-size: 20px ">Thông Tin Cơ Bản</span>
-            <br>
-            <br>
-            <form action="" method="post"  enctype="multipart/form-data">
-                <div class="user-info">
-                    <div class="basic-info">
-                        <table style="border-collapse:collapse;
-                border: none; ">
-                            <tr>
-                                <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
-
-                                <td><input name="ten_nguoi_dung" id="ten_nd"  type="text"></td>
-                            </tr>
-                            <td><br></td>
-
-                            <tr>
-                                <td><label for="email_nd">Email <span style="color: red">*</span></label></td>
-
-                                <td><input name="email_nguoi_dung" id="email_nd" type="text"></input></td>
-                            </tr>
-                            <td><br></td>
-
-
-                            <td><br></td>
-
-                            <tr>
-                                <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
-
-                                <td><input  name="dia_chi_nguoi_dung" id="dc_nd" type="text"></input></td>
-                            </tr>
-                            <td><br></td>
-                            <tr>
-                                <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
-
-                                <td><input name="so_dien_thoai_nguoi_dung" id="sdt_nd"></input></td>
-                            </tr>
-                            <td><br></td>
-                            <tr>
-                            <tr>
-                                <td><label for="dob">Sinh nhật<span class="not-empty"> *</span></label></td>
-                                <td><input type="date" id="dob" name="dob"></td>
-                            </tr>
-
-                            </tr>
-                            <td><br></td>
-                        </table>
-                    </div>
-                    <div class="user-img">
-                        <img id="previewImage" src="../images/accountPicture.png" alt="">
-                        <div class="chose-new-img">
-                            <label for="fileInput" class="chose-new-img">
-                                <input type="file" id="fileInput" name="avatar" accept="image/*">
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <button class="update-user">
-                    Lưu Thông tin
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                        <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
-                </button>
-                <button  class="update-user" type="reset">
-                    Làm mới
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                        <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
-                </button>
-            </form>
-
-
 
         </div>
     </div>
+</div>
 </div>
 
 
@@ -213,56 +142,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="../js/google-map.js"></script>
 <script src="../js/main.js"></script>
-<script>
-    validate_of_Pass_Blur = function () {
-        var thePassRepeated = document.querySelector('#mk_nd_repeat');
-        var thePass =document.querySelector('#mk_nd');
-
-        if(!(thePassRepeated.value ===thePass.value)) {
-            document.querySelector('.ThongBao').innerText ='';
-            document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-            document.querySelector('.ThongBao').innerText ='Mật khẩu bạn nhập không trùng khớp ban đầu. Vui lòng nhập lại';
-            document.querySelector('#mk_nd_repeat').classList.add('invalid');
-        } else {
-            if(thePassRepeated.value.length <6) {
-                document.querySelector('.ThongBao').innerText ='';
-                document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-                document.querySelector('.ThongBao').innerText ='Mật khẩu tối thiểu 6 kí tự, vui lòng nhập lại';
-                document.querySelector('#mk_nd_repeat').classList.add('invalid');
-            }
-
-        }
-
-    }
-    validate_of_Pass_Blur1 = function () {
-        if(thePassRepeated.value.length <6) {
-            document.querySelector('.ThongBao').innerText ='';
-            document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-            document.querySelector('.ThongBao').innerText ='Mật khẩu tối thiểu 6 kí tự, vui lòng nhập lại';
-            document.querySelector('#mk_nd_repeat').classList.add('invalid');
-        }
-    }
-
-    validate_of_Pass_onInput = function () {
-
-
-
-            document.querySelector('.ThongBao').innerText ='';
-            document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-
-    }
-
-    $(document).ready(function(){
-        $('#fileInput').change(function(e) {
-            var file = e.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function(event) {
-                $('#previewImage').attr('src', event.target.result);
-            };
-            reader.readAsDataURL(file);
-        });
-    });
-</script>
 
 </body>
 </html>

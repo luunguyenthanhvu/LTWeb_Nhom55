@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,10 +50,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Shop</a>
-                        <a class="dropdown-item" href="wishlist.html">Wishlist</a>
-                        <a class="dropdown-item" href="product-single.html">Single Product</a>
-                        <a class="dropdown-item" href="checkout.html">Checkout</a>
+                        <a class="dropdown-item" href="shop.html">Cửa hàng</a>
+                        <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
+
+                        <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
                     </div>
                 </li>
                 <li class="nav-item"><a href="about.html" class="nav-link">Về Chúng Tôi</a></li>
@@ -66,11 +68,11 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Thông tin người dùng</a>
                 <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                    <a class="account dropdown-item" href="#">
+                    <a class="account dropdown-item" href="user/user-profile.html">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                         Người Dùng
                     </a>
-                    <a class="account dropdown-item" href="#">
+                    <a class="account dropdown-item" href="login/login.html">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
                         Đăng Xuất
                     </a>
@@ -107,12 +109,12 @@
                         <thead class="thead-primary">
                         <tr class="text-center">
                             <th>&nbsp;</th>
-                            <th>Product List</th>
-                            <th>&nbsp;</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-<!--                            cột thêm sản phẩm-->
+                            <th>Danh sách</th>
+                            <th>Mô tả</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Tổng</th>
+                            <!--                            cột thêm sản phẩm-->
                             <th></th>
                         </tr>
                         </thead>
@@ -121,15 +123,15 @@
                             <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                             <td class="image-prod">
-                                <div class="img" style="background-image:url(images/product-1.jpg);"></div>
+                                <div class="img" style="background-image:url(images/chuoi_cau.png) ;width: 100px;height: 100px;"></div>
                             </td>
 
                             <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <h3>Chuối Cau</h3>
+                                <p>Chuối cau có quả nhỏ, hướng tròn, mập giống hình quả cau. Một cây chuối cau có khả năng cho ra rất nhiều quả, năng suất cao nên bà con nông dân ở miền Trung và miền Nam hoặc khu vực có đồi núi ưa trồng.</p>
                             </td>
 
-                            <td class="price">$4.90</td>
+                            <td class="price">40.000 đ</td>
 
                             <td class="quantity">
                                 <div class="input-group mb-3">
@@ -138,22 +140,22 @@
                                 </div>
                             </td>
 
-                            <td class="total">$4.90</td>
+                            <td class="total">40.000 đ</td>
                         </tr><!-- END TR-->
 
                         <tr class="text-center">
                             <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                             <td class="image-prod">
-                                <div class="img" style="background-image:url(images/product-2.jpg);"></div>
+                                <div class="img" style="background-image:url(images/dau.jpg);"></div>
                             </td>
 
                             <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <h3>Dâu</h3>
+                                <p>Dâu tây  thơm,  quả đều , mọng nước </p>
                             </td>
 
-                            <td class="price">$15.70</td>
+                            <td class="price">40.000 đ</td>
 
                             <td class="quantity">
                                 <div class="input-group mb-3">
@@ -162,22 +164,22 @@
                                 </div>
                             </td>
 
-                            <td class="total">$15.70</td>
+                            <td class="total">40.000 đ</td>
                         </tr><!-- END TR-->
 
                         <tr class="text-center">
                             <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                             <td class="image-prod">
-                                <div class="img" style="background-image:url(images/product-3.jpg);"></div>
+                                <div class="img" style="background-image:url(images/chuoi_tieu.png);width: 100px;height: 100px;"></div>
                             </td>
 
                             <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <h3>Chuối Tiêu</h3>
+                                <p>Quả chuối tiêu có hình dáng cong như lưỡi liềm, chưa chín có màu xanh đậm, chín thì chuyển sang màu vàng, phần thịt vàng nõn, rất thơm và ngọt.</p>
                             </td>
 
-                            <td class="price">$15.70</td>
+                            <td class="price">12.000 đ</td>
 
                             <td class="quantity">
                                 <div class="input-group mb-3">
@@ -186,22 +188,22 @@
                                 </div>
                             </td>
 
-                            <td class="total">$15.70</td>
+                            <td class="total">12.000 đ</td>
                         </tr><!-- END TR-->
 
                         <tr class="text-center">
                             <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                             <td class="image-prod">
-                                <div class="img" style="background-image:url(images/product-4.jpg);"></div>
+                                <div class="img" style="background-image:url(images/oi.jpg);"></div>
                             </td>
 
                             <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <h3>Ổi</h3>
+                                <p>Quả chín có vị chua ngọt hay ngọt và có mùi thơm đặc trưng, có thể ăn tươi, làm mứt hay làm nước giải khát.</p>
                             </td>
 
-                            <td class="price">$15.70</td>
+                            <td class="price">30.000 đ</td>
 
                             <td class="quantity">
                                 <div class="input-group mb-3">
@@ -210,22 +212,22 @@
                                 </div>
                             </td>
 
-                            <td class="total">$15.70</td>
+                            <td class="total">30.000đ</td>
                         </tr><!-- END TR-->
 
                         <tr class="text-center">
                             <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                             <td class="image-prod">
-                                <div class="img" style="background-image:url(images/product-5.jpg);"></div>
+                                <div class="img" style="background-image:url(images/chom_chom.jpg);"></div>
                             </td>
 
                             <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <h3>Chôm Chôm</h3>
+                                <p> Phần thịt bên trong mềm bao bọc hạt, màu trắng nhạt và có vị ngọt, hơi chua nhẹ.</p>
                             </td>
 
-                            <td class="price">$15.70</td>
+                            <td class="price">50.000 đ</td>
 
                             <td class="quantity">
                                 <div class="input-group mb-3">
@@ -234,22 +236,22 @@
                                 </div>
                             </td>
 
-                            <td class="total">$15.70</td>
+                            <td class="total">50.000 đ</td>
                         </tr><!-- END TR-->
 
                         <tr class="text-center">
                             <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
                             <td class="image-prod">
-                                <div class="img" style="background-image:url(images/product-6.jpg);"></div>
+                                <div class="img" style="background-image:url(images/xoai.png);width: 100px;height: 100px;"></div>
                             </td>
 
                             <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <h3>Xoài</h3>
+                                <p>Quả xoài chín có màu vàng hấp dẫn, có vị chua ngọt, mùi thơm ngon được nhiều người ưa thích và được xem là một loại quả quí.</p>
                             </td>
 
-                            <td class="price">$15.70</td>
+                            <td class="price">40.000 đ</td>
 
                             <td class="quantity">
                                 <div class="input-group mb-3">
@@ -258,7 +260,7 @@
                                 </div>
                             </td>
 
-                            <td class="total">$15.70</td>
+                            <td class="total">40.000 đ</td>
                         </tr><!-- END TR-->
                         </tbody>
                     </table>

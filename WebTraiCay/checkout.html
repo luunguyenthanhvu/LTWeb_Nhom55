@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,7 +55,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
                         <a class="dropdown-item" href="shop.html">Cửa hàng</a>
                         <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
-                        <a class="dropdown-item" href="product-single.html">Chi tiết trái cây</a>
+
                         <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
                     </div>
                 </li>
@@ -101,62 +103,68 @@
     </div>
 </div>
 
-<section class="ftco-section">
+<form method="post" action="#" class="billing-form">
+    <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-7 ftco-animate">
-                    <form action="#" class="billing-form">
-                        <h3 class="mb-4 billing-heading">Chi tiết thanh toán</h3>
-                        <div class="row align-items-end">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="firstname">Tên</label>
-                                    <input id="firstname" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="lastname">Họ</label>
-                                    <input id="lastname" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="street-address">Địa chỉ đường phố</label>
-                                    <input id="street-address" type="text" class="form-control" placeholder="Tên đường và số nhà">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control"
-                                           placeholder="Căn hộ, dãy phòng, căn hộ, v.v.: (tùy chọn)">
-                                </div>
-                            </div>
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="town-city">Thị trấn / Thành phố</label>
-                                    <input id="town-city" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
 
-                            <div class="w-100"></div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone">Số điện thoại</label>
-                                    <input id="phone" type="text" class="form-control" placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="emailaddress">Email Address</label>
-                                    <input id="emailaddress" type="text" class="form-control" placeholder="">
-                                </div>
+                    <h3 class="mb-4 billing-heading">Chi tiết thanh toán</h3>
+                    <div class="row align-items-end">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname">Tên</label>
+                                <input name="ten_nguoi-dung" style="color: black !important;" id="firstname" type="text" class="form-control" placeholder="">
                             </div>
                         </div>
-                    </form><!-- END -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lastname">Họ</label>
+                                <input name="ho_nguoi-dung" style="color: black !important;" id="lastname" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="street-address">Địa chỉ đường phố</label>
+                                <input name="dia-chi_nguoi-dung" style="color: black !important;" id="street-address" type="text" class="form-control" placeholder="Tên đường và số nhà">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="can-ho_nguoi-dung" style="color: black !important;"  type="text" class="form-control"
+                                       placeholder="Căn hộ, dãy phòng, căn hộ, v.v.: (tùy chọn)">
+                            </div>
+                        </div>
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="town-city">Thị trấn / Thành phố</label>
+                                <select name="tp_nguoi-dung" style="color: black !important;" id="town-city" type="text" class="form-control" onchange="handleSelectChange()">
+                                    <option style="display: none" value="">Vui lòng chọn thành phố</option>
+                                    <option style="color: black" value="Dĩ An">Dĩ An</option>
+                                    <option style="color: black" value="Thành Phố Hồ Chí Minh">Thành Phố Hồ Chí Minh</option>
+                                    <option style="color: black" value="Thủ Đức">Thủ Đức</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="w-100"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại</label>
+                                <input name="sdt_nguoi-dung" style="color: black !important;" id="phone" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="emailaddress">Email Address</label>
+                                <input name="email_nguoi-dung" style="color: black !important;" id="emailaddress" type="text" class="form-control" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-xl-5">
                     <div class="row mt-5 pt-3">
@@ -165,23 +173,23 @@
                                 <h3 class="billing-heading mb-4">Hóa đơn</h3>
                                 <p class="d-flex">
                                     <span>Tổng phụ</span>
-                                    <span>200.000đ</span>
+                                    <span class="tong_phu">200.000đ</span>
                                 </p>
 
                                 <p class="d-flex">
-                                    <span>Giảm giá</span>
-                                    <span>30.000đ</span>
+                                    <span>Phí vận chuyển</span>
+                                    <span class="phi_van_chuyen">0đ</span>
                                 </p>
                                 <hr>
                                 <p class="d-flex total-price">
                                     <span>Tổng</span>
-                                    <span>170.000đ</span>
+                                    <span class="tong_cong">200.000đ</span>
                                 </p>
                             </div>
                         </div>
 
 
-<!--                        Payment Details-->
+                        <!--                        Payment Details-->
                         <div class="col-md-12">
                             <div class="cart-detail p-3 p-md-4">
                                 <h3 class="billing-heading mb-4">Phương thức thanh toán</h3>
@@ -237,21 +245,22 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <div class="radio">
-                                        <input class="check" type="checkbox">
+                                            <input class="check" type="checkbox">
                                             <span> Tôi đã đọc và đồng ý
                                                 các điều khoản và điều kiện</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                <p><a href="#" class="btn btn-primary py-3 px-4">Đặt hàng</a></p>
+                                <p><button type="submit" class="btn btn-primary py-3 px-4">Đặt hàng</button></p>
                             </div>
-                    </div>
-                </div> <!-- .col-md-8 -->
-            </div>
+                        </div>
+                    </div> <!-- .col-md-8 -->
+                </div>
 
-    </div></div>
-</section> <!-- .section -->
+            </div></div>
+    </section> <!-- .section -->
+</form><!-- END -->
 
 <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
     <div class="container py-4">
@@ -447,7 +456,37 @@
     function resetForm() {
         document.getElementById('input')[0].reset
     }
+    function handleSelectChange() {
+        var selectElement = document.getElementById("town-city");
+        var selectedValue = selectElement.options[selectElement.selectedIndex].value;
 
+        switch (selectedValue) {
+            case "Dĩ An":
+                document.querySelector('.phi_van_chuyen').innerText="30.000đ"
+                var phiVanChuyen = parseInt(document.querySelector('.phi_van_chuyen').innerText.replace(/[.,đ]/g,''))
+                var tongPhu = parseInt(document.querySelector('.tong_phu').innerText.replace(/[.,đ]/g,''))
+                var result = phiVanChuyen+tongPhu;
+                document.querySelector('.tong_cong').innerText=result.toLocaleString('vi-VN')+" Đ";
+                break;
+            case "Thành Phố Hồ Chí Minh":
+                document.querySelector('.phi_van_chuyen').innerText="25.000đ"
+                var phiVanChuyen = parseInt(document.querySelector('.phi_van_chuyen').innerText.replace(/[.,đ]/g,''))
+                var tongPhu = parseInt(document.querySelector('.tong_phu').innerText.replace(/[.,đ]/g,''))
+                var result = phiVanChuyen+tongPhu;
+                document.querySelector('.tong_cong').innerText=result.toLocaleString('vi-VN')+" Đ";
+
+                break;
+            case "Thủ Đức":
+                document.querySelector('.phi_van_chuyen').innerText="20.000đ"
+                var phiVanChuyen = parseInt(document.querySelector('.phi_van_chuyen').innerText.replace(/[.,đ]/g,''))
+                var tongPhu = parseInt(document.querySelector('.tong_phu').innerText.replace(/[.,đ]/g,''))
+                var result = phiVanChuyen+tongPhu;
+                document.querySelector('.tong_cong').innerText=result.toLocaleString('vi-VN')+" Đ";
+                break;
+            default:
+                break;
+        }
+    }
 </script>
 
 </body>

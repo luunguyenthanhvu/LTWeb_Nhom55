@@ -20,3 +20,21 @@
     height: 30px;
 
 }
+.find-product {
+    float: right;
+}
+.find-product form {
+    margin: 20px 30px;
+}
+.find-product form button {
+    padding: 10px 15px;
+}
+.find-product form input {
+    width: 300px;
+}
+.find-product form button {
+    cursor: pointer;
+    background-color: #11101d;
+    fill: #FFFFFF;
+    border: none;
+}

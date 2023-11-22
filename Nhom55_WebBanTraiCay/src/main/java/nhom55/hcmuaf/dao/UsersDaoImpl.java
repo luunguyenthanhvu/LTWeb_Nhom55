@@ -21,13 +21,14 @@ public class UsersDaoImpl implements UsersDao{
     @Override
     public String addNewUser(String username, String password, String hash, String email, String phoneNumber, String address) {
         return JDBIConnector.get().withHandle(handle -> {
-            handle.createUpdate("INSERT INTO Users (username, password, hash, email, phoneNumber, address) VALUES (:username, :password, :hash, :email, :phoneNumber, :address)")
+            handle.createUpdate("INSERT INTO Users (username, password, hash, email, phoneNumber, address, status) VALUES (:username, :password, :hash, :email, :phoneNumber, :address, :status)")
                     .bind("username", username)
                     .bind("password", password)
                     .bind("hash", hash)
                     .bind("email", email)
                     .bind("phoneNumber", phoneNumber)
                     .bind("address", address)
+                    .bind("status", 0)
                     .execute();
             return "SUCCESS";
         });
@@ -36,7 +37,7 @@ public class UsersDaoImpl implements UsersDao{
     @Override
     public String updateUserStatus(String email, String hash) {
         List<Users> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT email, hash, status  FROM Users WHERE email = :email AND hash = :hash AND status IS NULL")
+                h.createQuery("SELECT email, hash, status  FROM Users WHERE email = :email AND hash = :hash AND status = 0")
                         .bind("email", email)
                         .bind("hash", hash)
                         .mapToBean(Users.class)
@@ -45,7 +46,7 @@ public class UsersDaoImpl implements UsersDao{
         );
         Users user = users.get (0);
         return JDBIConnector.get().withHandle(handle -> {
-            handle.createUpdate("update Users set status = 2 where email = :email AND hash = :hash ")
+            handle.createUpdate("update Users set status = 1 where email = :email AND hash = :hash ")
                     .bind("hash", hash)
                     .bind("email", email)
                     .execute();

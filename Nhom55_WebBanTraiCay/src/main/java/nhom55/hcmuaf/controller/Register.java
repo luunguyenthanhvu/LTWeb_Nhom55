@@ -1,5 +1,6 @@
 package nhom55.hcmuaf.controller;
 
+import nhom55.hcmuaf.beans.RegisterBean;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.RegisterService;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -32,7 +33,7 @@ public class Register extends HttpServlet {
         random.nextInt (9999990);
         makeHash = DigestUtils.md5Hex ("" + random);
 
-        Users register = new Users ();
+        RegisterBean register = new RegisterBean ();
         register.setUsername (username);
         register.setPhoneNumber (phoneNum);
         register.setAddress (address);

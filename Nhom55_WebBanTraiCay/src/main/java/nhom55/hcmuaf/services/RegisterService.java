@@ -1,11 +1,10 @@
 package nhom55.hcmuaf.services;
 
+import nhom55.hcmuaf.beans.RegisterBean;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
-import nhom55.hcmuaf.database.JDBIConnector;
 import nhom55.hcmuaf.sendmail.MailProperties;
-import nhom55.hcmuaf.sendmail.SendEmail;
 
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -15,7 +14,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 public class RegisterService {
     private static RegisterService instance;
@@ -32,7 +30,7 @@ public class RegisterService {
         return instance;
     }
 
-    public String RegisterUser(Users register) {
+    public String RegisterUser(RegisterBean register) {
         String result = "";
         String username = register.getUsername ();
         String phoneNumber = register.getPhoneNumber ();

@@ -26,8 +26,28 @@ public class UsersDaoImpl implements UsersDao{
                     .bind("password", password)
                     .bind("hash", hash)
                     .bind("email", email)
-                    .bind("phoneNum", phoneNumber)
+                    .bind("phoneNumber", phoneNumber)
                     .bind("address", address)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
+
+    @Override
+    public String updateUserStatus(String email, String hash) {
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT email, hash, status  FROM Users WHERE email = :email AND hash = :hash AND status IS NULL")
+                        .bind("email", email)
+                        .bind("hash", hash)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        Users user = users.get (0);
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate("update Users set status = 2 where email = :email AND hash = :hash ")
+                    .bind("hash", hash)
+                    .bind("email", email)
                     .execute();
             return "SUCCESS";
         });

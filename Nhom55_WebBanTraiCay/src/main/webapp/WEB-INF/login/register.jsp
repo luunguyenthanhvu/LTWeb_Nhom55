@@ -19,9 +19,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //custom-theme  -->
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="../../static/css/font-awesome.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
     <!-- //font-awesome icons -->
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
@@ -29,19 +29,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="login-form w3_form">
     <!--  Title-->
     <div class="login-title w3_title" >
-
-
-
     </div>
     <div class="login w3_login">
         <h2 class="login-header w3_header">Đăng ký</h2>
         <div class="w3l_grid">
             <form class="login-container" action="register" method="post">
-                <input type="text" placeholder="Tên người dùng" name="username" required >
-                <input type="text" placeholder="Số điện thoại" name="phoneNum" required >
-                <input type="text" placeholder="Địa chỉ" name="address" required>
-                <input type="email" placeholder="Email" name="email" required>
-                <input type="password" placeholder="Mật khẩu" name="password" required>
+                <input type="text" placeholder="Tên người dùng" name="username">
+                <input type="text" placeholder="Số điện thoại" name="phoneNum">
+                <input type="text" placeholder="Địa chỉ" name="address">
+                <input type="email" placeholder="Email" name="email">
+                <input type="password" placeholder="Mật khẩu" name="password">
                 <c:if test="${not empty userExist}" >
                     <p style="color: red;padding: 10px; text-align: center"> ${userExist}</p>
                 </c:if>

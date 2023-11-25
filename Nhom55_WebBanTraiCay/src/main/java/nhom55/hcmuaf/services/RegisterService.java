@@ -30,6 +30,11 @@ public class RegisterService {
         return instance;
     }
 
+    /**
+     * generate new user if user not exits
+     * @param register
+     * @return String result
+     */
     public String RegisterUser(RegisterBean register) {
         String result = "";
         String username = register.getUsername ();
@@ -39,9 +44,6 @@ public class RegisterService {
         String password = register.getPassword ();
         String hash = register.getHash ();
 
-        List<Users> users = usersDao.getUserByEmail (email);
-
-        if (users.size() > 0) return "userExist";
         result = usersDao.addNewUser (username, password, hash, email, phoneNumber, address);
 
         verifyAccount (email, hash);
@@ -49,6 +51,12 @@ public class RegisterService {
         return result;
     }
 
+    /**
+     * if user click in this link in mail, sever will set status = 1 (ACTIVE)
+     * @param email
+     * @param hash
+     *
+     */
     public static void verifyAccount(String email, String hash) {
         Properties properties = MailProperties.getSMTPPro();
         Session session = Session.getInstance (properties,new javax.mail.Authenticator () {

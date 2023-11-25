@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.container {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.root{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    /*background-image: linear-gradient(to right, hsl(212.78deg 80.6% 73.73%), hsl(274.8deg 65.79% 70.2%));*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+
+}
+
+.background_img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+}
+
+
+.main__container {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.form__sign-in {
+    width: 350px;
+    background-color: #ffffff;
+    border-radius: 10px;
+
+}
+
+.form__sign-in .header_form {
+    text-align: center;
+    padding: 40px 0 20px 0;
+}
+.form__sign-in .header_form h3 {
+    color: #41e533;
+    font-size: 1.4em;
+}
+.form__sign-in .input__field {
+    padding: 10px 40px;
+
+}
+.form__sign-in .input__field input {
+    padding: 10px 20px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    outline: none;
+}
+.form__sign-in .input__field input::placeholder{
+    color: #583761;
+    font-weight: bold;
+}
+.form__sign-in .input__field input:hover {
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.form__sign-in .btn__sign-in {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px ;
+}
+.form__sign-in .btn__sign-in button {
+    width: 160px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #41e533;
+    border: none;
+    color: #ffffff;
+}
+
+.form__sign-in .sign__up {
+    text-align: center;
+    padding: 20px;
+}
+.form__sign-in .sign__up a {
+    text-decoration: none;
+    font-weight: bolder;
+    color: #33b5e5;
+}
+
+.error {
+    color: red;
+    padding: 5px 20px;
+    display: none;
+}

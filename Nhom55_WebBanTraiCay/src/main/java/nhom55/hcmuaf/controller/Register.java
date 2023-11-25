@@ -1,7 +1,6 @@
 package nhom55.hcmuaf.controller;
 
 import nhom55.hcmuaf.beans.RegisterBean;
-import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.RegisterService;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -47,8 +46,8 @@ public class Register extends HttpServlet {
         if (str.equals ("SUCCESS")) {
             RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/verify.jsp");
             dispatcher.forward (request,response);
-        } else if(str.equals ("had user")) {
-            request.setAttribute ("errorRegister", "Tài khoản đã tồn tại");
+        } else if(str.equals ("userExist")) {
+            request.setAttribute ("userExist", "Tài khoản đã tồn tại");
             RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/register.jsp");
             dispatcher.forward (request,response);
         }

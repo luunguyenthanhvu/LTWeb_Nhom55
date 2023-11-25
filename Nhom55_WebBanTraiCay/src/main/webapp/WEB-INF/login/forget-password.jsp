@@ -9,7 +9,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-  <title>Elegant Login Form Flat Responsive Widget Template :: w3layouts</title>
+  <%@ page isELIgnored="false" %>
+  <title>Quên mật khẩu</title>
   <!-- custom-theme -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,17 +40,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <input type="email" placeholder="Email" Name="Email" required="" >
         <input type="email" placeholder="OTP" Name="Email" required="" >
       </form>
-
-
-      <div class="second-section w3_section">
-
-        <div class="social-links w3_social">
-
-        </div>
-      </div>
-
-
-
     </div>
   </div>
 

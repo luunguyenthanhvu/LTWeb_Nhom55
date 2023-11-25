@@ -41,7 +41,7 @@ public class RegisterService {
 
         List<Users> users = usersDao.getUserByEmail (email);
 
-        if (users.size() > 0) return "had user";
+        if (users.size() > 0) return "userExist";
         result = usersDao.addNewUser (username, password, hash, email, phoneNumber, address);
 
         verifyAccount (email, hash);
@@ -61,8 +61,8 @@ public class RegisterService {
             Message message = new MimeMessage (session);
             message.setFrom (new InternetAddress (MailProperties.getEmail ()));
             message.addRecipient (Message.RecipientType.TO, new InternetAddress(email));
-            message.setText ("Verification Link.....");
-            message.setText ("Click Here :: " + "http://localhost:8080/AccountActive?key1="
+            message.setSubject ("Xác thực tài khoản");
+            message.setText ("Click Here : " + "http://localhost:8080/AccountActive?key1="
                     + email + "&key2=" +hash);
             Transport.send (message);
         } catch (Exception e) {

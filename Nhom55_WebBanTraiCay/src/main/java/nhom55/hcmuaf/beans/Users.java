@@ -13,7 +13,7 @@ public class Users implements Serializable {
     private String phoneNumber;
     private int status;
     private String img;
-    private LocalDate date;
+    private LocalDate dateOfBirth;
     private String sexual;
     private int role;
 
@@ -25,7 +25,7 @@ public class Users implements Serializable {
         this.phoneNumber = phoneNum;
         this.status = status;
         this.img = img;
-        this.date = date;
+        this.dateOfBirth = date;
         this.sexual = sexual;
         this.role = role;
     }
@@ -121,12 +121,12 @@ public class Users implements Serializable {
         this.img = img;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDateOfBirth(LocalDate date) {
+        this.dateOfBirth = date;
     }
 
     public String getSexual() {

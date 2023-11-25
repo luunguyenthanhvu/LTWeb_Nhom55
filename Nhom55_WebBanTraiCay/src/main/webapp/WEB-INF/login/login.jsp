@@ -19,10 +19,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //custom-theme  -->
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="../../static/css/font-awesome.css">
-    <!-- //font-awesome icons -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
+    <!-- //font-awesome icons -->v
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
@@ -40,11 +40,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input type="email" placeholder="Email" Name="Email" required="" >
                 <input type="password" placeholder="Mật khẩu" Name="password" required="">
                 <input type="submit" value="Đăng nhập">
-
-
-
-
-
             </form>
 
 
@@ -56,20 +51,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <div class="bottom-text w3_bottom_text">
-                <p>Bạn mới biết đến Shop?<a href="signup.html">Đăng ký</a></p>
+                <p>Bạn mới biết đến Shop?<a href="${pageContext.request.contextPath}/register">Đăng ký</a></p>
 
-                <h4> <a href="forget-password.html">Quên mật khẩu?</a></h4>
+                <h4> <a href="${pageContext.request.contextPath}/forgetPassword">Quên mật khẩu?</a></h4>
             </div>
 
         </div>
     </div>
 
 </div>
-
-
-
-
-
 <div class="footer-w3l">
 
 </div>

@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UsersDaoImpl implements UsersDao{
+    /**
+     *
+     * @param email
+     * @return List<User>
+     */
     @Override
     public List<Users> getUserByEmail(String email) {
         return JDBIConnector.get().withHandle(h ->
@@ -18,6 +23,16 @@ public class UsersDaoImpl implements UsersDao{
         );
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @param hash
+     * @param email
+     * @param phoneNumber
+     * @param address
+     * @return String result
+     */
     @Override
     public String addNewUser(String username, String password, String hash, String email, String phoneNumber, String address) {
         return JDBIConnector.get().withHandle(handle -> {
@@ -34,6 +49,12 @@ public class UsersDaoImpl implements UsersDao{
         });
     }
 
+    /**
+     *
+     * @param email
+     * @param hash
+     * @return String result
+     */
     @Override
     public String updateUserStatus(String email, String hash) {
         List<Users> users = JDBIConnector.get().withHandle(h ->

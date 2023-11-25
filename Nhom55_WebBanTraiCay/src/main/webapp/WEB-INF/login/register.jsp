@@ -9,7 +9,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>Elegant Login Form Flat Responsive Widget Template :: w3layouts</title>
+    <%@ page isELIgnored="false" %>
+    <title>Đăng ký tài khoản</title>
     <!-- custom-theme -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,21 +42,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input type="text" placeholder="Địa chỉ" name="address" required>
                 <input type="email" placeholder="Email" name="email" required>
                 <input type="password" placeholder="Mật khẩu" name="password" required>
+                <c:if test="${not empty userExist}" >
+                    <p style="color: red;padding: 10px; text-align: center"> ${userExist}</p>
+                </c:if>
                 <input type="submit" value="Đăng ký">
             </form>
-
-
-            <div class="second-section w3_section">
-
-                <div class="social-links w3_social">
-
-                </div>
-            </div>
-
-            <div class="bottom-text w3_bottom_text">
-
-            </div>
-
         </div>
     </div>
 

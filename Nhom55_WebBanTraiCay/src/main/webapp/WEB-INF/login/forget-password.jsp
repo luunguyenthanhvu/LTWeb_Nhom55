@@ -9,8 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-  <%@ page isELIgnored="false" %>
-  <title>Quên mật khẩu</title>
+  <title>Elegant Login Form Flat Responsive Widget Template :: w3layouts</title>
   <!-- custom-theme -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,10 +18,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
   function hideURLbar(){ window.scrollTo(0,1); } </script>
   <!-- //custom-theme  -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/login/css/style.css">
   <!-- font-awesome icons -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
-  <!-- //font-awesome icons -->
+  <link href="css/font-awesome.css" rel="stylesheet">
   <!-- //font-awesome icons -->
   <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
@@ -38,16 +36,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <h2 class="login-header w3_header">Quên mật khẩu</h2>
     <div class="w3l_grid">
       <form class="login-container" action="#" method="post">
-        <input type="email" placeholder="email" Name="email" required="" >
-        <input type="submit" value="Gửi lại mật khẩu">
-        <c:if test="${not empty result}" >
-          <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
-        </c:if>
+        <input type="email" placeholder="Email" Name="Email" required="" >
+        <input type="email" placeholder="OTP" Name="Email" required="" >
       </form>
+
+
+      <div class="second-section w3_section">
+
+        <div class="social-links w3_social">
+
+        </div>
+      </div>
+
+
+
     </div>
   </div>
 
 </div>
+
+
+
+
+
 <div class="footer-w3l">
 
 </div>

@@ -18,50 +18,98 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
+
     <!-- //custom-theme  -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
+    <link rel="stylesheet" href="static/css/login.css">
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
-    <!-- //font-awesome icons -->v
+    <link rel="stylesheet" href="static/css/font-awesome.css">
+    <!-- //font-awesome icons -->
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
-<div class="login-form w3_form">
-    <!--  Title-->
-    <div class="login-title w3_title" >
-
-
-
-    </div>
-    <div class="login w3_login">
-        <h2 class="login-header w3_header">Đăng nhập</h2>
-        <div class="w3l_grid">
-            <form class="login-container" action="#" method="post">
-                <input type="email" placeholder="Email" Name="Email" required="" >
-                <input type="password" placeholder="Mật khẩu" Name="password" required="">
-                <input type="submit" value="Đăng nhập">
-            </form>
-
-
-            <div class="second-section w3_section">
-
-                <div class="social-links w3_social">
-
+<div class="container">
+    <div class="root">
+        <img class="background_img" src="static/images/bg1.jpg" alt="">
+        <div class="main__container">
+            <form action="Login" class="form__sign-in" method="post">
+                <div class="header_form">
+                    <h3>ĐĂNG NHẬP</h3>
                 </div>
-            </div>
 
-            <div class="bottom-text w3_bottom_text">
-                <p>Bạn mới biết đến Shop?<a href="${pageContext.request.contextPath}/register">Đăng ký</a></p>
+                <div class="input__field">
+                    <input id="email" name="email" type="email" placeholder="Email">
+                    <p class="error" id="email_error"></p>
+                </div>
+                <div class="input__field">
+                    <input id="password" name="password" type="password" placeholder="Mật khẩu">
+                    <p class="error" id="password_error"></p>
+                </div>
+                <div class="btn__sign-in">
+                    <button id="signIn">Đăng nhập</button>
+                </div>
+                <c:if test="${not empty user}" >
+                    <p style="color: red;padding-top: 20px; text-align: center"> ${user} Không tìm thấy </p>
+                </c:if>
 
-                <h4> <a href="${pageContext.request.contextPath}/forgetPassword">Quên mật khẩu?</a></h4>
-            </div>
+                <div class="sign__up">
+                    <p>Bạn mới biết đến Shop?<a href="signup.html"> Đăng ký</a></p>
+                    <h4> <a href="forget-password.html">Quên mật khẩu?</a></h4>
+                </div>
 
+            </form>
         </div>
     </div>
-
 </div>
-<div class="footer-w3l">
 
-</div>
 </body>
+
+<script>
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+
+    function validateEmail() {
+        var text = email.value;
+        var error = document.getElementById("email_error");
+        if (text == null || text.length == 0) {
+            error.textContent = "Vui lòng đăng nhập bằng email.";
+            error.style.display = "block";
+            return false;
+        } else if (text.includes("@gmail.com") && text.length < 10) {
+            error.textContent = "Email bắt buộc phải là (***@gmail.com)."
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validatePass() {
+        var text = password.value;
+        var error = document.getElementById("password_error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng điền mật khẩu";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    email.addEventListener("blur", validateEmail);
+    password.addEventListener("blur", validatePass);
+
+    var signIn = document.getElementById("signIn");
+    signIn.addEventListener("click", function (event) {
+        var isEmailValid = validateEmail();
+        var isPasswordValid = validatePass();
+
+        if (!isEmailValid    || !isPasswordValid) {
+            event.preventDefault();
+        }
+    });
+
+</script>
+
 </html>

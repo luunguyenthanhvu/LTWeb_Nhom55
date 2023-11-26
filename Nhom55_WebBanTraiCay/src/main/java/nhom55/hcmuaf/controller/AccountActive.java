@@ -10,7 +10,7 @@ import java.io.IOException;
 
 @WebServlet(name = "AccountActive", value = "/AccountActive")
 public class AccountActive extends HttpServlet {
-    private AdminService adminService = new AdminService ();
+    AdminService adminService = new AdminService ();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter ("key1");

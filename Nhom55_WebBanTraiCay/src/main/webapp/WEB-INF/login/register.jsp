@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
+    <%@ page isELIgnored="false" %>
     <title>Elegant Login Form Flat Responsive Widget Template :: w3layouts</title>
     <!-- custom-theme -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,9 +19,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //custom-theme  -->
-    <link rel="stylesheet" href="../../static/css/login.css">
+    <link rel="stylesheet" href="../../static/login-css/login.css">
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="../../static/css/font-awesome.css">
+    <link rel="stylesheet" href="../../static/login-css/font-awesome.css">
     <!-- //font-awesome icons -->
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>

@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class HomeDao {
-    public List<Products> get8Products() {
+    public List<Products> getProduct() {
         return JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT TOP 8 * FROM products ")
+                // lấy ra 8 sản phẩm trong danh sách
+                h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
                         .mapToBean(Products.class)
                         .stream()
                         .collect(Collectors.toList())

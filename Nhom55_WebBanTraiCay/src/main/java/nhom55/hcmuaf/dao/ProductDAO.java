@@ -9,6 +9,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductDAO {
+
+    // lấy ra 8 sản phẩm trong danh sách
+    public List<Products> getProduct() {
+        return JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
+                        .mapToBean(Products.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+    }
+
     public List<Products> getListProducts() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ")

@@ -2,6 +2,7 @@ package nhom55.hcmuaf.controller;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.HomeDao;
+import nhom55.hcmuaf.dao.ProductDAO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,10 +28,10 @@ public class Home extends HttpServlet {
         // Dẫn đến đường link trang chủ hiển thị ra 8 sản phẩm
         // (Users can not access directly into JSP pages placed in WEB-INF)
 
-        HomeDao homeDao = new HomeDao();
-        List<Products> products = homeDao.get8Products();
-        request.setAttribute("list8Product", products);
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/index.jsp");
+        ProductDAO productDAO = new ProductDAO();
+        List<Products> products = productDAO.getProduct();
+        request.setAttribute("listProducts", products);
+        RequestDispatcher dispatcher = request.getRequestDispatcher ("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -49,4 +50,3 @@ public class Home extends HttpServlet {
     }
 
 }
-

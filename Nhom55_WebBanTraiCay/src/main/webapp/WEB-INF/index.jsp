@@ -1,8 +1,12 @@
 
 
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
+    <%@ page isELIgnored="false" %>
+
     <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,25 +16,25 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/animate.css">
+    <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/animate.css">
 
-    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="../static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css">
 
-    <link rel="stylesheet" href="../static/css/aos.css">
+    <link rel="stylesheet" href="static/css/aos.css">
 
-    <link rel="stylesheet" href="../static/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/ionicons.min.css">
 
-    <link rel="stylesheet" href="../static/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../static/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="static/css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="../static/css/flaticon.css">
-    <link rel="stylesheet" href="../static/css/icomoon.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/fix.css">
+    <link rel="stylesheet" href="static/css/flaticon.css">
+    <link rel="stylesheet" href="static/css/icomoon.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/fix.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -194,252 +198,251 @@
     <div class="container">
         <div class="row">
 
-            <c:forEach items="${list8Product}" var="product">
-            <div class="col-md-6 col-lg-3 ftco-animate">
-                <div class="product"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/${product.getImg()}"
-                                          alt="Colorlib Template">
+            <c:forEach items="${listProducts}" var="product" >
+                <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+                    <div class="product">
+                        <a href="" class="img-prod"><img style="width: 205px; height: 164px; object-fit: cover" class="img-fluid" src="static/images/${product.getImg()}" alt="Colorlib Template">
 
-                    <div class="text py-3 pb-4 px-3 text-center">
-                        <h3><a href="">${product.getNameOfProduct()}</a></h3>
-                        <div class="d-flex">
-                            <div class="pricing">
-                                <p class="price"><span class="price">${product.getPrice()}</span>
-                                </p>
+                        </a>
+                        <div class="text py-3 pb-4 px-3 text-center">
+                            <h3><a href="">${product.getNameOfProduct()} </a></h3>
+                            <div class="d-flex">
+                                <div class="pricing">
+                                    <p class="price"><span class="price">${product.getPrice()} VNĐ</span></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="bottom-area d-flex px-3">
-                            <div class="m-auto d-flex">
-                                <a href="product-single.html"
-                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                                    <span><i class="ion-ios-menu"></i></span>
-                                </a>
-                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                                    <span><i class="ion-ios-cart"></i></span>
-                                </a>
-                                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                                    <span><i class="ion-ios-heart"></i></span>
-                                </a>
+                            <div class="bottom-area d-flex px-3">
+                                <div class="m-auto d-flex">
+                                    <a href="product-single.html" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                        <span><i class="ion-ios-menu"></i></span>
+                                    </a>
+                                    <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                        <span><i class="ion-ios-cart"></i></span>
+                                    </a>
+                                    <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        <span><i class="ion-ios-heart"></i></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </c:forEach>
 
-        <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img class="img-fluid" src="../static/images/dau.jpg"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Dâu </a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_cau.png"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Chuối Cau</a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_tieu.png"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Chuối Tiêu</a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span>12000 VNĐ</span></p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img class="img-fluid" src="../static/images/dau.jpg"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Dâu </a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_cau.png"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Chuối Cau</a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_tieu.png"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Chuối Tiêu</a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span>12000 VNĐ</span></p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
 
 
-<%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/dua_xiem.jpg"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <span class="status">30%</span>--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Dừa</a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span class="price">15000 VNĐ</span>--%>
-<%--                                </p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/oi.jpg"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Ổi</a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span>30000 VNĐ</span></p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chom_chom.jpg"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Chôm Chôm</a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span>50000 VNĐ</span></p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-<%--                <div class="product">--%>
-<%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/xoai.png"--%>
-<%--                                                      alt="Colorlib Template">--%>
-<%--                        <div class="overlay"></div>--%>
-<%--                    </a>--%>
-<%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-<%--                        <h3><a href="#">Xoài </a></h3>--%>
-<%--                        <div class="d-flex">--%>
-<%--                            <div class="pricing">--%>
-<%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="bottom-area d-flex px-3">--%>
-<%--                            <div class="m-auto d-flex">--%>
-<%--                                <a href="#"--%>
-<%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-<%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-<%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-<%--                                </a>--%>
-<%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-<%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
-<%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/dua_xiem.jpg"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <span class="status">30%</span>--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Dừa</a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span class="price">15000 VNĐ</span>--%>
+            <%--                                </p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/oi.jpg"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Ổi</a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span>30000 VNĐ</span></p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chom_chom.jpg"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Chôm Chôm</a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span>50000 VNĐ</span></p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
+            <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+            <%--                <div class="product">--%>
+            <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/xoai.png"--%>
+            <%--                                                      alt="Colorlib Template">--%>
+            <%--                        <div class="overlay"></div>--%>
+            <%--                    </a>--%>
+            <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+            <%--                        <h3><a href="#">Xoài </a></h3>--%>
+            <%--                        <div class="d-flex">--%>
+            <%--                            <div class="pricing">--%>
+            <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                        <div class="bottom-area d-flex px-3">--%>
+            <%--                            <div class="m-auto d-flex">--%>
+            <%--                                <a href="#"--%>
+            <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+            <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+            <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+            <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+            <%--                                </a>--%>
+            <%--                            </div>--%>
+            <%--                        </div>--%>
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
         </div>
     </div>
 </section>

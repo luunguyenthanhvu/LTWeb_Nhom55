@@ -15,26 +15,26 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/web-css/animate.css">
 
-    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
 
-    <link rel="stylesheet" href="static/css/aos.css">
+    <link rel="stylesheet" href="static/css/web-css/css/aos.css">
 
-    <link rel="stylesheet" href="static/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
 
-    <link rel="stylesheet" href="static/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="static/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="static/css/flaticon.css">
-    <link rel="stylesheet" href="static/css/icomoon.css">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/web-css/flaticon.css">
+    <link rel="stylesheet" href="static/css/web-css/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
 
-    <link rel="stylesheet" href="static/css/shop.css">
+    <link rel="stylesheet" href="static/css/web-css/shop.css">
 
 
 
@@ -111,7 +111,7 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10 mb-5 text-center">
+            <div style="display: block" class="col-md-10 mb-5 text-center">
 
 
 
@@ -172,7 +172,7 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
-                        <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="searchProduct" >
+                        <input  style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
                         <input style="width: 100px" type="submit"  value="Tìm kiếm">
                     </form>
 
@@ -229,14 +229,15 @@
 
             </div>
 
-            <div style="position:" class="row mt-5">
+            <div class="row mt-5">
                 <div class="col text-center">
-                    <div class="block-27">
+                    <div style="width: 305px" class="block-27">
                         <ul>
                             <li><a href="#">&lt;</a></li>
                             <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                <li class="active"><a href="#">${i}</a></li>
+                                <li class="active"><a  href="ShopController?index=${i}&txtSearch=${txtSearch}">${i}</a></li>
                             </c:forEach>
+
 
 
                             <li><a href="#">&gt;</a></li>

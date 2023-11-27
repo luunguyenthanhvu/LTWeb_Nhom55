@@ -1,8 +1,8 @@
 package nhom55.hcmuaf.controller;
 
 import nhom55.hcmuaf.beans.RegisterBean;
-import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.RegisterService;
+import nhom55.hcmuaf.util.MyUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.*;
@@ -13,6 +13,8 @@ import java.util.Random;
 
 @WebServlet(name = "register", value = "/register")
 public class Register extends HttpServlet {
+    private  RegisterService registerService = new RegisterService ();
+    private MyUtils myUtils = new MyUtils ();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/register.jsp");
@@ -27,11 +29,8 @@ public class Register extends HttpServlet {
         String email = request.getParameter ("email");
         String password = request.getParameter ("password");
 
-        String newPassword = DigestUtils.md5Hex (password);
-        String makeHash;
-        Random random = new Random ();
-        random.nextInt (9999990);
-        makeHash = DigestUtils.md5Hex ("" + random);
+        String newPassword = myUtils.encodePass (password);
+        String makeHash = myUtils.createHash ();
 
         RegisterBean register = new RegisterBean ();
         register.setUsername (username);
@@ -41,14 +40,13 @@ public class Register extends HttpServlet {
         register.setPassword (newPassword);
         register.setHash (makeHash);
 
-        RegisterService registerService = new RegisterService ();
         String str = registerService.RegisterUser (register);
 
         if (str.equals ("SUCCESS")) {
             RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/verify.jsp");
             dispatcher.forward (request,response);
-        } else if(str.equals ("had user")) {
-            request.setAttribute ("errorRegister", "Tài khoản đã tồn tại");
+        } else if(str.equals ("FAIL")) {
+            request.setAttribute ("userExist", "Tài khoản đã tồn tại");
             RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/register.jsp");
             dispatcher.forward (request,response);
         }

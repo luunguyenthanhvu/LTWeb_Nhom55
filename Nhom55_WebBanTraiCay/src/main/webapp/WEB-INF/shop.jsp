@@ -173,7 +173,7 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
-                        <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="searchProduct" >
+                        <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
                         <input style="width: 100px" type="submit"  value="Tìm kiếm">
                     </form>
 

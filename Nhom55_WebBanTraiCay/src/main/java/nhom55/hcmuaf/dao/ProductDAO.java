@@ -21,6 +21,7 @@ public class ProductDAO {
                         .collect(Collectors.toList())
         );
     }
+  
     public List<Products> getListProducts() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ")

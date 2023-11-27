@@ -19,11 +19,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //custom-theme  -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css" type="text/css">
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
-    <!-- //font-awesome icons -->v
-    <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css" type="text/css">
+    <!-- //font-awesome icons -->
+    <link type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
 <div class="login-form w3_form">
@@ -36,18 +36,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="login w3_login">
         <h2 class="login-header w3_header">Đăng nhập</h2>
         <div class="w3l_grid">
-            <form class="login-container" action="#" method="post">
-                <input type="email" placeholder="Email" Name="Email" required="" >
-                <input type="password" placeholder="Mật khẩu" Name="password" required="">
+            <form class="login-container" action="login" method="post">
+                <input type="email" placeholder="Email" name="email" required="" >
+                <input type="password" placeholder="Mật khẩu" name="password" required="">
                 <input type="submit" value="Đăng nhập">
+                <c:if test="${not empty result}" >
+                    <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
+                </c:if>
             </form>
-
-
             <div class="second-section w3_section">
-
-                <div class="social-links w3_social">
-
-                </div>
             </div>
 
             <div class="bottom-text w3_bottom_text">

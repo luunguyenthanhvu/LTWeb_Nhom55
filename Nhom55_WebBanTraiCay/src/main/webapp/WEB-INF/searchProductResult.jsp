@@ -16,18 +16,18 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/web-css/animate.css">
 
-    <link rel="stylesheet" href="static/web-css/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/web-css/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/web-css/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
+    <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
 
-    <link rel="stylesheet" href="static/web-css/css/aos.css">
+    <link rel="stylesheet" href="static/css/web-css/css/aos.css">
 
-    <link rel="stylesheet" href="static/web-css/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
 
-    <link rel="stylesheet" href="static/web-css/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="static/web-css/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
 
 
     <link rel="stylesheet" href="static/css/web-css/flaticon.css">
@@ -172,7 +172,7 @@
 
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
-                        <input value="${txtSearch}" style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="searchProduct" >
+                        <input  style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
                         <input style="width: 100px" type="submit"  value="Tìm kiếm">
                     </form>
 
@@ -235,7 +235,7 @@
                         <ul>
                             <li><a href="#">&lt;</a></li>
                             <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                <li class="active"><a  href="ShopController?index=${i}&${txtSearch}">${i}</a></li>
+                                <li class="active"><a  href="ShopController?index=${i}&txtSearch=${txtSearch}">${i}</a></li>
                             </c:forEach>
 
 

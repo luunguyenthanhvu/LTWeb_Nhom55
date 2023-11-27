@@ -1,11 +1,19 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: tuanh
+  Date: 11/27/2023
+  Time: 1:07 PM
+  To change this template use File | Settings | File Templates.
+--%>
+
 
 <!DOCTYPE html>
-<html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en">
 <head>
-  <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
   <%@ page isELIgnored="false" %>
+  <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -14,25 +22,31 @@
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/web-css/animate.css">
 
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
+  <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
 
-  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="static/css/web-css/aos.css">
 
-  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
 
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
 
 
-  <link rel="stylesheet" href="css/flaticon.css">
-  <link rel="stylesheet" href="css/icomoon.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/fix.css">
+  <link rel="stylesheet" href="static/css/web-css/flaticon.css">
+  <link rel="stylesheet" href="static/css/web-css/icomoon.css">
+  <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
+
+
+  <link rel="stylesheet" href="static/css/web-css/shop.css">
+
+
+
+
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -52,7 +66,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
           <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="shop.html">Cửa hàng</a>
+            <a class="dropdown-item" href="shop.jsp">Cửa hàng</a>
             <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
 
             <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
@@ -94,7 +108,7 @@
 
 <section id="home-section" class="hero">
   <div class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(images/bg1.jpg);">
+    <div class="slider-item" style="background-image: url(../static/images/bg1.jpg);">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -109,7 +123,7 @@
       </div>
     </div>
 
-    <div class="slider-item" style="background-image: url(images/bg2.jpg);background-size: cover;background-position: center">
+    <div class="slider-item" style="background-image: url(../static/images/bg2.jpg);background-size: cover;background-position: center">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -191,251 +205,256 @@
       </div>
     </div>
   </div>
+
+
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/dua-hau-tam-boi-1.jpg"
-                                  alt="Colorlib Template">
 
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="">Dưa Hấu</a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span class="price">10000 VNĐ</span>
-                </p>
+      <c:forEach items="${listProducts}" var="product" >
+        <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
+          <div class="product">
+            <a href="" class="img-prod"><img style="width: 205px; height: 164px; object-fit: cover" class="img-fluid" src="static/images/${product.getImg()}" alt="Colorlib Template">
+
+            </a>
+            <div class="text py-3 pb-4 px-3 text-center">
+              <h3><a href="">${product.getNameOfProduct()} </a></h3>
+              <div class="d-flex">
+                <div class="pricing">
+                  <p class="price"><span class="price">${product.getPrice()} VNĐ</span></p>
+                </div>
               </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="product-single.html"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img class="img-fluid" src="images/dau.jpg"
-                                            alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Dâu </a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span>40000 VNĐ</span></p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
+              <div class="bottom-area d-flex px-3">
+                <div class="m-auto d-flex">
+                  <a href="product-single.html" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                    <span><i class="ion-ios-menu"></i></span>
+                  </a>
+                  <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                    <span><i class="ion-ios-cart"></i></span>
+                  </a>
+                  <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                    <span><i class="ion-ios-heart"></i></span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/chuoi_cau.png"
-                                            alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Chuối Cau</a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span>40000 VNĐ</span></p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/chuoi_tieu.png"
-                                            alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Chuối Tiêu</a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span>12000 VNĐ</span></p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </c:forEach>
+
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img class="img-fluid" src="../static/images/dau.jpg"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Dâu </a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_cau.png"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Chuối Cau</a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_tieu.png"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Chuối Tiêu</a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span>12000 VNĐ</span></p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
 
 
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/dua_xiem.jpg"
-                                            alt="Colorlib Template">
-            <span class="status">30%</span>
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Dừa</a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span class="price">15000 VNĐ</span>
-                </p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/oi.jpg"
-                                            alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Ổi</a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span>30000 VNĐ</span></p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/chom_chom.jpg"
-                                            alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Chôm Chôm</a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span>50000 VNĐ</span></p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 ftco-animate">
-        <div class="product">
-          <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="images/xoai.png"
-                                            alt="Colorlib Template">
-            <div class="overlay"></div>
-          </a>
-          <div class="text py-3 pb-4 px-3 text-center">
-            <h3><a href="#">Xoài <cây></cây></a></h3>
-            <div class="d-flex">
-              <div class="pricing">
-                <p class="price"><span>40000 VNĐ</span></p>
-              </div>
-            </div>
-            <div class="bottom-area d-flex px-3">
-              <div class="m-auto d-flex">
-                <a href="#"
-                   class="add-to-cart d-flex justify-content-center align-items-center text-center">
-                  <span><i class="ion-ios-menu"></i></span>
-                </a>
-                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
-                  <span><i class="ion-ios-cart"></i></span>
-                </a>
-                <a href="#" class="heart d-flex justify-content-center align-items-center ">
-                  <span><i class="ion-ios-heart"></i></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/dua_xiem.jpg"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <span class="status">30%</span>--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Dừa</a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span class="price">15000 VNĐ</span>--%>
+      <%--                                </p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/oi.jpg"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Ổi</a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span>30000 VNĐ</span></p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chom_chom.jpg"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Chôm Chôm</a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span>50000 VNĐ</span></p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
+      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
+      <%--                <div class="product">--%>
+      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/xoai.png"--%>
+      <%--                                                      alt="Colorlib Template">--%>
+      <%--                        <div class="overlay"></div>--%>
+      <%--                    </a>--%>
+      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
+      <%--                        <h3><a href="#">Xoài </a></h3>--%>
+      <%--                        <div class="d-flex">--%>
+      <%--                            <div class="pricing">--%>
+      <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                        <div class="bottom-area d-flex px-3">--%>
+      <%--                            <div class="m-auto d-flex">--%>
+      <%--                                <a href="#"--%>
+      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
+      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
+      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
+      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
+      <%--                                </a>--%>
+      <%--                            </div>--%>
+      <%--                        </div>--%>
+      <%--                    </div>--%>
+      <%--                </div>--%>
+      <%--            </div>--%>
     </div>
   </div>
 </section>
@@ -561,22 +580,22 @@
 </div>
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/scrollax.min.js"></script>
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="static/js/popper.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/jquery.easing.1.3.js"></script>
+<script src="static/js/jquery.waypoints.min.js"></script>
+<script src="static/js/jquery.stellar.min.js"></script>
+<script src="static/js/owl.carousel.min.js"></script>
+<script src="static/js/jquery.magnific-popup.min.js"></script>
+<script src="static/js/aos.js"></script>
+<script src="static/js/jquery.animateNumber.min.js"></script>
+<script src="static/js/bootstrap-datepicker.js"></script>
+<script src="static/js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="js/google-map.js"></script>
-<script src="js/main.js"></script>
-
+<script src="static/js/google-map.js"></script>
+<script src="static/js/main.js"></script>
 </body>
+
 </html>

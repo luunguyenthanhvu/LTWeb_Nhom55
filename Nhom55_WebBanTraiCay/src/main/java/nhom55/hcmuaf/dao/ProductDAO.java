@@ -9,6 +9,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductDAO {
+//    Xuất ra toàn bộ sản phẩm lấy từ database
+
+
+    // lấy ra 8 sản phẩm trong danh sách
+    public List<Products> getProduct() {
+        return JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT * FROM Products ORDER BY id DESC LIMIT 8")
+                        .mapToBean(Products.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+    }
+  
     public List<Products> getListProducts() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ")
@@ -17,6 +30,7 @@ public class ProductDAO {
                         .collect(Collectors.toList())
         );
     }
+    //    Đếm số sản phầm tìm được
     public int countResultSearchingProduct(String txtSearch) {
         return JDBIConnector.get().withHandle(h ->
                 h.select("SELECT count(*)  FROM products where nameOfProduct like ?","%"+txtSearch+"%")
@@ -25,7 +39,7 @@ public class ProductDAO {
 
         );
     }
-
+//   tìm kiếm của shop
     public List<Products> search(String search, int index, int sizePage) {
         List<Products> result = JDBIConnector.get().withHandle(handle -> {
             // Mở kết nối đến cơ sở dữ liệu

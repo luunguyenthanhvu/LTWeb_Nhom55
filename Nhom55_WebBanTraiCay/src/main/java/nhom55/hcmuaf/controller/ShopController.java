@@ -19,10 +19,13 @@ public class ShopController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String txtSearch = request.getParameter("searchProduct");
+        String txtSearch = request.getParameter("txtSearch");
+        System.out.println(txtSearch);
         ProductDAO productDAO = new ProductDAO();
         int quantity = productDAO.countResultSearchingProduct(txtSearch);
+//        số lượng mặc định 1 trang
         int defaultQuantityProductOnAPage = 20;
+//        index user bấm vào phân trang
         int indexInitial = Integer.valueOf(request.getParameter("index"));
         System.out.println(indexInitial);
         int indexEnd = quantity/defaultQuantityProductOnAPage;

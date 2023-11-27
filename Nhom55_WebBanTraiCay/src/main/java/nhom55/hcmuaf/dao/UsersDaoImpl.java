@@ -9,6 +9,24 @@ import java.util.stream.Collectors;
 public class UsersDaoImpl implements UsersDao{
     /**
      *
+     * @param email
+     * @return user
+     */
+    @Override
+    public Users getUserByEmail(String email) {
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if(!users.isEmpty ()) return null;
+        return users.get (0);
+    }
+
+    /**
+     *
      * @param username
      * @param password
      * @param hash

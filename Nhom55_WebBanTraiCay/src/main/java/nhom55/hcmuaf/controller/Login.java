@@ -2,6 +2,8 @@ package nhom55.hcmuaf.controller;
 
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.dao.LoginDao;
+import nhom55.hcmuaf.dao.UsersDao;
+import nhom55.hcmuaf.dao.UsersDaoImpl;
 import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
@@ -13,6 +15,7 @@ import java.io.IOException;
 public class Login extends HttpServlet {
     private LoginDao loginDao = new LoginDao ();
     private MyUtils myUtils = new MyUtils ();
+    private UsersDao usersDao = new UsersDaoImpl ();
     public Login() {
         super();
     }
@@ -66,12 +69,17 @@ public class Login extends HttpServlet {
             request.setAttribute ("result", "Tài khoản đã bị khóa vui lòng liên hệ admin để được mở khóa!");
             RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/login.jsp");
             dispatcher.forward (request,response);
-        } else if(result.equals ("ADMIN")) {
-            // redirect to admin page
-            response.sendRedirect (request.getContextPath () + "/adminProfile");
         } else {
-            // redirect to index page
-            response.sendRedirect (request.getContextPath () + "/");
+            HttpSession session = request.getSession();
+            MyUtils.storeLoginedUser(session, usersDao.getUserByEmail (email));
+
+            if(result.equals ("ADMIN")) {
+                // redirect to admin page
+                response.sendRedirect (request.getContextPath () + "/adminProfile");
+            } else {
+                // redirect to index page
+                response.sendRedirect (request.getContextPath () + "/");
+            }
         }
     }
 }

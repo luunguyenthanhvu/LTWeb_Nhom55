@@ -26,7 +26,11 @@ public class ShopController extends HttpServlet {
 //        số lượng mặc định 1 trang
         int defaultQuantityProductOnAPage = 20;
 //        index user bấm vào phân trang
-        int indexInitial = Integer.valueOf(request.getParameter("index"));
+        String indexPage = request.getParameter("index");
+        if(indexPage == null) {
+            indexPage = "1";
+        }
+        int indexInitial = Integer.parseInt (indexPage);
         System.out.println(indexInitial);
         int indexEnd = quantity/defaultQuantityProductOnAPage;
         if(quantity % defaultQuantityProductOnAPage !=0) {

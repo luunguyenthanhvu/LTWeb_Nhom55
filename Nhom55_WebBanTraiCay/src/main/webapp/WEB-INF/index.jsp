@@ -52,6 +52,12 @@
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container navbar-container">
     <div class="navbar-brand">
+
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+
       <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"

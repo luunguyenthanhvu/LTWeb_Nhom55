@@ -20,7 +20,6 @@ public class ForgetPasswordService {
     private static ForgetPasswordService instance;
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*";
     private UsersDao usersDao = new UsersDaoImpl ();
-    private MyUtils myUtils = new MyUtils ();
     public ForgetPasswordService() {
         super();
     }
@@ -35,7 +34,7 @@ public class ForgetPasswordService {
         String result;
         // generate
         String newPass = generateNewPass ();
-        String endCodePass = myUtils.encodePass (newPass);
+        String endCodePass = MyUtils.encodePass (newPass);
         result = usersDao.updateNewPassWord (email, endCodePass);
         sendNewPasswordToEmail (email, newPass);
         return result;

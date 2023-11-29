@@ -39,8 +39,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input type="text" placeholder="Địa chỉ" name="address">
                 <input type="email" placeholder="Email" name="email">
                 <input type="password" placeholder="Mật khẩu" name="password">
-                <c:if test="${not empty userExist}" >
-                    <p style="color: red;padding: 10px; text-align: center"> ${userExist}</p>
+                <c:if test="${not empty result}" >
+                    <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
                 </c:if>
                 <input type="submit" value="Đăng ký">
             </form>

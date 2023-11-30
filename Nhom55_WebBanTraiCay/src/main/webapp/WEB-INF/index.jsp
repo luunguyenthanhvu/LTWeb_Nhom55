@@ -53,6 +53,13 @@
   <div class="container navbar-container">
     <div class="navbar-brand">
       <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái Cây</a>
+
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+
+      <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">

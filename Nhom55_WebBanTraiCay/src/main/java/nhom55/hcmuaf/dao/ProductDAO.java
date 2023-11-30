@@ -34,6 +34,7 @@ public class ProductDAO {
                         .orElse(null)); // không tìm thấy id trả về null
     }
 
+
     public List<Products> getListProducts() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ")

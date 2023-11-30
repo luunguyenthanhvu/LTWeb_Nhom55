@@ -29,8 +29,9 @@ public class ProductDetails extends HttpServlet {
                     response.sendRedirect("index.jsp");
                 }
             } else {
-                // Trường hợp không cung cấp ID
+                // Trường hợp không cung cấp ID sản phẩm đã cho
                 response.sendRedirect("index.jsp");
+                System.out.println("null");
             }
     }
 

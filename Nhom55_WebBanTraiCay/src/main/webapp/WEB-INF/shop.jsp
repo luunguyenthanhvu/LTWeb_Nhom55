@@ -33,9 +33,11 @@
     <link rel="stylesheet" href="static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="static/css/web-css/icomoon.css">
     <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
+    <link rel="stylesheet" href="static/css/web-css/fix.css">
 
 
     <link rel="stylesheet" href="static/css/web-css/shop.css">
+
 
 
 
@@ -65,7 +67,7 @@
                         <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Về Chúng Tôi</a></li>
+                <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
                         class="icon-shopping_cart"></span>[0]</a></li>
@@ -196,7 +198,7 @@
                                             </div>
                                             <div class="bottom-area d-flex px-3">
                                                 <div class="m-auto d-flex">
-                                                    <a href="product-single.html" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                                    <a href="productDetails?id=${product.getId()}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                         <span><i class="ion-ios-menu"></i></span>
                                                     </a>
                                                     <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1">

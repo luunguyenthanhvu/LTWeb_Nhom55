@@ -15,12 +15,25 @@ public class ProductDAO {
     // lấy ra 8 sản phẩm trong danh sách
     public List<Products> getProduct() {
         return JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM Products ORDER BY id DESC LIMIT 8")
+                h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
                         .mapToBean(Products.class)
                         .stream()
                         .collect(Collectors.toList())
         );
     }
+
+
+    // hiển thị chi tiết sản phẩm
+    public Products showProductDetails(int productId) {
+        return JDBIConnector.get().withHandle(h ->
+                // hiển thị sản phẩm vs id được truyền vào
+                h.createQuery("SELECT nameOfProduct, description, price, img, weight, weightDefault FROM Products WHERE id = :id")
+                        .bind("id", productId)
+                        .mapToBean(Products.class)
+                        .findFirst()
+                        .orElse(null)); // không tìm thấy id trả về null
+    }
+
     public List<Products> getListProducts() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM products ")
@@ -29,6 +42,9 @@ public class ProductDAO {
                         .collect(Collectors.toList())
         );
     }
+
+
+
     //    Đếm số sản phầm tìm được
     public int countResultSearchingProduct(String txtSearch) {
         return JDBIConnector.get().withHandle(h ->

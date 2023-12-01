@@ -52,14 +52,12 @@
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container navbar-container">
     <div class="navbar-brand">
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+      Hello <b>${loginedUser.username}</b>
+
       <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái Cây</a>
-
-      Hello <b>${loginedUser.username}</b>
-      Hello <b>${loginedUser.username}</b>
-      Hello <b>${loginedUser.username}</b>
-      Hello <b>${loginedUser.username}</b>
-
-      <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +71,7 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
           <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="<c:url value="/ShopForward"/>">Cửa hàng</a>
+            <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa hàng</a>
             <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
 
             <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
@@ -123,7 +121,7 @@
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-2">Chúng tôi phục vụ trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="<c:url value="/ShopForward"/>" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward"class="btn btn-primary">Xem chi tiết</a></p>
           </div>
 
         </div>
@@ -138,7 +136,7 @@
           <div class="col-sm-12 ftco-animate text-center">
             <h1 class="mb-2">100% trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="<c:url value="/ShopForward"/>" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem chi tiết</a></p>
           </div>
 
         </div>
@@ -301,7 +299,7 @@
         <div class="ftco-footer-widget mb-4 ml-md-5">
           <h2 class="ftco-heading-2">Menu</h2>
           <ul class="list-unstyled">
-=            <li><a href="<c:url value="/ShopForward"/>" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+=            <li><a href="${pageContext.request.contextPath}/ShopForward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
             <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
             <li><a href="#" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
           </ul>

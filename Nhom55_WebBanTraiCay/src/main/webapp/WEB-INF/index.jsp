@@ -22,25 +22,25 @@
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="static/css/web-css/animate.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/animate.css">
 
-  <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
-  <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
 
-  <link rel="stylesheet" href="static/css/web-css/aos.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/aos.css">
 
-  <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
 
-  <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
 
 
-  <link rel="stylesheet" href="static/css/web-css/flaticon.css">
-  <link rel="stylesheet" href="static/css/web-css/icomoon.css">
-  <link rel="stylesheet" href="static/css/web-css/style.css">
-  <link rel="stylesheet" href="static/css/web-css/fix.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
 
 

@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" type="/text/css" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
@@ -115,7 +115,7 @@
 </nav>
 <!-- END nav -->
 
-<div class="hero-wrap hero-bread" style="background-image: url('static/images/bg1.jpg');filter: brightness(0.8);">
+<div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">

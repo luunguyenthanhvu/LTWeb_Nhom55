@@ -42,12 +42,6 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
-
-  <link rel="stylesheet" href="static/css/web-css/shop.css">
-
-
-
-
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -70,7 +64,6 @@
           <div class="dropdown-menu" aria-labelledby="dropdown04">
             <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa hàng</a>
             <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
-
             <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
           </div>
         </li>

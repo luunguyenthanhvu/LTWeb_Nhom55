@@ -1,5 +1,6 @@
 package nhom55.hcmuaf.controller;
 
+import nhom55.hcmuaf.beans.Cart;
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.LoginDao;
@@ -73,6 +74,8 @@ public class Login extends HttpServlet {
     } else {
       HttpSession session = request.getSession();
       MyUtils.storeLoginedUser(session, usersDao.getUserByEmail(email));
+      Cart cart = new Cart();
+      MyUtils.createNewCart(session, cart);
 
       if (result.equals("ADMIN")) {
         // redirect to admin page

@@ -1,5 +1,6 @@
 package nhom55.hcmuaf.util;
 
+import nhom55.hcmuaf.beans.Cart;
 import nhom55.hcmuaf.beans.Users;
 import org.apache.commons.codec.digest.DigestUtils;
 
@@ -24,6 +25,9 @@ public class MyUtils {
     public static void storeLoginedUser(HttpSession session, Users loginedUser) {
         // On the JSP can access via ${loginedUser}
         session.setAttribute("loginedUser", loginedUser);
+    }
+    public static void createNewCart(HttpSession session, Cart cart) {
+        session.setAttribute("cart",cart);
     }
 
     // Get the user information stored in the session.

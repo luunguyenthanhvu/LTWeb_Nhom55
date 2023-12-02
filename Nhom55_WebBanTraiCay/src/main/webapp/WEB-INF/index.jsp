@@ -70,7 +70,7 @@
         <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">
-          <span class="icon-shopping_cart"></span>[0]</a></li>
+          <span class="icon-shopping_cart"></span>[${cart.quantity}]</a></li>
 
       </ul>
     </div>
@@ -136,7 +136,7 @@
       </div>
     </div>
 
-    <div class="slider-item" style="background-image: url(static/images/bg2.jpg);background-size: cover;background-position: center">
+    <div class="slider-item" style="background-image: url(/static/images/bg2.jpg);background-size: cover;background-position: center">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -255,11 +255,6 @@
   </div>
 </section>
 
-
-
-
-
-<!--Theo dõi tin tức-->
 
 <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
   <div class="container py-4">

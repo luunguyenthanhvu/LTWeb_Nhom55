@@ -234,18 +234,13 @@
                 <div class="col text-center">
                     <div class="block-27">
                         <ul>
-        <%--   đếm số trang --%>
-
-
-            <c:forEach items="${numberPage}" var="i" begin="1" end="${i.numberPage}"    >
-                                <li><a href="#">&lt;</a></li>
-                                <li class="page-item ${indexPage==i?"active":""}"><a class="page-link" href="paging?index=${i}">${i}</a></li>
-                                <li><a href="#">&gt;</a></li>
-                            </c:forEach>
-
-
-          =
-
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&gt;</a></li>
                         </ul>
                     </div>
                 </div>

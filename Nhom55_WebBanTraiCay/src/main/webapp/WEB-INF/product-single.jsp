@@ -66,7 +66,7 @@
                 </li>
                 <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
+                <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                         class="icon-shopping_cart"></span>[0]</a></li>
 
             </ul>
@@ -164,7 +164,7 @@
                         <p style="color: #000;">${product.getWeight()} kg hợp lệ</p>
                     </div>
                 </div>
-                <p><a href="cart.html" class="btn btn-black py-3 px-5">Thêm vào giỏ hàng</a></p>
+                <p><a href="cart.jsp" class="btn btn-black py-3 px-5">Thêm vào giỏ hàng</a></p>
             </div>
 <%--            </c:if>--%>
 

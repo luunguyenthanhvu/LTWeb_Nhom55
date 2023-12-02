@@ -9,11 +9,11 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Home", value = "/")
-public class Home extends HttpServlet {
+@WebServlet(name = "HomeForward", value = "/HomeForward")
+public class HomeForward extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public Home() {
+    public HomeForward() {
         super();
     }
 

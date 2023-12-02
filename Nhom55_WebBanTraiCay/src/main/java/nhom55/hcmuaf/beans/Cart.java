@@ -1,76 +1,74 @@
 package nhom55.hcmuaf.beans;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.TreeMap;
+import nhom55.hcmuaf.beans.Products;
+import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.services.ProductService;
 
 public class Cart {
-  private TreeMap<Integer, Products> data;
+  Map<Integer, Products> data = new HashMap<>();
+  Users customer;
+  long total;
+  int quantity;
 
   public Cart() {
-    data = new TreeMap<Integer, Products>();
+    this.data = new HashMap<>();
+    this.customer = new Users();
+    this.total = 0;
+    this.quantity = 0;
   }
 
-  /**
-   * get the size of user cart
-   * @return cart size
-   */
-  public int size() {
-    return data.size();
+  public Cart(Users customer, long total, int quantity) {
+    this.data = new HashMap<>();
+    this.customer = customer;
+    this.total = total;
+    this.quantity = quantity;
   }
-
-  /**
-   * get total money user add to cart
-   * @return total money
-   */
-  public double total() {
-    Collection<Products> listProduct = data.values();
-    Iterator<Products> items = listProduct.iterator();
-    double total = 0;
-    Products product = null;
-    while (items.hasNext()) {
-      product = items.next();
-      total += (product.getWeight() * product.getPrice());
-    }
-    return total;
-  }
-
-  /**
-   * user add new product to his/her cart
-   * @param product
-   * @return result boolean
-   */
-  public boolean addProduct(Products product) {
-    Products valid = data.get(product.getId());
-    if(valid == null) {
+  public void put(Products product) {
+    if(data.containsKey(product.getId())) {
+      Products p1 = data.get(product.getId());
+      p1.setQuantity(p1.getQuantity() + 1);
+      data.put(product.getId(), p1);
+    } else {
       data.put(product.getId(), product);
-      return true;
     }
-    return false;
+    updateTotalMoneyAndQuantity();
+  }
+  public void put(String key, int quantity) {
+   if(data.containsKey(key)) {
+      Products p1 = data.get(key);
+      p1.setQuantity(quantity);
+      data.put(Integer.valueOf(key),p1);
+   }
+   updateTotalMoneyAndQuantity();
   }
 
-  /**
-   * remove product from cart
-   * @param id
-   * @return result boolean
-   */
-  public boolean deleteProduct(int id) {
-    return data.remove(id) == null ? false : true;
-  }
-
-  /**
-   *
-   * @param id
-   * @param count
-   * @return
-   */
-  public boolean update(Long id, int count) {
-    Products product = data.get(id);
-    if(product != null) {
-      product.setWeight(count);
-      return true;
+  public void update(Products product) {
+    if(data.containsKey(product.getId())) {
+      data.put(product.getId(), product);
     }
-    return false;
+    updateTotalMoneyAndQuantity();
+  }
+  public void remove (int key) {
+    data.remove(key);
+    updateTotalMoneyAndQuantity();
+  }
+  private void updateTotalMoneyAndQuantity() {
+    total = 0;
+    quantity = 0;
+    for(Products p : data.values()) {
+      total += p.getQuantity() * p.getPrice();
+      quantity += p.getQuantity();
+    }
+  }
+  public Collection<Products> getListProduct() {
+    return data.values();
+  }
+  public int getQuantity() {
+    return quantity;
   }
 }

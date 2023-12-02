@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "Home", value = "/")
+@WebServlet(urlPatterns = {"/home"})
 public class Home extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -35,14 +35,7 @@ public class Home extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        HomeDao homeDao = new HomeDao();
-//        List<Products> list = homeDao.get8Products();
-//
-//        for(Products p: list) {
-//            System.out.println(list.toString());
-//        }
-//
-//        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
+
     }
 
 }

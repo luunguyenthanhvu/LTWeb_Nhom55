@@ -22,27 +22,27 @@
   <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
-  <link rel="stylesheet" href="static/css/web-css/animate.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/animate.css">
 
-  <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
-  <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
 
-  <link rel="stylesheet" href="static/css/web-css/aos.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/aos.css">
 
-  <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
 
-  <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
-
-
-  <link rel="stylesheet" href="static/css/web-css/flaticon.css">
-  <link rel="stylesheet" href="static/css/web-css/icomoon.css">
-  <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
 
 
-  <link rel="stylesheet" href="static/css/web-css/shop.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
+
+
 
 
 
@@ -52,13 +52,12 @@
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container navbar-container">
     <div class="navbar-brand">
-
       Hello <b>${loginedUser.username}</b>
       Hello <b>${loginedUser.username}</b>
       Hello <b>${loginedUser.username}</b>
       Hello <b>${loginedUser.username}</b>
 
-      <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái Cây</a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,21 +66,21 @@
 
     <div class="nav-bar-link" id="ftco-nav">
       <ul class="navbar-nav">
-        <li class="nav-item active"><a href="index.html" class="nav-link">Trang Chủ</a></li>
+        <li class="nav-item active"><a href="${pageContext.request.contextPath}/home" class="nav-link">Trang Chủ</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
           <div class="dropdown-menu" aria-labelledby="dropdown04">
-            <a class="dropdown-item" href="shop.jsp">Cửa hàng</a>
+            <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa hàng</a>
             <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
 
             <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
           </div>
         </li>
-        <li class="nav-item"><a href="about.html" class="nav-link">Về Chúng Tôi</a></li>
+        <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-        <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
-                class="icon-shopping_cart"></span>[0]</a></li>
+        <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">
+          <span class="icon-shopping_cart"></span>[0]</a></li>
 
       </ul>
     </div>
@@ -95,7 +94,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
             Người Dùng
           </a>
-          <a class="account dropdown-item" href="login/login.html">
+          <a class="account dropdown-item" href="<c:url value="/login"/>">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
             Đăng Xuất
           </a>
@@ -114,7 +113,7 @@
 
 <section id="home-section" class="hero">
   <div class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(../static/images/bg1.jpg);">
+    <div class="slider-item" style="background-image: url(${pageContext.request.contextPath}/static/images/bg1.jpg);">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -122,14 +121,14 @@
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-2">Chúng tôi phục vụ trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="product-single.html" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward"class="btn btn-primary">Xem chi tiết</a></p>
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="slider-item" style="background-image: url(../static/images/bg2.jpg);background-size: cover;background-position: center">
+    <div class="slider-item" style="background-image: url(static/images/bg2.jpg);background-size: cover;background-position: center">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -137,7 +136,7 @@
           <div class="col-sm-12 ftco-animate text-center">
             <h1 class="mb-2">100% trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="#" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem chi tiết</a></p>
           </div>
 
         </div>
@@ -197,10 +196,6 @@
   </div>
 </section>
 
-
-
-
-
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center mb-3 pb-3">
@@ -215,7 +210,6 @@
 
   <div class="container">
     <div class="row">
-
       <c:forEach items="${listProducts}" var="product" >
         <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
           <div class="product">
@@ -231,12 +225,15 @@
               </div>
               <div class="bottom-area d-flex px-3">
                 <div class="m-auto d-flex">
-                  <a href="product-single.html" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+
+<%--                   Tìm kiếm id mà người dùng chọn => trang chi tiết sản phẩm--%>
+                  <a href="productDetails?id=${product.getId()}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                     <span><i class="ion-ios-menu"></i></span>
                   </a>
                   <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1">
                     <span><i class="ion-ios-cart"></i></span>
                   </a>
+
                   <a href="#" class="heart d-flex justify-content-center align-items-center ">
                     <span><i class="ion-ios-heart"></i></span>
                   </a>
@@ -246,221 +243,6 @@
           </div>
         </div>
       </c:forEach>
-
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img class="img-fluid" src="../static/images/dau.jpg"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Dâu </a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_cau.png"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Chuối Cau</a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chuoi_tieu.png"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Chuối Tiêu</a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span>12000 VNĐ</span></p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
-
-
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/dua_xiem.jpg"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <span class="status">30%</span>--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Dừa</a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span class="price">15000 VNĐ</span>--%>
-      <%--                                </p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/oi.jpg"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Ổi</a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span>30000 VNĐ</span></p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/chom_chom.jpg"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Chôm Chôm</a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span>50000 VNĐ</span></p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
-      <%--            <div class="col-md-6 col-lg-3 ftco-animate">--%>
-      <%--                <div class="product">--%>
-      <%--                    <a href="#" class="img-prod"><img style="width: 253px; height: 202px; object-fit: cover" class="img-fluid" src="../static/images/xoai.png"--%>
-      <%--                                                      alt="Colorlib Template">--%>
-      <%--                        <div class="overlay"></div>--%>
-      <%--                    </a>--%>
-      <%--                    <div class="text py-3 pb-4 px-3 text-center">--%>
-      <%--                        <h3><a href="#">Xoài </a></h3>--%>
-      <%--                        <div class="d-flex">--%>
-      <%--                            <div class="pricing">--%>
-      <%--                                <p class="price"><span>40000 VNĐ</span></p>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                        <div class="bottom-area d-flex px-3">--%>
-      <%--                            <div class="m-auto d-flex">--%>
-      <%--                                <a href="#"--%>
-      <%--                                   class="add-to-cart d-flex justify-content-center align-items-center text-center">--%>
-      <%--                                    <span><i class="ion-ios-menu"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">--%>
-      <%--                                    <span><i class="ion-ios-cart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                                <a href="#" class="heart d-flex justify-content-center align-items-center ">--%>
-      <%--                                    <span><i class="ion-ios-heart"></i></span>--%>
-      <%--                                </a>--%>
-      <%--                            </div>--%>
-      <%--                        </div>--%>
-      <%--                    </div>--%>
-      <%--                </div>--%>
-      <%--            </div>--%>
     </div>
   </div>
 </section>
@@ -479,7 +261,7 @@
         <span>Hãy đăng ký bằng email để biết thêm về các cửa hàng mới nhất và ưu đãi đặc biệt của chúng tôi</span>
       </div>
       <div class="col-md-6 d-flex align-items-center">
-        <form action="#" class="subscribe-form">
+        <form action="register" class="subscribe-form">
           <div class="form-group d-flex">
             <input type="text" class="form-control" placeholder="Nhập email tại đây">
             <input type="submit" value="Đăng ký" class="submit px-3">
@@ -517,7 +299,7 @@
         <div class="ftco-footer-widget mb-4 ml-md-5">
           <h2 class="ftco-heading-2">Menu</h2>
           <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+=            <li><a href="${pageContext.request.contextPath}/ShopForward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
             <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
             <li><a href="#" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
           </ul>

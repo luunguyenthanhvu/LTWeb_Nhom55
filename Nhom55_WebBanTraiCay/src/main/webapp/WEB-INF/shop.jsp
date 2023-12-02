@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
     <link rel="stylesheet" type="/text/css" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
 
@@ -213,7 +213,7 @@
                                             </div>
                                             <div class="bottom-area d-flex px-3">
                                                 <div class="m-auto d-flex">
-                                                    <a href="product-single.html" class="add-to-cart d-flex justify-content-center align-items-center text-center">
+                                                    <a href="productDetails?id=${product.getId()}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                         <span><i class="ion-ios-menu"></i></span>
                                                     </a>
                                                     <a href="" class="buy-now d-flex justify-content-center align-items-center mx-1">
@@ -250,13 +250,11 @@
                     <div class="block-27">
                         <ul>
                             <li><a href="#">&lt;</a></li>
-
                             <li class="active"><span>1</span></li>
                             <li><a href="#">2</a></li>
                             <li><a href="#">3</a></li>
                             <li><a href="#">4</a></li>
                             <li><a href="#">5</a></li>
-
                             <li><a href="#">&gt;</a></li>
                         </ul>
                     </div>

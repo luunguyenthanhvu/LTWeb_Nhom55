@@ -30,7 +30,7 @@ img{max-width:100%;}
 html, body{
     font-size: 100%;
     font-family: 'Montserrat', sans-serif;
-    background:url(/static/images/bg1.jpg) no-repeat 0px 0px ;
+    background:url(static/images/bg1.jpg) no-repeat 0px 0px ;
     filter: brightness(0.95);
     background-size:cover;
     background-attachment:fixed;
@@ -124,7 +124,7 @@ body a:hover,body a{
 /* Every row inside .login-container is defined with p tags */
 
 
-.login input[type="text"],
+
 .login input[type="Email"],
 .login input[type="password"] {
     background: #fff;
@@ -638,4 +638,3 @@ input[type=submit]:hover {
         }
     }
 }
-

@@ -9,7 +9,7 @@ public class Products {
     private double price;
     private double weight;
     private double weightDefault;
-    private Date 	dateOfImporting;
+    private Date dateOfImporting;
     private Date expriredDay;
     private String img;
     private int adminCreate;

@@ -64,7 +64,7 @@
                         <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="about.html" class="nav-link">Về Chúng Tôi</a></li>
+                <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
                         class="icon-shopping_cart"></span>[0]</a></li>

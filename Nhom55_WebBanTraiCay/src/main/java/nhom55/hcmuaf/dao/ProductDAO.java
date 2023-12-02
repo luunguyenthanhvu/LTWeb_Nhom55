@@ -5,6 +5,9 @@ import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
 import org.jdbi.v3.core.Handle;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -77,14 +80,109 @@ public class ProductDAO {
         });
         return result;
     }
+//    Lấy 20 sản phẩm cho mỗi trang
+public List<Products> get20ProductsForEachPage(int started, int quantityDefault) {
+    List<Products> result = new ArrayList<>();
+    int offset = (started - 1) * quantityDefault;
 
+    result = JDBIConnector.get().withHandle(h ->
+            h.createQuery("SELECT * FROM products LIMIT :offset, :limit")
+                    .bind("offset", offset)
+                    .bind("limit", quantityDefault)
+                    .mapToBean(Products.class)
+                    .list()
+    );
+
+
+return result;
+
+}
+    //    Đếm Số dòng record của tất cả sản phẩm trong database
+    public int countTotalRowProductInDatabase() {
+        return JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT COUNT(id) FROM products").mapTo(Integer.class).one()
+        );
+    }
+
+    //    Filter
+//    Sắp xếp tên tăng dần
+    public List<Products> sortByNameIncrease(List<Products> list) {
+        List<Products> result = list;
+
+        Collections.sort(result, new Comparator<Products>() {
+            @Override
+            public int compare(Products o1, Products o2) {
+                return o1.getNameOfProduct().compareTo(o2.getNameOfProduct());
+            }
+        });
+
+
+        return  result;
+    }
+//    Sắp xếp tên giảm dần
+    public List<Products> sortByNameDecrease(List<Products> list) {
+        List<Products> result = list;
+
+        Collections.sort(result, new Comparator<Products>() {
+            @Override
+            public int compare(Products o1, Products o2) {
+                return o2.getNameOfProduct().compareTo(o1.getNameOfProduct());
+            }
+        });
+
+
+        return  result;
+    }
+//    Sắp xếp theo giá tăng dần
+public List<Products> sortByPriceIncrease(List<Products> list) {
+    List<Products> result = list;
+
+    Collections.sort(result, new Comparator<Products>() {
+        @Override
+        public int compare(Products o1, Products o2) {
+            return (int) (o1.getPrice()-o2.getPrice());
+        }
+    });
+
+
+    return  result;
+}
+    //    Sắp xếp theo giá giảm dần
+    public List<Products> sortByPriceDecrease(List<Products> list) {
+        List<Products> result = list;
+
+        Collections.sort(result, new Comparator<Products>() {
+            @Override
+            public int compare(Products o1, Products o2) {
+                return (int) (o2.getPrice()-o1.getPrice());
+            }
+        });
+
+
+        return  result;
+    }
+    //    Sắp xếp theo ngày nhập khẩu
+    public List<Products> sortByDateImporting(List<Products> list) {
+        List<Products> result = list;
+
+        Collections.sort(result, new Comparator<Products>() {
+            @Override
+            public int compare(Products o1, Products o2) {
+                return o2.getDateOfImporting().compareTo(o1.getDateOfImporting());
+            }
+        });
+
+
+        return  result;
+    }
 
     public static void main(String[] args) {
         ProductDAO productDAO = new ProductDAO();
         List<Products> products = productDAO.search("Chuối",1,20);
-        for(Products p: products) {
-            System.out.println(p.toString());
-        }
+//        for(Products p: products) {
+//            System.out.println(p.toString());
+//        }
 //        System.out.println(productDAO.countResultSearchingProduct("Dưa Hấu"));
+        System.out.println(productDAO.countTotalRowProductInDatabase());
     }
 }

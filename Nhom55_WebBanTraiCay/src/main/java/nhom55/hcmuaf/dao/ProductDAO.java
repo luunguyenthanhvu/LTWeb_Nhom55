@@ -12,7 +12,7 @@ public class ProductDAO {
 //    Xuất ra toàn bộ sản phẩm lấy từ database
 
 
-    // lấy ra 8 sản phẩm trong danh sách
+    // In ra 8 sản phẩm trên trang index
     public List<Products> getProduct() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
@@ -43,8 +43,6 @@ public class ProductDAO {
                         .collect(Collectors.toList())
         );
     }
-
-
 
     //    Đếm số sản phầm tìm được
     public int countResultSearchingProduct(String txtSearch) {
@@ -80,6 +78,38 @@ public class ProductDAO {
         return result;
     }
 
+    // Đếm số trang của shop
+    public int getNumberPage() {
+            int pageSize = 20; // Số lượng sản phẩm trên mỗi trang
+            int totalCount; // tổng số lượng sản phẩm
+
+            try (Handle handle = JDBIConnector.get().open()) {
+                totalCount = handle.createQuery("SELECT COUNT(*) FROM products")
+                        .mapTo(Integer.class)
+                        .one();
+            }
+
+            int pageCount = totalCount / pageSize; // tính số trang để chứa hết sản phẩm
+            if (totalCount % pageSize != 0) {
+                pageCount++; // nếu dư thì thêm 1 trang nữa để chứa sản phẩm dư
+            }
+
+            return pageCount;
+
+    }
+
+    // Phân trang
+    public List<Products> getPaging(int index) {
+        int pageSize = 20; // Số lượng sản phẩm trên mỗi trang
+        int offset = (index - 1) * pageSize; // Số dòng cần bỏ qua
+
+        return JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT * FROM products ORDER BY id LIMIT :pageSize OFFSET :offset")
+                        .bind("pageSize", pageSize)
+                        .bind("offset", offset)
+                        .mapToBean(Products.class)
+                        .list());
+    }
 
     public static void main(String[] args) {
         ProductDAO productDAO = new ProductDAO();

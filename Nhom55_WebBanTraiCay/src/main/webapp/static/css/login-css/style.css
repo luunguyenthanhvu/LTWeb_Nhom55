@@ -124,8 +124,8 @@ body a:hover,body a{
 /* Every row inside .login-container is defined with p tags */
 
 
-
-.login input[type="Email"],
+.login input[type="input"],
+.login input[type="email"],
 .login input[type="password"] {
     background: #fff;
     margin: 25px 0px;

@@ -11,10 +11,10 @@ public class MyUtils {
     public MyUtils() {
         super();
     }
-    public String encodePass(String pass) {
+    public static String encodePass(String pass) {
         return DigestUtils.md5Hex(pass);
     }
-    public String createHash() {
+    public static String createHash() {
         Random random = new Random ();
         random.nextInt (999999);
         return DigestUtils.md5Hex (random.toString ());
@@ -30,5 +30,8 @@ public class MyUtils {
     public static Users getLoginedUser(HttpSession session) {
         Users loginedUser = (Users) session.getAttribute("loginedUser");
         return loginedUser;
+    }
+    public static void removeLoginedUser(HttpSession session) {
+        session.removeAttribute("loginedUser");
     }
 }

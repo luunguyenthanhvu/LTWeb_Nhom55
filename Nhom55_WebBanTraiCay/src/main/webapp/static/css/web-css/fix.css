@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+
 * {
-    font-family: Arial,sans-serif,Tahoma;
+    font-family: 'Open Sans', sans-serif;
 }
 .container.navbar-container {
     display: flex;
@@ -14,10 +17,13 @@
 .navbar-brand{
     padding: 0;
 }
+
 .account svg {
     color: #82ae46;
     fill: #82ae46;
 }
+
+
 /* CSS */
 .logged-user a.account,
 .login-user a.account,
@@ -31,8 +37,5 @@
 .logout-user a.account:hover {
     color: #000000; /* Màu chữ khi di chuột vào */
     fill: black;
-}
-.account-menu {
-    border-top: 20px;
 }
 

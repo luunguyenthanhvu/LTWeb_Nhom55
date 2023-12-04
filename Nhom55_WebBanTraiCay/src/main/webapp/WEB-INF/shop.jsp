@@ -201,11 +201,11 @@
 
                         <!-- Dropdown Filter -->
                         <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
-                            <a href="FilterForAllProduct?index=1&pageId=${pageId}" >Sắp xếp giá tăng dần</a>
-                            <a href="FilterForAllProduct?index=2&pageId=${pageId}" >Sắp xếp giá giảm dần</a>
-                            <a href="FilterForAllProduct?index=3&pageId=${pageId}" >Sắp xếp theo tên từ  A-Z</a>
-                            <a href="FilterForAllProduct?index=4&pageId=${pageId}" >Sắp xếp theo tên từ  Z-A</a>
-                            <a href="FilterForAllProduct?index=5&pageId=${pageId}" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                            <a href="FilterForAllProduct?sortBy=price&order=asc&pageId=1" >Sắp xếp giá tăng dần</a>
+                            <a href="FilterForAllProduct?sortBy=price&order=desc&pageId=1" >Sắp xếp giá giảm dần</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=asc&pageId=1" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=desc&pageId=1" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="FilterForAllProduct?sortBy=dateOfImporting&order=desc&pageId=1" >Sắp xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
@@ -392,6 +392,7 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
+<%--Script xuất hiện bảng cho filter--%>
 <script>
     document.getElementById('${pageId}').classList.add("active")
     function toggleFilter() {

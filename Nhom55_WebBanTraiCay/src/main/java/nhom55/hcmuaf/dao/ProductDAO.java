@@ -77,23 +77,37 @@ public class ProductDAO {
         });
         return result;
     }
-//    Lấy 20 sản phẩm cho mỗi trang
-public List<Products> get20ProductsForEachPage(int started, int quantityDefault) {
+    public List<Products> searchFilter(String sortBy, String order, String search, int index, int sizePage) {
+        List<Products> resultList = JDBIConnector.get().withHandle(h ->
+                h.createQuery("with testThu as (select ROW_NUMBER() over (order by " + sortBy + " " + order + ") as r, id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like :search)\n" +
+                                "\n" +
+                                "select * FROM testThu where r between :startIndex and :endIndex")
+                        .bind("search", "%" + search + "%")
+                        .bind("startIndex", (index * sizePage - 19))
+                        .bind("endIndex", (index * sizePage))
+                        .mapToBean(Products.class)
+                        .list() );
+
+        return resultList;
+    }
+    //    Lấy 20 sản phẩm cho mỗi trang
+public List<Products> get20ProductsForEachPage(int index, int quantityDefault) {
     List<Products> result = new ArrayList<>();
-    int offset = (started - 1) * quantityDefault;
+    int start = (index - 1) * quantityDefault;
 
     result = JDBIConnector.get().withHandle(h ->
-            h.createQuery("SELECT * FROM products LIMIT :offset, :limit")
-                    .bind("offset", offset)
-                    .bind("limit", quantityDefault)
+            h.createQuery("SELECT * FROM products ORDER BY dateOfImporting DESC LIMIT :start, :quantityDefault")
+                    .bind("start", start)
+                    .bind("quantityDefault", quantityDefault)
                     .mapToBean(Products.class)
                     .list()
     );
 
-
-return result;
-
+    return result;
 }
+
+
+
     //    Đếm Số dòng record của tất cả sản phẩm trong database
     public int countTotalRowProductInDatabase() {
         return JDBIConnector.get().withHandle(h ->
@@ -102,84 +116,61 @@ return result;
     }
 
     //    Filter
-//    Sắp xếp tên tăng dần
-    public List<Products> sortByNameIncrease(List<Products> list) {
-        List<Products> result = list;
+//    Sắp xếp theo điều kiện filter (option: tên, giá, ngày nhập khẩu, filter:asc,desc)
+    public List<Products> sortByFilter(int index, int quantityDefault, String sortBy, String order) {
+        List<Products> result = new ArrayList<>();
+        int start = (index - 1) * quantityDefault;
 
-        Collections.sort(result, new Comparator<Products>() {
-            @Override
-            public int compare(Products o1, Products o2) {
-                return o1.getNameOfProduct().compareTo(o2.getNameOfProduct());
-            }
-        });
+        String orderByClause = "";
+        switch (sortBy) {
+            case "nameOfProduct":
+            case "dateOfImporting":
+            case "price":
 
+                orderByClause = String.format("ORDER BY %s %s", sortBy, order);
+                break;
 
-        return  result;
-    }
-//    Sắp xếp tên giảm dần
-    public List<Products> sortByNameDecrease(List<Products> list) {
-        List<Products> result = list;
-
-        Collections.sort(result, new Comparator<Products>() {
-            @Override
-            public int compare(Products o1, Products o2) {
-                return o2.getNameOfProduct().compareTo(o1.getNameOfProduct());
-            }
-        });
-
-
-        return  result;
-    }
-//    Sắp xếp theo giá tăng dần
-public List<Products> sortByPriceIncrease(List<Products> list) {
-    List<Products> result = list;
-
-    Collections.sort(result, new Comparator<Products>() {
-        @Override
-        public int compare(Products o1, Products o2) {
-            return (int) (o1.getPrice()-o2.getPrice());
         }
-    });
 
+        String query = String.format("SELECT * FROM products %s LIMIT :start, :quantityDefault", orderByClause);
 
-    return  result;
-}
-    //    Sắp xếp theo giá giảm dần
-    public List<Products> sortByPriceDecrease(List<Products> list) {
-        List<Products> result = list;
+        result = JDBIConnector.get().withHandle(h ->
+                h.createQuery(query)
+                        .bind("start", start)
+                        .bind("quantityDefault", quantityDefault)
+                        .mapToBean(Products.class)
+                        .list()
+        );
 
-        Collections.sort(result, new Comparator<Products>() {
-            @Override
-            public int compare(Products o1, Products o2) {
-                return (int) (o2.getPrice()-o1.getPrice());
-            }
-        });
-
-
-        return  result;
+        return result;
     }
-    //    Sắp xếp theo ngày nhập khẩu
-    public List<Products> sortByDateImporting(List<Products> list) {
-        List<Products> result = list;
-
-        Collections.sort(result, new Comparator<Products>() {
-            @Override
-            public int compare(Products o1, Products o2) {
-                return o2.getDateOfImporting().compareTo(o1.getDateOfImporting());
-            }
-        });
 
 
-        return  result;
-    }
 
     public static void main(String[] args) {
         ProductDAO productDAO = new ProductDAO();
-        List<Products> products = productDAO.search("Chuối",1,20);
+//        chạy đúng
+//        List<Products> products = productDAO.get20ProductsForEachPage(1,20);
+//        for (Products p: products) {
+//            System.out.println(p.toString());
+//        }
+
+//        chạy đúng
+//        List<Products> products = productDAO.sortByFilter(1,20,"nameOfProduct","asc");
+//
 //        for(Products p: products) {
 //            System.out.println(p.toString());
 //        }
-//        System.out.println(productDAO.countResultSearchingProduct("Dưa Hấu"));
-        System.out.println(productDAO.countTotalRowProductInDatabase());
+
+//        chạy đúng
+//        List<Products> products = productDAO.get20ProductsForEachPage(1,20);
+//                for(Products p: products) {
+//            System.out.println(p.toString());
+//        }
+        List<Products> list = productDAO.searchFilter("price","asc","c",1,20);
+        for(Products p:list) {
+            System.out.println(p.toString());
+        }
+
     }
 }

@@ -27,6 +27,7 @@ public class ShopForward extends HttpServlet {
         int totalRow = productDAO.countTotalRowProductInDatabase();
         int haveMaxPage = (totalRow/quantityDefault) +1;
         List<Products> list = productDAO.get20ProductsForEachPage(pageNumber,quantityDefault);
+
         RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/shop.jsp");
         request.setAttribute("haveMaxPage",haveMaxPage);
         request.setAttribute("listOfProduct",list);

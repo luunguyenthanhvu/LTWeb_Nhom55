@@ -14,37 +14,32 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/web-css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/animate.css">
 
-    <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
 
-    <link rel="stylesheet" href="static/css/web-css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/aos.css">
 
-    <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
 
-    <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="static/css/web-css/flaticon.css">
-    <link rel="stylesheet" href="static/css/web-css/icomoon.css">
-    <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
-    <link rel="stylesheet" href="static/css/web-css/fix.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
 
 
-
-
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,12 +48,12 @@
 
         <div class="nav-bar-link" id="ftco-nav">
             <ul class="navbar-nav">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/home" class="nav-link">Trang Chủ</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Cửa hàng</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa hàng</a>
                         <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
 
                         <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
@@ -66,7 +61,7 @@
                 </li>
                 <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
+                <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                         class="icon-shopping_cart"></span>[0]</a></li>
 
             </ul>
@@ -97,7 +92,7 @@
 </nav>
 <!-- END nav -->
 
-<div class="hero-wrap hero-bread" style="background-image: url('static/images/bg1.jpg');filter: brightness(0.8);">
+<div class="hero-wrap hero-bread" style="background-image: url(/static/images/bg1.jpg);filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -164,7 +159,7 @@
                         <p style="color: #000;">${product.getWeight()} kg hợp lệ</p>
                     </div>
                 </div>
-                <p><a href="cart.html" class="btn btn-black py-3 px-5">Thêm vào giỏ hàng</a></p>
+                <p><a href="cart.jsp" class="btn btn-black py-3 px-5">Thêm vào giỏ hàng</a></p>
             </div>
 <%--            </c:if>--%>
 
@@ -293,22 +288,22 @@
 </div>
 
 
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/jquery.easing.1.3.js"></script>
-<script src="static/js/jquery.waypoints.min.js"></script>
-<script src="static/js/jquery.stellar.min.js"></script>
-<script src="static/js/owl.carousel.min.js"></script>
-<script src="static/js/jquery.magnific-popup.min.js"></script>
-<script src="static/js/aos.js"></script>
-<script src="static/js/jquery.animateNumber.min.js"></script>
-<script src="static/js/bootstrap-datepicker.js"></script>
-<script src="static/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="static/js/google-map.js"></script>
-<script src="static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
 
 <script>
     $(document).ready(function () {

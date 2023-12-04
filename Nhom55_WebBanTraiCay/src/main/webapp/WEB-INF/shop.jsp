@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -68,7 +68,7 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
                 <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.quantity}]</a></li>
+                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
 
             </ul>
         </div>
@@ -173,7 +173,7 @@
                                                     <a href="productDetails?id=${product.getId()}" class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                         <span><i class="ion-ios-menu"></i></span>
                                                     </a>
-                                                    <a href="${cart.put(product)}" class="buy-now d-flex justify-content-center align-items-center mx-1">
+                                                    <a href="add-cart?id=${product.getId()}" class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                         <span><i class="ion-ios-cart"></i></span>
                                                     </a>
                                                     <a href="#" class="heart d-flex justify-content-center align-items-center ">

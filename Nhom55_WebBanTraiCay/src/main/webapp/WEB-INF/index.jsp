@@ -70,7 +70,7 @@
         <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
         <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">
-          <span class="icon-shopping_cart"></span>[${cart.quantity}]</a></li>
+          <span class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
 
       </ul>
     </div>
@@ -144,7 +144,7 @@
           <div class="col-sm-12 ftco-animate text-center">
             <h1 class="mb-2">100% trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem cửa hàng</a></p>
           </div>
 
         </div>

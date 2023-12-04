@@ -13,6 +13,21 @@ import java.util.stream.Collectors;
 
 public class ProductDAO {
 
+  /**
+   * get product by id
+   *
+   * @return
+   */
+  public Products getProductById(int id) {
+    return JDBIConnector.get().withHandle(handle -> {
+      return handle.createQuery("SELECT * FROM products where ID = :productId")
+          .bind("productId", id)
+          .mapToBean(Products.class)
+          .findOne()
+          .orElse(null);
+    });
+  }
+
   // Xuất ra toàn bộ sản phẩm lấy từ database
   // In ra 8 sản phẩm trên trang index
   public List<Products> getProduct() {

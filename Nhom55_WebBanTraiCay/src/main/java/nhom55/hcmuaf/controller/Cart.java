@@ -5,14 +5,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "AdminProfile", value = "/admin-profile")
-public class AdminProfile extends HttpServlet {
+@WebServlet(name = "cart", value = "/cart")
+public class Cart extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    RequestDispatcher dispatcher = this.getServletContext()
-        .getRequestDispatcher("/WEB-INF/admin/admin-profile.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/cart.jsp");
     dispatcher.forward(request, response);
   }
 

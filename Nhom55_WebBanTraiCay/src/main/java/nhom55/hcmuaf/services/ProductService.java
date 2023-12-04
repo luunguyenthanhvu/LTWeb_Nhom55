@@ -3,6 +3,7 @@ package nhom55.hcmuaf.services;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.dao.ProductDAO;
 import nhom55.hcmuaf.database.JDBIConnector;
 
 import java.math.BigInteger;
@@ -16,9 +17,11 @@ import java.util.stream.Collectors;
 
 public class ProductService {
     private static ProductService instance;
-
+    static Map<String, String> data = new HashMap<>();
+    private ProductDAO productDAO;
 
     private ProductService() {
+        productDAO = new ProductDAO();
     }
 
     public static ProductService getInstance() {
@@ -28,14 +31,13 @@ public class ProductService {
         return instance;
     }
 
+    /**
+     * get product by product id
+     * @param productId
+     * @return
+     */
     public Products getById(int productId) {
-        return JDBIConnector.get().withHandle(handle -> {
-            return handle.createQuery("SELECT id=? FROM products")
-                    .bind("productId", productId)
-                    .mapToBean(Products.class)
-                    .findOne()
-                    .orElse(null);
-        });
+        return productDAO.getProductById(productId);
     }
 
 //    public Product getById(int productId) {

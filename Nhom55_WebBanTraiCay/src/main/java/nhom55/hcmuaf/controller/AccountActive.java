@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "AccountActive", value = "/AccountActive")
+@WebServlet(name = "AccountActive", value = "/account-active")
 public class AccountActive extends HttpServlet {
     private AdminService adminService = new AdminService ();
     @Override

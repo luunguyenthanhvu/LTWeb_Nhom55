@@ -48,7 +48,7 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,7 +69,7 @@
         </li>
         <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-        <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link">
+        <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link">
           <span class="icon-shopping_cart"></span>[0]</a></li>
 
       </ul>
@@ -121,7 +121,7 @@
 
 <section id="home-section" class="hero">
   <div class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(${pageContext.request.contextPath}/static/images/bg1.jpg);">
+    <div class="slider-item" style="background-image: url(/static/images/bg1.jpg);">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -129,14 +129,14 @@
           <div class="col-md-12 ftco-animate text-center">
             <h1 class="mb-2">Chúng tôi phục vụ trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="${pageContext.request.contextPath}/ShopForward"class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward"class="btn btn-primary">Xem cửa hàng</a></p>
           </div>
 
         </div>
       </div>
     </div>
 
-    <div class="slider-item" style="background-image: url(static/images/bg2.jpg);background-size: cover;background-position: center">
+    <div class="slider-item" style="background-image: url(/static/images/bg2.jpg);background-size: cover;background-position: center">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -144,7 +144,7 @@
           <div class="col-sm-12 ftco-animate text-center">
             <h1 class="mb-2">100% trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem cửa hàng</a></p>
           </div>
 
         </div>
@@ -376,22 +376,22 @@
 </div>
 
 
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/jquery.easing.1.3.js"></script>
-<script src="static/js/jquery.waypoints.min.js"></script>
-<script src="static/js/jquery.stellar.min.js"></script>
-<script src="static/js/owl.carousel.min.js"></script>
-<script src="static/js/jquery.magnific-popup.min.js"></script>
-<script src="static/js/aos.js"></script>
-<script src="static/js/jquery.animateNumber.min.js"></script>
-<script src="static/js/bootstrap-datepicker.js"></script>
-<script src="static/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="static/js/google-map.js"></script>
-<script src="static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
 </body>
 
 </html>

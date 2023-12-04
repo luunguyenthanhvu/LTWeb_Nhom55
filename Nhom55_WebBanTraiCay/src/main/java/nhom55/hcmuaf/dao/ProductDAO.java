@@ -1,9 +1,7 @@
 package nhom55.hcmuaf.dao;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
-import org.jdbi.v3.core.Handle;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,13 +10,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductDAO {
-//    Xuất ra toàn bộ sản phẩm lấy từ database
 
-
+    //    Xuất ra toàn bộ sản phẩm lấy từ database
     // In ra 8 sản phẩm trên trang index
     public List<Products> getProduct() {
         return JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
+                h.createQuery("SELECT id,nameOfProduct,price,img,dateOfImporting FROM Products ORDER BY dateOfImporting DESC LIMIT 8")
                         .mapToBean(Products.class)
                         .stream()
                         .collect(Collectors.toList())

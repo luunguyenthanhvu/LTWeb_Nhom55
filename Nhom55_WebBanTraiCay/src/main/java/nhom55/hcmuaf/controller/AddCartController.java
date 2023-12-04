@@ -1,29 +1,29 @@
 package nhom55.hcmuaf.controller;
 
-import java.util.Collection;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.beans.Cart;
+import nhom55.hcmuaf.cart.Cart;
+import nhom55.hcmuaf.services.ProductService;
 
-@WebServlet(name = "show", value = "/cart/show")
-public class Show extends HttpServlet {
+@WebServlet(name = "add", value = "/add-cart")
+public class AddCartController extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    int id = Integer.parseInt(request.getParameter("id"));
+    Products product = ProductService.getInstance().getById(id);
+    product.setQuantity(1);
     Cart cart = (Cart) request.getSession().getAttribute("cart");
-    if(cart == null) {
-        request.setAttribute("message", "Giỏ hàng trống");
-      response.getWriter().println("Dell có giỏ hàng");
-    } else {
-      Collection<Products> list = cart.getListProduct();
-      for(Products p : list) {
-        response.getWriter().println(p);
-      }
+    if (cart == null) {
+      cart = new Cart();
     }
+    cart.add(id);
+    request.getSession().setAttribute("cart", cart);
+    response.sendRedirect("ShopForward");
   }
 
   @Override

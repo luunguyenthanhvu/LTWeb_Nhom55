@@ -1,7 +1,7 @@
 package nhom55.hcmuaf.util;
 
-import nhom55.hcmuaf.beans.Cart;
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.cart.Cart;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.http.HttpSession;
@@ -21,21 +21,57 @@ public class MyUtils {
         return DigestUtils.md5Hex (random.toString ());
     }
 
-    // Store user info in Session.
+    /**
+     * Store user info in Session.
+     * @param session
+     * @param loginedUser
+     */
     public static void storeLoginedUser(HttpSession session, Users loginedUser) {
         // On the JSP can access via ${loginedUser}
         session.setAttribute("loginedUser", loginedUser);
     }
-    public static void createNewCart(HttpSession session, Cart cart) {
+
+    /**
+     * Create a new cart for user
+     * @param session
+     * @param cart
+     */
+    public static void storeCart(HttpSession session, Cart cart) {
         session.setAttribute("cart",cart);
     }
 
-    // Get the user information stored in the session.
+    /**
+     * remove their cart from session
+     * @param session
+     */
+    public static void removeCart(HttpSession session) {
+        session.removeAttribute("cart");
+    }
+
+    /**
+     * Get the user information stored in the session.
+     * @param session
+     * @return
+     */
     public static Users getLoginedUser(HttpSession session) {
         Users loginedUser = (Users) session.getAttribute("loginedUser");
         return loginedUser;
     }
+
+    /**
+     * logout user
+     * @param session
+     */
     public static void removeLoginedUser(HttpSession session) {
         session.removeAttribute("loginedUser");
+    }
+
+    /**
+     * set role for authentication
+     * @param session
+     * @param role
+     */
+    public static void setUserRole(HttpSession session, String role) {
+        session.setAttribute("role", role);
     }
 }

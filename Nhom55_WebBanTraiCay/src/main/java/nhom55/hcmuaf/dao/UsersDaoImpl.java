@@ -15,7 +15,7 @@ public class UsersDaoImpl implements UsersDao{
     @Override
     public Users getUserByEmail(String email) {
         List<Users> users = JDBIConnector.get().withHandle(h ->
-            h.createQuery("SELECT username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+            h.createQuery("SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
                 .bind(0, email)
                 .mapToBean(Users.class)
                 .stream()
@@ -44,7 +44,7 @@ public class UsersDaoImpl implements UsersDao{
     public String addNewUser(String username, String password, String hash, String email, String phoneNumber, String address) {
         // check if exist
         List<Users> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                h.createQuery("SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
                         .bind(0, email)
                         .mapToBean(Users.class)
                         .stream()

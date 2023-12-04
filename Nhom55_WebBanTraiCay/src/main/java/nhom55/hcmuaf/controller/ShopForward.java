@@ -15,10 +15,24 @@ public class ShopForward extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         ProductDAO productDAO = new ProductDAO();
-        List<Products> products = productDAO.getListProducts();
-        request.setAttribute("listOfProduct",products);
-        RequestDispatcher dispatcher = request.getRequestDispatcher ("WEB-INF/shop.jsp");
-        dispatcher.forward (request,response);
+        String pageStr = request.getParameter("pageId");
+        int pageNumber = 0;
+        if(pageStr == null) {
+            pageNumber =1;
+        } else {
+            pageNumber = Integer.valueOf(pageStr);
+        }
+
+        int quantityDefault =20;
+        int totalRow = productDAO.countTotalRowProductInDatabase();
+        int haveMaxPage = (totalRow/quantityDefault) +1;
+        List<Products> list = productDAO.get20ProductsForEachPage(pageNumber,quantityDefault);
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/shop.jsp");
+        request.setAttribute("haveMaxPage",haveMaxPage);
+        request.setAttribute("listOfProduct",list);
+        request.setAttribute("pageId",pageNumber);
+        rd.forward(request,response);
+
     }
 
     @Override

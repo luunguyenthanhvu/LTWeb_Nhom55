@@ -48,7 +48,7 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,7 +121,7 @@
 
 <section id="home-section" class="hero">
   <div class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image: url(${pageContext.request.contextPath}/static/images/bg1.jpg);">
+    <div class="slider-item" style="background-image: url(/static/images/bg1.jpg);">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -136,7 +136,7 @@
       </div>
     </div>
 
-    <div class="slider-item" style="background-image: url(static/images/bg2.jpg);background-size: cover;background-position: center">
+    <div class="slider-item" style="background-image: url(/static/images/bg2.jpg);background-size: cover;background-position: center">
       <div class="overlay"></div>
       <div class="container">
         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -144,7 +144,7 @@
           <div class="col-sm-12 ftco-animate text-center">
             <h1 class="mb-2">100% trái cây tươi sống</h1>
             <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn muốn</h2>
-            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem chi tiết</a></p>
+            <p><a href="${pageContext.request.contextPath}/ShopForward" class="btn btn-primary">Xem cửa hàng</a></p>
           </div>
 
         </div>

@@ -80,7 +80,20 @@ public class ProductDAO {
         });
         return result;
     }
-//    Lấy 20 sản phẩm cho mỗi trang
+    public List<Products> searchFilter(String sortBy, String order, String search, int index, int sizePage) {
+        List<Products> resultList = JDBIConnector.get().withHandle(h ->
+                h.createQuery("with testThu as (select ROW_NUMBER() over (order by " + sortBy + " " + order + ") as r, id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like :search)\n" +
+                                "\n" +
+                                "select * FROM testThu where r between :startIndex and :endIndex")
+                        .bind("search", "%" + search + "%")
+                        .bind("startIndex", (index * sizePage - 19))
+                        .bind("endIndex", (index * sizePage))
+                        .mapToBean(Products.class)
+                        .list() );
+
+        return resultList;
+    }
+    //    Lấy 20 sản phẩm cho mỗi trang
 public List<Products> get20ProductsForEachPage(int index, int quantityDefault) {
     List<Products> result = new ArrayList<>();
     int start = (index - 1) * quantityDefault;
@@ -107,17 +120,17 @@ public List<Products> get20ProductsForEachPage(int index, int quantityDefault) {
 
     //    Filter
 //    Sắp xếp theo điều kiện filter (option: tên, giá, ngày nhập khẩu, filter:asc,desc)
-    public List<Products> sortByFilter(int index, int quantityDefault, String option, String filter) {
+    public List<Products> sortByFilter(int index, int quantityDefault, String sortBy, String order) {
         List<Products> result = new ArrayList<>();
         int start = (index - 1) * quantityDefault;
 
         String orderByClause = "";
-        switch (option) {
+        switch (sortBy) {
             case "nameOfProduct":
             case "dateOfImporting":
             case "price":
 
-                orderByClause = String.format("ORDER BY %s %s", option, filter);
+                orderByClause = String.format("ORDER BY %s %s", sortBy, order);
                 break;
 
         }
@@ -145,17 +158,22 @@ public List<Products> get20ProductsForEachPage(int index, int quantityDefault) {
 //            System.out.println(p.toString());
 //        }
 
-        List<Products> products = productDAO.sortByFilter(1,20,"nameOfProduct","asc");
-
-        for(Products p: products) {
-            System.out.println(p.toString());
-        }
+//        chạy đúng
+//        List<Products> products = productDAO.sortByFilter(1,20,"nameOfProduct","asc");
+//
+//        for(Products p: products) {
+//            System.out.println(p.toString());
+//        }
 
 //        chạy đúng
 //        List<Products> products = productDAO.get20ProductsForEachPage(1,20);
 //                for(Products p: products) {
 //            System.out.println(p.toString());
 //        }
+        List<Products> list = productDAO.searchFilter("price","asc","c",1,20);
+        for(Products p:list) {
+            System.out.println(p.toString());
+        }
 
     }
 }

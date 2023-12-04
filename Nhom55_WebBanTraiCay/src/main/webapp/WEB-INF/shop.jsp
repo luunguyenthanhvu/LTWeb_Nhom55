@@ -392,6 +392,7 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
+<%--Script xuất hiện bảng cho filter--%>
 <script>
     document.getElementById('${pageId}').classList.add("active")
     function toggleFilter() {

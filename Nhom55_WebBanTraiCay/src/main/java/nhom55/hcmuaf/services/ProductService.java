@@ -47,10 +47,31 @@ public class ProductService {
 //        });
 //    }
 
+    // In ra 8 sản phẩm trên trang index
+    public List<Products> getProduct() {
+        // Gọi phương thức getProduct từ ProductDAO
+        ProductDAO productDAO = new ProductDAO();
+        return productDAO.getProduct();
+    }
+
+    // hiển thị chi tiết sản phẩm
+    public Products showProductDetails(int productId) {
+        // Gọi phương thức showProductDetails từ ProductDAO
+        ProductDAO productDAO = new ProductDAO();
+        return productDAO.showProductDetails(productId);
+    }
     public static void main(String[] args) {
         List<Products> listProducts = new ArrayList<>();
         for(Products p : listProducts) {
             System.out.println(p.toString());
+        }
+
+        int productIdToDisplay = 1; // ID của sản phẩm bạn muốn hiển thị chi tiết
+        Products productDetails = ProductService.getInstance().showProductDetails(productIdToDisplay);
+        if (productDetails != null) {
+            System.out.println("Product Details: " + productDetails.toString());
+        } else {
+            System.out.println("Product not found with ID: " + productIdToDisplay);
         }
     }
 

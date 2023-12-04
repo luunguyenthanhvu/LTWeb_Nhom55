@@ -15,26 +15,27 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/web-css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/animate.css">
 
-    <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
 
-    <link rel="stylesheet" href="static/css/web-css/css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/aos.css">
 
-    <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
 
-    <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="static/css/web-css/flaticon.css">
-    <link rel="stylesheet" href="static/css/web-css/icomoon.css">
-    <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
-    <link rel="stylesheet" href="static/css/web-css/shop.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
 
 
 
@@ -66,7 +67,7 @@
                 </li>
                 <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span
+                <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
                         class="icon-shopping_cart"></span>[0]</a></li>
 
             </ul>
@@ -176,6 +177,22 @@
                         <input style="width: 100px" type="submit"  value="Tìm kiếm">
                     </form>
 
+                    <form action="">
+                        <!-- Icon Filter -->
+                        <div style="position: absolute; top: -45px;left: 570px" class="filter-icon" onclick="toggleFilter()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
+                        </div>
+
+                        <!-- Dropdown Filter -->
+                        <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
+                            <a href="FilterForSearchProduct?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
+                            <a href="FilterForSearchProduct?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
+                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="FilterForSearchProduct?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                        </div>
+                    </form>
+
 
                     <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                         <div class="row">
@@ -235,7 +252,7 @@
                         <ul>
                             <li><a href="#">&lt;</a></li>
                             <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                <li class="active"><a  href="ShopController?index=${i}&txtSearch=${txtSearch}">${i}</a></li>
+                                <li class="active"><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
                             </c:forEach>
 
 
@@ -364,7 +381,14 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
-
+<%--Script xuất hiện bảng cho filter--%>
+<script>
+    document.getElementById('${pageId}').classList.add("active")
+    function toggleFilter() {
+        var dropdown = document.getElementById("filterDropdown");
+        dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+    }
+</script>
 
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/jquery-migrate-3.0.1.min.js"></script>

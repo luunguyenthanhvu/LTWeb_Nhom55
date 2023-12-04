@@ -44,6 +44,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
         </c:if>
       </form>
+      <div class="second-section w3_section">
+      </div>
+
+      <div class="bottom-text w3_bottom_text">
+        <p>Quay lại Đăng nhập?<a href="${pageContext.request.contextPath}/login">Đăng nhập</a></p>
+      </div>
     </div>
   </div>
 

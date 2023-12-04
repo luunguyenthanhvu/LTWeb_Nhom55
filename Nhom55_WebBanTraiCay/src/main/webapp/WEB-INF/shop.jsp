@@ -130,6 +130,64 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
+
+
+
+                <!--                <ul class="product-category">-->
+                <!--                    <li><a href="#" class="active">All</a></li>-->
+                <!--                    <li><a href="#">Vegetables</a></li>-->
+                <!--                    <li><a href="#">Fruits</a></li>-->
+                <!--                    <li><a href="#">Juice</a></li>-->
+                <!--                    <li><a href="#">Dried</a></li>-->
+                <!--                </ul> -->
+
+                <!--                    <div class="box">-->
+                <!--                        <form action ="#">-->
+                <!--                            <div class="input_box">-->
+                <!--                                <input type="text" placeholder="Search for fruits..." required>-->
+                <!--                                <div class="selection"><p>All</p><span></span></div>-->
+
+                <!--                                <div class ="categories">-->
+                <!--                                    <p class="option">1</p>-->
+                <!--                                    <p class="option">2</p>-->
+                <!--                                    <p class="option">3</p>-->
+                <!--                                    <p class="option">4</p>-->
+
+                <!--                                </div>-->
+
+                <!--                            </div>-->
+                <!--                        </form>-->
+                <!--                    </div>-->
+
+
+
+
+
+
+
+
+
+                <!--                <ul class="nav nav-pills mb-3 product-category" id="pills-tab" role="tablist">-->
+                <!--                    <li class="nav-item " role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" fdprocessedid="pda0gw" >All</button>-->
+                <!--                    </li>-->
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link active" style="outline: 0!important;" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Vegetables</button>-->
+                <!--                    </li>-->
+
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">Fruits</button>-->
+                <!--                    </li>-->
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Juice-tab" data-bs-toggle="pill" data-bs-target="#pills-Juice" type="button" role="tab" aria-controls="pills-Juice" aria-selected="false" tabindex="-1">Juice</button>-->
+                <!--                    </li>-->
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Dried-tab" data-bs-toggle="pill" data-bs-target="#pills-Dried" type="button" role="tab" aria-controls="pills-Dried" aria-selected="false" fdprocessedid="x9oioe" tabindex="-1">Dried</button>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+
+
+
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
                         <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
@@ -143,11 +201,11 @@
 
                         <!-- Dropdown Filter -->
                         <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
-                            <a href="FilterForAllProduct?index=1&pageId=${pageId}" >Sắp xếp giá tăng dần</a>
-                            <a href="FilterForAllProduct?index=2&pageId=${pageId}" >Sắp xếp giá giảm dần</a>
-                            <a href="FilterForAllProduct?index=3&pageId=${pageId}" >Sắp xếp theo tên từ  A-Z</a>
-                            <a href="FilterForAllProduct?index=4&pageId=${pageId}" >Sắp xếp theo tên từ  Z-A</a>
-                            <a href="FilterForAllProduct?index=5&pageId=${pageId}" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                            <a href="FilterForAllProduct?sortBy=price&order=asc&pageId=1" >Sắp xếp giá tăng dần</a>
+                            <a href="FilterForAllProduct?sortBy=price&order=desc&pageId=1" >Sắp xếp giá giảm dần</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=asc&pageId=1" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=desc&pageId=1" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="FilterForAllProduct?sortBy=dateOfImporting&order=desc&pageId=1" >Sắp xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
@@ -325,6 +383,7 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
+<%--Script xuất hiện bảng cho filter--%>
 <script>
     document.getElementById('${pageId}').classList.add("active")
     function toggleFilter() {
@@ -333,25 +392,25 @@
     }
 </script>
 
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/jquery.easing.1.3.js"></script>
-<script src="static/js/jquery.waypoints.min.js"></script>
-<script src="static/js/jquery.stellar.min.js"></script>
-<script src="static/js/owl.carousel.min.js"></script>
-<script src="static/js/jquery.magnific-popup.min.js"></script>
-<script src="static/js/aos.js"></script>
-<script src="static/js/jquery.animateNumber.min.js"></script>
-<script src="static/js/bootstrap-datepicker.js"></script>
-<script src="static/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="static/js/google-map.js"></script>
-<script src="static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
 
 <!--mylink-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="${pageContext.request.contextPath}/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </body>
 </html>

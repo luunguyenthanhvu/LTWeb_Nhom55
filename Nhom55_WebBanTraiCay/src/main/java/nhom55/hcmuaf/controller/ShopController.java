@@ -23,7 +23,8 @@ public class ShopController extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     String txtSearch = request.getParameter("txtSearch");
-    System.out.println(txtSearch);
+    String sortBy = request.getParameter("sortBy");
+    String order = request.getParameter("order");
     ProductDAO productDAO = new ProductDAO();
     int quantity = productDAO.countResultSearchingProduct(txtSearch);
 //        số lượng mặc định 1 trang
@@ -39,12 +40,15 @@ public class ShopController extends HttpServlet {
     if (quantity % defaultQuantityProductOnAPage != 0) {
       indexEnd++;
     }
-    List<Products> listSearch = productDAO.search(txtSearch, indexInitial,
-        defaultQuantityProductOnAPage);
-
-    for (Products p : listSearch) {
-      System.out.println(p.toString());
+    List<Products> listSearch = null;
+    if(sortBy == null & order==null) {
+       listSearch = productDAO.search(txtSearch, indexInitial,
+              defaultQuantityProductOnAPage);
+    } else {
+       listSearch = productDAO.searchFilter(sortBy,order,txtSearch, indexInitial,
+              defaultQuantityProductOnAPage);
     }
+
     request.setAttribute("listSearch", listSearch);
     request.setAttribute("indexEnd", indexEnd);
     request.setAttribute("txtSearch", txtSearch);

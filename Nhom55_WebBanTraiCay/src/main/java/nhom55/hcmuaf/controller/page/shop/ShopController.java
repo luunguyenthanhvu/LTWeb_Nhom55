@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.ProductDAO;
@@ -41,12 +41,12 @@ public class ShopController extends HttpServlet {
       indexEnd++;
     }
     List<Products> listSearch = null;
-    if(sortBy == null & order==null) {
-       listSearch = productDAO.search(txtSearch, indexInitial,
-              defaultQuantityProductOnAPage);
+    if (sortBy == null & order == null) {
+      listSearch = productDAO.search(txtSearch, indexInitial,
+          defaultQuantityProductOnAPage);
     } else {
-       listSearch = productDAO.searchFilter(sortBy,order,txtSearch, indexInitial,
-              defaultQuantityProductOnAPage);
+      listSearch = productDAO.searchFilter(sortBy, order, txtSearch, indexInitial,
+          defaultQuantityProductOnAPage);
     }
 
     request.setAttribute("listSearch", listSearch);

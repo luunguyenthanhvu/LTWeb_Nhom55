@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.login;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,9 +19,8 @@ public class Logout extends HttpServlet {
     Cart cart = (Cart) session.getAttribute("cart");
     Users user = (Users) session.getAttribute("loginedUser");
 
-    UserCart.updateCart(user.getId(),cart);
-    MyUtils.removeLoginedUser(session);
-    MyUtils.removeCart(session);
+//    UserCart.updateCart(user.getId(),cart);
+    session.invalidate();
 
     RequestDispatcher dispatcher = this.getServletContext()
         .getRequestDispatcher("/WEB-INF/login/login.jsp");

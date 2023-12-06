@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.ProductDAO;
@@ -8,11 +8,15 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "ShopForward", value = "/ShopForward")
 public class ShopForward extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // save url
+        HttpSession session = request.getSession();
+        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 
         ProductDAO productDAO = new ProductDAO();
         String pageStr = request.getParameter("pageId");

@@ -6,10 +6,12 @@ public class CartProduct {
 
   private int quantity;
   private Products products;
+  private double price;
 
   public CartProduct(int quantity, Products products) {
     this.quantity = quantity;
     this.products = products;
+    this.price = products.getPrice() * quantity;
   }
 
   public CartProduct() {
@@ -31,14 +33,21 @@ public class CartProduct {
     this.products = products;
   }
 
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
+  }
+
   public void increQuantity(int quantity) {
     this.quantity += quantity;
+    this.price += products.getPrice() * quantity;
   }
   public void decreQuantity(int quantity) {
     this.quantity -= quantity;
-    if(quantity <= 0) {
-      this.quantity += quantity;
-    }
+    this.price -= products.getPrice() * quantity;
   }
 
   @Override

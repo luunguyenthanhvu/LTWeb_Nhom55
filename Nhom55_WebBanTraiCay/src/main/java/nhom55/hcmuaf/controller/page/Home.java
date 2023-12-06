@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.ProductDAO;
@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(urlPatterns = {"/home"})
 public class Home extends HttpServlet {
@@ -26,9 +27,13 @@ public class Home extends HttpServlet {
     // Dẫn đến đường link trang chủ hiển thị ra 8 sản phẩm
     List<Products> products = ProductService.getInstance().getProduct();
     request.setAttribute("listProducts", products);
+
+    // save url
+    HttpSession session = request.getSession();
+    MyUtils.setPreviousURL(session, request.getRequestURL().toString());
+
     RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
     dispatcher.forward(request, response);
-
   }
 
   @Override

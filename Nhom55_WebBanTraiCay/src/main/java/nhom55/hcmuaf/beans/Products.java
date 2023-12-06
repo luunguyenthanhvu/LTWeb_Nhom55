@@ -14,7 +14,6 @@ public class Products {
     private String img;
     private int adminCreate;
     private int provider;
-private int quantity;
 
     public Products() {
 
@@ -32,14 +31,6 @@ private int quantity;
         this.img = img;
         this.adminCreate = adminCreate;
         this.provider = provider;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public int getId() {

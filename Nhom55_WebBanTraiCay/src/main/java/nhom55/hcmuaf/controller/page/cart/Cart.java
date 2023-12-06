@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.cart;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

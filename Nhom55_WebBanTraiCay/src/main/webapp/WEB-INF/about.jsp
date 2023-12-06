@@ -42,7 +42,8 @@
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái
+                Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,52 +52,77 @@
 
         <div class="nav-bar-link" id="ftco-nav">
             <ul class="navbar-nav">
-                <li class="nav-item active"><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/home"
+                                               class="nav-link">Trang Chủ</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04"
+                       data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="shop.html">Cửa hàng</a>
-                        <a class="dropdown-item" href="wishlist.html">Danh sách yêu thích</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa
+                            hàng</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/wishlist">Danh
+                            sách yêu thích</a>
 
-                        <a class="dropdown-item" href="checkout.html">Thủ tục thanh toán</a>
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/checkout">Thủ
+                            tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="about.jsp" class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a href="cart.jsp" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[0]</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/about"
+                                        class="nav-link">Về Chúng Tôi</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
+                                        class="nav-link">Liên Hệ</a></li>
+                <li class="nav-item cta cta-colored"><a
+                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
 
             </ul>
         </div>
 
         <div class="navbar-account">
-            <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">Thông tin người dùng</a>
-                <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                    <a class="account dropdown-item" href="user/user-profile.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-                        Người Dùng
-                    </a>
-                    <a class="account dropdown-item" href="login/login.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
-                        Đăng Xuất
-                    </a>
-                </div>
-            </div>
-            <!--            <div class="login-user">-->
-            <!--                <a class="account" href="#">-->
-            <!--                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">&lt;!&ndash;! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. &ndash;&gt;<path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>-->
-            <!--                    Login-->
-            <!--                </a>-->
-            <!--            </div>-->
+            <c:choose>
+                <c:when test="${not empty loginedUser}">
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown05"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>${loginedUser.getUsername()}</b>
+                        </a>
+                        <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
+                            <a class="account dropdown-item" href="user/user-profile.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                     viewBox="0 0 448 512">
+                                    <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+                                </svg>
+                                Thông tin
+                            </a>
+                            <a class="account dropdown-item"
+                               href="${pageContext.request.contextPath}/logout">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                     viewBox="0 0 512 512">
+                                    <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+                                </svg>
+                                Đăng Xuất
+                            </a>
+                        </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="login-user">
+                        <a class="account" href="${pageContext.request.contextPath}/login">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                                 viewBox="0 0 512 512">
+                                <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
+                            </svg>
+                            Đăng Nhập
+                        </a>
+                    </div>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
-</nav>
-<!-- END nav -->
+    <!-- END nav -->
 
-<div class="hero-wrap hero-bread" style="background-image: url('images/bg_1.jpg');">
+<div class="hero-wrap hero-bread" style="background-image: url(/static/images/bg1.jpg);filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
@@ -111,7 +137,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center"
-                 style="background-image: url(images/about.jpg);">
+                 style="background-image: url(/static/images/about.jpg);">
                 <a href="https://vimeo.com/45830194"
                    class="icon popup-vimeo d-flex justify-content-center align-items-center">
                     <span class="icon-play"></span>

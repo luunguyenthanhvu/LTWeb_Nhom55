@@ -1,5 +1,6 @@
 package nhom55.hcmuaf.cart;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import nhom55.hcmuaf.beans.Products;
@@ -26,7 +27,24 @@ public class Cart {
       cartProduct = new CartProduct(quantity, p);
     }
     data.put(add, cartProduct);
-    getAll();
+    return true;
+  }
+  public boolean remove(int id) {
+    return remove(id, 1);
+  }
+  public boolean remove(int id, int quantity) {
+    Products p = ProductService.getInstance().getById(id);
+    if (p == null) {
+      return false;
+    }
+    CartProduct cartProduct = null;
+    if (data.containsKey(id)) {
+      cartProduct = data.get(id);
+      cartProduct.decreQuantity(quantity);
+    } else {
+      return false;
+    }
+    data.put(id, cartProduct);
     return true;
   }
 
@@ -34,10 +52,8 @@ public class Cart {
     return data.size();
   }
 
-  public void getAll() {
-    for(CartProduct c : data.values()) {
-      System.out.println(c);
-    }
+  public Collection<CartProduct> getCartProduct() {
+    return data.values();
   }
 
 }

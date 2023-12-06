@@ -67,10 +67,11 @@ public class RegisterService {
 
         try {
             Message message = new MimeMessage (session);
+            message.addHeader("Content-type", "text/HTML; charset= UTF-8");
             message.setFrom (new InternetAddress (MailProperties.getEmail ()));
             message.addRecipient (Message.RecipientType.TO, new InternetAddress(email));
             message.setSubject ("Xác thực tài khoản");
-            message.setText ("Click Here : " + "http://localhost:8080/AccountActive?key1="
+            message.setText ("Click Here : " + "http://localhost:8080//account-active?key1="
                     + email + "&key2=" +hash);
             Transport.send (message);
         } catch (Exception e) {

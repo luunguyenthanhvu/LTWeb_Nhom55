@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.login;
 
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.beans.Users;

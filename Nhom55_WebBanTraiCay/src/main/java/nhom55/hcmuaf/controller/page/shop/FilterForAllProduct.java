@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.ProductDAO;
@@ -9,12 +9,16 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "FilterForAllProduct", value = "/FilterForAllProduct")
 public class FilterForAllProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        doPost(request,response);
+        // save url
+        HttpSession session = request.getSession();
+        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
     }
 
     @Override
@@ -46,8 +50,5 @@ public class FilterForAllProduct extends HttpServlet {
             request.setAttribute("listOfProduct",list);
             request.setAttribute("pageId",pageNumber);
             rd.forward(request,response);
-
-
-
     }
 }

@@ -59,8 +59,9 @@ public class ProductDAO {
             // Mở kết nối đến cơ sở dữ liệu
             handle.begin();
             try {
+
                 // Thực hiện câu lệnh SQL với giá trị của index và sizePage thay thế trực tiếp
-                List<Products> resultList = handle.createQuery("with testThu as (select ROW_NUMBER() over (order by dateOfImporting ASC) as r,id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like ?)\n" +
+                List<Products> resultList = handle.createQuery("with testThu as (select ROW_NUMBER() over (order by "+"dateOfImporting"+"  desc) as r,id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like ?)\n" +
                                 "\n" +
                                 "select * FROM testThu where r between " + (index * sizePage - 19) + " and " + (index * sizePage))
                         .bind(0, "%" + search + "%")
@@ -148,29 +149,5 @@ public List<Products> get20ProductsForEachPage(int index, int quantityDefault) {
 
 
     public static void main(String[] args) {
-        ProductDAO productDAO = new ProductDAO();
-//        chạy đúng
-//        List<Products> products = productDAO.get20ProductsForEachPage(1,20);
-//        for (Products p: products) {
-//            System.out.println(p.toString());
-//        }
-
-//        chạy đúng
-//        List<Products> products = productDAO.sortByFilter(1,20,"nameOfProduct","asc");
-//
-//        for(Products p: products) {
-//            System.out.println(p.toString());
-//        }
-
-//        chạy đúng
-//        List<Products> products = productDAO.get20ProductsForEachPage(1,20);
-//                for(Products p: products) {
-//            System.out.println(p.toString());
-//        }
-        List<Products> list = productDAO.searchFilter("price","asc","c",1,20);
-        for(Products p:list) {
-            System.out.println(p.toString());
-        }
-
     }
 }

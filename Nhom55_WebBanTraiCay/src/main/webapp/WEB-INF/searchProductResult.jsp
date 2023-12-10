@@ -250,14 +250,42 @@
                 <div class="col text-center">
                     <div style="width: 305px" class="block-27">
                         <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                <li class="active"><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
-                            </c:forEach>
+<%--                            Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                             <c:if test="${pageId== 1 && indexEnd ==1}">
+                                 <li><a >&lt;</a></li>
+                                 <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                     <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                 <li><a >></a></li>
+                            </c:if>
 
+                            <c:if test="${ indexEnd !=1}">
+<%--                                Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                                <c:if test="${pageId ==1}" >
+                                    <li><a >&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                    </c:forEach>
+                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                </c:if>
+<%--                                 Còn trường hợp này nút nào cũng xài được--%>
+                                <c:if test="${pageId >1 && pageId<indexEnd}" >
+                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                    </c:forEach>
+                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                </c:if>
+<%--                                Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                                <c:if test="${pageId ==indexEnd}" >
+                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                    </c:forEach>
+                                    <li><a>></a></li>
+                                </c:if>
+                            </c:if>
 
-
-                            <li><a href="#">&gt;</a></li>
                         </ul>
                     </div>
                 </div>

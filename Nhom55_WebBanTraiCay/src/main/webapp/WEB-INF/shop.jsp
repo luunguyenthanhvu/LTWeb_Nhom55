@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -151,37 +153,82 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
+
+
+
+                <!--                <ul class="product-category">-->
+                <!--                    <li><a href="#" class="active">All</a></li>-->
+                <!--                    <li><a href="#">Vegetables</a></li>-->
+                <!--                    <li><a href="#">Fruits</a></li>-->
+                <!--                    <li><a href="#">Juice</a></li>-->
+                <!--                    <li><a href="#">Dried</a></li>-->
+                <!--                </ul> -->
+
+                <!--                    <div class="box">-->
+                <!--                        <form action ="#">-->
+                <!--                            <div class="input_box">-->
+                <!--                                <input type="text" placeholder="Search for fruits..." required>-->
+                <!--                                <div class="selection"><p>All</p><span></span></div>-->
+
+                <!--                                <div class ="categories">-->
+                <!--                                    <p class="option">1</p>-->
+                <!--                                    <p class="option">2</p>-->
+                <!--                                    <p class="option">3</p>-->
+                <!--                                    <p class="option">4</p>-->
+
+                <!--                                </div>-->
+
+                <!--                            </div>-->
+                <!--                        </form>-->
+                <!--                    </div>-->
+
+
+
+
+
+
+
+
+
+                <!--                <ul class="nav nav-pills mb-3 product-category" id="pills-tab" role="tablist">-->
+                <!--                    <li class="nav-item " role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" fdprocessedid="pda0gw" >All</button>-->
+                <!--                    </li>-->
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link active" style="outline: 0!important;" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Vegetables</button>-->
+                <!--                    </li>-->
+
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">Fruits</button>-->
+                <!--                    </li>-->
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Juice-tab" data-bs-toggle="pill" data-bs-target="#pills-Juice" type="button" role="tab" aria-controls="pills-Juice" aria-selected="false" tabindex="-1">Juice</button>-->
+                <!--                    </li>-->
+                <!--                    <li class="nav-item" role="presentation">-->
+                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Dried-tab" data-bs-toggle="pill" data-bs-target="#pills-Dried" type="button" role="tab" aria-controls="pills-Dried" aria-selected="false" fdprocessedid="x9oioe" tabindex="-1">Dried</button>-->
+                <!--                    </li>-->
+                <!--                </ul>-->
+
+
+
                 <div class="tab-content" id="pills-tabContent">
-                    <form style="position: relative; top:-40px; left: 350px"
-                          action="ShopController?index=1" method="post">
-                        <input style="width: 300px" type="text"
-                               placeholder="Tìm trái cây mà bạn cần" name="txtSearch">
-                        <input style="width: 100px" type="submit" value="Tìm kiếm">
+                    <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
+                        <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
+                        <input style="width: 100px" type="submit"  value="Tìm kiếm">
                     </form>
                     <form action="">
                         <!-- Icon Filter -->
-                        <div style="position: absolute; top: -45px;left: 570px" class="filter-icon"
-                             onclick="toggleFilter()">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
-                                 viewBox="0 0 512 512">
-                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                <path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/>
-                            </svg>
+                        <div style="position: absolute; top: -45px;left: 570px" class="filter-icon" onclick="toggleFilter()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
                         </div>
 
                         <!-- Dropdown Filter -->
-                        <div style="top: -30px;left: 250px" id="filterDropdown"
-                             class="filter-dropdown">
-                            <a href="FilterForAllProduct?sortBy=price&order=asc&pageId=1">Sắp xếp
-                                giá tăng dần</a>
-                            <a href="FilterForAllProduct?sortBy=price&order=desc&pageId=1">Sắp xếp
-                                giá giảm dần</a>
-                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=asc&pageId=1">Sắp
-                                xếp theo tên từ A-Z</a>
-                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=desc&pageId=1">Sắp
-                                xếp theo tên từ Z-A</a>
-                            <a href="FilterForAllProduct?sortBy=dateOfImporting&order=desc&pageId=1">Sắp
-                                xếp theo ngày nhập kho mới nhất</a>
+                        <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
+                            <a href="FilterForAllProduct?sortBy=price&order=asc&pageId=1" >Sắp xếp giá tăng dần</a>
+                            <a href="FilterForAllProduct?sortBy=price&order=desc&pageId=1" >Sắp xếp giá giảm dần</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=asc&pageId=1" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=desc&pageId=1" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="FilterForAllProduct?sortBy=dateOfImporting&order=desc&pageId=1" >Sắp xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
@@ -240,11 +287,47 @@
                 <div class="col text-center">
                     <div style="min-width: 350px" class="block-27">
                         <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                                <li id="${i}"><a href="ShopForward?pageId=${i}">${i}</a></li>
-                            </c:forEach>
-                            <li><a href="#">&gt;</a></li>
+<%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                            <c:if test="${pageId== 1 && haveMaxPage ==1}">
+                                <li><a >&lt;</a></li>
+                                <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                    <li id="${i}" ><a href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                </c:forEach>
+                                <li><a >></a></li>
+                            </c:if>
+
+                             <c:if test="${ haveMaxPage !=1}">
+        <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                             <c:if test="${pageId ==1}" >
+                                 <li><a >&lt;</a></li>
+                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                  <li><a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                               </c:if>
+
+        <%--  Còn trường hợp này nút nào cũng xài được--%>
+                              <c:if test="${pageId >1 && pageId<haveMaxPage}" >
+                                  <li><a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                 <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                  <li><a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                              </c:if>
+        <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+
+                                 <c:if test="${pageId ==haveMaxPage}" >
+                                 <li><a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                  <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                <li><a>></a></li>
+                                 </c:if>
+
+                             </c:if>
+
+
+
                         </ul>
                     </div>
                 </div>
@@ -294,12 +377,9 @@
                     <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
                     <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
-                        </li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
-                        </li>
-                        <li class="ftco-animate"><a href="#"><span
-                                class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -351,12 +431,11 @@
         <div class="row">
             <div class="col-md-12 text-center">
 
-                <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                     All rights reserved | Mẫu thiết kế của <i class="icon-heart color-danger"
-                                                              aria-hidden="true"></i> <a
-                        href="https://colorlib.com" target="_blank">Colorlib</a>
+                                                              aria-hidden="true"></i>  <a
+                            href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
@@ -364,28 +443,12 @@
     </div>
 </footer>
 
-<%--toast--%>
-<div class="toast">
-    <div class="toast-content">
-        <i class="fas fa-solid fa-check check"></i>
-
-        <div class="message">
-            <span class="text text-1">Success</span>
-            <span class="text text-2">Your changes has been saved</span>
-        </div>
-    </div>
-    <i class="fa-solid fa-xmark close"></i>
-
-    <div class="progress"></div>
-</div>
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke="#eeeeee"/>
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
-                stroke-miterlimit="10"
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                 stroke="#F96D00"/>
     </svg>
 </div>

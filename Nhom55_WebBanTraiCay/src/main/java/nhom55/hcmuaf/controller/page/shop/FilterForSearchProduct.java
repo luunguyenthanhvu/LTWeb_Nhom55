@@ -2,6 +2,7 @@ package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.ProductDAO;
+import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -21,8 +22,8 @@ public class FilterForSearchProduct extends HttpServlet {
         String txtSearch = request.getParameter("txtSearch");
         String sortBy = request.getParameter("sortBy");
         String order = request.getParameter("order");
-        ProductDAO productDAO = new ProductDAO();
-        int quantity = productDAO.countResultSearchingProduct(txtSearch);
+
+        int quantity = ShopService.getInstance().countResultSearchingProduct(txtSearch);
 //        số lượng mặc định 1 trang
         int defaultQuantityProductOnAPage = 20;
 //        index user bấm vào phân trang
@@ -31,17 +32,16 @@ public class FilterForSearchProduct extends HttpServlet {
             indexPage = "1";
         }
         int indexInitial = Integer.parseInt(indexPage);
-        System.out.println(indexInitial);
+
         int indexEnd = quantity / defaultQuantityProductOnAPage;
         if (quantity % defaultQuantityProductOnAPage != 0) {
             indexEnd++;
         }
-        List<Products> listSearch = productDAO.searchFilter(sortBy,order,txtSearch, indexInitial,
+        List<Products> listSearch = ShopService.getInstance().searchFilter(sortBy,order,txtSearch, indexInitial,
                 defaultQuantityProductOnAPage);
 
-        for (Products p : listSearch) {
-            System.out.println(p.toString());
-        }
+
+        request.setAttribute("pageId",indexInitial);
         request.setAttribute("listSearch", listSearch);
         request.setAttribute("indexEnd", indexEnd);
         request.setAttribute("txtSearch", txtSearch);

@@ -2,6 +2,7 @@ package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.dao.ProductDAO;
+import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,7 +26,7 @@ public class FilterForAllProduct extends HttpServlet {
 //       Lấy các thuộc tính của filter
         String sortBy = request.getParameter("sortBy");
         String order = request.getParameter("order");
-        ProductDAO productDAO = new ProductDAO();
+
 
  // pageSTR(pageNumber là kiểu int khi chuyển từ String PageSTr),  là số mà người dùng bấm vào số mà muốn chuyển trang
         String pageStr = request.getParameter("pageId");
@@ -37,12 +38,14 @@ public class FilterForAllProduct extends HttpServlet {
         }
 
         int quantityDefault =20;
-        int totalRow = productDAO.countTotalRowProductInDatabase();
+        int totalRow = ShopService.getInstance().countTotalRowProductInDatabase();
         int haveMaxPage = (totalRow/quantityDefault) +1;
 
-        List<Products> list = productDAO.sortByFilter(pageNumber,quantityDefault,sortBy,order);
+        List<Products> list =  ShopService.getInstance().sortByFilter(pageNumber,quantityDefault,sortBy,order);
 
             RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/shop.jsp");
+            request.setAttribute("sortBy",sortBy);
+            request.setAttribute("order",order);
             request.setAttribute("haveMaxPage",haveMaxPage);
             request.setAttribute("listOfProduct",list);
             request.setAttribute("pageId",pageNumber);

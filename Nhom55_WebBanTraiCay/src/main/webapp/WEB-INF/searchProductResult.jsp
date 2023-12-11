@@ -46,6 +46,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
 
 
+
+
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -152,6 +154,7 @@
             <div style="display: block" class="col-md-10 mb-5 text-center">
 
 
+
                 <!--                <ul class="product-category">-->
                 <!--                    <li><a href="#" class="active">All</a></li>-->
                 <!--                    <li><a href="#">Vegetables</a></li>-->
@@ -179,6 +182,13 @@
                 <!--                    </div>-->
 
 
+
+
+
+
+
+
+
                 <!--                <ul class="nav nav-pills mb-3 product-category" id="pills-tab" role="tablist">-->
                 <!--                    <li class="nav-item " role="presentation">-->
                 <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" fdprocessedid="pda0gw" >All</button>-->
@@ -197,6 +207,7 @@
                 <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Dried-tab" data-bs-toggle="pill" data-bs-target="#pills-Dried" type="button" role="tab" aria-controls="pills-Dried" aria-selected="false" fdprocessedid="x9oioe" tabindex="-1">Dried</button>-->
                 <!--                    </li>-->
                 <!--                </ul>-->
+
 
 
                 <div class="tab-content" id="pills-tabContent">
@@ -219,24 +230,17 @@
                         </div>
 
                         <!-- Dropdown Filter -->
-                        <div style="top: -30px;left: 250px" id="filterDropdown"
-                             class="filter-dropdown">
-                            <a href="FilterForSearchProduct?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}">Sắp
-                                xếp giá tăng dần</a>
-                            <a href="FilterForSearchProduct?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}">Sắp
-                                xếp giá giảm dần</a>
-                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}">Sắp
-                                xếp theo tên từ A-Z</a>
-                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}">Sắp
-                                xếp theo tên từ Z-A</a>
-                            <a href="FilterForSearchProduct?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}">Sắp
-                                xếp theo ngày nhập kho mới nhất</a>
+                        <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
+                            <a href="FilterForSearchProduct?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
+                            <a href="FilterForSearchProduct?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
+                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="FilterForSearchProduct?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
 
-                    <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
-                         aria-labelledby="pills-profile-tab" tabindex="0">
+                    <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
                         <div class="row">
 
 
@@ -291,15 +295,42 @@
                 <div class="col text-center">
                     <div style="width: 305px" class="block-27">
                         <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <c:forEach begin="1" end="${indexEnd}" var="i">
-                                <li class="active"><a
-                                        href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a>
-                                </li>
-                            </c:forEach>
+<%--                            Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                             <c:if test="${pageId== 1 && indexEnd ==1}">
+                                 <li><a >&lt;</a></li>
+                                 <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                     <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                 <li><a >></a></li>
+                            </c:if>
 
+                            <c:if test="${ indexEnd !=1}">
+<%--                                Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                                <c:if test="${pageId ==1}" >
+                                    <li><a >&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                    </c:forEach>
+                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                </c:if>
+<%--                                 Còn trường hợp này nút nào cũng xài được--%>
+                                <c:if test="${pageId >1 && pageId<indexEnd}" >
+                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                    </c:forEach>
+                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                </c:if>
+<%--                                Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                                <c:if test="${pageId ==indexEnd}" >
+                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                    </c:forEach>
+                                    <li><a>></a></li>
+                                </c:if>
+                            </c:if>
 
-                            <li><a href="#">&gt;</a></li>
                         </ul>
                     </div>
                 </div>
@@ -349,12 +380,9 @@
                     <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
                     <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
-                        </li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
-                        </li>
-                        <li class="ftco-animate"><a href="#"><span
-                                class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
                     </ul>
                 </div>
             </div>

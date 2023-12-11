@@ -27,7 +27,6 @@ public class FilterForAllProduct extends HttpServlet {
         String sortBy = request.getParameter("sortBy");
         String order = request.getParameter("order");
 
-
  // pageSTR(pageNumber là kiểu int khi chuyển từ String PageSTr),  là số mà người dùng bấm vào số mà muốn chuyển trang
         String pageStr = request.getParameter("pageId");
         int pageNumber = 0;

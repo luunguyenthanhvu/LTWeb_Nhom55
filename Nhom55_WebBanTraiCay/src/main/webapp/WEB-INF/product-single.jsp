@@ -155,6 +155,7 @@
             </div>
             <div class="col-lg-6 product-details pl-md-5 ftco-animate">
                 <h3>${product.getNameOfProduct()}</h3>
+                <span id="productIdSpan" style="display: none;">${product.getId()}</span>
                 <div class="rating d-flex">
                     <p class="text-left mr-4">
                         <a href="#" class="mr-2">5.0</a>
@@ -183,16 +184,15 @@
                     <div class="w-100"></div>
                     <div class="input-group col-md-6 d-flex mb-3">
 	             	<span class="input-group-btn mr-2">
-	                	<button type="button" class="quantity-left-minus btn" data-type="minus"
+	                	<button type="button" class="my-quantity-left-minus btn" data-type="minus"
                                 data-field="">
 	                   <i class="ion-ios-remove"></i>
 	                	</button>
 	            		</span>
-                        <input type="text" id="quantity" name="quantity"
-                               class="form-control input-number" value="1"
-                               min="1" max="100">
+                        <input type="text" id="quantity" name="quantity" value="1"
+                               class="form-control input-number">
                         <span class="input-group-btn ml-2">
-	                	<button type="button" class="quantity-right-plus btn" data-type="plus"
+	                	<button type="button" class="my-quantity-right-plus btn" data-type="plus"
                                 data-field="">
 	                     <i class="ion-ios-add"></i>
 	                 </button>
@@ -203,7 +203,8 @@
                         <p style="color: #000;">${product.getWeight()} kg hợp lệ</p>
                     </div>
                 </div>
-                <p><a href="add-cart?id=${product.getId()}" class="btn btn-black py-3 px-5">Thêm vào
+                <p><a id="addToCartLink" href="add-cart?id=${product.getId()}"
+                      class="btn btn-black py-3 px-5">Thêm vào
                     giỏ hàng</a></p>
             </div>
             <c:if test="${empty showProduct}">
@@ -333,7 +334,6 @@
     </svg>
 </div>
 
-
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
@@ -355,7 +355,7 @@
   $(document).ready(function () {
 
     var quantitiy = 0;
-    $('.quantity-right-plus').click(function (e) {
+    $('.my-quantity-right-plus').click(function (e) {
 
       // Stop acting like a button
       e.preventDefault();
@@ -363,26 +363,36 @@
       var quantity = parseInt($('#quantity').val());
 
       // If is not undefined
-
       $('#quantity').val(quantity + 1);
-
-      // Increment
-
+      updateLink();
     });
 
-    $('.quantity-left-minus').click(function (e) {
-      // Stop acting like a button
+    $('.my-quantity-left-minus').click(function (e) {
       e.preventDefault();
-      // Get the field name
       var quantity = parseInt($('#quantity').val());
-
-      // If is not undefined
-
       // Increment
       if (quantity > 0) {
         $('#quantity').val(quantity - 1);
       }
+      updateLink();
     });
+
+    // Lấy thẻ input và thẻ a theo ID
+    var quantityInput = document.getElementById("quantity");
+    var addToCartLink = document.getElementById("addToCartLink");
+    var product = document.getElementById("productIdSpan");
+
+    // Sự kiện khi giá trị của input thay đổi
+    quantityInput.addEventListener("input", function () {
+      updateLink();
+    });
+
+    // Hàm cập nhật đường link
+    function updateLink() {
+      var quantityValue = quantityInput.value;
+      var productId = product.textContent.trim();
+          addToCartLink.href = "add-cart?id=" + productId + "&quantity=" + quantityValue;
+    }
 
   });
 </script>

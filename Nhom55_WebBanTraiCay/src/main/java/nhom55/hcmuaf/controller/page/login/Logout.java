@@ -1,14 +1,13 @@
 package nhom55.hcmuaf.controller.page.login;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
 import java.io.IOException;
-import nhom55.hcmuaf.beans.Users;
-
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.UserCart;
-import nhom55.hcmuaf.util.MyUtils;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "logout", value = "/logout")
 public class Logout extends HttpServlet {
@@ -16,10 +15,6 @@ public class Logout extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     HttpSession session = request.getSession();
-    Cart cart = (Cart) session.getAttribute("cart");
-    Users user = (Users) session.getAttribute("loginedUser");
-
-//    UserCart.updateCart(user.getId(),cart);
     session.invalidate();
 
     RequestDispatcher dispatcher = this.getServletContext()

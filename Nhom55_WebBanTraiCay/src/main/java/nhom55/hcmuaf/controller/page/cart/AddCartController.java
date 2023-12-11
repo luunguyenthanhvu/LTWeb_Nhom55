@@ -17,23 +17,27 @@ public class AddCartController extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     int id = Integer.parseInt(request.getParameter("id"));
-//    int quantity = Integer.parseInt(request.getParameter("quantity"));
+    String quantityParameter = request.getParameter("quantity");
+    int quantity = 1;
+
+    if (quantityParameter != null) {
+      try {
+        quantity = Integer.parseInt(quantityParameter);
+      } catch (NumberFormatException e) {
+        e.printStackTrace();
+      }
+    }
     Products product = ProductService.getInstance().getById(id);
     Cart cart = (Cart) request.getSession().getAttribute("cart");
-//    if(quantity <= 0) {
-//      if (quantity == 1) {
-//        cart.add(id);
-//      } else {
-//        cart.add(id,quantity);
-//      }
-//    }
-    cart.add(id);
+
+    cart.add(id,quantity);
 
     // update cart
     MyUtils.storeCart(session, cart);
     String url = (String) session.getAttribute("previousURL");
 
     response.sendRedirect(url);
+
   }
 
   @Override

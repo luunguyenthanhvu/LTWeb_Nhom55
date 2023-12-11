@@ -77,6 +77,7 @@ public class Login extends HttpServlet {
       HttpSession session = request.getSession();
       Users user = usersDao.getUserByEmail(email);
       MyUtils.storeLoginedUser(session, user);
+
       // create a new cart
       Cart cart = UserCart.getUserCart(user.getId());
       MyUtils.storeCart(session, cart);

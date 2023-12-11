@@ -257,6 +257,7 @@
 
                         </a>
                         <div class="text py-3 pb-4 px-3 text-center">
+                            <span name="quantity-product" hidden data-value="1"> </span>
                             <h3><a href="">${product.getNameOfProduct()} </a></h3>
                             <div class="d-flex">
                                 <div class="pricing">

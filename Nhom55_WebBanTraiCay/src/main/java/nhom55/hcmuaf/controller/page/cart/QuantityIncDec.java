@@ -22,7 +22,7 @@ public class QuantityIncDec extends HttpServlet {
 
     if(action != null && id >= 1) {
       if(action.equals("inc")) {
-        cart.add(id);
+          cart.add(id);
         response.sendRedirect("cart");
       } else if(action.equals("dec")) {
         cart.remove(id);

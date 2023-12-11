@@ -264,11 +264,47 @@
                 <div class="col text-center">
                     <div style="min-width: 350px" class="block-27">
                         <ul>
-                            <li><a href="#">&lt;</a></li>
-                           <c:forEach begin="1" end="${haveMaxPage}" var="i" >
-                               <li id="${i}"><a href="ShopForward?pageId=${i}">${i}</a></li>
-                           </c:forEach>
-                            <li><a href="#">&gt;</a></li>
+<%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                            <c:if test="${pageId== 1 && haveMaxPage ==1}">
+                                <li><a >&lt;</a></li>
+                                <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                    <li id="${i}" ><a href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                </c:forEach>
+                                <li><a >></a></li>
+                            </c:if>
+
+                             <c:if test="${ haveMaxPage !=1}">
+        <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                             <c:if test="${pageId ==1}" >
+                                 <li><a >&lt;</a></li>
+                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                  <li><a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                               </c:if>
+
+        <%--  Còn trường hợp này nút nào cũng xài được--%>
+                              <c:if test="${pageId >1 && pageId<haveMaxPage}" >
+                                  <li><a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                 <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                  <li><a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                              </c:if>
+        <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+
+                                 <c:if test="${pageId ==haveMaxPage}" >
+                                 <li><a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                                  <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                 </c:forEach>
+                                <li><a>></a></li>
+                                 </c:if>
+
+                             </c:if>
+
+
+
                         </ul>
                     </div>
                 </div>

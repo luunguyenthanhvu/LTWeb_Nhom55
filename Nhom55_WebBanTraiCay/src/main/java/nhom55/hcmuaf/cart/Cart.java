@@ -47,6 +47,13 @@ public class Cart {
     data.put(id, cartProduct);
     return true;
   }
+  public boolean deleteProduct(int id) {
+    if(data.containsKey(id)) {
+      data.remove(id);
+      return true;
+    }
+    return false;
+  }
 
   public int getTotal() {
     return data.size();

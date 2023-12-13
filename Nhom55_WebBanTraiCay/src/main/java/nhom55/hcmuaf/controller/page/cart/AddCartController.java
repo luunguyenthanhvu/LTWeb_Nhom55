@@ -16,6 +16,7 @@ public class AddCartController extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     HttpSession session = request.getSession();
+    String url = (String) session.getAttribute("previousURL");
     int id = Integer.parseInt(request.getParameter("id"));
     String quantityParameter = request.getParameter("quantity");
     int quantity = 1;
@@ -34,8 +35,6 @@ public class AddCartController extends HttpServlet {
 
     // update cart
     MyUtils.storeCart(session, cart);
-    String url = (String) session.getAttribute("previousURL");
-
     response.sendRedirect(url);
 
   }

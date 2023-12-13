@@ -190,7 +190,7 @@
                                         <input type="text" name="quantity"
                                                class="form-control input-number"
                                                value="${item.getQuantity()}"
-                                               min="1" max="100">
+                                               min="1" >
                                         <span class="input-group-btn ml-2">
                                     <a href="${pageContext.request.contextPath}/quantity-inc-dec?action=inc&id=${item.getProducts().getId()}"
                                        class="btn-plus-indre"

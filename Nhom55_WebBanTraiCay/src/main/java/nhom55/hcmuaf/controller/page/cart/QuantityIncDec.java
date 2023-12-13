@@ -20,11 +20,11 @@ public class QuantityIncDec extends HttpServlet {
     HttpSession session = request.getSession();
     Cart cart = (Cart) session.getAttribute("cart");
 
-    if(action != null && id >= 1) {
-      if(action.equals("inc")) {
-          cart.add(id);
+    if (action != null && id >= 1) {
+      if (action.equals("inc")) {
+        cart.add(id);
         response.sendRedirect("cart");
-      } else if(action.equals("dec")) {
+      } else if (action.equals("dec")) {
         cart.remove(id);
         response.sendRedirect("cart");
       }

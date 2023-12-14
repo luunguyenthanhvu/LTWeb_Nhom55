@@ -1,7 +1,10 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.login;
 
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.cart.Cart;
+import nhom55.hcmuaf.cart.CartProduct;
+import nhom55.hcmuaf.cart.UserCart;
 import nhom55.hcmuaf.dao.LoginDao;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
@@ -72,13 +75,20 @@ public class Login extends HttpServlet {
       dispatcher.forward(request, response);
     } else {
       HttpSession session = request.getSession();
-      MyUtils.storeLoginedUser(session, usersDao.getUserByEmail(email));
+      Users user = usersDao.getUserByEmail(email);
+      MyUtils.storeLoginedUser(session, user);
+
+      // create a new cart
+      Cart cart = UserCart.getUserCart(user.getId());
+      MyUtils.storeCart(session, cart);
 
       if (result.equals("ADMIN")) {
         // redirect to admin page
+        MyUtils.setUserRole(session, result);
         response.sendRedirect(request.getContextPath() + "/adminProfile");
-      } else {
+      } else if (result.equals("USER")) {
         // redirect to home
+        MyUtils.setUserRole(session, result);
         response.sendRedirect(request.getContextPath() + "/home");
       }
     }

@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.login;
 
 import nhom55.hcmuaf.services.ForgetPasswordService;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "forgetPassword", value = "/forgetPassword")
+@WebServlet(name = "forgetPassword", value = "/forget-password")
 public class ForgetPassword extends HttpServlet {
     private ForgetPasswordService forgetPasswordService = new ForgetPasswordService ();
     public ForgetPassword() {

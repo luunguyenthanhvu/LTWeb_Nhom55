@@ -4,144 +4,161 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Users implements Serializable {
-    private int id;
-    private String username;
-    private String password;
-    private String hash;
-    private String email;
-    private String address;
-    private String phoneNumber;
-    private int status;
-    private String img;
-    private LocalDate dateOfBirth;
-    private String sexual;
-    private int role;
 
-    public Users( String username, String password, String email, String address, String phoneNum, int status, String img, LocalDate date, String sexual, int role) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.address = address;
-        this.phoneNumber = phoneNum;
-        this.status = status;
-        this.img = img;
-        this.dateOfBirth = date;
-        this.sexual = sexual;
-        this.role = role;
-    }
+  private int id;
+  private String username;
+  private String password;
+  private String hash;
+  private String email;
+  private String address;
+  private String phoneNumber;
+  private int status;
+  private String img;
+  private LocalDate dateOfBirth;
+  private String sexual;
+  private int role;
 
-    public Users(String username, String password,String hash, String email, String address, String phoneNum, int status) {
-        this.username = username;
-        this.password = password;
-        this.hash = hash;
-        this.email = email;
-        this.address = address;
-        this.phoneNumber = phoneNum;
-        this.status = status;
-    }
+  public Users(String username, String password, String email, String address, String phoneNum,
+      int status, String img, LocalDate date, String sexual, int role) {
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNum;
+    this.status = status;
+    this.img = img;
+    this.dateOfBirth = date;
+    this.sexual = sexual;
+    this.role = role;
+  }
 
-    public Users( String email, String hash,int status) {
-        this.hash = hash;
-        this.email = email;
-        this.status = status;
-    }
+  public Users(int id, String username, String email, String address, String phoneNumber,
+      int status, String img, LocalDate dateOfBirth, String sexual, int role) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.img = img;
+    this.dateOfBirth = dateOfBirth;
+    this.sexual = sexual;
+    this.role = role;
+  }
 
-    public Users() {
-    }
+  public Users(String username, String password, String hash, String email, String address,
+      String phoneNum, int status) {
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNum;
+    this.status = status;
+  }
 
-    public String getHash() {
-        return hash;
-    }
+  public Users(String email, String hash, int status) {
+    this.hash = hash;
+    this.email = email;
+    this.status = status;
+  }
 
-    public void setHash(String hash) {
-        this.hash = hash;
-    }
+  public Users() {
+  }
 
-    public int getId() {
-        return id;
-    }
+  public String getHash() {
+    return hash;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setHash(String hash) {
+    this.hash = hash;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getPassword() {
-        return password;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public String getAddress() {
-        return address;
-    }
+  public String getEmail() {
+    return email;
+  }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+  public String getAddress() {
+    return address;
+  }
 
-    public void setPhoneNumber(String phoneNum) {
-        this.phoneNumber = phoneNum;
-    }
+  public void setAddress(String address) {
+    this.address = address;
+  }
 
-    public int getstatus() {
-        return status;
-    }
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
 
-    public void setstatus(int status) {
-        this.status = status;
-    }
+  public void setPhoneNumber(String phoneNum) {
+    this.phoneNumber = phoneNum;
+  }
 
-    public String getImg() {
-        return img;
-    }
+  public int getstatus() {
+    return status;
+  }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
+  public void setstatus(int status) {
+    this.status = status;
+  }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
+  public String getImg() {
+    return img;
+  }
 
-    public void setDateOfBirth(LocalDate date) {
-        this.dateOfBirth = date;
-    }
+  public void setImg(String img) {
+    this.img = img;
+  }
 
-    public String getSexual() {
-        return sexual;
-    }
+  public LocalDate getDateOfBirth() {
+    return dateOfBirth;
+  }
 
-    public void setSexual(String sexual) {
-        this.sexual = sexual;
-    }
+  public void setDateOfBirth(LocalDate date) {
+    this.dateOfBirth = date;
+  }
 
-    public int getRole() {
-        return role;
-    }
+  public String getSexual() {
+    return sexual;
+  }
 
-    public void setRole(int role) {
-        this.role = role;
-    }
+  public void setSexual(String sexual) {
+    this.sexual = sexual;
+  }
+
+  public int getRole() {
+    return role;
+  }
+
+  public void setRole(int role) {
+    this.role = role;
+  }
 }

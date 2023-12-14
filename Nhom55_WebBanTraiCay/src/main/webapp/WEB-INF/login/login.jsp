@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="bottom-text w3_bottom_text">
                 <p>Bạn mới biết đến Shop?<a href="${pageContext.request.contextPath}/register">Đăng ký</a></p>
 
-                <h4> <a href="${pageContext.request.contextPath}/forgetPassword">Quên mật khẩu?</a></h4>
+                <h4> <a href="${pageContext.request.contextPath}/forget-password">Quên mật khẩu?</a></h4>
             </div>
 
         </div>

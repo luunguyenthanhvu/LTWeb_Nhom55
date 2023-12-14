@@ -54,6 +54,7 @@ public class ForgetPasswordService {
         });
         try {
             Message message = new MimeMessage (session);
+            message.addHeader("Content-type", "text/HTML; charset= UTF-8");
             message.setFrom (new InternetAddress (MailProperties.getEmail ()));
             message.addRecipient (Message.RecipientType.TO, new InternetAddress(email));
             message.setSubject ("Đổi mật khẩu tài khoản");

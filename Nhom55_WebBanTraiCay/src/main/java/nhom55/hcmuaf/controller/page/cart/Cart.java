@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller;
+package nhom55.hcmuaf.controller.page.cart;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,7 +11,8 @@ public class Cart extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
+    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/cart.jsp");
+    dispatcher.forward(request, response);
   }
 
   @Override

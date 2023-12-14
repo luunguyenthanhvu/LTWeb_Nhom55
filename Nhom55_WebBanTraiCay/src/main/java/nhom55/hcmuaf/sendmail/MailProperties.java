@@ -10,7 +10,7 @@ public class MailProperties {
 
     static {
         try {
-            prop.load (DBProperties.class.getClassLoader ().getResourceAsStream ("mail.properties"));
+            prop.load (MailProperties.class.getClassLoader ().getResourceAsStream ("mail.properties"));
         } catch (IOException ioException) {
             ioException.printStackTrace ();
         }

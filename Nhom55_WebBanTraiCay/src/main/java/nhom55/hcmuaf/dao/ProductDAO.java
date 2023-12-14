@@ -11,16 +11,31 @@ import java.util.stream.Collectors;
 
 public class ProductDAO {
 
-    //    Xuất ra toàn bộ sản phẩm lấy từ database
-    // In ra 8 sản phẩm trên trang index
-    public List<Products> getProduct() {
-        return JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT id,nameOfProduct,price,img,dateOfImporting FROM Products ORDER BY dateOfImporting DESC LIMIT 8")
-                        .mapToBean(Products.class)
-                        .stream()
-                        .collect(Collectors.toList())
-        );
-    }
+  /**
+   * get product by id
+   *
+   * @return
+   */
+  public Products getProductById(int id) {
+    return JDBIConnector.get().withHandle(handle -> {
+      return handle.createQuery("SELECT * FROM products where ID = :productId")
+          .bind("productId", id)
+          .mapToBean(Products.class)
+          .findOne()
+          .orElse(null);
+    });
+  }
+
+  // Xuất ra toàn bộ sản phẩm lấy từ database
+  // In ra 8 sản phẩm trên trang index
+  public List<Products> getProduct() {
+    return JDBIConnector.get().withHandle(h ->
+        h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
+            .mapToBean(Products.class)
+            .stream()
+            .collect(Collectors.toList())
+    );
+  }
 
 
     // hiển thị chi tiết sản phẩm
@@ -59,7 +74,6 @@ public class ProductDAO {
             // Mở kết nối đến cơ sở dữ liệu
             handle.begin();
             try {
-
                 // Thực hiện câu lệnh SQL với giá trị của index và sizePage thay thế trực tiếp
                 List<Products> resultList = handle.createQuery("with testThu as (select ROW_NUMBER() over (order by "+"dateOfImporting"+"  desc) as r,id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like ?)\n" +
                                 "\n" +

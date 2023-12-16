@@ -85,9 +85,18 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a
-                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                <c:choose>
+                    <c:when test="${not empty loginedUser}">
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
         </div>

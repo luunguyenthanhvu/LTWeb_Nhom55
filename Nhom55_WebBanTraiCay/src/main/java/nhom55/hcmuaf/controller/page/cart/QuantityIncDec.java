@@ -28,6 +28,8 @@ public class QuantityIncDec extends HttpServlet {
         cart.remove(id);
         response.sendRedirect("cart");
       }
+    } else {
+      response.sendRedirect("cart");
     }
   }
 

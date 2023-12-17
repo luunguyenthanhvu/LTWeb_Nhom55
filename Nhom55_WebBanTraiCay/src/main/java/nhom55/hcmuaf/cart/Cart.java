@@ -10,7 +10,7 @@ public class Cart {
 
   private Map<Integer, CartProduct> data = new HashMap<>();
 
-  public boolean add(int add) {
+  public boolean  add(int add) {
     return add(add, 1);
   }
 
@@ -22,7 +22,9 @@ public class Cart {
     CartProduct cartProduct = null;
     if (data.containsKey(add)) {
       cartProduct = data.get(add);
-      cartProduct.increQuantity(quantity);
+      if(cartProduct.getQuantity() < cartProduct.getProducts().getWeight()) {
+        cartProduct.increQuantity(quantity);
+      }
     } else {
       cartProduct = new CartProduct(quantity, p);
     }
@@ -40,19 +42,22 @@ public class Cart {
     CartProduct cartProduct = null;
     if (data.containsKey(id)) {
       cartProduct = data.get(id);
-      cartProduct.decreQuantity(quantity);
+      if(cartProduct.getQuantity() == 1) {
+        deleteProduct(id);
+        return true;
+      } else {
+        cartProduct.decreQuantity(quantity);
+      }
     } else {
       return false;
     }
     data.put(id, cartProduct);
     return true;
   }
-  public boolean deleteProduct(int id) {
+  public void deleteProduct(int id) {
     if(data.containsKey(id)) {
       data.remove(id);
-      return true;
     }
-    return false;
   }
 
   public int getTotal() {

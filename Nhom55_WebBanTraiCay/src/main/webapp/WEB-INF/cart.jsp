@@ -79,9 +79,18 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a
-                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                <c:choose>
+                    <c:when test="${not empty loginedUser}">
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
         </div>
@@ -159,14 +168,16 @@
                         <tbody>
                         <c:forEach items="${cart.getCartProduct()}" var="item" varStatus="loop">
                             <tr class="text-center">
-                                <td class="product-remove"><a href="#"><span
+                                <td class="product-remove"><a
+                                        href="${pageContext.request.contextPath}/remove-product-cart?id=${item.getProducts().getId()}"
+                                        onclick="if (!(confirm('Bạn có muốn xóa sản phẩm ra khỏi giỏ hàng không?'))) return false"><span
                                         class="ion-ios-close"></span></a></td>
                                 <td class="image-prod">
                                     <div class="img">
                                         <img
                                                 style="width: 100px; height: 100px; object-fit: cover"
                                                 class="img-fluid"
-                                                src="static/images/${item.getProducts().getImg()}"
+                                                src="${item.getProducts().getImg()}"
                                                 alt="Colorlib Template">
                                     </div>
                                 </td>
@@ -189,8 +200,7 @@
                                 </span>
                                         <input type="text" name="quantity"
                                                class="form-control input-number"
-                                               value="${item.getQuantity()}"
-                                               min="1" >
+                                               value="${item.getQuantity()}" min="1">
                                         <span class="input-group-btn ml-2">
                                     <a href="${pageContext.request.contextPath}/quantity-inc-dec?action=inc&id=${item.getProducts().getId()}"
                                        class="btn-plus-indre"
@@ -353,42 +363,5 @@
 <script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/main.js"></script>
-
-<script>
-  $(document).ready(function () {
-
-    var quantitiy = 0;
-    $('.quantity-right-plus').click(function (e) {
-
-      // Stop acting like a button
-      e.preventDefault();
-      // Get the field name
-      var quantity = parseInt($('#quantity').val());
-
-      // If is not undefined
-
-      $('#quantity').val(quantity + 1);
-
-      // Increment
-
-    });
-
-    $('.quantity-left-minus').click(function (e) {
-      // Stop acting like a button
-      e.preventDefault();
-      // Get the field name
-      var quantity = parseInt($('#quantity').val());
-
-      // If is not undefined
-
-      // Increment
-      if (quantity > 0) {
-        $('#quantity').val(quantity - 1);
-      }
-    });
-
-  });
-</script>
-
 </body>
 </html>

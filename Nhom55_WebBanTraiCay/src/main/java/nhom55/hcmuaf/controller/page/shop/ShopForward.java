@@ -1,7 +1,7 @@
 package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.dao.ProductDAO;
+import nhom55.hcmuaf.dao.ProductDaoImpl;
 import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
@@ -19,7 +19,7 @@ public class ShopForward extends HttpServlet {
         HttpSession session = request.getSession();
         MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 
-        ProductDAO productDAO = new ProductDAO();
+        ProductDaoImpl productDaoImpl = new ProductDaoImpl();
         String sortBy = request.getParameter("sortBy");
         String order = request.getParameter("order");
         String pageStr = request.getParameter("pageId");

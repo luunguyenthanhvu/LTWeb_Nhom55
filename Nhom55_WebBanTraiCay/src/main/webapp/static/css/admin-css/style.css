@@ -329,4 +329,7 @@
 i svg {
     fill: #FFFFFF;
 }
+.error {
+    color: red;
+}
 

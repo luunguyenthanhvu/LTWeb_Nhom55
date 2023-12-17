@@ -7,13 +7,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.beans.Products;
+import nhom55.hcmuaf.beans.Providers;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ProductService;
+import nhom55.hcmuaf.services.ProviderService;
 import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "AddProduct", value = "/add-new-product")
@@ -32,11 +35,28 @@ public class AddProduct extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    // get the provider to add new product
+    List<Providers> providerList = ProviderService.getInstance().getAll();
+    request.setAttribute("providerList", providerList);
+
     RequestDispatcher dispatcher = this.getServletContext()
         .getRequestDispatcher("/WEB-INF/admin/add-product.jsp");
     dispatcher.forward(request, response);
   }
 
+  /**
+   *
+   * @param request   an {@link HttpServletRequest} object that
+   *                  contains the request the client has made
+   *                  of the servlet
+   *
+   * @param response  an {@link HttpServletResponse} object that
+   *                  contains the response the servlet sends
+   *                  to the client
+   *
+   * @throws ServletException
+   * @throws IOException
+   */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -49,6 +69,7 @@ public class AddProduct extends HttpServlet {
     double weightQuantity = Double.parseDouble(request.getParameter("khoi_luong_san_pham"));
     double weightDefault = Double.parseDouble(request.getParameter("so_kg_mac_dinh"));
     String expirationDateString = request.getParameter("ngay_het_han");
+    int provider = Integer.parseInt(request.getParameter("provider"));
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     Date expirationDate = null;
     try {
@@ -74,7 +95,7 @@ public class AddProduct extends HttpServlet {
     Date dateImport = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     ProductService.getInstance()
         .addNewProduct(productName, description, price, weightQuantity, weightDefault, dateImport,
-            expirationDate, imgProduct, admin.getId());
+            expirationDate, imgProduct, admin.getId(),provider);
     response.sendRedirect(request.getContextPath() + "/add-new-product");
   }
 }

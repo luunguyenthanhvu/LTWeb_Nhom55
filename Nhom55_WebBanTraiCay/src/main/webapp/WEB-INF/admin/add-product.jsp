@@ -151,7 +151,6 @@
                 <form id="FormThemSanPham" action="add-new-product" method="post" enctype="multipart/form-data">
                     <table style="border-collapse:collapse;
                 border: none; ">
-
                         <tr>
                             <td><label for="ten_sp">Tên sản phẩm <span style="color: red">*</span></label></td>
                             <td><input name="ten_san_pham" style="width: 300px" id="ten_sp" type="text"></td>
@@ -160,7 +159,7 @@
 
                         <tr>
                             <td><label for="mota_sp">Mô tả sản phẩm <span style="color: red">*</span></label></td>
-                            <td><textarea cols="44" rows="10" id="mota_sp" name="mo_ta_san_pham"></textarea></td>
+                            <td><textarea cols="44" rows="7" id="mota_sp" name="mo_ta_san_pham"></textarea></td>
 
                         </tr>
                         <td><br></td>
@@ -182,6 +181,19 @@
                                     style="color: red">*</span></label></td>
                             <td><input style="width: 300px" name="so_kg_mac_dinh" id="kgMacDinh_sp" type="text"></td>
 
+                        </tr>
+                        <td><br></td>
+                        <tr>
+                            <td><label for="kgMacDinh_sp">Nhà cung cấp <span
+                                    style="color: red">*</span></label></td>
+                            <td>
+                                <select style="width: 300px" name="provider" id="provider_product">
+                                    <option value="" disabled selected>Vui lòng chọn nhà cung cấp</option>
+                                        <c:forEach items="${providerList}" var="provider">
+                                            <option value="${provider.getId()}">${provider.getProviderName()}</option>
+                                            </c:forEach>
+                                </select>
+                            </td>
                         </tr>
                         <td><br></td>
 
@@ -246,11 +258,24 @@
   });
   var myVar;
   function myFunction() {
-    myVar = setTimeout(showPage, 50);
+    myVar = setTimeout(showPage, 5);
   }
   function showPage() {
     document.getElementById("loader").style.display = "none";
     document.getElementById("myDiv").style.display = "block";
+  }
+
+  // validate for input
+  var tenSP = document.getElementById("ten_sp");
+  var moTaSP = document.getElementById("mota_sp");
+  var giaTienSP = document.getElementById("giatien_sp");
+  var khoiLuongSP = document.getElementById("kl_sp");
+  var kgMacDinhSP = document.getElementById("kgMacDinh_sp");
+  var nhaCC = document.getElementById("provider_product");
+  var ngayHetHan = document.getElementById("expired_day");
+  var upfileAnh = document.getElementById("upfileAnh");
+  function validateTenSP() {
+    var text = tenSP.value;
   }
 </script>
 </body>

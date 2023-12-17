@@ -184,7 +184,7 @@ public class ProductDaoImpl implements ProductDao {
   @Override
   public void addNewProduct(String productName, String description, double price,
       double weightQuantity, double weightDefault, Date dateImport, Date expirationDate,
-      String imgProduct, int adminId) {
+      String imgProduct, int adminId, int provider) {
     Products products = JDBIConnector.get().withHandle(h -> {
       return h.createQuery("SELECT * FROM products WHERE nameOfProduct = :name")
           .bind("name", productName)
@@ -210,10 +210,9 @@ public class ProductDaoImpl implements ProductDao {
             .bind("expriredDay", expirationDate)
             .bind("img", imgProduct)
             .bind("adminCreate", adminId)
-            .bind("provider", 1)
+            .bind("provider", provider)
             .execute();
       });
-
     }
   }
 }

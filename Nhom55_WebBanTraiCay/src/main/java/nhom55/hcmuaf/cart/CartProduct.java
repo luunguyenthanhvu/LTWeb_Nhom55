@@ -42,12 +42,18 @@ public class CartProduct {
   }
 
   public void increQuantity(int quantity) {
-    this.quantity += quantity;
-    this.price += products.getPrice() * quantity;
+    if(quantity < products.getWeight()) {
+      this.quantity += quantity;
+      this.price += products.getPrice() * quantity;
+    } else {
+      return;
+    }
   }
   public void decreQuantity(int quantity) {
-    this.quantity -= quantity;
-    this.price -= products.getPrice() * quantity;
+    if(this.quantity > 1) {
+      this.quantity -= quantity;
+      this.price -= products.getPrice() * quantity;
+    }
   }
 
   @Override

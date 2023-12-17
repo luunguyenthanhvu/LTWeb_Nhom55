@@ -14,7 +14,7 @@ public class RemoveCartController extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     HttpSession session = request.getSession();
-    String url = (String) session.getAttribute("previousURL");
+
     int id = Integer.parseInt(request.getParameter("id"));
 
     Cart cart = (Cart) request.getSession().getAttribute("cart");
@@ -22,7 +22,7 @@ public class RemoveCartController extends HttpServlet {
 
     // update cart
     MyUtils.storeCart(session, cart);
-    response.sendRedirect(url);
+    response.sendRedirect(request.getContextPath() + "/cart");
   }
 
   @Override

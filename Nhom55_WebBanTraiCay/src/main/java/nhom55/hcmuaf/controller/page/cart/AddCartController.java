@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.beans.Products;
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.cart.Cart;
 import nhom55.hcmuaf.services.ProductService;
 import nhom55.hcmuaf.util.MyUtils;
@@ -16,27 +17,34 @@ public class AddCartController extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     HttpSession session = request.getSession();
-    String url = (String) session.getAttribute("previousURL");
-    int id = Integer.parseInt(request.getParameter("id"));
-    String quantityParameter = request.getParameter("quantity");
-    int quantity = 1;
+    Users users = MyUtils.getLoginedUser(session);
+    // check if user doesn't login
+    if (users == null) {
+      response.sendRedirect("login");
+    } else {
+      // to redirect to the previous page
+      String url = (String) session.getAttribute("previousURL");
+      int id = Integer.parseInt(request.getParameter("id"));
+      String quantityParameter = request.getParameter("quantity");
 
-    if (quantityParameter != null) {
-      try {
-        quantity = Integer.parseInt(quantityParameter);
-      } catch (NumberFormatException e) {
-        e.printStackTrace();
+      int quantity = 1;
+
+      if (quantityParameter != null) {
+        try {
+          quantity = Integer.parseInt(quantityParameter);
+        } catch (NumberFormatException e) {
+          e.printStackTrace();
+        }
       }
+      Products product = ProductService.getInstance().getById(id);
+      Cart cart = (Cart) request.getSession().getAttribute("cart");
+
+      cart.add(id, quantity);
+
+      // update cart
+      MyUtils.storeCart(session, cart);
+      response.sendRedirect(url);
     }
-    Products product = ProductService.getInstance().getById(id);
-    Cart cart = (Cart) request.getSession().getAttribute("cart");
-
-    cart.add(id,quantity);
-
-    // update cart
-    MyUtils.storeCart(session, cart);
-    response.sendRedirect(url);
-
   }
 
   @Override

@@ -63,6 +63,10 @@ public class Users implements Serializable {
     this.status = status;
   }
 
+  public Users(int id, String password) {
+    this.id = id;
+    this.password = password;
+  }
   public Users() {
   }
 
@@ -160,5 +164,23 @@ public class Users implements Serializable {
 
   public void setRole(int role) {
     this.role = role;
+  }
+
+  @Override
+  public String toString() {
+    return "Users{" +
+            "id=" + id +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", hash='" + hash + '\'' +
+            ", email='" + email + '\'' +
+            ", address='" + address + '\'' +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", status=" + status +
+            ", img='" + img + '\'' +
+            ", dateOfBirth=" + dateOfBirth +
+            ", sexual='" + sexual + '\'' +
+            ", role=" + role +
+            '}';
   }
 }

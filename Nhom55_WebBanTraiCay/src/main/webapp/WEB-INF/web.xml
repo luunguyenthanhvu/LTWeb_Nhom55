@@ -22,5 +22,6 @@
     <filter-name>Compress</filter-name>
     <url-pattern>*.html</url-pattern>
   </filter-mapping>
+
 </web-app>
 

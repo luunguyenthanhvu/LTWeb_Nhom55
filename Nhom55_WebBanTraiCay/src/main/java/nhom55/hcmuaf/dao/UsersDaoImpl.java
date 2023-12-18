@@ -3,6 +3,7 @@ package nhom55.hcmuaf.dao;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -119,4 +120,92 @@ public class UsersDaoImpl implements UsersDao{
             return "SUCCESS";
         });
     }
+
+    /**
+     * show profile
+     * @return  username, email, address, phoneNumber, dateOfBirth, img
+     */
+    @Override
+    public Users getUser(int userId) {
+        return JDBIConnector.get().withHandle(handle ->
+             handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM users where id = :id")
+                     .bind("id", userId)
+                     .mapToBean(Users.class)
+                     .findOne()
+                     .orElse(null)
+        );
+    }
+
+    /**
+     * update profile: change one or more than
+     * @return username, email, address, phoneNumber, datOfBirth, img
+     */
+    @Override
+    public Users updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth) {
+        return JDBIConnector.get().withHandle(handle -> {
+            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth WHERE id = :id")
+                    .bind("id", userId)
+                    .bind("username", newUserName)
+                    .bind("email", newEmail)
+                    .bind("address", newAddress)
+                    .bind("phoneNumber", newPhoneNumber)
+                    .bind("dateOfBirth", newDateOfBirth.atStartOfDay())
+                    .execute();
+
+            return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")
+                    .bind("id", userId)
+                    .mapToBean(Users.class)
+                    .findOne()
+                    .orElse(null) : null;
+        });
+    }
+
+    /**
+     * check user if exit
+     * @return username, email, address, phoneNumber, datOfBirth, img
+     */
+    @Override
+    public Users checkUser(int userId, String password) {
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users where id = :id AND password = :password")
+                        .bind("id", userId)
+                        .bind("password", password)
+                        .mapToBean(Users.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+
+
+    /**
+     * update new password for user in user-profile
+     * @return  id, password
+     */
+    public String updatePassWordUser(int id, String password) {
+        // check if exist
+        Users users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT password FROM Users WHERE id = :id")
+                        .bind("id", id)
+                        .bind ("password", password)
+                        .mapToBean(Users.class)
+                        .findFirst()
+                        .orElse(null)
+        );
+
+        if(users==null) {
+            return "FAIL";
+        }
+        int rowsUpdated = JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE Users SET password = :password WHERE id = :id")
+                        .bind("password", password)
+                        .bind("id", id)
+                        .execute()
+        );
+        return (rowsUpdated > 0) ? "SUCCESS" : "FAIL";
+    }
+
+
+
+
+
 }

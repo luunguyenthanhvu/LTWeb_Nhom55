@@ -1,9 +1,12 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.beans.Provider;
-import nhom55.hcmuaf.dao.ProviderDAO;
-import nhom55.hcmuaf.services.ProductService;
+
+import nhom55.hcmuaf.beans.Providers;
+
+import nhom55.hcmuaf.dao.ProviderDao;
+import nhom55.hcmuaf.dao.ProviderDaoImpl;
+
 import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
@@ -26,8 +29,8 @@ public class UpdateProduct extends HttpServlet {
                 break;
             }
         }
-        ProviderDAO dao = new ProviderDAO();
-        List<Provider> listProvider = dao.getProvider();
+        ProviderDao dao = new ProviderDaoImpl();
+        List<Providers> listProvider = dao.getAllProvider();
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/update-product.jsp");
         request.setAttribute("product",products);

@@ -104,6 +104,7 @@ public class ProductDaoImpl implements ProductDao {
     return result;
   }
 
+
   @Override
   public List<Products> searchFilter(String sortBy, String order, String search, int index,
       int sizePage) {
@@ -185,6 +186,7 @@ public class ProductDaoImpl implements ProductDao {
   public void addNewProduct(String productName, String description, double price,
       double weightQuantity, double weightDefault, Date dateImport, Date expirationDate,
       String imgProduct, int adminId, int provider) {
+
     Products products = JDBIConnector.get().withHandle(h -> {
       return h.createQuery("SELECT * FROM products WHERE nameOfProduct = :name")
           .bind("name", productName)
@@ -215,4 +217,94 @@ public class ProductDaoImpl implements ProductDao {
       });
     }
   }
+//   Phần phục vụ cho quản lý sản phẩm của admin
+
+  public void editProductNoImage(int idProduct, String name, String des, double giaTien, double khoiLuong, double soKgMacDinh,Date ngayNhapKho, Date ngayHetHan, int idAdmin, int idnhaCungCap) {
+    JDBIConnector.get().withHandle(h ->
+            h.createUpdate("UPDATE products SET nameOfProduct = :name, description = :des, price = :giaTien, " +
+                            "weight = :khoiLuong, weightDefault = :soKgMacDinh,dateOfImporting =:ngayNhapKho, expriredDay = :ngayHetHan, adminCreate = :idAdmin, provider = :idnhaCungCap " +
+                            "WHERE id = :idProduct")
+                    .bind("name", name)
+                    .bind("des", des)
+                    .bind("giaTien", giaTien)
+                    .bind("khoiLuong", khoiLuong)
+                    .bind("soKgMacDinh", soKgMacDinh)
+                    .bind("ngayNhapKho",ngayNhapKho)
+                    .bind("ngayHetHan", ngayHetHan)
+                    .bind("idAdmin", idAdmin)
+                    .bind("idProduct", idProduct)
+                    .bind("idnhaCungCap",idnhaCungCap)
+                    .execute()
+    );
+
+  }
+  public void editProductHaveImage(int idProduct, String name, String des, double giaTien, double khoiLuong, double soKgMacDinh,Date ngayNhapKho, Date ngayHetHan,String tenAnh, int idAdmin, int idnhaCungCap) {
+    JDBIConnector.get().withHandle(h ->
+            h.createUpdate("UPDATE products SET nameOfProduct = :name, description = :des, price = :giaTien, " +
+                            "weight = :khoiLuong, weightDefault = :soKgMacDinh,dateOfImporting =:ngayNhapKho, expriredDay = :ngayHetHan,img =:tenAnh, adminCreate = :idAdmin, provider = :idnhaCungCap " +
+                            "WHERE id = :idProduct")
+                    .bind("name", name)
+                    .bind("des", des)
+                    .bind("giaTien", giaTien)
+                    .bind("khoiLuong", khoiLuong)
+                    .bind("soKgMacDinh", soKgMacDinh)
+                    .bind("ngayNhapKho",ngayNhapKho)
+                    .bind("ngayHetHan", ngayHetHan)
+                    .bind("tenAnh",tenAnh)
+                    .bind("idAdmin", idAdmin)
+                    .bind("idProduct", idProduct)
+                    .bind("idnhaCungCap",idnhaCungCap)
+                    .execute()
+    );
+
+  }
+
+
+  public void deleteProduct(int idProduct) {
+    JDBIConnector.get().withHandle(h ->
+            h.createUpdate("DELETE FROM products WHERE id = :idProduct")
+                    .bind("idProduct",idProduct).execute()
+    );
+  }
+
+  public List<Products> printExpiredProduct() {
+    return JDBIConnector.get().withHandle(h ->
+            h.createQuery("SELECT * FROM Products where expriredDay <= CURDATE()")
+                    .mapToBean(Products.class)
+                    .stream()
+                    .collect(Collectors.toList())
+    );
+  }
+  public List<Products> searchExpiredProduct(String search, int index, int sizePage) {
+    List<Products> result = JDBIConnector.get().withHandle(handle -> {
+      handle.begin();
+      try {
+        int startIndex = (index - 1) * sizePage + 1;
+        int endIndex = index * sizePage;
+
+        String sql = "WITH testThu AS (" +
+                "SELECT ROW_NUMBER() OVER (ORDER BY dateOfImporting DESC) AS r, id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider " +
+                "FROM products WHERE nameOfProduct LIKE ? AND expriredDay <= CURDATE()" +
+                ") " +
+                "SELECT * FROM testThu WHERE r BETWEEN ? AND ?";
+
+        List<Products> resultList = handle.createQuery(sql)
+                .bind(0, "%" + search + "%")
+                .bind(1, startIndex)
+                .bind(2, endIndex)
+                .mapToBean(Products.class)
+                .list();
+
+        handle.commit();
+        return resultList;
+      } catch (Exception e) {
+        handle.rollback();
+        throw e;
+      }
+    });
+    return result;
+  }
+
+
+
 }

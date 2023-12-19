@@ -259,7 +259,7 @@
                                         <a href="" class="img-prod"><img
                                                 style="width: 205px; height: 164px; object-fit: cover"
                                                 class="img-fluid"
-                                                src="static/images/${product.getImg()}"
+                                                src="${product.getImg()}"
                                                 alt="Colorlib Template"></a>
                                         <div class="text py-3 pb-4 px-3 text-center">
                                             <h3><a href="">${product.getNameOfProduct()}</a></h3>

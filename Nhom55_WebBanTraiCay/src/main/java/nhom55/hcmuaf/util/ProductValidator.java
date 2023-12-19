@@ -107,7 +107,7 @@ public class ProductValidator {
     }
 
     // Adjust the regular expression to match your requirements
-    if (!description.matches("^['\\p{L}\\d\\s]+$")) {
+    if (!description.matches("^[\\s\\S]*$")) {
       return "Mô tả sản phẩm chỉ chứa chữ cái, chữ số.";
     }
 

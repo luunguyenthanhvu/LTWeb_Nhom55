@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
+  <%@ page isELIgnored="false" %>
+  <meta charset="UTF-8">
   <title> Drop Down Sidebar Menu | CodingLab </title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+
 
   <!-- Boxiocns CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="css/add-product.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/add-product.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -37,7 +42,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tài khoản</a></li>
-          <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
+          <li><a href="admin-profile">Thông tin tài khoản</a></li>
           <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
         </ul>
       </li>
@@ -53,10 +58,10 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
-          <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+          <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-          <li><a href="add-product.html">Thêm sản phẩm</a></li>
-          <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+          <li><a href="add-new-product">Thêm sản phẩm</a></li>
+          <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
         </ul>
       </li>
       <li>
@@ -126,98 +131,8 @@
       </li>
     </ul>
   </div>
-  <section class="home-section">
-    <div class="home-content">
-      <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-        <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-    <span class="logo_name">Quản trị viên</span>
-  </div>
-  <ul class="nav-links">
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class='bx bx-book-alt' ></i>
-          <span class="link_name">Tài khoản</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow' ></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Tài khoản</a></li>
-        <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-        <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class='bx bx-collection' ></i>
-          <span class="link_name">Sản phẩm</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow' ></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Chức năng</a></li>
-        <li><a href="product-list.html">Danh sách sản phẩm</a></li>
 
-        <li><a href="add-product.html">Thêm sản phẩm</a></li>
-        <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class='bx bx-pie-chart-alt-2' ></i>
-          <span class="link_name">Đơn hàng</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow' ></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Đơn hàng</a></li>
-        <li><a href="order-list.html">Quản lý đơn hàng</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class="fa-solid fa-chart-simple"></i>
-          <span class="link_name">Doanh thu</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow' ></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Doanh thu</a></li>
-        <li><a href="manage-sale.html"> Doanh số sản phẩm</a></li>
-        <li><a href="see-each-product-bought-in-a-month.html">Chi tiết</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="iocn-link">
-        <a href="#">
-          <i class="fa-solid fa-users-gear"></i>
-          <span class="link_name">Người dùng</span>
-        </a>
-        <i class='bx bxs-chevron-down arrow' ></i>
-      </div>
-      <ul class="sub-menu">
-        <li><a class="link_name" href="#">Người dùng</a></li>
-        <li><a href="user-list.html">Danh sách người dùng</a></li>
-      </ul>
-    </li>
-    <li>
-      <div class="profile-details">
-        <div class="profile-content">
-          <img src="../../static/images/accountPicture.png" alt="profileImg">
-        </div>
-        <div class="name-job">
-          <div class="profile_name">VuLuu</div>
-          <div class="job">Quản trị viên</div>
-        </div>
-        <i class='bx bx-log-out' ></i>
-      </div>
-    </li>
-  </ul>
-</div>
-<section class="home-section">
+<section style="min-height: 1000px" class="home-section">
   <div class="home-content">
     <i class='bx bx-menu'></i>
     <span class="text">Cập nhật sản phẩm</span>
@@ -225,53 +140,111 @@
   <div class="container">
     <!--       code thêm ở đây-->
     <div class="form-sp">
-      <form id="FormThemSanPham" action="" method="post">
+      <form id="FormThemSanPham" action="UpdateProductController" method="post" enctype="multipart/form-data">
         <table style="border-collapse:collapse;
                 border: none; ">
 
           <tr>
-            <td><label for="ten_sp">Tên sản phẩm <span style="color: red">*</span></label></td>
-            <td><input name="ten_san_pham" style="width: 300px" id="ten_sp" type="text"></td>
+            <td><label for="id_sp">Id <span style="color: red">*</span></label></td>
+            <td><input name="id_san_pham" style="width: 300px" id="id_sp" type="text" value="${product.getId()}" disabled></td>
+            <td><input type="hidden" name="id_san_pham" value="${product.getId()}"></td>
           </tr>
           <td><br></td>
+
+          <tr>
+            <td><label for="ten_sp">Tên sản phẩm <span style="color: red">*</span></label></td>
+            <td><input name="ten_san_pham" style="width: 300px" id="ten_sp" type="text"  value="${product.getNameOfProduct()}"></td>
+          </tr>
+          <td><br></td>
+          <td><p class="error" id="ten_sp_error"></td>
+          <c:if test="${not empty ten_sp_error}" >
+            <td><p style="color: red">${ten_sp_error}</p></td>
+          </c:if>
 
           <tr>
             <td><label for="mota_sp">Mô tả sản phẩm <span style="color: red">*</span></label></td>
-            <td><textarea cols="44" rows="10" id="mota_sp" name="mo_ta_san_pham"></textarea></td>
+            <td><textarea cols="44" rows="10" id="mota_sp" name="mo_ta_san_pham"  >${product.getDescription()}</textarea></td>
 
           </tr>
           <td><br></td>
-
+          <td><p class="error" id="mota_sp_error"></td>
+          <c:if test="${not empty mo_ta_error}" >
+            <td><p style="color: red">${mo_ta_error}</p></td>
+          </c:if>
           <tr>
             <td><label for="giatien_sp">Giá tiền <span style="color: red">*</span></label></td>
-            <td><input style="width: 300px" name="gia_tien_san_pham" id="giatien_sp" type="text"></td>
+            <td><input style="width: 300px" name="gia_tien_san_pham" id="giatien_sp" type="text" value="${product.getPrice()}"></td>
 
           </tr>
           <td><br></td>
+          <td><p class="error" id="giatien_sp_error"></td>
+          <c:if test="${not empty gia_tien_error}" >
+            <td><p style="color: red">${gia_tien_error}</p></td>
+          </c:if>
           <tr>
             <td><label for="kl_sp">Khối lượng sản phẩm <span style="color: red">*</span></label></td>
-            <td><input style="width: 300px" name="khoi_luong_san_pham" id="kl_sp" type="text"></td>
+            <td><input style="width: 300px" name="khoi_luong_san_pham" id="kl_sp" type="text" value="${product.getWeight()}"></td>
 
           </tr>
           <td><br></td>
+          <td><p class="error" id="kl_sp_error"></td>
+          <c:if test="${not empty khoi_luong_errorr}" >
+            <td><p style="color: red">${khoi_luong_error}</p></td>
+          </c:if>
           <tr>
             <td><label for="kgMacDinh_sp">Số kg mặc định của sản phẩm <span
                     style="color: red">*</span></label></td>
-            <td><input style="width: 300px" name="so_kg_mac_dinh" id="kgMacDinh_sp" type="text"></td>
+            <td><input style="width: 300px" name="so_kg_mac_dinh" id="kgMacDinh_sp" type="text"  value="${product.getWeightDefault()}"></td>
 
           </tr>
           <td><br></td>
+          <td><p class="error" id="kgMacDinh_sp_error"></td>
+          <c:if test="${not empty khoi_luong_mac_dinh_error}" >
+            <td><p style="color: red">${khoi_luong_mac_dinh_error}</p></td>
+          </c:if>
 
+          <tr>
+            <td><label for="expired_day">Ngày nhập hàng <span style="color: red">*</span></label></td>
+            <td><input style="width: 300px" name="ngay_nhap_hang" id="imported_day" type="date"  value="${product.getDateOfImporting()}"></td>
+
+          </tr>
+          <td><br></td>
+          <td><p class="error" id="imported_day_error"></td>
+          <c:if test="${not empty ngay_nhap_hang_error}" >
+            <td><p style="color: red">${ngay_nhap_hang_error}</p></td>
+          </c:if>
           <tr>
             <td><label for="expired_day">Ngày hết hạn <span style="color: red">*</span></label></td>
-            <td><input style="width: 300px" name="ngay_het_han" id="expired_day" type="date"></td>
+            <td><input style="width: 300px" name="ngay_het_han" id="expired_day" type="date"  value="${product.getExpriredDay()}"></td>
 
           </tr>
           <td><br></td>
+          <td><p class="error" id="expired_day_error"></td>
+          <c:if test="${not empty ngay_het_han_error}" >
+            <td><p style="color: red">${ngay_het_han_error}</p></td>
+          </c:if>
+
+          <tr>
+            <td><label for="upfileAnh">Nhà cung cấp <span style="color: red">*</span></label></td>
+            <td>
+              <select style="width: 300px" id="providerSelect" name="selectedProviderID">
+                <c:forEach items="${listProvider}" var="provider">
+                  <option value="${provider.getId()}">${provider.getProviderName()}</option>
+                </c:forEach>
+              </select>
+            </td>
+          </tr>
+          <td><br></td>
+          <td><p class="error" id="provider_product_error"></td>
+          <c:if test="${not empty nha_cung_cap_error}" >
+            <td><p style="color: red">${nha_cung_cap_error}</p></td>
+          </c:if>
           <tr>
             <td><label for="upfileAnh">Up file ảnh sản phẩm <span style="color: red">*</span></label></td>
-            <td><input style="width: 300px" name="upload_file_san_pham" id="upfileAnh" type="file"></td>
+            <td><input style="width: 300px" name="file" id="upfileAnh" type="file"></td>
           </tr>
+
+
           <tr>
             <td></td>
             <td>
@@ -280,6 +253,7 @@
               </div>
             </td>
           </tr>
+
         </table>
         <button type="submit">
           Lưu thông tin
@@ -330,6 +304,194 @@
     document.getElementById("loader").style.display = "none";
     document.getElementById("myDiv").style.display = "block";
   }
+
+  // validate for input
+  var tenSP = document.getElementById("ten_sp");
+  var moTaSP = document.getElementById("mota_sp");
+  var giaTienSP = document.getElementById("giatien_sp");
+  var khoiLuongSP = document.getElementById("kl_sp");
+  var kgMacDinhSP = document.getElementById("kgMacDinh_sp");
+  var nhaCC = document.getElementById("provider_product");
+  var ngayNhapHang = document.getElementById("imported_day");
+  var ngayHetHan = document.getElementById("expired_day");
+  var upfileAnh = document.getElementById("upfileAnh");
+
+  function validateTenSP() {
+    var text = tenSP.value;
+    var kyTuHopLe = /^[\p{L}\s']+$/u;
+    var error = document.getElementById("ten_sp_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập vào tên sản phầm";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Tên trái cây chỉ chứa ký tự chữ cái, khoảng trắng.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateNhaCC() {
+    var text = nhaCC.value;
+    var error = document.getElementById("provider_product_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng chọn nhà cung cấp";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateNgayHetHan() {
+    var inputNgayHetHan = document.getElementById("expired_day");
+    var ngayHetHan = new Date(inputNgayHetHan.value);
+    var now = new Date();
+
+    var error = document.getElementById("expired_day_error");
+
+    // Kiểm tra xem ngày hết hạn đã chọn hay chưa
+    if (isNaN(ngayHetHan.getTime())) {
+      error.textContent = "Vui lòng chọn ngày hết hạn.";
+      error.style.display = "block";
+      return false;
+    }
+
+    // Kiểm tra xem ngày hết hạn có sau ngày hiện tại không
+    if (ngayHetHan <= now) {
+      error.textContent = "Ngày hết hạn phải sau ngày hiện tại.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+  function validateNgayNhapHang() {
+    var inputNgayNhapHang = document.getElementById("imported_day");
+    var ngayNhapHang = new Date(inputNgayNhapHang.value);
+    var now = new Date();
+
+    var error = document.getElementById("imported_day_error");
+
+    // Kiểm tra xem ngày nhập hàng đã chọn hay chưa
+    if (isNaN(ngayNhapHang.getTime())) {
+      error.textContent = "Vui lòng chọn ngày nhập hàng.";
+      error.style.display = "block";
+      return false;
+    }
+    if (ngayNhapHang > now) {
+      error.textContent = "Ngày nhập hàng phải trước ngày hiện tại.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+
+
+  function validateKhoiLuongSP() {
+    var text = khoiLuongSP.value;
+    var error = document.getElementById("kl_sp_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập vào khối lượng nhập hàng.";
+      error.style.display = "block";
+      return false;
+    } else if (isNaN(text) || text <= 0) {
+      error.textContent = "Khối lượng nhập hàng chỉ chứa chữ số, không âm.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateKgMacDinhSP() {
+    var text = kgMacDinhSP.value;
+    var error = document.getElementById("kgMacDinh_sp_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập vào khối lượng mặc định.";
+      error.style.display = "block";
+      return false;
+    } else if (isNaN(text) || text <= 0) {
+      error.textContent = "Khối lượng mặc định chỉ chứa chữ số, không âm.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateGiaTienSP() {
+    var text = giaTienSP.value;
+    var error = document.getElementById("giatien_sp_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập vào giá tiền sản phầm.";
+      error.style.display = "block";
+      return false;
+    } else if (isNaN(text) || text <= 0) {
+      error.textContent = "Giá tiền sản phẩm chỉ chứa chữ số, không âm.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateMoTaSP() {
+    var text = moTaSP.value;
+    var kyTuHopLe = '^[\s\S]*$';
+    var error = document.getElementById("mota_sp_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập vào mô tả sản phầm.";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Mô tả sản phẩm chỉ chứa chữ cái, chữ số.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  // add event to check input
+  tenSP.addEventListener("blur", validateTenSP);
+  moTaSP.addEventListener("blur", validateMoTaSP);
+  giaTienSP.addEventListener("blur", validateGiaTienSP);
+  khoiLuongSP.addEventListener("blur", validateKhoiLuongSP);
+  kgMacDinhSP.addEventListener("blur", validateKgMacDinhSP);
+  nhaCC.addEventListener("blur", validateNhaCC);
+  ngayNhapHang.addEventListener("blur",validateNgayNhapHang)
+  ngayHetHan.addEventListener("blur", validateNgayHetHan);
+
+
+  // stop user send post to server
+  var submitBtn = document.getElementById("submit_product_btn");
+  submitBtn.addEventListener("click", function (event) {
+    var isTenSPValid = validateTenSP();
+    var isMoTaSPValid = validateMoTaSP();
+    var isGiaTienValid = validateGiaTienSP();
+    var isKhoiLuongSPValid = validateKhoiLuongSP();
+    var isKgMacDinhSPValid = validateKgMacDinhSP();
+    var isNhaCCValid = validateNhaCC();
+    var isNgayHetHanValid = validateNgayHetHan();
+    var isFileValid = validateFileUpload();
+    if (!isTenSPValid || !isMoTaSPValid || !isGiaTienValid || !isKhoiLuongSPValid
+            || !isKgMacDinhSPValid || !isNhaCCValid || !isNgayHetHanValid || !isFileValid) {
+      event.preventDefault();
+    }
+  })
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

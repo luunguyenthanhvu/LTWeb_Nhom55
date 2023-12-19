@@ -1,7 +1,7 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.dao.ProductDAO;
+import nhom55.hcmuaf.dao.ProductDaoImpl;
 import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
@@ -25,7 +25,7 @@ public class ManageExpiredProduct extends HttpServlet {
         int quantityDefault =20;
         int totalRow = ShopService.getInstance().countTotalRowProductInDatabase();
         int haveMaxPage = (totalRow/quantityDefault) +1;
-        List<Products> listProduct = new ProductDAO().printExpiredProduct();
+        List<Products> listProduct = new ProductDaoImpl().printExpiredProduct();
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/time-expired-product.jsp");
         request.setAttribute("listProduct",listProduct);

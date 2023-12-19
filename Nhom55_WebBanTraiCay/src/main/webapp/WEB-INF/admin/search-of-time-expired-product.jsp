@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
-<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html lang="en" dir="ltr">
 <head>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="css/admin-profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -14,7 +17,6 @@
 <body onload="myFunction()" style="margin:0;">
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
-
     <div class="sidebar close">
         <div class="logo-details">
             <i>
@@ -37,7 +39,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
                     <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
                 </ul>
             </li>
@@ -53,10 +55,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
-                    <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>
@@ -130,62 +132,88 @@
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-        <span class="text">Thông tin quản trị viên</span>
-    </div>
-
-    <div class="content-container">
-
-        <!--code thêm ở đây-->
-        <div class="main-content">
-            <div class="admin-profile">
-                <div class="table-info">
-                    <table>
-                        <tr>
-                            <td>Tên người dùng</td>
-                            <td>Vũ Lưu</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>luunguuenthanhvu123@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>Ngày sinh</td>
-                            <td>01/01/2003</td>
-                        </tr>
-                        <tr>
-                            <td>Giới Tính</td>
-                            <td>Nam</td>
-                        </tr>
-                        <tr>
-                            <td>Số điện thoại</td>
-                            <td>0123456789</td>
-                        </tr>
-                        <tr>
-                            <td>Địa chỉ</td>
-                            <td>HCM, Quận 9</td>
-                        </tr>
-                    </table>
+            <span class="text">Danh sách sản phẩm hết hạn sử dụng</span>
+        </div>
+        <div class="find-product">
+            <form action="ManageExpiredProductController?index=1" method="post">
+                <div class="fill-product">
+                    <input id="find-product" type="text" placeholder="Tìm kiếm tên sản phẩm" name="txtSearch">
+                    <button type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                    </button>
                 </div>
-                <div class="img-admin">
-                    <img src="../images/accountPicture.png" alt="">
-                </div>
+            </form>
+        </div>
+        <div class="container" style="margin: 30px 30px 0 30px">
+            <div class="table-sanpham">
+                <table class="table-sanpham">
+                    <tr>
+                        <th style="width: 80px;">ID</th>
+                        <th>Tên sản phẩm</th>
+                        <th style="width: 100px;">Hình ảnh</th>
+                        <th style="width: 100px;">Giá tiền</th>
+                        <th style="width: 150px;">Ngày nhập</th>
+                        <th style="width: 150px;">Hạn sử dụng</th>
+                        <th style="width: 50px;"></th>
+                    </tr>
+                    <c:forEach items="${listSearch}" var="product">
+                        <tr>
+                            <td>${product.getId()}</td>
+                            <td>${product.getNameOfProduct()}</td>
+                            <td class="img-product">
+                                <img src="${product.getImg()}">
+                            </td>
+                            <td>${product.getPrice()}</td>
+                            <td>${product.getDateOfImporting()}</td>
+                            <td>${product.getExpriredDay()}</td>
+                            <td class="function-product">
+                                <a href="DeleteExpiredProduct?id=${product.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+
+                </table>
             </div>
-            <div class="edit-admin">
-                <a href="edit-admin-profile.html">
-                    Cập nhật tài khoản
-                    <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 512 512">
-                        <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152V424c0 48.6 39.4 88 88 88H360c48.6 0 88-39.4 88-88V312c0-13.3-10.7-24-24-24s-24 10.7-24 24V424c0 22.1-17.9 40-40 40H88c-22.1 0-40-17.9-40-40V152c0-22.1 17.9-40 40-40H200c13.3 0 24-10.7 24-24s-10.7-24-24-24H88z"/></svg>
-                </a>
+            <div class="pagination">
+                <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                <c:if test="${pageId== 1 && indexEnd ==1}">
+                    <a >&laquo;</a>
+                    <c:forEach begin="1" end="${indexEnd}" var= "i">
+                        <a id="${i}" href="ManageExpiredProductController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                    </c:forEach>
+                    <a >&raquo;</a>
+                </c:if>
+                <c:if test="${ indexEnd !=1}">
+                    <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                    <c:if test="${pageId ==1}" >
+                        <a >&laquo;</a>
+                        <c:forEach begin="1" end="${indexEnd}" var= "i">
+                            <a id="${i}" href="ManageExpiredProductController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                        </c:forEach>
+                        <a href="ManageExpiredProductController?index=${pageId+1}&txtSearch=${txtSearch}">&raquo;</a>
+                    </c:if>
+                    <%--  Còn trường hợp này nút nào cũng xài được--%>
+                    <c:if test="${pageId >1 && pageId<indexEnd}" >
+                        <a href="ManageExpiredProductController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
+                        <c:forEach begin="1" end="${indexEnd}" var= "i">
+                            <a id="${i}" href="ManageExpiredProductController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                        </c:forEach>
+                        <a href="ManageExpiredProductController?index=${pageId+1}&txtSearch=${txtSearch}">&raquo;</a>
+                    </c:if>
+
+                    <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                    <c:if test="${pageId ==indexEnd}" >
+                        <a href="ManageExpiredProductController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
+                        <c:forEach begin="1" end="${indexEnd}" var= "i">
+                            <a id="${i}" href="ManageExpiredProductController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                        </c:forEach>
+                        <a >&raquo;</a>
+                    </c:if>
+                </c:if>
             </div>
         </div>
-
-    </div>
-
-
-
-</section>
+    </section>
 </div>
-
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
@@ -200,6 +228,7 @@
     sidebarBtn.addEventListener("click", ()=>{
         sidebar.classList.toggle("close");
     });
+
     var myVar;
     function myFunction() {
         myVar = setTimeout(showPage, 800);
@@ -208,6 +237,8 @@
         document.getElementById("loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }
+    //   Highlight cho nút đang được chọn ở phân trang
+    document.getElementById('${pageId}').classList.add("active")
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

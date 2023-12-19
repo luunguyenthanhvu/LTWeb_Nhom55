@@ -1,6 +1,8 @@
 package nhom55.hcmuaf.services;
 
-import nhom55.hcmuaf.dao.ProductDAO;
+
+import nhom55.hcmuaf.dao.ProductDao;
+import nhom55.hcmuaf.dao.ProductDaoImpl;
 
 public class DeleteProductServiceForAdmin {
     private static DeleteProductServiceForAdmin instance;
@@ -14,7 +16,7 @@ public class DeleteProductServiceForAdmin {
         return instance;
     }
     public void deleteProduct(int idProduct) {
-        ProductDAO dao = new ProductDAO();
+        ProductDao dao = new ProductDaoImpl();
         dao.deleteProduct(idProduct);
     }
 }

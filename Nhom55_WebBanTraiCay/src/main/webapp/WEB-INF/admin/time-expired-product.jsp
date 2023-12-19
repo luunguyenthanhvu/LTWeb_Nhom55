@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr">
 <head>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/dssp.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -36,7 +39,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
                     <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
                 </ul>
             </li>
@@ -52,10 +55,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
-                    <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>
@@ -132,18 +135,11 @@
         <span class="text">Danh sách sản phẩm hết hạn sử dụng</span>
     </div>
     <div class="find-product">
-        <form action="" method="get">
+        <form action="ManageExpiredProductController?index=1" method="post">
             <div class="fill-product">
-                <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng">
+                <input id="find-product" type="text" placeholder="Tìm kiếm tên sản phẩm" name="txtSearch">
 
-                <select class="fill-by">
-                    <option value="" disabled selected class="font_bold"><span class="font_bold">Lọc theo</span></option>
-                    <option value="service1">Giá thành</option>
-                    <option value="service2">Ngày nhập hàng</option>
-                    <option value="service3">Hạn sử dụng</option>
-                </select>
-
-                <button>
+                <button type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
                 </button>
             </div>
@@ -161,148 +157,60 @@
                     <th style="width: 150px;">Hạn sử dụng</th>
                     <th style="width: 50px;"></th>
                 </tr>
+                <c:forEach items="${listProduct}" var="product">
+                    <tr>
+                        <td>${product.getId()}</td>
+                        <td>${product.getNameOfProduct()}</td>
+                        <td class="img-product">
+                            <img src="${product.getImg()}">
+                        </td>
+                        <td>${product.getPrice()}</td>
+                        <td>${product.getDateOfImporting()}</td>
+                        <td>${product.getExpriredDay()}</td>
+                        <td class="function-product">
+                            <a href="DeleteExpiredProduct?id=${product.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
+                        </td>
+                    </tr>
+                </c:forEach>
 
-                <tr>
-                    <td>1</td>
-                    <td>Thanh Long</td>
-                    <td class="img-product">
-                        <img src="/images/traiThanhLong.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Dưa Hấu</td>
-                    <td class="img-product">
-                        <img src="/images/dua-hau-tam-boi-1.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Cam</td>
-                    <td class="img-product">
-                        <img src="/images/cam.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Thanh Long</td>
-                    <td class="img-product">
-                        <img src="/images/traiThanhLong.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Dưa Hấu</td>
-                    <td class="img-product">
-                        <img src="/images/dua-hau-tam-boi-1.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Cam</td>
-                    <td class="img-product">
-                        <img src="/images/cam.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Thanh Long</td>
-                    <td class="img-product">
-                        <img src="/images/traiThanhLong.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Dưa Hấu</td>
-                    <td class="img-product">
-                        <img src="/images/dua-hau-tam-boi-1.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Cam</td>
-                    <td class="img-product">
-                        <img src="/images/cam.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Cam</td>
-                    <td class="img-product">
-                        <img src="/images/cam.jpg">
-                    </td>
-                    <td>20.000</td>
-                    <td>20/06/2022</td>
-                    <td>30/06/2022</td>
-                    <td class="function-product">
-                        <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                    </td>
-                </tr>
             </table>
         </div>
         <div class="pagination">
-            <a href="#">&laquo;</a>
-            <a href="#" class="active">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
+            <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+            <c:if test="${pageId== 1 && haveMaxPage ==1}">
+                <a >&laquo;</a>
+                <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                    <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                </c:forEach>
+                <a >&raquo;</a>
+            </c:if>
+            <c:if test="${ haveMaxPage !=1}">
+                <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                <c:if test="${pageId ==1}" >
+                    <a >&laquo;</a>
+                    <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                    </c:forEach>
+                    <a href="manage-expired-product?pageId=${pageId+1}">&raquo;</a>
+                </c:if>
+                <%--  Còn trường hợp này nút nào cũng xài được--%>
+                <c:if test="${pageId >1 && pageId<haveMaxPage}" >
+                    <a href="manage-expired-product?pageId=${pageId-1}">&laquo;</a>
+                    <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                    </c:forEach>
+                    <a href="manage-expired-product?pageId=${pageId+1}">&raquo;</a>
+                </c:if>
+
+                <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                <c:if test="${pageId ==haveMaxPage}" >
+                    <a href="manage-expired-product?pageId=${pageId-1}">&laquo;</a>
+                    <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                    </c:forEach>
+                    <a >&raquo;</a>
+                </c:if>
+            </c:if>
         </div>
     </div>
 </section>
@@ -330,6 +238,8 @@
         document.getElementById("loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }
+    //   Highlight cho nút đang được chọn ở phân trang
+    document.getElementById('${pageId}').classList.add("active")
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

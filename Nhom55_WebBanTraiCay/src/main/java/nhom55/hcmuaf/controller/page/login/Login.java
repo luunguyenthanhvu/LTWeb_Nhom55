@@ -85,7 +85,7 @@ public class Login extends HttpServlet {
       if (result.equals("ADMIN")) {
         // redirect to admin page
         MyUtils.setUserRole(session, result);
-        response.sendRedirect(request.getContextPath() + "/adminProfile");
+        response.sendRedirect(request.getContextPath() + "/admin-profile");
       } else if (result.equals("USER")) {
         // redirect to home
         MyUtils.setUserRole(session, result);

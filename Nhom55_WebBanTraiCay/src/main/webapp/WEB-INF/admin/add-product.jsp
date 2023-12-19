@@ -469,7 +469,7 @@
 
   function validateMoTaSP() {
     var text = moTaSP.value;
-    var kyTuHopLe = /^[\p{L}\d\s']+$/u;
+    var kyTuHopLe = '^[\s\S]*$';
     var error = document.getElementById("mota_sp_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập vào mô tả sản phầm.";

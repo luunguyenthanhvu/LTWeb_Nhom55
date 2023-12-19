@@ -42,4 +42,13 @@ public class ShopService {
         return productDaoImpl.countResultSearchingProduct(txtSearch);
     }
 
+    public List<Products> getListProducts() {
+        ProductDaoImpl productDaoImpl = new ProductDaoImpl();
+        return  productDaoImpl.getListProducts();
+    }
+    public List<Products> searchExpiredProduct(String search, int index, int sizePage){
+        ProductDaoImpl productDaoImpl = new ProductDaoImpl();
+        return  productDaoImpl.searchExpiredProduct(search,index,sizePage);
+    }
+
 }

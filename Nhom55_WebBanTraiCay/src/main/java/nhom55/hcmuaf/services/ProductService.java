@@ -30,8 +30,8 @@ public class ProductService {
 
   public void addNewProduct(String productName, String description, double price,
       double weightQuantity,double weightDefault, Date dateImport, Date expirationDate,String imgProduct, int adminId, int provider) {
-     productDao.addNewProduct(productName, description,price, weightQuantity, weightDefault,expirationDate,
-        dateImport,imgProduct, adminId, provider);
+     productDao.addNewProduct(productName, description,price, weightQuantity, weightDefault,dateImport,
+             expirationDate,imgProduct, adminId, provider);
   }
 
   /**

@@ -35,4 +35,13 @@ public interface ProductDao {
   List<Products> sortByFilter(int index, int quantityDefault, String sortBy, String order);
   void addNewProduct(String productName, String description, double price,
       double weightQuantity,double weightDefault,Date dateImport, Date expirationDate,String imgProduct, int adminId, int provider);
-}
+
+//   Phần phục vụ cho quản lý sản phẩm của admin
+
+public  void editProductNoImage(int idProduct, String name, String des, double giaTien, double khoiLuong, double soKgMacDinh,Date ngayNhapKho, Date ngayHetHan, int idAdmin, int idnhaCungCap);
+public void editProductHaveImage(int idProduct, String name, String des, double giaTien, double khoiLuong, double soKgMacDinh,Date ngayNhapKho, Date ngayHetHan,String tenAnh, int idAdmin, int idnhaCungCap);
+public void deleteProduct(int idProduct);
+public List<Products> printExpiredProduct();
+
+  public List<Products> searchExpiredProduct(String search, int index, int sizePage);
+};

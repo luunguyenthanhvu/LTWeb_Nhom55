@@ -2,6 +2,7 @@ package nhom55.hcmuaf.dao;
 
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
+import nhom55.hcmuaf.util.MyUtils;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -136,6 +137,27 @@ public class UsersDaoImpl implements UsersDao{
         );
     }
 
+    public Users getUserById(int userId) {
+        return JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM users where id = :id")
+                        .bind("id", userId)
+                        .mapToBean(Users.class)
+                        .findOne()
+                        .orElse(null)
+        );
+    }
+    @Override
+    public boolean checkUser(int id, String password) {
+        Users user = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT * FROM Users WHERE id = :id AND password = :password")
+                        .bind("id", id)
+                        .bind("password", password)
+                        .mapToBean(Users.class)
+                        .findOne()
+                        .orElse(null));
+        return user != null;
+    }
+
     /**
      * update profile: change one or more than
      * @return username, email, address, phoneNumber, datOfBirth, img
@@ -149,7 +171,7 @@ public class UsersDaoImpl implements UsersDao{
                     .bind("email", newEmail)
                     .bind("address", newAddress)
                     .bind("phoneNumber", newPhoneNumber)
-                    .bind("dateOfBirth", newDateOfBirth.atStartOfDay())
+                    .bind("dateOfBirth", newDateOfBirth)
                     .execute();
 
             return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")
@@ -161,51 +183,38 @@ public class UsersDaoImpl implements UsersDao{
     }
 
     /**
-     * check user if exit
-     * @return username, email, address, phoneNumber, datOfBirth, img
-     */
-    @Override
-    public Users checkUser(int userId, String password) {
-        return JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT * FROM users where id = :id AND password = :password")
-                        .bind("id", userId)
-                        .bind("password", password)
-                        .mapToBean(Users.class)
-                        .findOne()
-                        .orElse(null)
-        );
-    }
-
-
-    /**
      * update new password for user in user-profile
      * @return  id, password
      */
     public String updatePassWordUser(int id, String password) {
-        // check if exist
-        Users users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT password FROM Users WHERE id = :id")
+        Users user = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT id,hash FROM Users WHERE id = :id")
                         .bind("id", id)
-                        .bind ("password", password)
                         .mapToBean(Users.class)
-                        .findFirst()
-                        .orElse(null)
-        );
-
-        if(users==null) {
-            return "FAIL";
+                        .findOne()
+                        .orElse(null));
+        if (user == null) {
+            return "FAIL"; // User not found
         }
         int rowsUpdated = JDBIConnector.get().withHandle(handle ->
                 handle.createUpdate("UPDATE Users SET password = :password WHERE id = :id")
                         .bind("password", password)
                         .bind("id", id)
-                        .execute()
-        );
-        return (rowsUpdated > 0) ? "SUCCESS" : "FAIL";
+                        .execute());
+        if (rowsUpdated > 0) {
+            return "SUCCESS";
+        }
+        return "FAIL";
     }
 
+    public String getHashedPassword(int id) {
+        Users user = JDBIConnector.get().withHandle(handle ->
+                handle.createQuery("SELECT hash FROM Users WHERE id = :id")
+                        .bind("id", id)
+                        .mapToBean(Users.class)
+                        .findOne()
+                        .orElse(null));
 
-
-
-
+        return (user != null) ? user.getHash() : null;
+    }
 }

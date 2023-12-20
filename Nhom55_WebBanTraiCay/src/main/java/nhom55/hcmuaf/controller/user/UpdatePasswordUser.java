@@ -1,7 +1,6 @@
 package nhom55.hcmuaf.controller.user;
 
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.dao.UsersDaoImpl;
 import nhom55.hcmuaf.services.UserService;
 import nhom55.hcmuaf.util.MyUtils;
 
@@ -20,45 +19,55 @@ public class UpdatePasswordUser extends HttpServlet {
 
         Users users = UserService.getInstance().showInfoUser(id);
         request.setAttribute("showUser", users);
-        RequestDispatcher dispatcher = this.getServletContext()
-                .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
-        dispatcher.forward(request, response);
-    }
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
+        dispatcher.forward(request, response);    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String idParameter = request.getParameter("id");
+        String oldPassword = request.getParameter("old-password");
+        String newPassword = request.getParameter("new-password");
+        String retypePassword = request.getParameter("retype-password");
+
+        if (!newPassword.equals(retypePassword)) {
+            request.setAttribute("result", "Mật khẩu mới và mật khẩu nhập lại không khớp");
+            RequestDispatcher dispatcher = this.getServletContext()
+                    .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
 
         if (idParameter != null && !idParameter.isEmpty()) {
-            try {
-                int id = Integer.parseInt(request.getParameter("id"));
-                String password = request.getParameter("password");
-                String newPassword = request.getParameter("newPassword");
+            int id = Integer.parseInt(idParameter);
 
-                Users user = UserService.getInstance().checkUser(id, password);
-//                Users users = UserService.getInstance().showInfoUser(id);
+            // Kiểm tra mật khẩu cũ
+            if (!UserService.getInstance().checkUser(id, MyUtils.encodePass(oldPassword))) {
+                request.setAttribute("result", "Mật khẩu cũ không đúng");
+                RequestDispatcher dispatcher = this.getServletContext()
+                        .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
+                dispatcher.forward(request, response);
+                return;
+            }
 
-                if (user == null) {
-                    // không tồn tại
-                    String ms = "Old password is incorrect";
-                    request.setAttribute("ms", ms);
-                    RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
-                    dispatcher.forward(request, response);
-                } else {
-                    // đúng old pass
-                    String updateUser = UserService.getInstance().updatePass(id, newPassword);
-                    MyUtils.encodePass(newPassword);
+            String result = UserService.getInstance().changePass(id, newPassword);
 
-                    request.setAttribute("showUser", updateUser);
-                    RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
-                    dispatcher.forward(request, response);
+            if (result.equals("SUCCESS")) {
+                Users updatedUser = UserService.getInstance().showInfoUser(id);
+                request.setAttribute("hashedNewPassword", updatedUser.getHash());
 
-                }
-            } catch (Exception  e) {
-                e.printStackTrace();;
+                request.setAttribute("result", "Đổi mật khẩu thành công");
+                RequestDispatcher dispatcher = this.getServletContext()
+                        .getRequestDispatcher("/WEB-INF/login/login.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                request.setAttribute("result", "Có lỗi xảy ra khi đổi mật khẩu");
+                RequestDispatcher dispatcher = this.getServletContext()
+                        .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
+                dispatcher.forward(request, response);
             }
         }
+
     }
 }

@@ -86,20 +86,20 @@
                             <span>Quản lý người dùng</span>
                         </div>
                         <ul>
-                            <li class="active">
-                                <a href="userProfile?id=${loginedUser.getId()}">
+                            <li>
+                                <a href="${pageContext.request.contextPath}/userProfile?id=${loginedUser.getId()}">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                                     Thông tin người dùng
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg>
                                     Chỉnh sửa thông tin
                                 </a>
                             </li>
                             <li>
-                                <a href="updatePasswordUser?id=${loginedUser.getId()}">
+                                <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${loginedUser.getId()}">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
                                     Đổi mật khẩu
                                 </a>
@@ -119,8 +119,8 @@
                             </li>
                         </ul>
                     </div>
-
-
+        </c:when>
+     </c:choose>
                     <div class="container-child-right">
                         <h4>Chỉnh sửa thông tin </h4>
                         <div class="line_of_account"></div>
@@ -178,10 +178,11 @@
                                     </table>
                                 </div>
                                 <div class="user-img">
-                                    <img id="previewImage" src="/images/accountPicture.png" alt="">
+                                    <img id="previewImage" src="static/images/${user.getImg()}" alt="">
                                     <div class="chose-new-img">
                                         <label for="fileInput" class="chose-new-img">
                                             <input type="file" id="fileInput" name="avatar" accept="image/*">
+                                            <span class="error-msg required" id="fileUpload-error" style="display: none;"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -202,8 +203,7 @@
                     </div>
                 </div>
                 </div>
-        </c:when>
-    </c:choose>
+
 </div>
 
 
@@ -236,75 +236,119 @@
 
 
 <script>
-    document.getElementById('old-password').addEventListener('blur', function () {
-        checkIfEmpty('old-password', 'username-error');
-    });
+    var tenUser = document.getElementById("ten_nd");
+    var emailUser = document.getElementById("email_nd");
+    var addressUser = document.getElementById("dc_nd");
+    var phoneNumberUser = document.getElementById("sdt_nd");
+    var upFileAnh = document.getElementById("fileInput");
 
-    document.getElementById('new-password').addEventListener('blur', function () {
-        checkIfEmpty('new-password', 'email-error');
-    });
-
-    document.getElementById('new-password').addEventListener('blur', function () {
-        checkIfEmpty('new-password', 'address-error');
-    });
-
-    document.getElementById('retype-password').addEventListener('blur', function () {
-        checkIfEmpty('retype-password', 'phoneNumber-error');
-        checkPasswordMatch();
-    });
-</script>
-
-
-<script>
-    validate_of_Pass_Blur = function () {
-        var thePassRepeated = document.querySelector('#mk_nd_repeat');
-        var thePass =document.querySelector('#mk_nd');
-
-        if(!(thePassRepeated.value ===thePass.value)) {
-            document.querySelector('.ThongBao').innerText ='';
-            document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-            document.querySelector('.ThongBao').innerText ='Mật khẩu bạn nhập không trùng khớp ban đầu. Vui lòng nhập lại';
-            document.querySelector('#mk_nd_repeat').classList.add('invalid');
+    function validateTenUser() {
+        var text = tenUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("username-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập tên";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
         } else {
-            if(thePassRepeated.value.length <6) {
-                document.querySelector('.ThongBao').innerText ='';
-                document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-                document.querySelector('.ThongBao').innerText ='Mật khẩu tối thiểu 6 kí tự, vui lòng nhập lại';
-                document.querySelector('#mk_nd_repeat').classList.add('invalid');
-            }
-
-        }
-
-    }
-    validate_of_Pass_Blur1 = function () {
-        if(thePassRepeated.value.length <6) {
-            document.querySelector('.ThongBao').innerText ='';
-            document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-            document.querySelector('.ThongBao').innerText ='Mật khẩu tối thiểu 6 kí tự, vui lòng nhập lại';
-            document.querySelector('#mk_nd_repeat').classList.add('invalid');
+            error.style.display = "none";
+            return true;
         }
     }
 
-    validate_of_Pass_onInput = function () {
+    function validateEmailUser() {
+        var text = emailUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("email-error");
 
+        // Check if the email contains "@gmail.com"
+        if (!text.includes("@gmail.com")) {
+            error.textContent = "Email phải chứa địa chỉ @gmail.com";
+            error.style.display = "block";
+            return false;
+        }
 
-
-        document.querySelector('.ThongBao').innerText ='';
-        document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập email";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Email chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
     }
 
-    $(document).ready(function(){
-        $('#fileInput').change(function(e) {
-            var file = e.target.files[0];
-            var reader = new FileReader();
-            reader.onload = function(event) {
-                $('#previewImage').attr('src', event.target.result);
-            };
-            reader.readAsDataURL(file);
-        });
-    });
+    function validateAddressUser() {
+        var text = addressUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("address-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập địa chỉ";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Địa chỉ chỉ chứa ký tự chữ cái, số và khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validatePhoneNumberUser() {
+        var text = phoneNumberUser.value;
+        var numericRegex = /^\d+$/;
+        var error = document.getElementById("phoneNumber-error");
+
+        if (text.length === 0 || text === null) {
+            error.textContent = "Vui lòng nhập số điện thoại";
+            error.style.display = "block";
+            return false;
+        } else if (!numericRegex.test(text)) {
+            error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+
+    function validateFileUpload() {
+        var inputUploadFile = document.getElementById("upFileAnh");
+        var error = document.getElementById("fileUpload-error");
+
+        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
+        if (inputUploadFile.files.length === 0) {
+            error.textContent = "Vui lòng chọn file ảnh.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    tenUser.addEventListener("blur", validateTenUser);
+    emailUser.addEventListener("blur", validateEmailUser);
+    addressUser.addEventListener("blur", validateAddressUser);
+    phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
+    upFileAnh.addEventListener("blur", validatePhoneNumberUser);
+
+
 </script>
+
+
 
 </body>
 </html>

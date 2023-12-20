@@ -9,7 +9,6 @@ import java.time.LocalDate;
 
 public class UserService {
     private static UserService instance;
-
     private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*";
     private UsersDaoImpl userDao;
 
@@ -41,41 +40,36 @@ public class UserService {
        return userDao.updateProfile(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth);
    }
 
-   public Users checkUser(int userId, String password) {
-       return userDao.checkUser(userId,password);
+   public boolean checkUser(int id, String password) {
+       return userDao.checkUser(id, password);
    }
 
-   public String updatePass(int userId, String password) {
-       return userDao.updatePassWordUser(userId,password);
-   }
     /**
      * update new password
      * @param
      * @return password
      */
-    public String changePass(int id) {
-        String result;
-        // generate
-        String newPass = generateNewPass ();
-        String endCodePass = MyUtils.encodePass (newPass);
-        result = userDao.updatePassWordUser(id, endCodePass);
+    public String changePass(int id, String newPassword) {
+        String encodePass = MyUtils.encodePass(newPassword); // Mã hóa mật khẩu mới ở đây
+        String result = userDao.updatePassWordUser(id, encodePass);
+
+        if (result.equals("SUCCESS")) {
+            // Cập nhật giá trị hashedPassword trong đối tượng Users
+            Users user = userDao.getUserById(id);
+            if (user != null) {
+                user.setHash(encodePass);
+            }
+        }
         return result;
     }
 
-        /**
-         * generate newRandomPassWord
-         * @return
-         */
-        public static String generateNewPass() {
-        StringBuilder password = new StringBuilder();
-        SecureRandom random = new SecureRandom();
+    public String getHashedPassword(int id) {
+        String hashedNewPassword = userDao.getHashedPassword(id);
+        return hashedNewPassword;
+    }
 
-        for (int i = 0; i < 8; i++) {
-            int randomIndex = random.nextInt(CHARACTERS.length());
-            password.append(CHARACTERS.charAt(randomIndex));
-        }
-
-        return password.toString();
+    public Users getUserById(int id) {
+        return userDao.getUserById(id);
     }
 
 }

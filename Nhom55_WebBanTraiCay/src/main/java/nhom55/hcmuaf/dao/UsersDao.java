@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.dao;
 
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.services.UserService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,8 +16,9 @@ public interface UsersDao {
     String updateNewPassWord(String email, String password);
 
     Users getUser(int userId);
+    boolean checkUser(int userId, String password);
     Users updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth);
-    Users checkUser(int userId, String password);
+
     String updatePassWordUser(int userId, String password);
 }
 

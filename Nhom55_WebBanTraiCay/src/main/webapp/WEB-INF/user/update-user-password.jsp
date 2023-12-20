@@ -63,7 +63,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
             Người Dùng
           </a>
-          <a class="account dropdown-item" href="#">
+          <a class="account dropdown-item" href="${pageContext.request.contextPath}/logout">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
             Đăng Xuất
           </a>
@@ -76,7 +76,6 @@
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
   <c:choose>
     <c:when test="${not empty loginedUser}">
-      <c:set var="user" value="${requestScope.showUser}"/>
     <div class="container">
         <div class="container-child-left">
           <div class="quan-ly-user">
@@ -85,13 +84,13 @@
           </div>
           <ul>
             <li>
-              <a href="userProfile?id=${loginedUser.getId()}">
+              <a href="${pageContext.request.contextPath}/userProfile?id=${loginedUser.getId()}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                 Thông tin người dùng
               </a>
             </li>
             <li>
-              <a href="updateInfoUser?id=${loginedUser.getId()}">
+              <a href="${pageContext.request.contextPath}/updateInfoUser?id=${loginedUser.getId()}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg>
                 Chỉnh sửa thông tin
               </a>
@@ -117,10 +116,13 @@
             </li>
           </ul>
         </div>
+        </c:when>
+      </c:choose>
+
         <div class="container-child-right">
           <h4>Đổi mật khẩu</h4>
           <hr style="border-top: 1px solid #000000;">
-          <form class="change-password" action="updatePasswordUser" method="post">
+          <form class="change-password" action="" method="post">
             <table style="border-collapse:collapse;
                     border: none; ">
               <tr>
@@ -128,7 +130,7 @@
                   <label for="old-password">Mật khẩu cũ<span class="not-empty"> *</span></label>
                 </td>
                 <td>
-                  <input type="password" id="old-password" name="old-password">
+                  <input type="password" id="old-password" name="old-password" >
                   <span class="error-msg required" id="old-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
                 </td>
               </tr>
@@ -148,7 +150,7 @@
                 <td>
                   <input type="password" id="retype-password" name="retype-password">
                   <span class="error-msg required" id="retype-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
-                  <span class="error-msg required" id="password-mismatch-error" style="display: none;">Mật khẩu mới và mật khẩu nhập lại không khớp.</span>
+                  <span class="error-msg required" id="retype-mismatch-error" style="display: none;">Mật khẩu mới và mật khẩu nhập lại không khớp.</span>
                 </td>
               </tr>
             </table>
@@ -159,18 +161,21 @@
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                   <path d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/></svg>
               </button>
+
               <button type="reset">
                 Làm mới
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                   <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
               </button>
             </div>
+            <c:if test="${not empty result}" >
+              <p style="color: red;padding: 30px"> ${result}</p>
+            </c:if>
           </form>
         </div>
       </div>
       </div>
-    </c:when>
-  </c:choose>
+
 
 </div>
 
@@ -183,95 +188,83 @@
             stroke="#F96D00"/>
   </svg>
 </div>
-<script>
-  document.getElementById('old-password').addEventListener('blur', function () {
-    checkIfEmpty('old-password', 'old-password-error');
-  });
 
-
-  document.getElementById('new-password').addEventListener('blur', function () {
-    checkIfEmpty('new-password', 'new-password-error');
-  });
-
-  document.getElementById('retype-password').addEventListener('blur', function () {
-    checkIfEmpty('retype-password', 'retype-password-error');
-    checkPasswordMatch();
-  });
-
-  function checkIfEmpty(inputId, errorId) {
-    const input = document.getElementById(inputId);
-    const error = document.getElementById(errorId);
-
-    if (input.value.trim() === '') {
-      error.style.display = 'block';
-    } else {
-      error.style.display = 'none';
-    }
-  }
-
-  function checkPasswordMatch() {
-    const newPassword = document.getElementById('new-password').value;
-    const retypePassword = document.getElementById('retype-password').value;
-    const passwordMismatchError = document.getElementById('password-mismatch-error');
-
-    if (newPassword !== retypePassword && newPassword !== '' && retypePassword !== '') {
-      passwordMismatchError.style.display = 'block';
-    } else {
-      passwordMismatchError.style.display = 'none';
-    }
-  }
-</script>
 
 <script>
-  validate_of_Pass_Blur = function () {
-    var thePassRepeated = document.querySelector('#mk_nd_repeat');
-    var thePass =document.querySelector('#mk_nd');
+  document.addEventListener("click", function () {
+    document.querySelector(".change-password").addEventListener("submit", function (event) {
+      if (!validateForm()) {
+        event.preventDefault();
+      }
+    });
 
-    if(!(thePassRepeated.value ===thePass.value)) {
-      document.querySelector('.ThongBao').innerText ='';
-      document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-      document.querySelector('.ThongBao').innerText ='Mật khẩu bạn nhập không trùng khớp ban đầu. Vui lòng nhập lại';
-      document.querySelector('#mk_nd_repeat').classList.add('invalid');
-    } else {
-      if(thePassRepeated.value.length <6) {
-        document.querySelector('.ThongBao').innerText ='';
-        document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-        document.querySelector('.ThongBao').innerText ='Mật khẩu tối thiểu 6 kí tự, vui lòng nhập lại';
-        document.querySelector('#mk_nd_repeat').classList.add('invalid');
+    function validateForm() {
+      var oldPassword = document.getElementById("old-password").value;
+      var newPassword = document.getElementById("new-password").value;
+      var retypePassword = document.getElementById("retype-password").value;
+
+      var isValid = true;
+
+      // Validate old password
+      if (!validatePassword("old-password", "old-password-error", "Vui lòng nhập mật khẩu cũ.")) {
+        isValid = false;
       }
 
+      // Validate new password
+      if (!validatePassword("new-password", "new-password-error", "Vui lòng nhập mật khẩu mới.", "Mật khẩu mới phải chứa ít nhất 6 ký tự và ít nhất 1 chữ in hoa.")) {
+        isValid = false;
+      }
+
+      // Validate retype password
+      if (!validateRetypePassword()) {
+        isValid = false;
+      }
+
+      return isValid;
     }
 
-  }
-  validate_of_Pass_Blur1 = function () {
-    if(thePassRepeated.value.length <6) {
-      document.querySelector('.ThongBao').innerText ='';
-      document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-      document.querySelector('.ThongBao').innerText ='Mật khẩu tối thiểu 6 kí tự, vui lòng nhập lại';
-      document.querySelector('#mk_nd_repeat').classList.add('invalid');
+    function validatePassword(inputId, errorId, requiredErrorMsg, formatErrorMsg) {
+      var text = document.getElementById(inputId).value;
+      var error = document.getElementById(errorId);
+
+      if (text.length === 0 || text === null) {
+        error.textContent = requiredErrorMsg;
+        error.style.display = "block";
+        return false;
+      } else if (formatErrorMsg && (text.length < 6 || !/[A-Z]/.test(text))) {
+        error.textContent = formatErrorMsg;
+        error.style.display = "block";
+        return false;
+      } else {
+        error.style.display = "none";
+        return true;
+      }
     }
-  }
 
-  validate_of_Pass_onInput = function () {
+    function validateRetypePassword() {
+      var newPassword = document.getElementById("new-password").value;
+      var retypePassword = document.getElementById("retype-password").value;
+      var retypeError = document.getElementById("retype-password-error");
+      var mismatchError = document.getElementById("retype-mismatch-error");
 
-
-
-    document.querySelector('.ThongBao').innerText ='';
-    document.querySelector('#mk_nd_repeat').classList.remove('invalid');
-
-  }
-
-  $(document).ready(function(){
-    $('#fileInput').change(function(e) {
-      var file = e.target.files[0];
-      var reader = new FileReader();
-      reader.onload = function(event) {
-        $('#previewImage').attr('src', event.target.result);
-      };
-      reader.readAsDataURL(file);
-    });
+      if (retypePassword.length === 0 || retypePassword === null) {
+        retypeError.textContent = "Vui lòng nhập lại mật khẩu mới.";
+        retypeError.style.display = "block";
+        mismatchError.style.display = "none";
+        return false;
+      } else if (newPassword !== retypePassword) {
+        retypeError.style.display = "none";
+        mismatchError.style.display = "block";
+        return false;
+      } else {
+        retypeError.style.display = "none";
+        mismatchError.style.display = "none";
+        return true;
+      }
+    }
   });
 </script>
+
 
 
 

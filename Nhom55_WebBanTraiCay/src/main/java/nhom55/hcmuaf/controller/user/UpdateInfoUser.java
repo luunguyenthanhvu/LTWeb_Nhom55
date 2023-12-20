@@ -29,7 +29,10 @@ public class UpdateInfoUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            int id = Integer.parseInt(request.getParameter("id"));
+        String idParameter = request.getParameter("id");
+
+        if (idParameter != null && !idParameter.isEmpty()) {
+            int id = Integer.parseInt(idParameter);
             String username = request.getParameter("ten_nguoi_dung");
             String email = request.getParameter("email_nguoi_dung");
             String address = request.getParameter("dia_chi_nguoi_dung");
@@ -39,16 +42,13 @@ public class UpdateInfoUser extends HttpServlet {
             Users users_update = UserService.getInstance().updateProfile(id, username, email, address, phoneNumber, dateOfBirth);
 
             Users users = UserService.getInstance().showInfoUser(id);
-            if (users != null) {
-                request.setAttribute("showUser", users);
-                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
-                dispatcher.forward(request, response);
-            } else {
-                response.sendRedirect(request.getContextPath() + "/userProfile");
-            }
+            request.setAttribute("showUser", users);
+            request.setAttribute("message", " Cập nhật thành công");
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
+            dispatcher.forward(request, response);
         }
 
 
-
+    }
 
 }

@@ -15,20 +15,19 @@ public class UserProfile extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String idParam = request.getParameter("id");
+        HttpSession session = request.getSession();
+        Users user = (Users) session.getAttribute("loginedUser");
 
-        if (idParam != null && !idParam.isEmpty()) {
-                int id = Integer.parseInt(idParam);
+        Users users = UserService.getInstance().getUserById(user.getId());
 
-                Users users = UserService.getInstance().showInfoUser(id);
                 if (users != null) {
-                    request.setAttribute("showUser", users);
+                    request.setAttribute("user", users);
                     RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
                     dispatcher.forward(request, response);
                 } else {
                     response.sendRedirect(request.getContextPath() + "/home");
                 }
-        }
+
 
     }
     @Override

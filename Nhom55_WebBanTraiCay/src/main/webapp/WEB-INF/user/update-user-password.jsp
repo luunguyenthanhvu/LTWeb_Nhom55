@@ -74,7 +74,8 @@
 </nav>
 <!-- END nav -->
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
-    <div class="container">
+  <c:set var="user" value="${requestScope.showUser}"/>
+  <div class="container">
         <div class="container-child-left">
           <div class="quan-ly-user">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 160H320V128H448v32zM48 64C21.5 64 0 85.5 0 112v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM448 352v32H192V352H448zM48 288c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48z"/></svg>
@@ -119,7 +120,7 @@
         <div class="container-child-right">
           <h4>Đổi mật khẩu</h4>
           <hr style="border-top: 1px solid #000000;">
-          <form class="change-password" action="" method="post">
+          <form class="change-password" action="updatePasswordUser" method="post">
             <table style="border-collapse:collapse;
                     border: none; ">
               <tr>

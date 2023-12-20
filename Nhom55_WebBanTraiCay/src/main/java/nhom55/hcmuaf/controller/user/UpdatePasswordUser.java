@@ -42,6 +42,7 @@ public class UpdatePasswordUser extends HttpServlet {
         if (idParameter != null && !idParameter.isEmpty()) {
             int id = Integer.parseInt(idParameter);
 
+
             // Kiểm tra mật khẩu cũ
             if (!UserService.getInstance().checkUser(id, MyUtils.encodePass(oldPassword))) {
                 request.setAttribute("result", "Mật khẩu cũ không đúng");

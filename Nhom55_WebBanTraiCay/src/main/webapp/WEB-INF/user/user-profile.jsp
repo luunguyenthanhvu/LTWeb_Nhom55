@@ -89,7 +89,6 @@
 <!-- END nav -->
 
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
-      <c:set var="user" value="${requestScope.showUser}"/>
   <div class="container">
       <div class="container-child-left">
           <div class="quan-ly-user">
@@ -187,10 +186,10 @@
               <img class="anhCuaNguoiDung" src="static/images/${user.getImg()}" alt="">
             </div>
           </div>
-            <p style="color: red;padding: 30px"> ${result}</p>
-            <c:if test="${empty showUser}">
-              <p>Không tìm thấy người dùng hoặc ID không hợp lệ.</p>
-            </c:if>
+<%--            <p style="color: red;padding: 30px"> ${user}</p>--%>
+<%--            <c:if test="${empty user}">--%>
+<%--              <p>Không tìm thấy người dùng hoặc ID không hợp lệ.</p>--%>
+<%--            </c:if>--%>
     </div>
       </div>
 </div>

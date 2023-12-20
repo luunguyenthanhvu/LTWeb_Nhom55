@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/chinh_sua_thong_tin.css">
 </head>
-<body class="goto-here">
+<body class="goto-here" onload="myFunction()" style="margin:0;">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
@@ -76,9 +76,8 @@
 </nav>
 <!-- END nav -->
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
-            <c:set var="user" value="${requestScope.showUser}"/>
-                <div class="container">
-                    <div class="container-child-left">
+    <div class="container">
+        <div class="container-child-left">
                         <div class="quan-ly-user">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M448 160H320V128H448v32zM48 64C21.5 64 0 85.5 0 112v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM448 352v32H192V352H448zM48 288c-26.5 0-48 21.5-48 48v64c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48z"/></svg>
                             <span>Quản lý người dùng</span>
@@ -133,7 +132,7 @@
                                         <tr>
                                             <td><label for="id">ID <span style="color: red">*</span></label></td>
                                             <td>
-                                                <input style="margin-left: 60px" type="text" id="id" name="id" value="${loginedUser.getId()}" readonly required>
+                                                <input style="margin-left: 60px" type="text" id="id" name="id" value="${user.getId()}" readonly required>
                                             </td>
                                         </tr>
 
@@ -141,7 +140,10 @@
                                             <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
                                             <td>
                                                 <input style="margin-left: 60px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${user.getUsername()}" required>
-                                                <span class="error-msg required" id="username-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                                <span class="error-msg required" id="username-error"  style="display: none;" ></span>
+<%--                                                <c:if test="${not empty username-error}" >--%>
+<%--                                                    <td><p style="color: red">${username-error}</p></td>--%>
+<%--                                                </c:if>--%>
                                             </td>
                                         </tr>
 
@@ -150,7 +152,11 @@
                                             <td>
                                                 <input style="margin-left: 60px" name="email_nguoi_dung" id="email_nd" type="email" value="${user.getEmail()}"  required>
                                                 <span class="error-msg required" id="email-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+<%--                                                <c:if test="${not empty email-error}" >--%>
+<%--                                                    <td><p style="color: red">${email-error}</p></td>--%>
+<%--                                                </c:if>--%>
                                             </td>
+
                                         </tr>
 
                                         <tr>
@@ -158,24 +164,37 @@
                                             <td>
                                                 <input style="margin-left: 60px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${user.getAddress()}" required>
                                                 <span class="error-msg required" id="address-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+<%--                                                <c:if test="${not empty address-error}" >--%>
+<%--                                                    <td><p style="color: red">${address-error}</p></td>--%>
+<%--                                                </c:if>--%>
                                             </td>
                                         </tr>
+
 
                                         <tr>
                                             <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
 
-                                            <td><input style="margin-left: 60px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${user.getPhoneNumber()}" ></input></td>
+                                            <td><input style="margin-left: 60px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${user.getPhoneNumber()}" ></input>
                                             <span class="error-msg required" id="phoneNumber-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+<%--                                                <c:if test="${not empty phoneNumber-error}" >--%>
+<%--                                                    <td><p style="color: red">${phoneNumber-error}</p></td>--%>
+<%--                                                </c:if>--%>
+                                            </td>
                                         </tr>
 
                                         <tr>
                                             <td><label for="dob">Sinh nhật<span class="not-empty"> *</span></label></td>
                                             <td><input style="margin-left: 60px" type="date" id="dob" name="dob" value="${user.getDateOfBirth()}" ></td>
+                                            <span class="error-msg required" id="dob-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+<%--                                            <c:if test="${not empty dob-error}" >--%>
+<%--                                                <td><p style="color: red">${dob-error}</p></td>--%>
+<%--                                            </c:if>--%>
                                         </tr>
+
                                     </table>
                                 </div>
                                 <div class="user-img">
-                                    <img id="previewImage" src="${user.getImg()}" alt="">
+                                    <img id="previewImage" src="../images/saber.jpg" alt="">
                                     <div class="chose-new-img">
                                         <label for="fileInput" class="chose-new-img">
                                             <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -197,9 +216,10 @@
                                     <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
                             </button>
                         </form>
+
                     </div>
                 </div>
-                </div>
+    </div>
 
 </div>
 
@@ -233,6 +253,18 @@
 
 
 <script>
+
+    $(document).ready(function(){
+        $('#fileInput').change(function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                $('#previewImage').attr('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
     var tenUser = document.getElementById("ten_nd");
     var emailUser = document.getElementById("email_nd");
     var addressUser = document.getElementById("dc_nd");
@@ -312,22 +344,6 @@
             return false;
         } else if (!numericRegex.test(text)) {
             error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
-            error.style.display = "block";
-            return false;
-        } else {
-            error.style.display = "none";
-            return true;
-        }
-    }
-
-
-    function validateFileUpload() {
-        var inputUploadFile = document.getElementById("upFileAnh");
-        var error = document.getElementById("fileUpload-error");
-
-        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
-        if (inputUploadFile.files.length === 0) {
-            error.textContent = "Vui lòng chọn file ảnh.";
             error.style.display = "block";
             return false;
         } else {

@@ -32,12 +32,22 @@ public class UserService {
         return userDao.getUser(id);
     }
 
+    public Users getUserById(int id) {
+        return userDao.getUserById(id);
+    }
     /**
-     * update profile
+     * update profile no ima
      * @param
      */
-   public Users updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth) {
-       return userDao.updateProfile(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth);
+    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth) {
+        return userDao.updateProfileNoImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth);
+    }
+    /**
+     * update profile with img
+     * @param
+     */
+   public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img) {
+       return userDao.updateProfileWithImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, img);
    }
 
    public boolean checkUser(int id, String password) {

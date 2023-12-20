@@ -16,8 +16,12 @@ public interface UsersDao {
     String updateNewPassWord(String email, String password);
 
     Users getUser(int userId);
+    Users getUserById(int userId);
     boolean checkUser(int userId, String password);
-    Users updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth);
+
+    Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth);
+
+    Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img);
 
     String updatePassWordUser(int userId, String password);
 }

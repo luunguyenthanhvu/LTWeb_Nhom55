@@ -1,7 +1,6 @@
 package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.dao.ProductDAO;
 import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
@@ -16,13 +15,13 @@ public class FilterForAllProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        doPost(request,response);
-        // save url
-        HttpSession session = request.getSession();
-        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // save url
+        HttpSession session = request.getSession();
+        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 //       Lấy các thuộc tính của filter
         String sortBy = request.getParameter("sortBy");
         String order = request.getParameter("order");

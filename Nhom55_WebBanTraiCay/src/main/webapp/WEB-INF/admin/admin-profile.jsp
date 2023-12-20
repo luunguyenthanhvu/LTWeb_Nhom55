@@ -44,7 +44,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
                     <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
                 </ul>
             </li>
@@ -63,10 +63,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
-                    <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>

@@ -1,7 +1,6 @@
 package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.dao.ProductDAO;
 import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;

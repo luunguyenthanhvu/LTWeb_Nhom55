@@ -1,7 +1,6 @@
 package nhom55.hcmuaf.controller.page.shop;
 
 import nhom55.hcmuaf.beans.Products;
-import nhom55.hcmuaf.dao.ProductDAO;
 import nhom55.hcmuaf.services.ShopService;
 
 import javax.servlet.*;
@@ -9,6 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
+import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "ShopController", value = "/ShopController")
 public class ShopController extends HttpServlet {
@@ -23,6 +23,9 @@ public class ShopController extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    // save url
+    HttpSession session = request.getSession();
+    MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 
     String txtSearch = request.getParameter("txtSearch");
     String sortBy = request.getParameter("sortBy");
@@ -34,6 +37,10 @@ public class ShopController extends HttpServlet {
 //        index user bấm vào phân trang
     String indexPage = request.getParameter("index");
 
+//    int indexInitial  = 1;
+//    if(indexPage != null) {
+//      indexInitial = Integer.parseInt(indexPage);
+//    }
     int indexInitial = Integer.parseInt(indexPage);
 
     int indexEnd = quantity / defaultQuantityProductOnAPage;
@@ -63,7 +70,5 @@ public class ShopController extends HttpServlet {
       request.setAttribute("txtSearch", txtSearch);
       request.getRequestDispatcher("WEB-INF/searchProductResult.jsp").forward(request, response);
     }
-
-
   }
 }

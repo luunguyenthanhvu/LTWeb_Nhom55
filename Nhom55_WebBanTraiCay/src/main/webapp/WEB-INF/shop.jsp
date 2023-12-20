@@ -153,64 +153,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
-
-
-
-                <!--                <ul class="product-category">-->
-                <!--                    <li><a href="#" class="active">All</a></li>-->
-                <!--                    <li><a href="#">Vegetables</a></li>-->
-                <!--                    <li><a href="#">Fruits</a></li>-->
-                <!--                    <li><a href="#">Juice</a></li>-->
-                <!--                    <li><a href="#">Dried</a></li>-->
-                <!--                </ul> -->
-
-                <!--                    <div class="box">-->
-                <!--                        <form action ="#">-->
-                <!--                            <div class="input_box">-->
-                <!--                                <input type="text" placeholder="Search for fruits..." required>-->
-                <!--                                <div class="selection"><p>All</p><span></span></div>-->
-
-                <!--                                <div class ="categories">-->
-                <!--                                    <p class="option">1</p>-->
-                <!--                                    <p class="option">2</p>-->
-                <!--                                    <p class="option">3</p>-->
-                <!--                                    <p class="option">4</p>-->
-
-                <!--                                </div>-->
-
-                <!--                            </div>-->
-                <!--                        </form>-->
-                <!--                    </div>-->
-
-
-
-
-
-
-
-
-
-                <!--                <ul class="nav nav-pills mb-3 product-category" id="pills-tab" role="tablist">-->
-                <!--                    <li class="nav-item " role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" fdprocessedid="pda0gw" >All</button>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link active" style="outline: 0!important;" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Vegetables</button>-->
-                <!--                    </li>-->
-
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">Fruits</button>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Juice-tab" data-bs-toggle="pill" data-bs-target="#pills-Juice" type="button" role="tab" aria-controls="pills-Juice" aria-selected="false" tabindex="-1">Juice</button>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Dried-tab" data-bs-toggle="pill" data-bs-target="#pills-Dried" type="button" role="tab" aria-controls="pills-Dried" aria-selected="false" fdprocessedid="x9oioe" tabindex="-1">Dried</button>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
-
-
-
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
                         <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
@@ -243,7 +185,7 @@
                                         <a href="" class="img-prod"><img
                                                 style="width: 205px; height: 164px; object-fit: cover"
                                                 class="img-fluid"
-                                                src="static/images/${product.getImg()}"
+                                                src="${product.getImg()}"
                                                 alt="Colorlib Template">
                                         </a>
                                         <div class="text py-3 pb-4 px-3 text-center">

@@ -88,9 +88,18 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a
-                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                <c:choose>
+                    <c:when test="${not empty loginedUser}">
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
         </div>
@@ -253,7 +262,7 @@
                     <div class="product">
                         <a href="" class="img-prod"><img
                                 style="width: 205px; height: 164px; object-fit: cover"
-                                class="img-fluid" src="static/images/${product.getImg()}"
+                                class="img-fluid" src="${product.getImg()}"
                                 alt="Colorlib Template">
 
                         </a>
@@ -262,8 +271,8 @@
                             <h3><a href="">${product.getNameOfProduct()} </a></h3>
                             <div class="d-flex">
                                 <div class="pricing">
-                                    <p class="price"><span
-                                            class="price">${product.getPrice()} VNĐ</span></p>
+                                    <p class="price"><spanZ
+                                            class="price">${product.getPrice()} VNĐ</spanZ></p>
                                 </div>
                             </div>
                             <div class="bottom-area d-flex px-3">

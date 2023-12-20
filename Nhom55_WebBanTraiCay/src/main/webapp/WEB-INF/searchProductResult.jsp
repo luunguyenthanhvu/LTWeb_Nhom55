@@ -85,9 +85,18 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a
-                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                <c:choose>
+                    <c:when test="${not empty loginedUser}">
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
         </div>
@@ -250,7 +259,7 @@
                                         <a href="" class="img-prod"><img
                                                 style="width: 205px; height: 164px; object-fit: cover"
                                                 class="img-fluid"
-                                                src="static/images/${product.getImg()}"
+                                                src="${product.getImg()}"
                                                 alt="Colorlib Template"></a>
                                         <div class="text py-3 pb-4 px-3 text-center">
                                             <h3><a href="">${product.getNameOfProduct()}</a></h3>

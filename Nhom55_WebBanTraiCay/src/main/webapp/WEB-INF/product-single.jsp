@@ -80,9 +80,18 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a
-                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                <c:choose>
+                    <c:when test="${not empty loginedUser}">
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item cta cta-colored"><a
+                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
+                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
         </div>
@@ -149,7 +158,7 @@
         <div class="row">
             <c:set var="product" value="${requestScope.showProduct}"/>
             <div class="col-lg-6 mb-5 ftco-animate">
-                <a href="" class="image-popup"><img src="static/images/${product.getImg()}"
+                <a href="" class="image-popup"><img src="${product.getImg()}"
                                                     class="img-fluid"
                                                     alt="Colorlib Template"></a>
             </div>
@@ -201,6 +210,7 @@
                     <div class="w-100"></div>
                     <div class="col-md-12">
                         <p style="color: #000;">${product.getWeight()} kg hợp lệ</p>
+                        <span id="max-product" hidden="hidden">${product.getWeight()}</span>
                     </div>
                 </div>
                 <p><a id="addToCartLink" href="add-cart?id=${product.getId()}"
@@ -361,17 +371,19 @@
       e.preventDefault();
       // Get the field name
       var quantity = parseInt($('#quantity').val());
-
+      var maxProduct = parseInt($('#max-product').text());
       // If is not undefined
-      $('#quantity').val(quantity + 1);
-      updateLink();
+      if(quantity < maxProduct) {
+        $('#quantity').val(quantity + 1);
+        updateLink();
+      }
     });
 
     $('.my-quantity-left-minus').click(function (e) {
       e.preventDefault();
       var quantity = parseInt($('#quantity').val());
       // Increment
-      if (quantity > 0) {
+      if (quantity > 1) {
         $('#quantity').val(quantity - 1);
       }
       updateLink();
@@ -386,6 +398,23 @@
     quantityInput.addEventListener("input", function () {
       updateLink();
     });
+
+    quantityInput.addEventListener("blur", function () {
+      var quantityText = quantityInput.value;
+      var quantityValue = parseInt(quantityText);
+      var maxProduct = parseInt($('#max-product').text());
+      if (isNaN(quantityValue)) {
+        quantityInput.value = 1;
+        alert("Vui lòng nhập vào số hợp lệ");
+      } else {
+        if(quantityValue < 0) {
+          quantityInput.value = 1;
+        } else if(quantityValue > maxProduct) {
+          quantityInput.value = maxProduct;
+        }
+      }
+    });
+
 
     // Hàm cập nhật đường link
     function updateLink() {

@@ -129,7 +129,7 @@ public class UsersDaoImpl implements UsersDao{
     @Override
     public Users getUser(int userId) {
         return JDBIConnector.get().withHandle(handle ->
-             handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM users where id = :id")
+             handle.createQuery("SELECT id, username, email, address, phoneNumber, dateOfBirth, img FROM users where id = :id")
                      .bind("id", userId)
                      .mapToBean(Users.class)
                      .findOne()
@@ -205,16 +205,5 @@ public class UsersDaoImpl implements UsersDao{
             return "SUCCESS";
         }
         return "FAIL";
-    }
-
-    public String getHashedPassword(int id) {
-        Users user = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT hash FROM Users WHERE id = :id")
-                        .bind("id", id)
-                        .mapToBean(Users.class)
-                        .findOne()
-                        .orElse(null));
-
-        return (user != null) ? user.getHash() : null;
     }
 }

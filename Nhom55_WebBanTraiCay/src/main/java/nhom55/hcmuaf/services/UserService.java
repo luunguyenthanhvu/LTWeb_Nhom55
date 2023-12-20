@@ -63,13 +63,5 @@ public class UserService {
         return result;
     }
 
-    public String getHashedPassword(int id) {
-        String hashedNewPassword = userDao.getHashedPassword(id);
-        return hashedNewPassword;
-    }
-
-    public Users getUserById(int id) {
-        return userDao.getUserById(id);
-    }
 
 }

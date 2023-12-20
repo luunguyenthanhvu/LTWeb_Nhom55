@@ -76,8 +76,6 @@
 </nav>
 <!-- END nav -->
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
-    <c:choose>
-        <c:when test="${not empty loginedUser}">
             <c:set var="user" value="${requestScope.showUser}"/>
                 <div class="container">
                     <div class="container-child-left">
@@ -87,7 +85,7 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="${pageContext.request.contextPath}/userProfile?id=${loginedUser.getId()}">
+                                <a href="${pageContext.request.contextPath}/userProfile?id=${user.getId()}">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                                     Thông tin người dùng
                                 </a>
@@ -99,7 +97,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${loginedUser.getId()}">
+                                <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${user.getId()}">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
                                     Đổi mật khẩu
                                 </a>
@@ -119,8 +117,7 @@
                             </li>
                         </ul>
                     </div>
-        </c:when>
-     </c:choose>
+
                     <div class="container-child-right">
                         <h4>Chỉnh sửa thông tin </h4>
                         <div class="line_of_account"></div>
@@ -178,7 +175,7 @@
                                     </table>
                                 </div>
                                 <div class="user-img">
-                                    <img id="previewImage" src="static/images/${user.getImg()}" alt="">
+                                    <img id="previewImage" src="${user.getImg()}" alt="">
                                     <div class="chose-new-img">
                                         <label for="fileInput" class="chose-new-img">
                                             <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -277,7 +274,7 @@
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Email chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.textContent = "Email chỉ chứa ký tự chữ cái";
             error.style.display = "block";
             return false;
         } else {

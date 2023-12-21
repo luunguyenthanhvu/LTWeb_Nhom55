@@ -109,6 +109,7 @@ public class AddProduct extends HttpServlet {
       // generate date admin import product
       LocalDateTime localDateTime = LocalDateTime.now();
       Date dateImport = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+
       ProductService.getInstance()
           .addNewProduct(productName, description, price, weightQuantity, weightDefault, dateImport,
               expirationDate, imgProduct, admin.getId(), provider);

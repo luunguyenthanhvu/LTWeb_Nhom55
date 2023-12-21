@@ -138,7 +138,7 @@ public class UsersDaoImpl implements UsersDao {
     @Override
     public Users getUser(int userId) {
         return JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT id, username, email, address, phoneNumber, dateOfBirth, img FROM users where id = :id")
+                handle.createQuery("SELECT id, username, email, address, phoneNumber, sexual, dateOfBirth, img FROM users where id = :id")
                         .bind("id", userId)
                         .mapToBean(Users.class)
                         .findOne()
@@ -148,7 +148,7 @@ public class UsersDaoImpl implements UsersDao {
 
     @Override
     public Users getUserById(int userId) {
-        return JDBIConnector.get().withHandle(handle ->
+       return JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT * FROM users where id = :id")
                         .bind("id", userId)
                         .mapToBean(Users.class)
@@ -172,23 +172,25 @@ public class UsersDaoImpl implements UsersDao {
      * update profile: change one or more than
      * @return username, email, address, phoneNumber, datOfBirth
      */
-    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth) {
+    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String newSexual) {
         return JDBIConnector.get().withHandle(handle -> {
-            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth WHERE id = :id")
+            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual =:sexual WHERE id = :id")
                     .bind("id", userId)
                     .bind("username", newUserName)
                     .bind("email", newEmail)
                     .bind("address", newAddress)
                     .bind("phoneNumber", newPhoneNumber)
                     .bind("dateOfBirth", newDateOfBirth)
+                    .bind("sexual", newSexual)
+
                     .execute();
 
-            return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")
+            return (rowCount > 0) ? handle.createQuery("SELECT id, username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")
                     .bind("id", userId)
                     .mapToBean(Users.class)
                     .findOne()
                     .orElse(null) : null;
-        });
+       });
     }
 
     /**
@@ -196,9 +198,9 @@ public class UsersDaoImpl implements UsersDao {
      * @return username, email, address, phoneNumber, datOfBirth, img
      */
     @Override
-    public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth , String img) {
+    public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth , String img, String newSexual) {
         return JDBIConnector.get().withHandle(handle -> {
-            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img WHERE id = :id")
+            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
                     .bind("username", newUserName)
                     .bind("email", newEmail)
@@ -206,6 +208,7 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("phoneNumber", newPhoneNumber)
                     .bind("dateOfBirth", newDateOfBirth)
                     .bind("img", img)
+                    .bind("sexual", newSexual)
                     .execute();
 
             return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")

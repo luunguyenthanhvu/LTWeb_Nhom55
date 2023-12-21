@@ -19,9 +19,9 @@ public interface UsersDao {
     Users getUserById(int userId);
     boolean checkUser(int userId, String password);
 
-    Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth);
+    Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String sexual);
 
-    Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img);
+    Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img, String sexual);
 
     String updatePassWordUser(int userId, String password);
 }

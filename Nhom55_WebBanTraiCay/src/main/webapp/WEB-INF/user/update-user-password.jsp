@@ -74,7 +74,6 @@
 </nav>
 <!-- END nav -->
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
-  <c:set var="user" value="${requestScope.showUser}"/>
   <div class="container">
         <div class="container-child-left">
           <div class="quan-ly-user">
@@ -120,7 +119,7 @@
         <div class="container-child-right">
           <h4>Đổi mật khẩu</h4>
           <hr style="border-top: 1px solid #000000;">
-          <form class="change-password" action="updatePasswordUser" method="post">
+          <form class="change-password" action="" method="post">
             <table style="border-collapse:collapse;
                     border: none; ">
               <tr>
@@ -131,6 +130,9 @@
                   <input type="password" id="old-password" name="old-password" >
                   <span class="error-msg required" id="old-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
                 </td>
+                <c:if test="${not empty error_oldPassword}" >
+                  <p style="color: red;padding: 30px"> ${error_oldPassword}</p>
+                </c:if>
               </tr>
               <tr>
                 <td>
@@ -140,6 +142,9 @@
                   <input type="password" id="new-password" name="new-password">
                   <span class="error-msg required" id="new-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
                 </td>
+                <c:if test="${not empty error_newPassword}" >
+                  <p style="color: red;padding: 30px"> ${error_newPassword}</p>
+                </c:if>
               </tr>
               <tr>
                 <td>
@@ -150,6 +155,9 @@
                   <span class="error-msg required" id="retype-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
                   <span class="error-msg required" id="retype-mismatch-error" style="display: none;">Mật khẩu mới và mật khẩu nhập lại không khớp.</span>
                 </td>
+                <c:if test="${not empty error_retypePassword}" >
+                  <p style="color: red;padding: 30px"> ${error_retypePassword}</p>
+                </c:if>
               </tr>
             </table>
 
@@ -166,6 +174,9 @@
                   <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
               </button>
             </div>
+            <c:if test="${not empty error_password}" >
+              <p style="color: red;padding: 30px"> ${error_password}</p>
+            </c:if>
             <c:if test="${not empty result}" >
               <p style="color: red;padding: 30px"> ${result}</p>
             </c:if>

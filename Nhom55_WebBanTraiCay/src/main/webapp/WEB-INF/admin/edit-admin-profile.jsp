@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="css/edit-admin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/edit-admin.css">
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -38,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -54,10 +57,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
-                    <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>
@@ -113,10 +116,10 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../static/images/accountPicture.png" alt="profileImg">
+                        <img src="${user.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">VuLuu</div>
+                        <div class="profile_name">${user.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <i style="transform: rotate(180deg); ">
@@ -140,20 +143,36 @@
         <div class="main-content">
             <div class="admin-profile">
                 <div class="table-info">
-                    <Form action="" method="post">
+                    <Form action="updateInfoAdmin" method="post" enctype="multipart/form-data">
                         <div class="basic-info">
                             <table>
                                 <tr>
-                                    <td><label for="username">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="username" placeholder="họ & tên" name="username"></td>
+                                    <td><label for="id">Tên người dùng <span class="not-empty"> *</span></label></td>
+                                    <td><input id="id" placeholder="ID" name="id-admin" value="${user.getId()}" readonly required></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="email">Email <span class="not-empty"> *</span></label></td>
-                                    <td><input id="email" placeholder="email" name="email"></td>
+                                    <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
+                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${user.getUsername()}" required></td>
+                                    <span class="error-msg required" id="username-error"  style="display: none;" ></span>
+                                    <c:if test="${not empty error_name}" >
+                                        <td><p style="color: red">${error_name}</p></td>
+                                    </c:if>
+                                </tr>
+                                <tr>
+                                    <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
+                                    <td><input id="email_nd" placeholder="email" name="email" value="${user.getEmail()}"  required></td>
+                                    <span class="error-msg required" id="email-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                    <c:if test="${not empty error_email}" >
+                                        <td><p style="color: red">${error_email}</p></td>
+                                    </c:if>
                                 </tr>
                                 <tr>
                                     <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
-                                    <td><input type="date" id="dob" name="dob"></td>
+                                    <td><input type="date" id="dob" name="dob" value="${user.getDateOfBirth()}" required></td>
+                                    <span class="error-msg required" id="dob-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                    <c:if test="${not empty error_dob}" >
+                                        <td><p style="color: red">${error_dob}</p></td>
+                                    </c:if>
                                 </tr>
                                 <tr>
                                     <td>Giới Tính<span class="not-empty"> *</span></td>
@@ -163,22 +182,34 @@
                                         <input type="radio" id="female" name="gender" value="female">
                                         <label for="female">Nữ</label>
                                     </td>
+                                    <c:if test="${not empty error_gender}" >
+                                        <td><p style="color: red">${error_gender}</p></td>
+                                    </c:if>
                                 </tr>
                                 <tr>
                                     <td><label for="phoneNumber">Số điện thoại<span class="not-empty"> *</span></label></td>
-                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại"></td>
+                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại" value="${user.getPhoneNumber()}" required></td>
+                                    <span class="error-msg required" id="phoneNumber-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+
                                 </tr>
                                 <tr>
                                     <td><label for="address">Địa chỉ<span class="not-empty"> *</span></label></td>
-                                    <td><input id="address" name="address" placeholder="địa chỉ"></td>
+                                    <td><input id="address" name="address" placeholder="địa chỉ" value="${user.getAddress()}" required></td>
+                                    <span class="error-msg required" id="address-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                    <c:if test="${not empty error_address}" >
+                                        <td><p style="color: red">${error_address}</p></td>
+                                    </c:if>
                                 </tr>
                             </table>
                             <div class="img-admin">
-                                <img id="previewImage" src="../images/accountPicture.png" alt="">
+                                <img id="previewImage" src="${user.getImg()}" alt="">
                                 <div class="chose-new-img">
                                     <label for="fileInput" class="chose-new-img">
                                         <input type="file" id="fileInput" name="avatar" accept="image/*">
                                     </label>
+                                    <c:if test="${not empty file_anh_error}" >
+                                        <td><p style="color: red">${file_anh_error}</p></td>
+                                    </c:if>
                                 </div>
                             </div>
                         </div>
@@ -196,7 +227,9 @@
                 </div>
             </div>
         </div>
-
+        <c:if test="${not empty message}">
+            <p style="color: red; padding: 30px">${message}</p>
+        </c:if>
     </div>
 
 </section>
@@ -237,6 +270,133 @@
         document.getElementById("loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }
+
+
+</script>
+
+
+<script>
+
+    $(document).ready(function(){
+        $('#fileInput').change(function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                $('#previewImage').attr('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    var tenUser = document.getElementById("ten_nd");
+    var emailUser = document.getElementById("email_nd");
+    var genderUser = document.getElementById("gioi_tinh_nd");
+    var addressUser = document.getElementById("dc_nd");
+    var phoneNumberUser = document.getElementById("sdt_nd");
+    var upFileAnh = document.getElementById("fileInput");
+
+    function validateTenUser() {
+        var text = tenUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("username-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập tên";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateGenderUser() {
+        var maleCheckbox = document.getElementById("male");
+        var femaleCheckbox = document.getElementById("female");
+        var error = document.getElementById("gender-error");
+
+        // Kiểm tra xem người dùng đã chọn ít nhất một trong hai giới tính chưa
+        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+            error.textContent = "Vui lòng chọn giới tính";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+
+    function validateEmailUser() {
+        var text = emailUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("email-error");
+
+        // Check if the email contains "@gmail.com"
+        if (!text.includes("@gmail.com")) {
+            error.textContent = "Email phải chứa địa chỉ @gmail.com";
+            error.style.display = "block";
+            return false;
+        }
+
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập email";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateAddressUser() {
+        var text = addressUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("address-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập địa chỉ";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validatePhoneNumberUser() {
+        var text = phoneNumberUser.value;
+        var numericRegex = /^\d+$/;
+        var error = document.getElementById("phoneNumber-error");
+
+        if (text.length === 0 || text === null) {
+            error.textContent = "Vui lòng nhập số điện thoại";
+            error.style.display = "block";
+            return false;
+        } else if (!numericRegex.test(text)) {
+            error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    tenUser.addEventListener("blur", validateTenUser);
+    emailUser.addEventListener("blur", validateEmailUser);
+    genderUser.addEventListener("blur", validateEmailUser);
+    addressUser.addEventListener("blur", validateAddressUser);
+    phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
+    upFileAnh.addEventListener("blur", validatePhoneNumberUser);
 
 
 </script>

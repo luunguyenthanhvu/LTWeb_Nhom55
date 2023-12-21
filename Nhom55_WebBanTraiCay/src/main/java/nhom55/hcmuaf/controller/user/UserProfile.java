@@ -14,25 +14,16 @@ public class UserProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("loginedUser");
 
-        Users users = UserService.getInstance().getUserById(user.getId());
-
-                if (users != null) {
-                    request.setAttribute("user", users);
-                    RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
-                    dispatcher.forward(request, response);
-                } else {
-                    response.sendRedirect(request.getContextPath() + "/home");
-                }
-
-
+        Users users = UserService.getInstance().showInfoUser(user.getId());
+        request.setAttribute("user", users);
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
+        dispatcher.forward(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 }

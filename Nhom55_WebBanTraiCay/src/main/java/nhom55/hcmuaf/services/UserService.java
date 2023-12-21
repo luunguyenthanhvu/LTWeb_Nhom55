@@ -6,10 +6,10 @@ import nhom55.hcmuaf.util.MyUtils;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
+import java.util.List;
 
 public class UserService {
     private static UserService instance;
-    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*";
     private UsersDaoImpl userDao;
 
     public UserService() {
@@ -39,15 +39,15 @@ public class UserService {
      * update profile no ima
      * @param
      */
-    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth) {
-        return userDao.updateProfileNoImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth);
+    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String newSexual) {
+        return userDao.updateProfileNoImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, newSexual);
     }
     /**
      * update profile with img
      * @param
      */
-   public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img) {
-       return userDao.updateProfileWithImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, img);
+   public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img, String newSexual) {
+       return userDao.updateProfileWithImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, img,newSexual);
    }
 
    public boolean checkUser(int id, String password) {

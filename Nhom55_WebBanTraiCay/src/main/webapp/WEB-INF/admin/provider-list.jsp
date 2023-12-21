@@ -15,6 +15,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="myFunction()" style="margin:0;">
+<%--Tạo ra pop up thông báo khi admin xóa nhà cung cấp mà nằm trong trái cây của danh sách trái cây đang có--%>
+<c:if test="${not empty notifyError }">
+  <script>
+    function showPopup() {
+      // Hiển thị popup thông báo
+      alert("Nhà cung cấp này hiện đang nằm trong danh sách sản phẩm trái cây. Nếu bạn muốn xóa nhà cung cấp này, hãy xóa những trái cây có nhà cung cấp này.");
+    }
+    showPopup();
+  </script>
+</c:if>
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
   <div class="sidebar close">
@@ -149,88 +159,81 @@
     <div class="home-content">
       <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
         <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-    <span class="text">Danh sách sản phẩm</span>
-  </div>
-  <div class="find-product">
-    <form action="ProductListController?index=1" method="post">
-      <div class="fill-product">
-        <input id="find-product" type="text" placeholder="Tìm kiếm tên sản phẩm" name="txtSearch">
-        <button type="submit">
-          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
-        </button>
-      </div>
-    </form>
-  </div>
-  <div class="container" style="margin: 30px 30px 0 30px">
-    <div class="table-sanpham">
-      <table class="table-sanpham">
-        <tr>
-          <th style="width: 80px;">ID</th>
-          <th style="width: 200px">Tên sản phẩm</th>
-          <th style="width: 100px;">Hình ảnh</th>
-          <th style="width: 100px;">Giá tiền</th>
-          <th style="width: 150px;">Ngày nhập</th>
-          <th style="width: 150px;">Hạn sử dụng</th>
-          <th style="width: 120px;">Chức năng</th>
-        </tr>
-
-        <c:forEach items="${listProduct}" var="product">
-          <tr>
-            <td>${product.getId()}</td>
-            <td>${product.getNameOfProduct()}</td>
-            <td class="img-product">
-              <img src="${product.getImg()}">
-            </td>
-            <td>${product.getPrice()}</td>
-            <td>${product.getDateOfImporting()}</td>
-            <td>${product.getExpriredDay()}</td>
-            <td class="function-product">
-              <a href="update-product?id=${product.getId()}"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
-              <a href="delete-productController?id=${product.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-            </td>
-          </tr>
-        </c:forEach>
-      </table>
+      <span class="text">Danh sách nhà cung cấp</span>
     </div>
-    <div class="pagination">
-      <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
-      <c:if test="${pageId== 1 && haveMaxPage ==1}">
-        <a >&laquo;</a>
-        <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-          <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-        </c:forEach>
-        <a >&raquo;</a>
-      </c:if>
-        <c:if test="${ haveMaxPage !=1}">
-        <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
-        <c:if test="${pageId ==1}" >
+    <div class="find-product">
+      <form action="ProviderListController?index=1" method="post">
+        <div class="fill-product">
+          <input id="find-product" type="text" placeholder="Tìm kiếm nhà cung cấp" name="txtSearch">
+          <button type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container" style="margin: 30px 30px 0 30px">
+      <div class="table-sanpham">
+        <table class="table-sanpham">
+          <tr>
+            <th style="width: 80px;">ID</th>
+            <th style="width: 200px">Tên nhà cung cấp</th>
+            <th style="width: 100px;">Địa chỉ nhà cung cấp</th>
+            <th style="width: 100px;">Chức năng</th>
+          </tr>
+
+          <c:forEach items="${listProvider}" var="provider">
+            <tr>
+              <td>${provider.getId()}</td>
+              <td>${provider.getProviderName()}</td>
+              <td>${provider.getAddressOfProvider()}</td>
+              <td class="function-product">
+                <a href="UpdateProvider?id=${provider.getId()}"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
+                <a href="DeleteProviderController?id=${provider.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
+              </td>
+            </tr>
+          </c:forEach>
+        </table>
+      </div>
+      <div class="pagination">
+        <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+        <c:if test="${pageId== 1 && haveMaxPage ==1}">
           <a >&laquo;</a>
           <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-            <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-          </c:forEach>
-          <a href="product-list?pageId=${pageId+1}">&raquo;</a>
-        </c:if>
-        <%--  Còn trường hợp này nút nào cũng xài được--%>
-        <c:if test="${pageId >1 && pageId<haveMaxPage}" >
-          <a href="product-list?pageId=${pageId-1}">&laquo;</a>
-          <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-            <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-          </c:forEach>
-          <a href="product-list?pageId=${pageId+1}">&raquo;</a>
-        </c:if>
-
-        <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
-        <c:if test="${pageId ==haveMaxPage}" >
-          <a href="product-list?pageId=${pageId-1}">&laquo;</a>
-          <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-            <a id="${i}" href="product-list?pageId=${i}">${i}</a>
+            <a id="${i}" href="ProviderList?pageId=${i}">${i}</a>
           </c:forEach>
           <a >&raquo;</a>
         </c:if>
+        <c:if test="${ haveMaxPage !=1}">
+          <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+          <c:if test="${pageId ==1}" >
+            <a >&laquo;</a>
+            <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+              <a id="${i}" href="ProviderList?pageId=${i}">${i}</a>
+            </c:forEach>
+            <a href="ProviderList?pageId=${pageId+1}">&raquo;</a>
+          </c:if>
+          <%--  Còn trường hợp này nút nào cũng xài được--%>
+          <c:if test="${pageId >1 && pageId<haveMaxPage}" >
+            <a href="ProviderList?pageId=${pageId-1}">&laquo;</a>
+            <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+              <a id="${i}" href="ProviderList?pageId=${i}">${i}</a>
+            </c:forEach>
+            <a href="ProviderList?pageId=${pageId+1}">&raquo;</a>
+          </c:if>
+
+          <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+          <c:if test="${pageId ==haveMaxPage}" >
+            <a href="ProviderList?pageId=${pageId-1}">&laquo;</a>
+            <c:forEach begin="1" end="${haveMaxPage}" var= "i">
+              <a id="${i}" href="ProviderList?pageId=${i}">${i}</a>
+            </c:forEach>
+            <a >&raquo;</a>
+          </c:if>
         </c:if>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 </div>
 <script>
   let arrow = document.querySelectorAll(".arrow");
@@ -255,8 +258,11 @@
     document.getElementById("loader").style.display = "none";
     document.getElementById("myDiv").style.display = "block";
   }
-//   Highlight cho nút đang được chọn ở phân trang
+  //   Highlight cho nút đang được chọn ở phân trang
   document.getElementById('${pageId}').classList.add("active")
+
+
+
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

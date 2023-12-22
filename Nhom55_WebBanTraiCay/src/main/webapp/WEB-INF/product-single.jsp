@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
+    <fmt:setLocale value="vi_VN"/>
     <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -186,7 +189,9 @@
 
 
                 <p class="price">
-                    <span>${product.getPrice()} VNĐ/ ${product.getWeightDefault()} kg</span></p>
+                    <span><fmt:formatNumber pattern="#,##0 đ" value="${product.getPrice()}"/>/ ${product.getWeightDefault()} kg</span></p>
+
+<%--                    <span>${product.getPrice()} VNĐ/ ${product.getWeightDefault()} kg</span></p>--%>
 
                 <p>${product.getDescription()}</p>
                 <div class="row mt-4">

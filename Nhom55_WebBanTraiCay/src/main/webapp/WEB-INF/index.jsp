@@ -10,9 +10,11 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
+    <fmt:setLocale value="vi_VN"/>
     <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -271,8 +273,10 @@
                             <h3><a href="">${product.getNameOfProduct()} </a></h3>
                             <div class="d-flex">
                                 <div class="pricing">
-                                    <p class="price"><spanZ
-                                            class="price">${product.getPrice()} VNĐ</spanZ></p>
+<%--                                    <p class="price"><span--%>
+<%--                                            class="price">${product.getPrice()} VNĐ</span></p>--%>
+                                    <p class="price"><span
+                                            class="price"><fmt:formatNumber pattern="#,##0 đ" value="${product.getPrice()}"/></span></p>
                                 </div>
                             </div>
                             <div class="bottom-area d-flex px-3">

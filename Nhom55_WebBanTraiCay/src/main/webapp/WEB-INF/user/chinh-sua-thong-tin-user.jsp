@@ -61,7 +61,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Thông tin người dùng</a>
                 <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                    <a class="account dropdown-item" href="${pageContext.request.contextPath}/userProfile">
+                    <a class="account dropdown-item" href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
                         Người Dùng
                     </a>
@@ -84,7 +84,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="userProfile?id=${user.getId()}">
+                    <a href="${pageContext.request.contextPath}/userProfile?id=${loginedUser.getId()}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                         Thông tin người dùng
                     </a>
@@ -96,7 +96,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="updatePasswordUser?id=${user.getId()}">
+                    <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${loginedUser.getId()}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
                         Đổi mật khẩu
                     </a>
@@ -123,7 +123,7 @@
             <br>
             <br>
 
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="updateInfoUser" method="post" enctype="multipart/form-data">
                 <div class="user-info">
                     <div class="basic-info">
                         <table style="border-collapse:collapse;
@@ -131,84 +131,86 @@
                             <tr>
                                 <td><label for="id">ID <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px" type="text" id="id" name="id" value="${user.getId()}" readonly required>
+                                    <input style="margin-left: 60px" type="text" id="id" name="id" value="${loginedUser.getId()}" readonly required>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${user.getUsername()}" required>
-                                    <span class="error-msg required" id="username-error"  style="display: none;" >Vui lòng điền thông tin vào trường này.</span>
+                                    <input style="margin-left: 60px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${loginedUser.getUsername()}" required>
+                                    <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
+                                    <c:if test="${not empty error_name}" >
+                                        <td><p style="color: red; margin-left: 60px">${error_name}</p></td>
+                                    </c:if>
                                 </td>
-                                <c:if test="${not empty error_name}" >
-                                    <td><p style="color: red">${error_name}</p></td>
-                                </c:if>
                             </tr>
 
                             <tr>
                                 <td><label for="email_nd">Email <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px; width: 250px" name="email_nguoi_dung" id="email_nd" type="email" value="${user.getEmail()}"  required>
-                                    <span class="error-msg required" id="email-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                    <input style="margin-left: 60px; width: 250px" name="email_nguoi_dung" id="email_nd" type="email" value="${loginedUser.getEmail()}"  required>
+                                    <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
+                                    <c:if test="${not empty error_email}" >
+                                        <td><p style="color: red; margin-left: 60px">${error_email}</p></td>
+                                    </c:if>
                                 </td>
-                                <c:if test="${not empty error_email}" >
-                                    <td><p style="color: red">${error_email}</p></td>
-                                </c:if>
-
                             </tr>
 
                             <tr>
-                                <td><label for="gender">Giới tính <span style="color: red">*</span></label></td>
-                                <td>
-                                    <input style="margin-left: 60px" name="gioi_tinh_nd" id="gender" type="text" value="${user.getSexual()}"  required>
-                                    <span class="error-msg required" id="gender-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                <td><label for="gioi_tinh_nd">Giới tính <span style="color: red">*</span></label></td>
+                                <td class="gender-td" id="gioi_tinh_nd" >
+                                    <input style="margin-left: 60px" type="radio" id="male" name="gender" value="male" checked>
+                                    <label for="male">Nam</label>
+                                    <input style="margin-left: 30px" type="radio" id="female" name="gender" value="female">
+                                    <label for="female">Nữ</label>
+                                    <c:if test="${not empty error_gender}" >
+                                        <td><p style="color: red; margin-left: 60px">${error_gender}</p></td>
+                                    </c:if>
                                 </td>
-                                <c:if test="${not empty error_gender}" >
-                                    <td><p style="color: red">${error_gender}</p></td>
-                                </c:if>
+
 
                             </tr>
 
                             <tr>
                                 <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${user.getAddress()}" required>
-                                    <span class="error-msg required" id="address-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                    <input style="margin-left: 60px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${loginedUser.getAddress()}" required>
+                                    <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
+                                    <c:if test="${not empty error_address}" >
+                                        <td><p style="color: red; margin-left: 60px">${error_address}</p></td>
+                                    </c:if>
                                 </td>
-                                <c:if test="${not empty error_address}" >
-                                    <td><p style="color: red">${error_address}</p></td>
-                                </c:if>
                             </tr>
 
 
                             <tr>
                                 <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
 
-                                <td><input style="margin-left: 60px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${user.getPhoneNumber()}" required>
-                                    <span class="error-msg required" id="phoneNumber-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                <td><input style="margin-left: 60px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${loginedUser.getPhoneNumber()}" required>
+                                    <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
+                                    <c:if test="${not empty error_phoneNumber}" >
+                                        <td><p style="color: red; margin-left: 60px">${error_phoneNumber}</p></td>
+                                    </c:if>
                                 </td>
-                                <c:if test="${not empty error_phoneNumber}" >
-                                    <td><p style="color: red">${error_phoneNumber}</p></td>
-                                </c:if>
                             </tr>
 
                             <tr>
                                 <td><label for="dob">Sinh nhật<span class="not-empty"> *</span></label></td>
-                                <td><input style="margin-left: 60px" type="date" id="dob" name="dob" value="${user.getDateOfBirth()}" required></td>
-                                <span class="error-msg required" id="dob-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                <td><input style="margin-left: 60px" type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" required></td>
+                                <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
+                                <c:if test="${not empty error_dob}" >
+                                    <td><p style="color: red; margin-left: 60px">${error_dob}</p></td>
+                                </c:if>
                             </tr>
-                            <c:if test="${not empty error_dob}" >
-                                <td><p style="color: red">${error_dob}</p></td>
-                            </c:if>
                         </table>
                     </div>
                     <div class="user-img">
-                        <img id="previewImage" src="${user.getImg()}" alt="">
+                        <img id="previewImage" src="${loginedUser.getImg()}" alt="">
                         <div class="chose-new-img">
                             <label for="fileInput" class="chose-new-img">
                                 <input type="file" id="fileInput" name="avatar" accept="image/*">
-                                <span class="error-msg required" id="fileUpload-error" style="display: none;"></span>
+                                <span class="error-msg required" id="fileUpload-error" style="display: none;margin-left: 60px;color: red"></span>
                                 <c:if test="${not empty file_anh_error}" >
                                     <td><p style="color: red">${file_anh_error}</p></td>
                                 </c:if>
@@ -229,9 +231,6 @@
                         <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
                 </button>
             </form>
-            <c:if test="${not empty message}">
-                <p style="color: red; padding: 30px">${message}</p>
-            </c:if>
         </div>
     </div>
 
@@ -307,15 +306,13 @@
     }
 
     function validateGenderUser() {
-        var text = genderUser.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var maleCheckbox = document.getElementById("male");
+        var femaleCheckbox = document.getElementById("female");
         var error = document.getElementById("gender-error");
-        if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập giới tính";
-            error.style.display = "block";
-            return false;
-        } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Giới tính chỉ chứa ký tự chữ cái, khoảng trắng.";
+
+        // Kiểm tra xem người dùng đã chọn ít nhất một trong hai giới tính chưa
+        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+            error.textContent = "Vui lòng chọn giới tính";
             error.style.display = "block";
             return false;
         } else {
@@ -323,6 +320,7 @@
             return true;
         }
     }
+
 
 
     function validateEmailUser() {

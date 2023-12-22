@@ -131,7 +131,7 @@
                         <img src="../../static/images/accountPicture.png" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${user.getUsername()}</div>
+                        <div class="profile_name">${loginedUser.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">
@@ -163,32 +163,32 @@
                         <table>
                             <tr>
                                 <td>Tên người dùng</td>
-                                <td>${user.getUsername()}</td>
+                                <td>${loginedUser.getUsername()}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>${user.getEmail()}</td>
+                                <td>${loginedUser.getEmail()}</td>
                             </tr>
                             <tr>
                                 <td>Ngày sinh</td>
-                                <td>01/01/2003</td>
+                                <td>${loginedUser.getDateOfBirth()}</td>
                             </tr>
                             <tr>
                                 <td>Giới Tính</td>
-                                <td>${user.getSexual()}</td>
+                                <td>${loginedUser.getSexual()}</td>
                             </tr>
                             <tr>
                                 <td>Số điện thoại</td>
-                                <td>${user.getPhoneNumber()}</td>
+                                <td>${loginedUser.getPhoneNumber()}</td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ</td>
-                                <td>${user.getAddress()}</td>
+                                <td>${loginedUser.getAddress()}</td>
                             </tr>
                         </table>
                     </div>
                     <div class="img-admin">
-                        <img src="/static/images/accountPicture.png" alt="">
+                        <img src="${loginedUser.getImg()}" alt="">
                     </div>
                 </div>
                 <div class="edit-admin">

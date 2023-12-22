@@ -116,10 +116,10 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${user.getImg()}" alt="profileImg">
+                        <img src="${loginedUser.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${user.getUsername()}</div>
+                        <div class="profile_name">${loginedUser.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <i style="transform: rotate(180deg); ">
@@ -148,36 +148,38 @@
                             <table>
                                 <tr>
                                     <td><label for="id">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="id" placeholder="ID" name="id-admin" value="${user.getId()}" readonly required></td>
+                                    <td><input id="id" placeholder="ID" name="id-admin" value="${loginedUser.getId()}" readonly required></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${user.getUsername()}" required></td>
-                                    <span class="error-msg required" id="username-error"  style="display: none;" ></span>
-                                    <c:if test="${not empty error_name}" >
-                                        <td><p style="color: red">${error_name}</p></td>
-                                    </c:if>
+                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${loginedUser.getUsername()}" required>
+                                        <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
+                                        <c:if test="${not empty error_name}" >
+                                            <td><p style="color: red">${error_name}</p></td>
+                                        </c:if>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
-                                    <td><input id="email_nd" placeholder="email" name="email" value="${user.getEmail()}"  required></td>
-                                    <span class="error-msg required" id="email-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
-                                    <c:if test="${not empty error_email}" >
-                                        <td><p style="color: red">${error_email}</p></td>
-                                    </c:if>
+                                    <td><input id="email_nd" placeholder="email" name="email" value="${loginedUser.getEmail()}"  required>
+                                        <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
+                                        <c:if test="${not empty error_email}" >
+                                             <td><p style="color: red">${error_email}</p></td>
+                                        </c:if>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
-                                    <td><input type="date" id="dob" name="dob" value="${user.getDateOfBirth()}" required></td>
-                                    <span class="error-msg required" id="dob-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                                    <td><input type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" required></td>
+                                    <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_dob}" >
                                         <td><p style="color: red">${error_dob}</p></td>
                                     </c:if>
                                 </tr>
                                 <tr>
-                                    <td>Giới Tính<span class="not-empty"> *</span></td>
-                                    <td class="gender-td">
-                                        <input type="radio" id="male" name="gender" value="male">
+                                    <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
+                                    <td class="gender-td" id="gioi_tinh_nd">
+                                        <input type="radio" id="male" name="gender" value="male" checked>
                                         <label for="male">Nam</label>
                                         <input type="radio" id="female" name="gender" value="female">
                                         <label for="female">Nữ</label>
@@ -188,21 +190,25 @@
                                 </tr>
                                 <tr>
                                     <td><label for="phoneNumber">Số điện thoại<span class="not-empty"> *</span></label></td>
-                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại" value="${user.getPhoneNumber()}" required></td>
-                                    <span class="error-msg required" id="phoneNumber-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
-
+                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại" value="${loginedUser.getPhoneNumber()}" required>
+                                        <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
+                                        <c:if test="${not empty error_phoneNumber}" >
+                                            <td><p style="color: red">${error_phoneNumber}</p></td>
+                                        </c:if>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td><label for="address">Địa chỉ<span class="not-empty"> *</span></label></td>
-                                    <td><input id="address" name="address" placeholder="địa chỉ" value="${user.getAddress()}" required></td>
-                                    <span class="error-msg required" id="address-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
-                                    <c:if test="${not empty error_address}" >
-                                        <td><p style="color: red">${error_address}</p></td>
-                                    </c:if>
+                                    <td><input id="address" name="address" placeholder="địa chỉ" value="${loginedUser.getAddress()}" required>
+                                        <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
+                                        <c:if test="${not empty error_address}" >
+                                            <td><p style="color: red">${error_address}</p></td>
+                                        </c:if>
+                                    </td>
                                 </tr>
                             </table>
                             <div class="img-admin">
-                                <img id="previewImage" src="${user.getImg()}" alt="">
+                                <img id="previewImage" src="${loginedUser.getImg()}" alt="">
                                 <div class="chose-new-img">
                                     <label for="fileInput" class="chose-new-img">
                                         <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -227,9 +233,6 @@
                 </div>
             </div>
         </div>
-        <c:if test="${not empty message}">
-            <p style="color: red; padding: 30px">${message}</p>
-        </c:if>
     </div>
 
 </section>
@@ -290,7 +293,6 @@
 
     var tenUser = document.getElementById("ten_nd");
     var emailUser = document.getElementById("email_nd");
-    var genderUser = document.getElementById("gioi_tinh_nd");
     var addressUser = document.getElementById("dc_nd");
     var phoneNumberUser = document.getElementById("sdt_nd");
     var upFileAnh = document.getElementById("fileInput");

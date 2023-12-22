@@ -82,13 +82,13 @@
           </div>
           <ul>
             <li>
-              <a href="${pageContext.request.contextPath}/userProfile?id=${user.getId()}">
+              <a href="${pageContext.request.contextPath}/userProfile?id=${loginedUser.getId()}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                 Thông tin người dùng
               </a>
             </li>
             <li>
-              <a href="${pageContext.request.contextPath}/updateInfoUser?id=${user.getId()}">
+              <a href="${pageContext.request.contextPath}/updateInfoUser?id=${loginedUser.getId()}">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg>
                 Chỉnh sửa thông tin
               </a>
@@ -119,7 +119,7 @@
         <div class="container-child-right">
           <h4>Đổi mật khẩu</h4>
           <hr style="border-top: 1px solid #000000;">
-          <form class="change-password" action="" method="post">
+          <form class="change-password" action="updatePasswordUser" method="post">
             <table style="border-collapse:collapse;
                     border: none; ">
               <tr>
@@ -128,7 +128,7 @@
                 </td>
                 <td>
                   <input type="password" id="old-password" name="old-password" >
-                  <span class="error-msg required" id="old-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                  <span class="error-msg required" id="old-password-error" style="display: none;"></span>
                 </td>
                 <c:if test="${not empty error_oldPassword}" >
                   <p style="color: red;padding: 30px"> ${error_oldPassword}</p>
@@ -140,10 +140,13 @@
                 </td>
                 <td>
                   <input type="password" id="new-password" name="new-password">
-                  <span class="error-msg required" id="new-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+                  <span class="error-msg required" id="new-password-error" style="display: none;"></span>
                 </td>
                 <c:if test="${not empty error_newPassword}" >
                   <p style="color: red;padding: 30px"> ${error_newPassword}</p>
+                </c:if>
+                <c:if test="${not empty error_checkOldAndNewPass}" >
+                  <p style="color: red;padding: 30px"> ${error_checkOldAndNewPass}</p>
                 </c:if>
               </tr>
               <tr>
@@ -152,11 +155,11 @@
                 </td>
                 <td>
                   <input type="password" id="retype-password" name="retype-password">
-                  <span class="error-msg required" id="retype-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
-                  <span class="error-msg required" id="retype-mismatch-error" style="display: none;">Mật khẩu mới và mật khẩu nhập lại không khớp.</span>
+                  <span class="error-msg required" id="retype-password-error" style="display: none;"></span>
+                  <span class="error-msg required" id="retype-mismatch-error" style="display: none;"></span>
                 </td>
-                <c:if test="${not empty error_retypePassword}" >
-                  <p style="color: red;padding: 30px"> ${error_retypePassword}</p>
+                <c:if test="${not empty error_checkNewAndRetypePass}" >
+                  <p style="color: red;padding: 30px"> ${error_checkNewAndRetypePass}</p>
                 </c:if>
               </tr>
             </table>
@@ -174,9 +177,7 @@
                   <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
               </button>
             </div>
-            <c:if test="${not empty error_password}" >
-              <p style="color: red;padding: 30px"> ${error_password}</p>
-            </c:if>
+
             <c:if test="${not empty result}" >
               <p style="color: red;padding: 30px"> ${result}</p>
             </c:if>

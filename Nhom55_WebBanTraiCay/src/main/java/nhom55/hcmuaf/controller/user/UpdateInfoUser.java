@@ -23,9 +23,7 @@ public class UpdateInfoUser extends HttpServlet {
             HttpSession session = request.getSession();
             Users user = (Users) session.getAttribute("loginedUser");
 
-            Users users = UserService.getInstance().getUserById(user.getId());
-            request.setAttribute("user", users);
-            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/edit-admin-profile.jsp");
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
             dispatcher.forward(request, response);
 
     }
@@ -50,12 +48,12 @@ public class UpdateInfoUser extends HttpServlet {
                     // Người dùng không chọn file ảnh, xử lý tại đây
                     UserService.getInstance().updateProfileNoImage(user.getId(), username, email, address, phoneNumber, dateOfBirth, gender);
 
-                    Users users = UserService.getInstance().getUserById(user.getId());
-                    request.setAttribute("user", users);
+                    response.sendRedirect(request.getContextPath() + "/userProfile");
                     request.setAttribute("message", "Cập nhật thành công");
-                    RequestDispatcher dispatcher = request
-                            .getRequestDispatcher("/WEB-INF/user/admin-profile.jsp");
-                    dispatcher.forward(request, response);
+//                    RequestDispatcher dispatcher = request
+//                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
+//                    dispatcher.forward(request, response);
+
 
                 } else {
                     // Người dùng chọn file ảnh
@@ -68,13 +66,11 @@ public class UpdateInfoUser extends HttpServlet {
                         part.write(root.getAbsolutePath() + "/" + fileName);
                         imgUser ="/data/" + fileName;
                     }
-                    UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, dateOfBirth,imgUser, gender);
+                    Users userUpdate = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, dateOfBirth,imgUser, gender);
 
-                    Users users = UserService.getInstance().getUserById(user.getId());
-                    request.setAttribute("user", users);
                     request.setAttribute("message", "Cập nhật thành công");
                     RequestDispatcher dispatcher = request
-                            .getRequestDispatcher("/WEB-INF/user/admin-profile.jsp");
+                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
                     dispatcher.forward(request, response);
 
                 }

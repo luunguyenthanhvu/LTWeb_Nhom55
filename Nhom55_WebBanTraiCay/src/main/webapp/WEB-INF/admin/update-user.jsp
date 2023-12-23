@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="css/update-user.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/update-user.css">
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -106,7 +109,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="user-list.html">Danh sách người dùng</a></li>
+                    <li><a href="user-list.jsp">Danh sách người dùng</a></li>
                 </ul>
             </li>
 
@@ -135,52 +138,52 @@
         </div>
 
         <div class="content-container" >
-            <form action="" method="post" class="main-content">
+            <form action="updateUser" method="post" class="main-content">
                 <div class="user-info">
                     <div class="img-user">
-                        <img style="width: 100px; height: 100px" src="../../static/images/accountPicture.png">
+                        <img style="width: 100px; height: 100px" src="${loginedUser.getImg()}">
                     </div>
                     <table>
                         <tr>
                             <td>Tên người dùng</td>
                             <td>
-                                <input value="Anh Long" disabled>
+                                <input value="${loginedUser.getUsername()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Mật khẩu</td>
                             <td>
-                                <input value="anhlongdeptrai123@@" disabled>
+                                <input value="${loginedUser.getPassword()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Giới tính</td>
                             <td>
-                                <input type="text" value="nam" disabled>
+                                <input type="text" value="${loginedUser.getSexual()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Ngày sinh</td>
                             <td>
-                                <input type="date" value="2003-01-01" disabled>
+                                <input type="date" value="${loginedUser.getDateOfBirth()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>
-                                <input value="anhlongdeptrai123@@" disabled>
+                                <input value="${loginedUser.getEmail()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Địa chỉ</td>
                             <td>
-                                <input value="12 Cầu Giấy, HCM" disabled>
+                                <input value="${loginedUser.getAddress()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Số điện thoại</td>
                             <td>
-                                <input value="0123456789" disabled>
+                                <input value="${loginedUser.getPhoneNumber()}" disabled>
                             </td>
                         </tr>
 

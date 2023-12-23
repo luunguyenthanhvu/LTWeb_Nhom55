@@ -133,19 +133,24 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * show profile
-     * @return  username, email, address, phoneNumber, dateOfBirth, img
+     * @return  id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
     public Users getUser(int userId) {
         return JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT id, username, email, address, phoneNumber, sexual, dateOfBirth, img FROM users where id = :id")
-                        .bind("id", userId)
+                handle.createQuery("SELECT id, username, hash, password, email, address, phoneNumber, sexual, dateOfBirth, img, status, role FROM users where id = :id")
+                        .bind(0, userId)
                         .mapToBean(Users.class)
                         .findOne()
                         .orElse(null)
         );
     }
 
+
+    /**
+     * get User
+     * @return  id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
+     */
     @Override
     public Users getUserById(int userId) {
        return JDBIConnector.get().withHandle(handle ->

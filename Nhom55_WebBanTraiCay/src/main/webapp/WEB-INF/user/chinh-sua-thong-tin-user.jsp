@@ -131,14 +131,14 @@
                             <tr>
                                 <td><label for="id">ID <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px" type="text" id="id" name="id" value="${loginedUser.getId()}" readonly required>
+                                    <input style="margin-left: 60px; width: 250px" type="text" id="id" name="id" value="${loginedUser.getId()}" readonly required>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${loginedUser.getUsername()}" required>
+                                    <input style="margin-left: 60px; width: 250px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${loginedUser.getUsername()}" required>
                                     <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
                                     <c:if test="${not empty error_name}" >
                                         <td><p style="color: red; margin-left: 60px">${error_name}</p></td>
@@ -175,7 +175,7 @@
                             <tr>
                                 <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${loginedUser.getAddress()}" required>
+                                    <input style="margin-left: 60px; width: 250px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${loginedUser.getAddress()}" required>
                                     <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_address}" >
                                         <td><p style="color: red; margin-left: 60px">${error_address}</p></td>
@@ -187,7 +187,7 @@
                             <tr>
                                 <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
 
-                                <td><input style="margin-left: 60px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${loginedUser.getPhoneNumber()}" required>
+                                <td><input style="margin-left: 60px; width: 250px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${loginedUser.getPhoneNumber()}" required>
                                     <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_phoneNumber}" >
                                         <td><p style="color: red; margin-left: 60px">${error_phoneNumber}</p></td>
@@ -197,7 +197,7 @@
 
                             <tr>
                                 <td><label for="dob">Sinh nhật<span class="not-empty"> *</span></label></td>
-                                <td><input style="margin-left: 60px" type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" required></td>
+                                <td><input style="margin-left: 60px; width: 250px" type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" required></td>
                                 <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
                                 <c:if test="${not empty error_dob}" >
                                     <td><p style="color: red; margin-left: 60px">${error_dob}</p></td>
@@ -231,6 +231,7 @@
                         <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
                 </button>
             </form>
+
         </div>
     </div>
 

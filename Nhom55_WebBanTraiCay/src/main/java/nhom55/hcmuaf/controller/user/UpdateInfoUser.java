@@ -43,16 +43,20 @@ public class UpdateInfoUser extends HttpServlet {
         Part filePart = request.getPart("avatar");
         String filePartString = filePart.getSubmittedFileName();
 
+        try {
             if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, filePartString, gender)) {
                 if (filePart == null || filePart.getSize() == 0) {
                     // Người dùng không chọn file ảnh, xử lý tại đây
                     UserService.getInstance().updateProfileNoImage(user.getId(), username, email, address, phoneNumber, dateOfBirth, gender);
 
-                    response.sendRedirect(request.getContextPath() + "/userProfile");
+
                     request.setAttribute("message", "Cập nhật thành công");
 //                    RequestDispatcher dispatcher = request
 //                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
 //                    dispatcher.forward(request, response);
+
+                    response.sendRedirect(request.getContextPath() + "/WEB-INF/user/user-profile.jsp");
+
 
 
                 } else {
@@ -69,12 +73,18 @@ public class UpdateInfoUser extends HttpServlet {
                     Users userUpdate = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, dateOfBirth,imgUser, gender);
 
                     request.setAttribute("message", "Cập nhật thành công");
-                    RequestDispatcher dispatcher = request
-                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
-                    dispatcher.forward(request, response);
+//                    RequestDispatcher dispatcher = request
+//                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
+//                    dispatcher.forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/WEB-INF/user/user-profile.jsp");
+
 
                 }
             }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
         /**

@@ -110,7 +110,22 @@
                     <li><a href="user-list.jsp">Danh sách người dùng</a></li>
                 </ul>
             </li>
-
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M64 32C46.3 32 32 46.3 32 64V304v48 80c0 26.5 21.5 48 48 48H496c26.5 0 48-21.5 48-48V304 152.2c0-18.2-19.4-29.7-35.4-21.1L352 215.4V152.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4V64c0-17.7-14.3-32-32-32H64z"/></svg>
+                        </i>
+                        <span class="link_name">Nhà cung cấp</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Nhà cung cấp</a></li>
+                    <li><a href="ProviderList">Danh sách nhà cung cấp</a></li>
+                    <li><a href="AdminAddProvider">Thêm nhà cung cấp</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <div class="profile-content">

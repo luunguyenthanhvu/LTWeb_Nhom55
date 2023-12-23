@@ -335,7 +335,8 @@
                                             </svg>
                                             <input type="text" id="cardCVCInput"
                                                    placeholder="Thẻ CVC">
-                                            <p style="color: red; display: none" id="cardCVC_error"></p>
+                                            <p style="color: red; display: none"
+                                               id="cardCVC_error"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -351,7 +352,7 @@
                                 </div>
 
                                 <p>
-                                    <button type="submit" class="btn btn-primary py-3 px-4">
+                                    <button type="submit" id="submit-btn" class="btn btn-primary py-3 px-4">
                                         Đặt hàng
                                     </button>
                                 </p>
@@ -482,69 +483,185 @@
     </svg>
 </div>
 <script>
-    // validate for form order
-    var ho = document.getElementById("lastname");
-    var ten = document.getElementById("firstname");
-    var diaChi = document.getElementById("street-address");
-    var thanhPho = document.getElementById("city");
-    var sdt = document.getElementById("sdt_nd");
-    var email = document.getElementById("email");
-    var soThe = document.getElementById("cardNumberInput");
-    var theCVC = document.getElementById("cardCVCInput");
+  // validate for form order
+  var ho = document.getElementById("lastname");
+  var ten = document.getElementById("firstname");
+  var diaChi = document.getElementById("street-address");
+  var thanhPho = document.getElementById("city");
+  var sdt = document.getElementById("sdt_nd");
+  var email = document.getElementById("email");
+  var soThe = document.getElementById("cardNumberInput");
+  var theCVC = document.getElementById("cardCVCInput");
 
-    function validateHo() {
-      var text = ho.value;
-      var kyTuHopLe = /^[a-zA-Z ]+$/;
-      var error = document.getElementById("lastname_error");
-      if (text.length == 0 || text == null) {
-        error.textContent = "Vui lòng nhập dữ liệu";
-        error.style.display = "block";
-        return false;
-      } else if (!kyTuHopLe.test(text)) {
-        error.textContent = "Họ chỉ chứa ký tự chữ cái, khoảng trắng.";
-        error.style.display = "block";
-        return false;
-      } else {
-        error.style.display = "none";
-        return true;
-      }
+  function validateHo() {
+    var text = ho.value;
+    var kyTuHopLe = /^[a-zA-Z ]+$/;
+    var error = document.getElementById("lastname_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Họ chỉ chứa ký tự chữ cái, khoảng trắng.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
     }
+  }
 
-    function validateTen() {
-      var text = ten.value;
-      var kyTuHopLe = /^[a-zA-Z ]+$/;
-      var error = document.getElementById("firstname_error");
-      if (text.length == 0 || text == null) {
-        error.textContent = "Vui lòng nhập dữ liệu";
-        error.style.display = "block";
-        return false;
-      } else if (!kyTuHopLe.test(text)) {
-        error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
-        error.style.display = "block";
-        return false;
-      } else {
-        error.style.display = "none";
-        return true;
-      }
+  function validateTen() {
+    var text = ten.value;
+    var kyTuHopLe = /^[a-zA-Z ]+$/;
+    var error = document.getElementById("firstname_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
     }
+  }
 
-    function validateAddress() {
-      var text = diaChi.value;
-      var kyTuHopLe = /^[a-zA-Z ]+$/;
-      var error = document.getElementById("firstname_error");
-      if (text.length == 0 || text == null) {
-        error.textContent = "Vui lòng nhập dữ liệu";
-        error.style.display = "block";
-        return false;
-      } else if (!kyTuHopLe.test(text)) {
-        error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
-        error.style.display = "block";
-        return false;
-      } else {
-        error.style.display = "none";
-        return true;
-      }
+  function validateAddress() {
+    var text = diaChi.value;
+    var kyTuHopLe = /^[\p{L}\s,]+,\s[\p{L}\s,]+,\s[\p{L}\s,]+$/u;
+    var error = document.getElementById("address_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Địa chỉ chỉ chứa ký tự chữ cái, khoảng trắng.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
     }
+  }
+
+  function validateThanhPho() {
+    var text = diaChi.value;
+    var kyTuHopLe = /^[a-zA-Z ]+$/;
+    var error = document.getElementById("city_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Thành phố chứa ký tự chữ cái, khoảng trắng.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateSDT() {
+    var text = sdt.value;
+    var kyTuHopLe = /^\+(?:[0-9] ?){6,14}[0-9]$/;
+    var error = document.getElementById("phone_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Số điện thoại chỉ chứa số từ 0 - 9";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateEmail() {
+    var text = email.value;
+    var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    var error = document.getElementById("email_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Địa chỉ email không hợp lệ.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateSoThe() {
+    var text = soThe.value;
+    var kyTuHopLe =  /^\d{16}$/;
+    var error = document.getElementById("cardNum_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent =  "Số thẻ ngân hàng không hợp lệ. Vui lòng nhập 16 chữ số.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateTheCVC() {
+    var text = soThe.value;
+    var cvcPattern = /^\d{3}$/;
+    var error = document.getElementById("cardCVC_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập dữ liệu";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent =  "Mã CVC không hợp lệ. Vui lòng nhập 3 chữ số.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  // add validate for form
+  ho.addEventListener("blur", validateHo);
+  ten.addEventListener("blur", validateTen);
+  diaChi.addEventListener("blur", validateAddress);
+  thanhPho.addEventListener("blur", validateThanhPho);
+  sdt.addEventListener("blur", validateSDT);
+  email.addEventListener("blur", validateEmail);
+  soThe.addEventListener("blur", validateSoThe);
+  theCVC.addEventListener("blur", validateTheCVC);
+
+  var submitBtn = document.getElementById("submit-btn");
+  submitBtn.addEventListener("click", function (event) {
+    var isHoValid = validateHo();
+    var isTenValid = validateTen();
+    var isDiaChiValid  = validateAddress();
+    var isThanhPhoValid = validateThanhPho();
+    var isSdtValid = validateSDT();
+    var isEmailValid = validateEmail();
+    var isSoTheValid = validateSoThe();
+    var isTheCVCValid = validateTheCVC();
+    if (!isHoValid || !isTenValid || !isDiaChiValid || !isThanhPhoValid
+        || !isSdtValid  || !isEmailValid || ! isSoTheValid || !isTheCVCValid) {
+      event.preventDefault();
+    }
+  })
 </script>
 
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>

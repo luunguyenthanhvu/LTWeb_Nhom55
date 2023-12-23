@@ -125,7 +125,6 @@
 
 
             <form action="updateInfoUser" method="post" enctype="multipart/form-data">
-
                 <div class="user-info">
                     <div class="basic-info">
                         <table style="border-collapse:collapse;

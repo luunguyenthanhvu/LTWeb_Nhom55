@@ -192,7 +192,7 @@
                                        type="text" value="${ten_sp}"></td>
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="ten_sp_error"></td>
+                        <td><p class="error" style="color: red; display: none" id="ten_sp_error"></td>
                         <c:if test="${not empty ten_sp_error}" >
                             <td><p style="color: red">${ten_sp_error}</p></td>
                         </c:if>
@@ -204,7 +204,7 @@
 
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="mota_sp_error"></td>
+                        <td><p class="error" style="color: red; display: none" id="mota_sp_error"></td>
                         <c:if test="${not empty mo_ta_error}" >
                             <td><p style="color: red">${mo_ta_error}</p></td>
                         </c:if>
@@ -216,7 +216,7 @@
 
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="giatien_sp_error"></td>
+                        <td><p class="error"  style="color: red; display: none" id="giatien_sp_error"></td>
                         <c:if test="${not empty gia_tien_error}" >
                             <td><p style="color: red">${gia_tien_error}</p></td>
                         </c:if>
@@ -228,7 +228,7 @@
 
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="kl_sp_error"></td>
+                        <td><p class="error" style="color: red; display: none" id="kl_sp_error"></td>
                         <c:if test="${not empty khoi_luong_errorr}" >
                             <td><p style="color: red">${khoi_luong_error}</p></td>
                         </c:if>
@@ -240,7 +240,7 @@
 
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="kgMacDinh_sp_error"></td>
+                        <td><p class="error" style="color: red; display: none" id="kgMacDinh_sp_error"></td>
                         <c:if test="${not empty khoi_luong_mac_dinh_error}" >
                             <td><p style="color: red">${khoi_luong_mac_dinh_error}</p></td>
                         </c:if>
@@ -261,7 +261,7 @@
                             </td>
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="provider_product_error"></td>
+                        <td><p class="error" style="color: red; display: none" id="provider_product_error"></td>
                         <c:if test="${not empty nha_cung_cap_error}" >
                             <td><p style="color: red">${nha_cung_cap_error}</p></td>
                         </c:if>
@@ -273,7 +273,7 @@
 
                         </tr>
                         <td><br></td>
-                        <td><p class="error" id="expired_day_error"></td>
+                        <td><p class="error" style="color: red; display: none" id="expired_day_error"></td>
                         <c:if test="${not empty ngay_het_han_error}" >
                             <td><p style="color: red">${ngay_het_han_error}</p></td>
                         </c:if>
@@ -293,7 +293,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><p class="error" id="upfileAnh_error"></td>
+                            <td><p class="error" style="color: red; display: none" id="upfileAnh_error"></td>
                             <c:if test="${not empty file_anh_error}" >
                                 <td><p style="color: red">${file_anh_error}</p></td>
                             </c:if>

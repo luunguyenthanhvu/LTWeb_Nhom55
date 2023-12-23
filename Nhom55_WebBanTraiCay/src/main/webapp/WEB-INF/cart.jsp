@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en">
 <head>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <fmt:setLocale value="vi_VN"/>
+    <title>Giỏ hàng</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -82,12 +84,14 @@
                 <c:choose>
                     <c:when test="${not empty loginedUser}">
                         <li class="nav-item cta cta-colored"><a
-                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
+                                href="${pageContext.request.contextPath}/cart"
+                                class="nav-link"><span
                                 class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
                     </c:when>
                     <c:otherwise>
                         <li class="nav-item cta cta-colored"><a
-                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
+                                href="${pageContext.request.contextPath}/login"
+                                class="nav-link"><span
                                 class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
                     </c:otherwise>
                 </c:choose>
@@ -150,47 +154,55 @@
 </div>
 
 <section class="ftco-section ftco-cart">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 ftco-animate">
-                <div class="cart-list">
-                    <table class="table">
-                        <thead class="thead-primary">
-                        <tr class="text-center">
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Giá bán</th>
-                            <th>Số lượng</th>
-                            <th>Tổng tiền</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach items="${cart.getCartProduct()}" var="item" varStatus="loop">
+    <form action="submit-selected-products" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ftco-animate">
+                    <div class="cart-list">
+                        <table class="table">
+                            <thead class="thead-primary">
                             <tr class="text-center">
-                                <td class="product-remove"><a
-                                        href="${pageContext.request.contextPath}/remove-product-cart?id=${item.getProducts().getId()}"
-                                        onclick="if (!(confirm('Bạn có muốn xóa sản phẩm ra khỏi giỏ hàng không?'))) return false"><span
-                                        class="ion-ios-close"></span></a></td>
-                                <td class="image-prod">
-                                    <div class="img">
-                                        <img
-                                                style="width: 100px; height: 100px; object-fit: cover"
-                                                class="img-fluid"
-                                                src="${item.getProducts().getImg()}"
-                                                alt="Colorlib Template">
-                                    </div>
-                                </td>
+                                <th>&nbsp;</th>
+                                <th>Thanh Toán</th>
+                                <th>&nbsp;</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá bán</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${cart.getCartProduct()}" var="item" varStatus="loop">
+                                <tr class="text-center">
+                                    <td class="product-remove"><a
+                                            href="${pageContext.request.contextPath}/remove-product-cart?id=${item.getProducts().getId()}"
+                                            onclick="if (!(confirm('Bạn có muốn xóa sản phẩm ra khỏi giỏ hàng không?'))) return false"><span
+                                            class="ion-ios-close"></span></a></td>
+                                    <td><input name="selectedProducts"
+                                               value="${item.getProducts().getId()}"
+                                               style="cursor: pointer; margin-top:  10px; width: 25px; height: 25px"
+                                               type="checkbox"></td>
+                                    <td class="image-prod">
+                                        <div class="img">
+                                            <img
+                                                    style="width: 100px; height: 100px; object-fit: cover"
+                                                    class="img-fluid"
+                                                    src="${item.getProducts().getImg()}"
+                                                    alt="Colorlib Template">
+                                        </div>
+                                    </td>
 
-                                <td class="product-name">
-                                    <h3>${item.getProducts().getNameOfProduct()}</h3>
-                                    <p>${item.getProducts().getDescription()}</p>
-                                </td>
+                                    <td class="product-name">
+                                        <h3>${item.getProducts().getNameOfProduct()}</h3>
+                                        <p>${item.getProducts().getDescription()}</p>
+                                    </td>
 
-                                <td class="price">${item.getProducts().getPrice()}</td>
+                                    <td class="price">
+                                        <fmt:formatNumber pattern="#,##0 ₫" value="${item.getProducts().getPrice()}"/>
+                                    </td>
 
-                                <td class="quantity">
-                                    <div class="input-group mb-3">
+                                    <td class="quantity">
+                                        <div class="input-group mb-3">
                                 <span class="input-group-btn mr-2">
                                     <a href="${pageContext.request.contextPath}/quantity-inc-dec?action=dec&id=${item.getProducts().getId()}"
                                        class="btn-plus-indre"
@@ -198,37 +210,38 @@
                                         <i class="ion-ios-remove"></i>
                                     </a>
                                 </span>
-                                        <input type="text" name="quantity"
-                                               class="form-control input-number"
-                                               value="${item.getQuantity()}" min="1">
-                                        <span class="input-group-btn ml-2">
+                                            <input type="text" name="quantity"
+                                                   class="form-control input-number"
+                                                   value="${item.getQuantity()}" min="1">
+                                            <span class="input-group-btn ml-2">
                                     <a href="${pageContext.request.contextPath}/quantity-inc-dec?action=inc&id=${item.getProducts().getId()}"
                                        class="btn-plus-indre"
                                        data-type="plus" data-field="">
                                         <i class="ion-ios-add"></i>
                                     </a>
                                 </span>
-                                    </div>
+                                        </div>
 
-                                </td>
-                                <td class="total">${item.getPrice()}</td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                                    </td>
+                                    <td class="total">
+                                        <fmt:formatNumber pattern="#,##0 ₫" value="${item.getPrice()}"/>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                    <div class="form-group d-flex">
+                        <input type="submit" value="Tiến hành kiểm tra" class="submit px-3 btn btn-primary py-3 px-4">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-end">
-
-
-            <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Tiến hành kiểm tra</a>
-                </p>
-            </div>
-        </div>
-    </div>
+    </form>
 </section>
 
 <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
@@ -346,6 +359,36 @@
     </svg>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector("form");
+
+    form.addEventListener('submit', function (event) {
+      var selectedProductIds = [];
+
+      // Lặp qua tất cả các checkbox được chọn
+      var checkboxes = document.querySelectorAll('input[name="selectedProducts"]:checked');
+      checkboxes.forEach(function (checkbox) {
+        selectedProductIds.push(checkbox.value);
+      });
+
+      // Kiểm tra nếu có sản phẩm được chọn
+      if (selectedProductIds.length > 0) {
+        // Thêm danh sách sản phẩm đã chọn vào form
+        var hiddenProduct = document.createElement('input');
+        hiddenProduct.type = 'hidden';
+        hiddenProduct.name = 'selectedProductIds';
+        hiddenProduct.value = JSON.stringify(selectedProductIds);
+        form.appendChild(hiddenProduct);
+      } else {
+        // Nếu không có sản phẩm nào được chọn, có thể thực hiện các hành động khác hoặc hiển thị thông báo
+        alert('Vui lòng chọn ít nhất một sản phẩm.');
+        event.preventDefault();
+      }
+    });
+  });
+
+</script>
 
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>

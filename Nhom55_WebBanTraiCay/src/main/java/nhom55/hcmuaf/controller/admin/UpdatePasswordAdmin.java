@@ -34,7 +34,7 @@ public class UpdatePasswordAdmin extends HttpServlet {
 
         if (checkValidate(request,response,oldPassword,newPassword,retypePassword)) {
             // Kiểm tra mật khẩu cũ
-            if (!UserService.getInstance().checkUser(user.getId(), MyUtils.encodePass(oldPassword))) {
+            if (UserService.getInstance().checkPassUser(user.getId(), MyUtils.encodePass(oldPassword))) {
                 // Đổi mật khẩu
                 String result = UserService.getInstance().changePass(user.getId(), newPassword);
 
@@ -79,6 +79,8 @@ public class UpdatePasswordAdmin extends HttpServlet {
         if (!checkOldPassword.isEmpty()) {
             count++;
             request.setAttribute("error_oldPassword", checkOldPassword);
+        } else {
+
         }
 
         if (!checkNewPassword.isEmpty()) {

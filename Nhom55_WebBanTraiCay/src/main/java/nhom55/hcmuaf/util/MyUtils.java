@@ -1,5 +1,7 @@
 package nhom55.hcmuaf.util;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.servlet.http.Part;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.cart.Cart;

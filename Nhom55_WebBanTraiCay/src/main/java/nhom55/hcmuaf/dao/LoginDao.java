@@ -24,7 +24,7 @@ public class LoginDao {
         );
         if (!users.isEmpty()) {
             Users user = users.get(0);
-            if (user.getstatus() == 0) {
+            if (user.getStatus() == 0) {
                 return "ACCOUNT INACTIVE";
             }
             if (user.getEmail().equals(email) && user.getPassword ().equals(hashPassword)) {

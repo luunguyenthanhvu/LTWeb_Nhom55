@@ -38,3 +38,7 @@
 .required {
     color: red;
 }
+
+.change-password #old-password #new-password #retype-password{
+    max-width: 200px;
+}

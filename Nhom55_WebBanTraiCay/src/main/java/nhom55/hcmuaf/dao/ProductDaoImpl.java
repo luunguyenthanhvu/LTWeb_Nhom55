@@ -31,7 +31,7 @@ public class ProductDaoImpl implements ProductDao {
   @Override
   public List<Products> getProduct() {
     return JDBIConnector.get().withHandle(h ->
-        h.createQuery("SELECT * FROM Products ORDER BY id ASC LIMIT 8")
+        h.createQuery("SELECT * FROM Products ORDER BY dateOfImporting ASC LIMIT 8")
             .mapToBean(Products.class)
             .stream()
             .collect(Collectors.toList())

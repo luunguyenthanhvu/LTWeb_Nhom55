@@ -10,9 +10,11 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
+    <fmt:setLocale value="vi_VN"/>
     <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -112,8 +114,9 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <b>${loginedUser.getUsername()}</b>
                         </a>
+
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="user/user-profile.html">
+                            <a class="account dropdown-item" href="userProfile?id=${loginedUser.getId()}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -270,8 +273,10 @@
                             <h3><a href="">${product.getNameOfProduct()} </a></h3>
                             <div class="d-flex">
                                 <div class="pricing">
-                                    <p class="price"><spanZ
-                                            class="price">${product.getPrice()} VNĐ</spanZ></p>
+<%--                                    <p class="price"><span--%>
+<%--                                            class="price">${product.getPrice()} VNĐ</span></p>--%>
+                                    <p class="price"><span
+                                            class="price"><fmt:formatNumber pattern="#,##0 đ" value="${product.getPrice()}"/></span></p>
                                 </div>
                             </div>
                             <div class="bottom-area d-flex px-3">

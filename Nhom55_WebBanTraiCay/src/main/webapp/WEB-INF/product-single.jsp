@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
+    <fmt:setLocale value="vi_VN"/>
     <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -105,7 +108,7 @@
                             <b>${loginedUser.getUsername()}</b>
                         </a>
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="user/user-profile.html">
+                            <a class="account dropdown-item" href="user/user-profile.jsp">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -186,7 +189,9 @@
 
 
                 <p class="price">
-                    <span>${product.getPrice()} VNĐ/ ${product.getWeightDefault()} kg</span></p>
+                    <span><fmt:formatNumber pattern="#,##0 đ" value="${product.getPrice()}"/>/ ${product.getWeightDefault()} kg</span></p>
+
+<%--                    <span>${product.getPrice()} VNĐ/ ${product.getWeightDefault()} kg</span></p>--%>
 
                 <p>${product.getDescription()}</p>
                 <div class="row mt-4">

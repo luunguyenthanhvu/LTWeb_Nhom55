@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller.page;
+package nhom55.hcmuaf.controller.page.order;
 
 import java.util.Arrays;
 import java.util.List;

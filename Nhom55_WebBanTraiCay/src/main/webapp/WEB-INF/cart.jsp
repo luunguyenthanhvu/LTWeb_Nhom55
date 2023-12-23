@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en">
 <head>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <fmt:setLocale value="vi_VN"/>
+    <title>Giỏ hàng</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -195,7 +197,9 @@
                                         <p>${item.getProducts().getDescription()}</p>
                                     </td>
 
-                                    <td class="price">${item.getProducts().getPrice()}</td>
+                                    <td class="price">
+                                        <fmt:formatNumber pattern="#,##0 ₫" value="${item.getProducts().getPrice()}"/>
+                                    </td>
 
                                     <td class="quantity">
                                         <div class="input-group mb-3">
@@ -219,7 +223,9 @@
                                         </div>
 
                                     </td>
-                                    <td class="total">${item.getPrice()}</td>
+                                    <td class="total">
+                                        <fmt:formatNumber pattern="#,##0 ₫" value="${item.getPrice()}"/>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

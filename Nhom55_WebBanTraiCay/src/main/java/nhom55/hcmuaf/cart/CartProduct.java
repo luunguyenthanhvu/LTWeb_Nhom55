@@ -7,7 +7,6 @@ public class CartProduct {
   private int quantity;
   private Products products;
   private double price;
-
   public CartProduct(int quantity, Products products) {
     this.quantity = quantity;
     this.products = products;

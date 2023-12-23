@@ -1,7 +1,9 @@
 package nhom55.hcmuaf.cart;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.services.ProductService;
@@ -10,7 +12,7 @@ public class Cart {
 
   private Map<Integer, CartProduct> data = new HashMap<>();
 
-  public boolean  add(int add) {
+  public boolean add(int add) {
     return add(add, 1);
   }
 
@@ -66,6 +68,15 @@ public class Cart {
 
   public Collection<CartProduct> getCartProduct() {
     return data.values();
+  }
+  public List<CartProduct> getSelectedProducts(List<String> selectedProductIds) {
+    List<CartProduct> result = new ArrayList<>();
+    for(String id : selectedProductIds) {
+      if(data.containsKey(Integer.parseInt(id))) {
+        result.add(data.get(Integer.parseInt(id)));
+      }
+    }
+    return result;
   }
 
 }

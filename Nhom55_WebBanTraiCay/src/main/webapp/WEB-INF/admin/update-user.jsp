@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="css/update-user.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/update-user.css">
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -39,7 +42,7 @@
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
                     <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -106,7 +109,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="user-list.html">Danh sách người dùng</a></li>
+                    <li><a href="user-list.jsp">Danh sách người dùng</a></li>
                 </ul>
             </li>
 
@@ -131,56 +134,57 @@
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-            <span class="text">Cập nhật thông tin Anh Long</span>
+            <span class="text">Cập nhật thông tin người dùng</span>
         </div>
 
         <div class="content-container" >
-            <form action="" method="post" class="main-content">
+            <form action="updateUser" method="post" class="main-content">
+                <c:set var="user" value="${requestScope.showUser}"/>
                 <div class="user-info">
                     <div class="img-user">
-                        <img style="width: 100px; height: 100px" src="../../static/images/accountPicture.png">
+                        <img style="width: 100px; height: 100px" src="${user.getImg()}">
                     </div>
                     <table>
                         <tr>
                             <td>Tên người dùng</td>
                             <td>
-                                <input value="Anh Long" disabled>
+                                <input value="${user.getUsername()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Mật khẩu</td>
                             <td>
-                                <input value="anhlongdeptrai123@@" disabled>
+                                <input value="${user.getPassword()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Giới tính</td>
                             <td>
-                                <input type="text" value="nam" disabled>
+                                <input type="text" value="${user.getSexual()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Ngày sinh</td>
                             <td>
-                                <input type="date" value="2003-01-01" disabled>
+                                <input type="date" value="${user.getDateOfBirth()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>
-                                <input value="anhlongdeptrai123@@" disabled>
+                                <input value="${user.getEmail()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Địa chỉ</td>
                             <td>
-                                <input value="12 Cầu Giấy, HCM" disabled>
+                                <input value="${user.getAddress()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Số điện thoại</td>
                             <td>
-                                <input value="0123456789" disabled>
+                                <input value="${user.getPhoneNumber()}" disabled>
                             </td>
                         </tr>
 

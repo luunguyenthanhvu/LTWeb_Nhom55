@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
+  <%@ page isELIgnored="false" %>
   <meta charset="UTF-8">
   <title> Drop Down Sidebar Menu | CodingLab </title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="css/update-admin-password.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/update-admin-password.css">
 
   <!-- Boxiocns CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -37,8 +40,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tài khoản</a></li>
-          <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-          <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+          <li><a href="admin-profile">Thông tin tài khoản</a></li>
+          <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
         </ul>
       </li>
       <li>
@@ -53,10 +56,10 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
-          <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+          <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-          <li><a href="add-product.html">Thêm sản phẩm</a></li>
-          <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+          <li><a href="add-new-product">Thêm sản phẩm</a></li>
+          <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
         </ul>
       </li>
       <li>
@@ -105,17 +108,17 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.html">Danh sách người dùng</a></li>
+          <li><a href="user-list.jsp">Danh sách người dùng</a></li>
         </ul>
       </li>
 
       <li>
         <div class="profile-details">
           <div class="profile-content">
-            <img src="../../static/images/accountPicture.png" alt="profileImg">
+            <img src="${loginedUser.getImg()}" alt="profileImg">
           </div>
           <div class="name-job">
-            <div class="profile_name">VuLuu</div>
+            <div class="profile_name">${loginedUser.getUsername()}</div>
             <div class="job">Quản trị viên</div>
           </div>
           <i style="transform: rotate(180deg); ">
@@ -137,7 +140,7 @@
 
     <!--code thêm ở đây-->
     <div class="main-content">
-      <form class="change-password" action="" method="post">
+      <form class="change-password" action="updatePasswordAdmin" method="post">
         <table>
           <tr>
             <td>
@@ -145,8 +148,12 @@
             </td>
             <td>
               <input type="password" id="old-password" name="old-password">
-              <span class="error-msg required" id="old-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+              <span class="error-msg required" id="old-password-error" style="display: none;margin-left: 30px;color:red"></span>
+              <c:if test="${not empty error_oldPassword}" >
+                <p style="color: red;padding: 30px"> ${error_oldPassword}</p>
+              </c:if>
             </td>
+
           </tr>
           <tr>
             <td>
@@ -154,8 +161,15 @@
             </td>
             <td>
               <input type="password" id="new-password" name="new-password">
-              <span class="error-msg required" id="new-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
+              <span class="error-msg required" id="new-password-error" style="display: none;margin-left: 30px;color:red">Vui lòng điền thông tin vào trường này.</span>
+              <c:if test="${not empty error_newPassword}" >
+                <p style="color: red;padding: 30px"> ${error_newPassword}</p>
+              </c:if>
+              <c:if test="${not empty error_checkOldAndNewPass}" >
+                <p style="color: red;padding: 30px"> ${error_checkOldAndNewPass}</p>
+              </c:if>
             </td>
+
           </tr>
           <tr>
             <td>
@@ -163,9 +177,13 @@
             </td>
             <td>
               <input type="password" id="retype-password" name="retype-password">
-              <span class="error-msg required" id="retype-password-error" style="display: none;">Vui lòng điền thông tin vào trường này.</span>
-              <span class="error-msg required" id="password-mismatch-error" style="display: none;">Mật khẩu mới và mật khẩu nhập lại không khớp.</span>
+              <span class="error-msg required" id="retype-password-error" style="display: none;;margin-left: 30px;color:red"></span>
+              <span class="error-msg required" id="password-mismatch-error" style="display: none;;margin-left: 30px;color:red"></span>
+              <c:if test="${not empty error_checkNewAndRetypePass}" >
+                <p style="color: red;padding: 30px"> ${error_checkNewAndRetypePass}</p>
+              </c:if>
             </td>
+
           </tr>
         </table>
 
@@ -181,6 +199,9 @@
               <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
           </button>
         </div>
+        <c:if test="${not empty result}" >
+          <p style="color: red;padding: 30px"> ${result}</p>
+        </c:if>
       </form>
     </div>
 
@@ -251,8 +272,83 @@
     document.getElementById("loader").style.display = "none";
     document.getElementById("myDiv").style.display = "block";
   }
-
 </script>
+
+<script>
+  document.addEventListener("click", function () {
+    document.querySelector(".change-password").addEventListener("submit", function (event) {
+      if (!validateForm()) {
+        event.preventDefault();
+      }
+    });
+
+    function validateForm() {
+      var oldPassword = document.getElementById("old-password").value;
+      var newPassword = document.getElementById("new-password").value;
+      var retypePassword = document.getElementById("retype-password").value;
+
+      var isValid = true;
+
+      // Validate old password
+      if (!validatePassword("old-password", "old-password-error", "Vui lòng nhập mật khẩu cũ.")) {
+        isValid = false;
+      }
+
+      // Validate new password
+      if (!validatePassword("new-password", "new-password-error", "Vui lòng nhập mật khẩu mới.", "Mật khẩu mới phải chứa ít nhất 6 ký tự và ít nhất 1 chữ in hoa.")) {
+        isValid = false;
+      }
+
+      // Validate retype password
+      if (!validateRetypePassword()) {
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    function validatePassword(inputId, errorId, requiredErrorMsg, formatErrorMsg) {
+      var text = document.getElementById(inputId).value;
+      var error = document.getElementById(errorId);
+
+      if (text.length === 0 || text === null) {
+        error.textContent = requiredErrorMsg;
+        error.style.display = "block";
+        return false;
+      } else if (formatErrorMsg && (text.length < 6 || !/[A-Z]/.test(text))) {
+        error.textContent = formatErrorMsg;
+        error.style.display = "block";
+        return false;
+      } else {
+        error.style.display = "none";
+        return true;
+      }
+    }
+
+    function validateRetypePassword() {
+      var newPassword = document.getElementById("new-password").value;
+      var retypePassword = document.getElementById("retype-password").value;
+      var retypeError = document.getElementById("retype-password-error");
+      var mismatchError = document.getElementById("retype-mismatch-error");
+
+      if (retypePassword.length === 0 || retypePassword === null) {
+        retypeError.textContent = "Vui lòng nhập lại mật khẩu mới.";
+        retypeError.style.display = "block";
+        mismatchError.style.display = "none";
+        return false;
+      } else if (newPassword !== retypePassword) {
+        retypeError.style.display = "none";
+        mismatchError.style.display = "block";
+        return false;
+      } else {
+        retypeError.style.display = "none";
+        mismatchError.style.display = "none";
+        return true;
+      }
+    }
+  });
+</script>
+
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>
 </html>

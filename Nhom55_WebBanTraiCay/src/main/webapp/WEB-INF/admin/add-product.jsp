@@ -55,7 +55,7 @@
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
                     <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -131,7 +131,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="user-list.html">Danh sách người dùng</a></li>
+                    <li><a href="user-list.jsp">Danh sách người dùng</a></li>
                 </ul>
             </li>
 

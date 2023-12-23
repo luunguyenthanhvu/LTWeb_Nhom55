@@ -28,8 +28,8 @@ public class UserService {
      * show profile
      * @param
      */
-    public Users showInfoUser(int id) {
-        return userDao.getUser(id);
+    public List<Users> showInfoUser() {
+        return userDao.getUser();
     }
 
     public Users getUserById(int id) {

@@ -15,7 +15,7 @@ public interface UsersDao {
 
     String updateNewPassWord(String email, String password);
 
-    Users getUser(int userId);
+    List<Users> getUser();
     Users getUserById(int userId);
     boolean checkUser(int userId, String password);
 

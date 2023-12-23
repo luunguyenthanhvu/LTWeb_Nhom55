@@ -134,56 +134,57 @@
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-            <span class="text">Cập nhật thông tin Anh Long</span>
+            <span class="text">Cập nhật thông tin người dùng</span>
         </div>
 
         <div class="content-container" >
             <form action="updateUser" method="post" class="main-content">
+                <c:set var="user" value="${requestScope.showUser}"/>
                 <div class="user-info">
                     <div class="img-user">
-                        <img style="width: 100px; height: 100px" src="${loginedUser.getImg()}">
+                        <img style="width: 100px; height: 100px" src="${user.getImg()}">
                     </div>
                     <table>
                         <tr>
                             <td>Tên người dùng</td>
                             <td>
-                                <input value="${loginedUser.getUsername()}" disabled>
+                                <input value="${user.getUsername()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Mật khẩu</td>
                             <td>
-                                <input value="${loginedUser.getPassword()}" disabled>
+                                <input value="${user.getPassword()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Giới tính</td>
                             <td>
-                                <input type="text" value="${loginedUser.getSexual()}" disabled>
+                                <input type="text" value="${user.getSexual()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Ngày sinh</td>
                             <td>
-                                <input type="date" value="${loginedUser.getDateOfBirth()}" disabled>
+                                <input type="date" value="${user.getDateOfBirth()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>
-                                <input value="${loginedUser.getEmail()}" disabled>
+                                <input value="${user.getEmail()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Địa chỉ</td>
                             <td>
-                                <input value="${loginedUser.getAddress()}" disabled>
+                                <input value="${user.getAddress()}" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>Số điện thoại</td>
                             <td>
-                                <input value="${loginedUser.getPhoneNumber()}" disabled>
+                                <input value="${user.getPhoneNumber()}" disabled>
                             </td>
                         </tr>
 

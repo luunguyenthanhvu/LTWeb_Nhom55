@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.services.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,6 +21,8 @@ public class UpdateUser extends HttpServlet  {
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("loginedUser");
 
+        Users users = UserService.getInstance().getUserById(user.getId());
+        request.setAttribute("showUser", users);
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/update-user.jsp");
         dispatcher.forward(request, response);

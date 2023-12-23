@@ -131,14 +131,14 @@
                             <tr>
                                 <td><label for="id">ID <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px; width: 250px" type="text" id="id" name="id" value="${loginedUser.getId()}" readonly required>
+                                    <input style="margin-left: 60px; width: 250px" type="text" id="id" name="id" value="${loginedUser.getId()}" readonly >
                                 </td>
                             </tr>
 
                             <tr>
                                 <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px; width: 250px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${loginedUser.getUsername()}" required>
+                                    <input style="margin-left: 60px; width: 250px" type="text" id="ten_nd" name="ten_nguoi_dung" value="${loginedUser.getUsername()}" >
                                     <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
                                     <c:if test="${not empty error_name}" >
                                         <td><p style="color: red; margin-left: 60px">${error_name}</p></td>
@@ -149,7 +149,7 @@
                             <tr>
                                 <td><label for="email_nd">Email <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px; width: 250px" name="email_nguoi_dung" id="email_nd" type="email" value="${loginedUser.getEmail()}"  required>
+                                    <input style="margin-left: 60px; width: 250px" name="email_nguoi_dung" id="email_nd" type="email" value="${loginedUser.getEmail()}"  >
                                     <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_email}" >
                                         <td><p style="color: red; margin-left: 60px">${error_email}</p></td>
@@ -175,7 +175,7 @@
                             <tr>
                                 <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
                                 <td>
-                                    <input style="margin-left: 60px; width: 250px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${loginedUser.getAddress()}" required>
+                                    <input style="margin-left: 60px; width: 250px" name="dia_chi_nguoi_dung" id="dc_nd" type="text" value="${loginedUser.getAddress()}" >
                                     <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_address}" >
                                         <td><p style="color: red; margin-left: 60px">${error_address}</p></td>
@@ -187,7 +187,7 @@
                             <tr>
                                 <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
 
-                                <td><input style="margin-left: 60px; width: 250px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${loginedUser.getPhoneNumber()}" required>
+                                <td><input style="margin-left: 60px; width: 250px" name="so_dien_thoai_nguoi_dung" id="sdt_nd" value="${loginedUser.getPhoneNumber()}" >
                                     <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_phoneNumber}" >
                                         <td><p style="color: red; margin-left: 60px">${error_phoneNumber}</p></td>
@@ -197,7 +197,7 @@
 
                             <tr>
                                 <td><label for="dob">Sinh nhật<span class="not-empty"> *</span></label></td>
-                                <td><input style="margin-left: 60px; width: 250px" type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" required></td>
+                                <td><input style="margin-left: 60px; width: 250px" type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" ></td>
                                 <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
                                 <c:if test="${not empty error_dob}" >
                                     <td><p style="color: red; margin-left: 60px">${error_dob}</p></td>

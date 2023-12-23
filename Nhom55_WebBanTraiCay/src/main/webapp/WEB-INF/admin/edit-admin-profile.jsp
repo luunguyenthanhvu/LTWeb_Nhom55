@@ -148,11 +148,11 @@
                             <table>
                                 <tr>
                                     <td><label for="id">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="id" placeholder="ID" name="id-admin" value="${loginedUser.getId()}" readonly required></td>
+                                    <td><input id="id" placeholder="ID" name="id-admin" value="${loginedUser.getId()}" readonly ></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${loginedUser.getUsername()}" required>
+                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${loginedUser.getUsername()}" >
                                         <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
                                         <c:if test="${not empty error_name}" >
                                             <td><p style="color: red">${error_name}</p></td>
@@ -161,7 +161,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
-                                    <td><input id="email_nd" placeholder="email" name="email" value="${loginedUser.getEmail()}"  required>
+                                    <td><input id="email_nd" placeholder="email" name="email" value="${loginedUser.getEmail()}" readonly >
                                         <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_email}" >
                                              <td><p style="color: red">${error_email}</p></td>
@@ -190,7 +190,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="phoneNumber">Số điện thoại<span class="not-empty"> *</span></label></td>
-                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại" value="${loginedUser.getPhoneNumber()}" required>
+                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại" value="${loginedUser.getPhoneNumber()}" >
                                         <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_phoneNumber}" >
                                             <td><p style="color: red">${error_phoneNumber}</p></td>
@@ -199,7 +199,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="address">Địa chỉ<span class="not-empty"> *</span></label></td>
-                                    <td><input id="address" name="address" placeholder="địa chỉ" value="${loginedUser.getAddress()}" required>
+                                    <td><input id="address" name="address" placeholder="địa chỉ" value="${loginedUser.getAddress()}" >
                                         <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_address}" >
                                             <td><p style="color: red">${error_address}</p></td>

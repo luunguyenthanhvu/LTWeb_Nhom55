@@ -132,23 +132,22 @@ public class UsersDaoImpl implements UsersDao {
   }
 
     /**
-     * show profile
-     * @return  id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
+     * show List user
+     * @return  id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
-    public Users getUser(int userId) {
-        return JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT id, username, hash, password, email, address, phoneNumber, sexual, dateOfBirth, img, status, role FROM users where id = :id")
-                        .bind(0, userId)
+    public List<Users> getUser() {
+        return JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT * FROM users")
                         .mapToBean(Users.class)
-                        .findOne()
-                        .orElse(null)
+                        .stream()
+                        .collect(Collectors.toList())
         );
     }
 
 
     /**
-     * get User
+     * get User show profile
      * @return  id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
@@ -190,7 +189,7 @@ public class UsersDaoImpl implements UsersDao {
 
                     .execute();
 
-            return (rowCount > 0) ? handle.createQuery("SELECT id, username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")
+            return (rowCount > 0) ? handle.createQuery("SELECT id, username, email, address, phoneNumber, dateOfBirth, img, sexual FROM Users WHERE id = :id")
                     .bind("id", userId)
                     .mapToBean(Users.class)
                     .findOne()
@@ -216,7 +215,7 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("sexual", newSexual)
                     .execute();
 
-            return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img FROM Users WHERE id = :id")
+            return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img, sexual FROM Users WHERE id = :id")
                     .bind("id", userId)
                     .mapToBean(Users.class)
                     .findOne()

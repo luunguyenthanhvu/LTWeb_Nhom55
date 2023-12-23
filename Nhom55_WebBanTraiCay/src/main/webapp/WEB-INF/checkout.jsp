@@ -171,61 +171,64 @@
                     <div class="row align-items-end">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="lastname">Họ</label>
+                                <label for="lastname">Họ <span style="color: red">*</span></label>
                                 <input name="ho_nguoi-dung" style="color: black !important;"
                                        id="lastname" type="text" class="form-control"
-                                       placeholder="">
+                                       placeholder="Họ">
+                                <p style="color: red; display: none" id="lastname_error"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="firstname">Tên</label>
+                                <label for="firstname">Tên <span style="color: red">*</span></label>
                                 <input name="ten_nguoi-dung" style="color: black !important;"
                                        id="firstname" type="text" class="form-control"
-                                       placeholder="">
+                                       placeholder="Tên">
+                                <p style="color: red; display: none" id="firstname_error"></p>
                             </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="w-100"></div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="street-address">Địa chỉ đường phố</label>
+                                <label for="street-address">Địa chỉ đường phố <span
+                                        style="color: red">*</span></label>
                                 <input name="dia-chi_nguoi-dung" style="color: black !important;"
                                        id="street-address" type="text" class="form-control"
                                        placeholder="Tên đường và số nhà">
+                                <p style="color: red; display: none" id="address_error"></p>
                             </div>
                         </div>
                         <div class="w-100"></div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="town-city">Thị trấn / Thành phố</label>
-                                <select name="tp_nguoi-dung" style="color: black !important;"
-                                        id="town-city" type="text" class="form-control"
-                                        onchange="handleSelectChange()">
-                                    <option style="display: none" value="">Vui lòng chọn thành phố
-                                    </option>
-                                    <option style="color: black" value="Dĩ An">Dĩ An</option>
-                                    <option style="color: black" value="Thành Phố Hồ Chí Minh">Thành
-                                        Phố Hồ Chí Minh
-                                    </option>
-                                    <option style="color: black" value="Thủ Đức">Thủ Đức</option>
-                                </select>
+                                <label for="city">Thị trấn / Thành phố <span
+                                        style="color: red">*</span></label>
+                                <input name="thanh-pho" style="color: black !important;"
+                                       id="city" type="text" class="form-control"
+                                       placeholder="Thị Trấn / Thành phố">
+                                <p style="color: red; display: none" id="city_error"></p>
                             </div>
                         </div>
 
                         <div class="w-100"></div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="phone">Số điện thoại</label>
+                                <label for="phone">Số điện thoại <span
+                                        style="color: red">*</span></label>
                                 <input name="sdt_nguoi-dung" style="color: black !important;"
-                                       id="phone" type="text" class="form-control" placeholder="">
+                                       id="phone" type="text" class="form-control"
+                                       placeholder="Số điện thoại">
+                                <p style="color: red; display: none" id=phone_error"></p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">Email <span style="color: red">*</span></label>
                                 <input name="email_nguoi-dung" style="color: black !important;"
-                                       id="email" type="text" class="form-control" placeholder="">
+                                       id="email" type="text" class="form-control"
+                                       placeholder="email">
+                                <p style="color: red; display: none" id="email_error"></p>
                             </div>
                         </div>
                     </div>
@@ -239,18 +242,32 @@
                                 <p class="d-flex">
                                     <span>Tổng phụ</span>
                                     <span class="tong_phu">
-                                        <fmt:formatNumber pattern="#,##0 ₫" value="${subTotalPrice}"/>
+                                        <fmt:formatNumber pattern="#,##0 ₫"
+                                                          value="${subTotalPrice}"/>
                                     </span>
                                 </p>
 
                                 <p class="d-flex">
                                     <span>Phí vận chuyển</span>
-                                    <span class="phi_van_chuyen">0đ</span>
+                                    <span class="phi_van_chuyen">
+                                        <c:choose>
+                                            <c:when test="${not empty transportPrice}">
+                                                <fmt:formatNumber pattern="#,##0 ₫"
+                                                                  value="${transportPrice}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                Miễn phí giao hàng!
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </span>
                                 </p>
                                 <hr>
                                 <p class="d-flex total-price">
                                     <span>Tổng</span>
-                                    <span class="tong_cong">200.000đ</span>
+                                    <span class="tong_cong">
+                                        <fmt:formatNumber pattern="#,##0 ₫"
+                                                          value="${totalPrice}"/>
+                                    </span>
                                 </p>
                             </div>
                         </div>
@@ -260,7 +277,6 @@
                         <div class="col-md-12">
                             <div class="cart-detail p-3 p-md-4">
                                 <h3 class="billing-heading mb-4">Phương thức thanh toán</h3>
-
                                 <div class="select__payment">
                                     <div class="payment__choices-cd selected"
                                          id="payment__by-creditCard">
@@ -304,6 +320,7 @@
                                             </svg>
                                             <input type="text" id="cardNumberInput"
                                                    placeholder="Số thẻ">
+                                            <p style="color: red" id="cardNum_error"></p>
                                         </div>
                                     </div>
                                 </div>
@@ -318,11 +335,10 @@
                                             </svg>
                                             <input type="text" id="cardCVCInput"
                                                    placeholder="Thẻ CVC">
+                                            <p style="color: red; display: none" id="cardCVC_error"></p>
                                         </div>
                                     </div>
-
                                 </div>
-
 
                                 <div class="form-group">
                                     <div class="col-md-12">
@@ -335,8 +351,8 @@
                                 </div>
 
                                 <p>
-                                    <button type="submit" class="btn btn-primary py-3 px-4">Đặt
-                                        hàng
+                                    <button type="submit" class="btn btn-primary py-3 px-4">
+                                        Đặt hàng
                                     </button>
                                 </p>
                             </div>
@@ -465,6 +481,71 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
+<script>
+    // validate for form order
+    var ho = document.getElementById("lastname");
+    var ten = document.getElementById("firstname");
+    var diaChi = document.getElementById("street-address");
+    var thanhPho = document.getElementById("city");
+    var sdt = document.getElementById("sdt_nd");
+    var email = document.getElementById("email");
+    var soThe = document.getElementById("cardNumberInput");
+    var theCVC = document.getElementById("cardCVCInput");
+
+    function validateHo() {
+      var text = ho.value;
+      var kyTuHopLe = /^[a-zA-Z ]+$/;
+      var error = document.getElementById("lastname_error");
+      if (text.length == 0 || text == null) {
+        error.textContent = "Vui lòng nhập dữ liệu";
+        error.style.display = "block";
+        return false;
+      } else if (!kyTuHopLe.test(text)) {
+        error.textContent = "Họ chỉ chứa ký tự chữ cái, khoảng trắng.";
+        error.style.display = "block";
+        return false;
+      } else {
+        error.style.display = "none";
+        return true;
+      }
+    }
+
+    function validateTen() {
+      var text = ten.value;
+      var kyTuHopLe = /^[a-zA-Z ]+$/;
+      var error = document.getElementById("firstname_error");
+      if (text.length == 0 || text == null) {
+        error.textContent = "Vui lòng nhập dữ liệu";
+        error.style.display = "block";
+        return false;
+      } else if (!kyTuHopLe.test(text)) {
+        error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+        error.style.display = "block";
+        return false;
+      } else {
+        error.style.display = "none";
+        return true;
+      }
+    }
+
+    function validateAddress() {
+      var text = diaChi.value;
+      var kyTuHopLe = /^[a-zA-Z ]+$/;
+      var error = document.getElementById("firstname_error");
+      if (text.length == 0 || text == null) {
+        error.textContent = "Vui lòng nhập dữ liệu";
+        error.style.display = "block";
+        return false;
+      } else if (!kyTuHopLe.test(text)) {
+        error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+        error.style.display = "block";
+        return false;
+      } else {
+        error.style.display = "none";
+        return true;
+      }
+    }
+</script>
 
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
@@ -507,47 +588,12 @@
     var num = document.getElementById('input');
     var card_number = arr[0].value;
     var card_cvc = arr[1].value;
-
   }
 
   function resetForm() {
     document.getElementById('input')[0].reset
   }
 
-  function handleSelectChange() {
-    var selectElement = document.getElementById("town-city");
-    var selectedValue = selectElement.options[selectElement.selectedIndex].value;
-
-    switch (selectedValue) {
-      case "Dĩ An":
-        document.querySelector('.phi_van_chuyen').innerText = "30.000đ"
-        var phiVanChuyen = parseInt(
-            document.querySelector('.phi_van_chuyen').innerText.replace(/[.,đ]/g, ''))
-        var tongPhu = parseInt(document.querySelector('.tong_phu').innerText.replace(/[.,đ]/g, ''))
-        var result = phiVanChuyen + tongPhu;
-        document.querySelector('.tong_cong').innerText = result.toLocaleString('vi-VN') + " Đ";
-        break;
-      case "Thành Phố Hồ Chí Minh":
-        document.querySelector('.phi_van_chuyen').innerText = "25.000đ"
-        var phiVanChuyen = parseInt(
-            document.querySelector('.phi_van_chuyen').innerText.replace(/[.,đ]/g, ''))
-        var tongPhu = parseInt(document.querySelector('.tong_phu').innerText.replace(/[.,đ]/g, ''))
-        var result = phiVanChuyen + tongPhu;
-        document.querySelector('.tong_cong').innerText = result.toLocaleString('vi-VN') + " Đ";
-
-        break;
-      case "Thủ Đức":
-        document.querySelector('.phi_van_chuyen').innerText = "20.000đ"
-        var phiVanChuyen = parseInt(
-            document.querySelector('.phi_van_chuyen').innerText.replace(/[.,đ]/g, ''))
-        var tongPhu = parseInt(document.querySelector('.tong_phu').innerText.replace(/[.,đ]/g, ''))
-        var result = phiVanChuyen + tongPhu;
-        document.querySelector('.tong_cong').innerText = result.toLocaleString('vi-VN') + " Đ";
-        break;
-      default:
-        break;
-    }
-  }
 </script>
 
 </body>

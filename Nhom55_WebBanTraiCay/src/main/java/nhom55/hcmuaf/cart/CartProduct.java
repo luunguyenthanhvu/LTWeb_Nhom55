@@ -45,7 +45,8 @@ public class CartProduct {
       this.quantity += quantity;
       this.price += products.getPrice() * quantity;
     } else {
-      return;
+      this.quantity = (int) products.getWeight();
+      this.price = products.getPrice() * quantity;
     }
   }
   public void decreQuantity(int quantity) {

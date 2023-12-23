@@ -22,16 +22,21 @@ public class CheckOut extends HttpServlet {
     // get selected Product for buy
     List<String> selectedProductIds = (List<String>) session.getAttribute("selectedProductIds");
     Cart cart = (Cart) session.getAttribute("cart");
-    if(cart != null && selectedProductIds != null) {
+    if (cart != null && selectedProductIds != null) {
       // get product list selected from cart
       List<CartProduct> selectedProducts = cart.getSelectedProducts(selectedProductIds);
       subTotalPrice = getTotalPrice(selectedProducts);
     }
-
-//    String formattedAmount = MyUtils.formatAmount(subTotalPrice);
+    // set transport price
+    if (subTotalPrice >= 200000) {
+      request.setAttribute("totalPrice", subTotalPrice);
+    } else {
+      request.setAttribute("transportPrice", 20000);
+      request.setAttribute("totalPrice", subTotalPrice + 20000);
+    }
     request.setAttribute("subTotalPrice", subTotalPrice);
     RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/checkout.jsp");
-    dispatcher.forward(request,response);
+    dispatcher.forward(request, response);
   }
 
   @Override
@@ -39,9 +44,10 @@ public class CheckOut extends HttpServlet {
       throws ServletException, IOException {
 
   }
+
   private static double getTotalPrice(List<CartProduct> selectedProducts) {
     double result = 0;
-    for(CartProduct product : selectedProducts) {
+    for (CartProduct product : selectedProducts) {
       result += product.getPrice();
     }
     return result;

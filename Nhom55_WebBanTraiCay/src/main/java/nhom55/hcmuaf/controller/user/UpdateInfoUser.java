@@ -15,8 +15,6 @@ import java.time.LocalDate;
         1024 * 1024 * 100)
 @WebServlet(name = "updateInfoUser", value = "/updateInfoUser")
 public class UpdateInfoUser extends HttpServlet {
-
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

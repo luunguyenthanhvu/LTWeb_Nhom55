@@ -17,7 +17,7 @@ public interface UsersDao {
 
     List<Users> getUser();
     Users getUserById(int userId);
-    boolean checkUser(int userId, String password);
+    boolean checkPassUser(int userId, String password);
 
     Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String sexual);
 

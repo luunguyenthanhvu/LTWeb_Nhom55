@@ -161,7 +161,7 @@ public class UsersDaoImpl implements UsersDao {
         );
     }
     @Override
-    public boolean checkUser(int id, String password) {
+    public boolean checkPassUser(int id, String password) {
         Users user = JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT * FROM Users WHERE id = :id AND password = :password")
                         .bind("id", id)
@@ -229,7 +229,7 @@ public class UsersDaoImpl implements UsersDao {
      */
     public String updatePassWordUser(int id, String password) {
         Users user = JDBIConnector.get().withHandle(handle ->
-                handle.createQuery("SELECT id,hash FROM Users WHERE id = :id")
+                handle.createQuery("SELECT id FROM Users WHERE id = :id")
                         .bind("id", id)
                         .mapToBean(Users.class)
                         .findOne()

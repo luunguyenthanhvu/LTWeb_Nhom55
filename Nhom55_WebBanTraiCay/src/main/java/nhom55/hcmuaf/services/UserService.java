@@ -9,69 +9,72 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class UserService {
-    private static UserService instance;
-    private UsersDaoImpl userDao;
 
-    public UserService() {
-        userDao = new UsersDaoImpl();
+  private static UserService instance;
+  private UsersDaoImpl userDao;
+
+  public UserService() {
+    userDao = new UsersDaoImpl();
+  }
+
+  public static UserService getInstance() {
+    if (instance == null) {
+      instance = new UserService();
     }
-
-    public static UserService getInstance() {
-        if (instance == null) {
-            instance = new UserService();
-        }
-        return instance;
-    }
+    return instance;
+  }
 
 
-    /**
-     * show profile
-     * @param
-     */
-    public List<Users> showInfoUser() {
-        return userDao.getUser();
-    }
+  /**
+   * show profile
+   *
+   * @param
+   */
+  public List<Users> showInfoUser() {
+    return userDao.getUser();
+  }
 
-    public Users getUserById(int id) {
-        return userDao.getUserById(id);
-    }
-    /**
-     * update profile no ima
-     * @param
-     */
-    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String newSexual) {
-        return userDao.updateProfileNoImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, newSexual);
-    }
-    /**
-     * update profile with img
-     * @param
-     */
-   public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img, String newSexual) {
-       return userDao.updateProfileWithImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, img,newSexual);
-   }
+  public Users getUserById(int id) {
+    return userDao.getUserById(id);
+  }
 
-   public boolean checkUser(int id, String password) {
-       return userDao.checkUser(id, password);
-   }
+  /**
+   * update profile no ima
+   *
+   * @param
+   */
+  public Users updateProfileNoImage(int userId, String newUserName, String newEmail,
+      String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String newSexual) {
+    return userDao.updateProfileNoImage(userId, newUserName, newEmail, newAddress, newPhoneNumber,
+        newDateOfBirth, newSexual);
+  }
 
-    /**
-     * update new password
-     * @param
-     * @return password
-     */
-    public String changePass(int id, String newPassword) {
-        String encodePass = MyUtils.encodePass(newPassword); // Mã hóa mật khẩu mới ở đây
-        String result = userDao.updatePassWordUser(id, encodePass);
+  /**
+   * update profile with img
+   *
+   * @param
+   */
+  public Users updateProfileWithImage(int userId, String newUserName, String newEmail,
+      String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String img,
+      String newSexual) {
+    return userDao.updateProfileWithImage(userId, newUserName, newEmail, newAddress, newPhoneNumber,
+        newDateOfBirth, img, newSexual);
+  }
 
-        if (result.equals("SUCCESS")) {
-            // Cập nhật giá trị hashedPassword trong đối tượng Users
-            Users user = userDao.getUserById(id);
-            if (user != null) {
-                user.setHash(encodePass);
-            }
-        }
-        return result;
-    }
+  public boolean checkPassUser(int id, String password) {
+    return userDao.checkPassUser(id, password);
+  }
+
+  /**
+   * update new password
+   *
+   * @param
+   * @return password
+   */
+  public String changePass(int id, String newPassword) {
+    String encodePass = MyUtils.encodePass(newPassword); // Mã hóa mật khẩu mới ở đây
+    return userDao.updatePassWordUser(id, encodePass);
+  }
 
 
 }

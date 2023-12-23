@@ -23,7 +23,8 @@ public class UpdateInfoUser extends HttpServlet {
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("loginedUser");
 
-        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
+        RequestDispatcher dispatcher = this.getServletContext()
+                .getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -52,11 +53,13 @@ public class UpdateInfoUser extends HttpServlet {
                 }
                 if (filePart == null || filePart.getSize() == 0) {
                     // Người dùng không chọn file ảnh, xử lý tại đây
-                    UserService.getInstance().updateProfileNoImage(user.getId(), username, email, address, phoneNumber, dateOfBirth, gender);
+                    Users change =  UserService.getInstance().updateProfileNoImage(user.getId(), username, email, address, phoneNumber, dateOfBirth, gender);
 
-                    System.out.println("Cập nhật");
+                    request.setAttribute("changeProfile", change);
                     request.setAttribute("message", "Cập nhật thành công");
-                    response.sendRedirect(request.getContextPath() + "/userProfile");
+                    RequestDispatcher dispatcher = this.getServletContext()
+                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
+                    dispatcher.forward(request, response);
                 } else {
                     // Người dùng chọn file ảnh
                         // Xử lý file ảnh ở đây
@@ -70,12 +73,14 @@ public class UpdateInfoUser extends HttpServlet {
                             part.write(root.getAbsolutePath() + "/" + fileName);
                             imgUser = "/data/" + fileName;
                         }
-                        UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, dateOfBirth, imgUser, gender);
+                        Users change = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, dateOfBirth, imgUser, gender);
 
+                        request.setAttribute("changeProfile", change);
                         request.setAttribute("message", "Cập nhật thành công");
-                        response.sendRedirect(request.getContextPath() + "/userProfile");
+                        RequestDispatcher dispatcher = this.getServletContext()
+                                .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
+                        dispatcher.forward(request, response);                      }
                     }
-                }
 
         }
 

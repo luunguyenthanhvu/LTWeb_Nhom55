@@ -20,4 +20,25 @@ public class ProviderService {
   public List<Providers> getAll() {
     return providerDao.getAllProvider();
   }
+  public List<Providers> get20ProvidersForEachPage(int index, int quantityDefault) {
+    return providerDao.get20ProvidersForEachPage(index,quantityDefault);
+  }
+  public int countTotalRowProvidersInDatabase() {
+    return providerDao.countTotalRowProvidersInDatabase();
+  }
+  public List<Providers> search(String search, int index, int sizePage) {
+    return providerDao.search(search,index,sizePage);
+  }
+  public int countResultSearchingProviders(String txtSearch) {
+    return providerDao.countResultSearchingProviders(txtSearch);
+  }
+  public void addNewProvider(String name, String address) {
+     providerDao.addNewProvider(name,address);
+  }
+  public void updateProvider(String name, String address, int idNCC) {
+    providerDao.updateProvider(name,address,idNCC);
+  }
+  public void deleteProvider(int idNCC) {
+    providerDao.deleteProvider(idNCC);
+  }
 }

@@ -110,7 +110,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.html">Danh sách người dùng</a></li>
+          <li><a href="UserList">Danh sách người dùng</a></li>
+          <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
 
@@ -466,7 +467,7 @@
 
   function validateMoTaSP() {
     var text = moTaSP.value;
-    var kyTuHopLe = '^[\s\S]*$';
+    var kyTuHopLe = /^(?=.*[^\s]).*$/;
     var error = document.getElementById("mota_sp_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập vào mô tả sản phầm.";

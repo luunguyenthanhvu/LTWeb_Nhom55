@@ -117,7 +117,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.html">Danh sách người dùng</a></li>
+          <li><a href="UserList">Danh sách người dùng</a></li>
+          <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
 

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <title> Drop Down Sidebar Menu | CodingLab </title>
-  <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/dssp.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 
   <!-- Boxiocns CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -104,7 +106,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.html">Danh sách người dùng</a></li>
+          <li><a href="UserList">Danh sách người dùng</a></li>
+          <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
 
@@ -167,7 +170,7 @@
             <td>1</td>
             <td>Anh Long</td>
             <td class="img-product">
-              <img src="../../static/images/accountPicture.png">
+              <img src="static/images/saber.jpg">
             </td>
             <td>anhlong123@gmail.com</td>
             <td>0123456789</td>

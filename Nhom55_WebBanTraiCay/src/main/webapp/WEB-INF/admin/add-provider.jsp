@@ -131,7 +131,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.html">Danh sách người dùng</a></li>
+          <li><a href="UserList">Danh sách người dùng</a></li>
+          <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
       <li>
@@ -287,7 +288,7 @@
 
   function validateDiaChiNhaCungCap() {
     var text = diaChiNhaCungCap.value;
-    var kyTuHopLe = '^[\s\S]*$';
+    var kyTuHopLe = /^(?=.*[^\s]).*$/;
     var error = document.getElementById("dia_chi_nha_cung_cap_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập địa chỉ nhà cung cấp.";

@@ -5,7 +5,6 @@ import nhom55.hcmuaf.dao.RoleDAO;
 import nhom55.hcmuaf.dao.RoleDAOImpl;
 import nhom55.hcmuaf.services.RegisterAccountServiceForAdmin;
 import nhom55.hcmuaf.util.MyUtils;
-import nhom55.hcmuaf.util.ProductValidator;
 import nhom55.hcmuaf.util.UserValidator;
 
 import javax.servlet.*;
@@ -13,7 +12,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 @WebServlet(name = "AddUser", value = "/AddUser")

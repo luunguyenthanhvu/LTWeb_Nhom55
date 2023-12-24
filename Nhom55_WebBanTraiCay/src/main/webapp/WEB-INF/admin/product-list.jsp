@@ -42,7 +42,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tài khoản</a></li>
           <li><a href="admin-profile">Thông tin tài khoản</a></li>
-          <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+          <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
         </ul>
       </li>
       <li>
@@ -109,8 +109,12 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
+<<<<<<< HEAD
           <li><a href="UserList">Danh sách người dùng</a></li>
           <li><a href="AddUser">Thêm người dùng</a></li>
+=======
+          <li><a href="user-list.jsp">Danh sách người dùng</a></li>
+>>>>>>> origin/master
         </ul>
       </li>
 

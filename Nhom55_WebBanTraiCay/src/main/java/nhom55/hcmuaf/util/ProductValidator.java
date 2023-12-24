@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.servlet.http.Part;
 
 public class ProductValidator {
+
   public static String validateTenSP(String productName) {
     if (productName == null || productName.trim().isEmpty()) {
       return "Vui lòng nhập vào tên sản phẩm";
@@ -15,7 +16,6 @@ public class ProductValidator {
     if (!productName.matches("^\\p{L}[\\p{L}\\s']*")) {
       return "Tên sản phẩm chỉ chứa ký tự chữ cái, khoảng trắng.";
     }
-
     return "";
   }
 

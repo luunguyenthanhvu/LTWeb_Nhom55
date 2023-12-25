@@ -3,7 +3,11 @@ package nhom55.hcmuaf.dao;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
 
+
+import java.sql.Date;
+
 import java.time.LocalDate;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -131,6 +135,43 @@ public class UsersDaoImpl implements UsersDao {
     });
   }
 
+    @Override
+    public String addNewUserOfAdmin(String username, String password, String hash, String email, String phoneNumber, String address, java.util.Date dob, String gioiTinh, String img, int quyenHan) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
+
+        // add new user
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate(
+                            "INSERT INTO Users (username, password, hash, email, phoneNumber, address, status,img,dateOfBirth,sexual,role) VALUES (:username, :password, :hash, :email, :phoneNumber, :address, :status, :img, :dateOfBirth, :sexual, :role)")
+                    .bind("username", username)
+                    .bind("password", password)
+                    .bind("hash", hash)
+                    .bind("email", email)
+                    .bind("phoneNumber", phoneNumber)
+                    .bind("address", address)
+                    .bind("status", 1)
+                    .bind("img",img)
+                    .bind("sexual",gioiTinh)
+                    .bind("dateOfBirth",dob)
+                    .bind("role",quyenHan)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
+
+
+
     /**
      * show List user
      * @return  id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status, role
@@ -247,4 +288,5 @@ public class UsersDaoImpl implements UsersDao {
         }
         return "FAIL";
     }
+
 }

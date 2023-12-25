@@ -74,7 +74,6 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
           <li><a href="product-list.html">Danh sách sản phẩm</a></li>
-
           <li><a href="add-product.html">Thêm sản phẩm</a></li>
           <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
         </ul>
@@ -131,7 +130,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.html">Danh sách người dùng</a></li>
+          <li><a href="userList">Danh sách người dùng</a></li>
+          <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
 
@@ -294,7 +294,7 @@
 
   function validateDiaChiNhaCungCap() {
     var text = diaChiNhaCungCap.value;
-    var kyTuHopLe = '^[\s\S]*$';
+    var kyTuHopLe = /^(?=.*[^\s]).*$/;
     var error = document.getElementById("dia_chi_nha_cung_cap_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập địa chỉ nhà cung cấp.";

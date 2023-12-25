@@ -1,9 +1,12 @@
 package nhom55.hcmuaf.dao;
 
+import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -136,7 +139,7 @@ public class UsersDaoImpl implements UsersDao {
      * @return  id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
-    public List<Users> getUser() {
+    public List<Users> showInfoUser() {
         return JDBIConnector.get().withHandle(h ->
                 h.createQuery("SELECT * FROM users")
                         .mapToBean(Users.class)
@@ -176,9 +179,21 @@ public class UsersDaoImpl implements UsersDao {
      * update profile: change one or more than
      * @return username, email, address, phoneNumber, datOfBirth
      */
-    public Users updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth, String newSexual) {
-        return JDBIConnector.get().withHandle(handle -> {
-            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual =:sexual WHERE id = :id")
+    public String updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, newEmail)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
+
+        boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
+            int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
                     .bind("username", newUserName)
                     .bind("email", newEmail)
@@ -186,15 +201,10 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("phoneNumber", newPhoneNumber)
                     .bind("dateOfBirth", newDateOfBirth)
                     .bind("sexual", newSexual)
-
                     .execute();
-
-            return (rowCount > 0) ? handle.createQuery("SELECT id, username, email, address, phoneNumber, dateOfBirth, img, sexual FROM Users WHERE id = :id")
-                    .bind("id", userId)
-                    .mapToBean(Users.class)
-                    .findOne()
-                    .orElse(null) : null;
-       });
+            return updateResult > 0; // Trả về true nếu có ít nhất một dòng được cập nhật
+        });
+        return updateSuccess ? "SUCCESS" : "FAIL";
     }
 
     /**
@@ -202,9 +212,21 @@ public class UsersDaoImpl implements UsersDao {
      * @return username, email, address, phoneNumber, datOfBirth, img
      */
     @Override
-    public Users updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, LocalDate newDateOfBirth , String img, String newSexual) {
-        return JDBIConnector.get().withHandle(handle -> {
-            int rowCount = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
+    public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth , String img, String newSexual) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, newEmail)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
+
+        boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
+            int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
                     .bind("username", newUserName)
                     .bind("email", newEmail)
@@ -214,13 +236,9 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("img", img)
                     .bind("sexual", newSexual)
                     .execute();
-
-            return (rowCount > 0) ? handle.createQuery("SELECT username, email, address, phoneNumber, dateOfBirth, img, sexual FROM Users WHERE id = :id")
-                    .bind("id", userId)
-                    .mapToBean(Users.class)
-                    .findOne()
-                    .orElse(null) : null;
+            return updateResult > 0; // Trả về true nếu có ít nhất một dòng được cập nhật
         });
+        return updateSuccess ? "SUCCESS" : "FAIL";
     }
 
     /**
@@ -246,5 +264,120 @@ public class UsersDaoImpl implements UsersDao {
             return "SUCCESS";
         }
         return "FAIL";
+    }
+
+    //    Đếm số người dùng tìm được
+    @Override
+    public int countResultSearchingUser(String txtSearch) {
+        return JDBIConnector.get().withHandle(h ->
+                h.select("SELECT count(*)  FROM users where username like ?", "%" + txtSearch + "%")
+                        .mapTo(Integer.class)
+                        .one()
+        );
+    }
+
+    //   tìm kiếm của trang danh sách người dùng
+    @Override
+    public List<Users> search(String search, int index, int sizePage) {
+        List<Users> result = JDBIConnector.get().withHandle(handle -> {
+            // Mở kết nối đến cơ sở dữ liệu
+            handle.begin();
+            try {
+                // Thực hiện câu lệnh SQL với giá trị của index và sizePage thay thế trực tiếp
+                List<Users> resultList = handle.createQuery(
+                                "with testThu as (select ROW_NUMBER() over (order by " + "id"
+                                        + "  asc) as r,id,username, hash, email,phoneNumber,address,status,img,dateOfBirth,sexual, role from users where username LIKE ?)\n"
+                                        +
+                                        "\n" +
+                                        "select * FROM testThu where r between " + (index * sizePage - 4) + " and " + (
+                                        index * sizePage))
+                        .bind(0, "%" + search + "%")
+                        .mapToBean(Users.class)
+                        .list();
+                // Commit kết nối
+                handle.commit();
+                return resultList;
+            } catch (Exception e) {
+                // Xử lý ngoại lệ và rollback kết nối nếu có lỗi
+                handle.rollback();
+                throw e;
+            }
+        });
+        return result;
+    }
+
+    @Override
+    public List<Users> searchFilter(String sortBy, String order, String search, int index,
+                                       int sizePage) {
+        List<Users> resultList = JDBIConnector.get().withHandle(h ->
+                h.createQuery("with testThu as (select ROW_NUMBER() over (order by " + sortBy + " " + order
+                                + ") as r, id,username, hash, email,phoneNumber,address,status,img,dateOfBirth,sexual, role from users where username like :search)\n"
+                                +
+                                "\n" +
+                                "select * FROM testThu where r between :startIndex and :endIndex")
+                        .bind("search", "%" + search + "%")
+                        .bind("startIndex", (index * sizePage - 4))
+                        .bind("endIndex", (index * sizePage))
+                        .mapToBean(Users.class)
+                        .list());
+
+        return resultList;
+    }
+
+    //    Lấy 5 người dùng cho mỗi trang
+    @Override
+    public List<Users> get5UsersForEachPage(int index, int quantityDefault) {
+        List<Users> result = new ArrayList<>();
+        int start = (index - 1) * quantityDefault;
+
+        result = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT * FROM users ORDER BY id ASC LIMIT :start, :quantityDefault")
+                        .bind("start", start)
+                        .bind("quantityDefault", quantityDefault)
+                        .mapToBean(Users.class)
+                        .list()
+        );
+
+        return result;
+    }
+    //    Đếm Số dòng record của tất cả sản phẩm trong database
+    @Override
+    public int countTotalRowUserInDatabase() {
+        return JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT COUNT(id) FROM users").mapTo(Integer.class).one()
+        );
+    }
+
+    //    Filter
+//    Sắp xếp theo điều kiện filter (option: id, tên, ngày sinh, vai trò, filter:asc)
+    @Override
+    public List<Users> sortByFilter(int index, int quantityDefault, String sortBy, String order) {
+        List<Users> result = new ArrayList<>();
+        int start = (index - 1) * quantityDefault;
+
+        String orderByClause = "";
+        switch (sortBy) {
+            case "id":
+            case "username":
+            case "role":
+
+                orderByClause = String.format("ORDER BY %s %s", sortBy, order);
+                break;
+
+        }
+
+        String query = String.format("SELECT * FROM users %s LIMIT :start, :quantityDefault",
+                orderByClause);
+
+        result = JDBIConnector.get().withHandle(h ->
+                h.createQuery(query)
+                        .bind("start", start)
+                        .bind("quantityDefault", quantityDefault)
+                        .mapToBean(Users.class)
+                        .list()
+        );
+
+        return result;
     }
 }

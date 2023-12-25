@@ -80,7 +80,7 @@
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa
                             hàng</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/wishlist">Danh
-                            sách yêu thích</a>
+                            sách yêu thích</a>cửa hàng
 
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/checkout">Thủ
                             tục thanh toán</a>
@@ -166,7 +166,7 @@
                         <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn
                             muốn</h2>
                         <p><a href="${pageContext.request.contextPath}/ShopForward"
-                              class="btn btn-primary">Xem cửa hàng</a></p>
+                              class="btn btn-primary">Xem </a></p>
                     </div>
 
                 </div>

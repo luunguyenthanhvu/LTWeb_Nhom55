@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
     public class UserValidator {
         public static String validateName(String userName) {
             if (userName == null || userName.trim().isEmpty()) {
-                return "Vui lòng nhập vào tên người dùng";
+                return "Vui lòng nhập tên người dùng";
             }
 
             if (!userName.matches("^\\p{L}[\\p{L}\\s']*")) {
@@ -60,7 +60,7 @@ import java.util.regex.Pattern;
             return "";
         }
 
-        public static String validateDateOfBirth(LocalDate dateOfBirth) {
+        public static String validateDateOfBirth(String dateOfBirth) {
             if (dateOfBirth == null) {
                 return "Vui lòng chọn ngày sinh nhật";
             }
@@ -78,26 +78,19 @@ import java.util.regex.Pattern;
             if (gender == null || gender.trim().isEmpty()) {
                 return "Vui lòng chọn giới tính";
             }
-            String lowerCaseGender = gender.toLowerCase();
-
-            // Thêm kiểm tra cho giới tính là nam hoặc nữ
-            if (!lowerCaseGender.equals("nam") && !lowerCaseGender.equals("nữ")) {
-                return "Giới tính không hợp lệ. Vui lòng chọn 'nam' hoặc 'nữ'.";
-            }
-
             return "";
         }
 
         public static String validatePass(String password) {
             if (password == null || password.trim().isEmpty()) {
-                return "Vui lòng nhập vào mật khẩu";
+                return "Vui lòng nhập mật khẩu";
             }
             return "";
         }
 
         public static String validateOldPass(String oldPassWord) {
             if (oldPassWord == null || oldPassWord.trim().isEmpty()) {
-                return "Vui lòng nhập vào mật khẩu";
+                return "Vui lòng nhập mật khẩu";
             }
             return "";
         }
@@ -108,12 +101,12 @@ import java.util.regex.Pattern;
             }
 
             if (newPassword.length() <= 6) {
-                return "Mật khẩu phải có độ dài lớn hơn 6 ký tự.";
+                return "Mật khẩu mới phải có độ dài lớn hơn 6 ký tự.";
             }
 
             // Kiểm tra xem có ít nhất 1 chữ cái viết hoa không
             if (!newPassword.matches(".*[A-Z].*")) {
-                return "Mật khẩu phải chứa ít nhất 1 chữ cái viết hoa.";
+                return "Mật khẩu mới phải chứa ít nhất 1 chữ cái viết hoa.";
             }
             return "";
         }

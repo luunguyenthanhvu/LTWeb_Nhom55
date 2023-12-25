@@ -116,16 +116,18 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../static/images/accountPicture.png" alt="profileImg">
+                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">VuLuu</div>
+                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
-                    <i style="transform: rotate(180deg); ">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
-                    </i>
+                    <a href="${pageContext.request.contextPath}/logout">
+                        <i style="transform: rotate(180deg); ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+                        </i>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -138,62 +140,79 @@
         </div>
 
         <div class="content-container" >
-            <form action="updateUser" method="post" class="main-content">
-                <c:set var="user" value="${requestScope.showUser}"/>
+            <form action="updateUser" method="post" class="main-content" enctype="multipart/form-data">
                 <div class="user-info">
                     <div class="img-user">
-                        <img style="width: 100px; height: 100px" src="${user.getImg()}">
+                        <img style="width: 100px; height: 100px" src="${loginedUser.getImg()}">
                     </div>
                     <table>
                         <tr>
-                            <td>Tên người dùng</td>
-                            <td>
-                                <input value="${user.getUsername()}" disabled>
+                            <td><label for="id">ID người dùng <span class="not-empty"> *</span></label></td>
+                            <td><input id="id" placeholder="ID" name="id-admin" value="${loginedUser.getId()}" readonly ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
+                            <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${loginedUser.getUsername()}" >
+                                <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
+                                <c:if test="${not empty error_name}" >
+                                    <p style="color: red">${error_name}</p>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
-                            <td>Mật khẩu</td>
-                            <td>
-                                <input value="${user.getPassword()}" disabled>
+                            <td><label for="id">Mật khẩu <span class="not-empty"> *</span></label></td>
+                            <td><input id="password" placeholder="password" name="pass-admin" value="${loginedUser.getPassword()}"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
+                            <td class="gender-td" id="gioi_tinh_nd">
+                                <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" ${loginedUser.getSexual().equals("Nam") ? 'checked' : ''}>
+                                <label for="male">Nam</label>
+                                <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ" ${loginedUser.getSexual().equals("Nữ") ? 'checked' : ''}>
+                                <label for="female">Nữ</label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Giới tính</td>
-                            <td>
-                                <input type="text" value="${user.getSexual()}" disabled>
+                            <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
+                            <td><input type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}"></td>
+                            <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
+                            <c:if test="${not empty error_dob}" >
+                                <p style="color: red">${error_dob}</p>
+                            </c:if>
+                        </tr>
+                        <tr>
+                            <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
+                            <td><input id="email_nd" placeholder="email" name="email" value="${loginedUser.getEmail()}">
+                                <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
+                                <c:if test="${not empty error_email}" >
+                                    <p style="color: red">${error_email}</p>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
-                            <td>Ngày sinh</td>
-                            <td>
-                                <input type="date" value="${user.getDateOfBirth()}" disabled>
+                            <td><label for="dc_nd">Địa chỉ<span class="not-empty"> *</span></label></td>
+                            <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${loginedUser.getAddress()}" >
+                                <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
+                                <c:if test="${not empty error_address}" >
+                                    <p style="color: red">${error_address}</p>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
-                            <td>Email</td>
-                            <td>
-                                <input value="${user.getEmail()}" disabled>
+                            <td><label for="sdt_nd">Số điện thoại<span class="not-empty"> *</span></label></td>
+                            <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${loginedUser.getPhoneNumber()}" >
                             </td>
+                            <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
+                            <c:if test="${not empty error_phoneNumber}" >
+                                <p style="color: red">${error_phoneNumber}</p>
+                            </c:if>
                         </tr>
-                        <tr>
-                            <td>Địa chỉ</td>
-                            <td>
-                                <input value="${user.getAddress()}" disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Số điện thoại</td>
-                            <td>
-                                <input value="${user.getPhoneNumber()}" disabled>
-                            </td>
-                        </tr>
-
                         <tr>
                             <td>Vai trò</td>
                             <td>
-                                <select>
-                                    <option>Người dùng</option>
-                                    <option>Quản trị viên</option>
+                                <select id="role_user" name="role">
+                                    <option value="0" ${loginedUser.getRole() == 0 ? 'selected' : ''}>Người dùng</option>
+                                    <option value="1" ${loginedUser.getRole() == 1 ? 'selected' : ''}>Quản trị viên</option>
                                 </select>
                             </td>
                         </tr>
@@ -201,9 +220,9 @@
                         <tr>
                             <td>Trạng thái</td>
                             <td>
-                                <select>
-                                    <option>Hoạt động</option>
-                                    <option>Đã khóa</option>
+                                <select id="status_user" name="status">
+                                    <option value="0" ${loginedUser.getStatus() == 0 ? 'selected' : ''}>Đã khóa</option>
+                                    <option value="1" ${loginedUser.getStatus() == 1 ? 'selected' : ''}>Hoạt động</option>
                                 </select>
                             </td>
                         </tr>
@@ -218,6 +237,9 @@
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                             <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
                     </button>
+                    <c:if test="${not empty result}" >
+                        <p style="color: red;padding: 30px"> ${result}</p>
+                    </c:if>
                 </div>
             </form>
 
@@ -262,6 +284,191 @@
         document.getElementById("myDiv").style.display = "block";
     }
 
+
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#fileInput').change(function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                $('#previewImage').attr('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+
+    var tenUser = document.getElementById("ten_nd");
+    var emailUser = document.getElementById("email_nd");
+    // var genderUser = document.getElementById("gioi_tinh_nd");
+    var addressUser = document.getElementById("dc_nd");
+    var phoneNumberUser = document.getElementById("sdt_nd");
+    var dateOfBirthUser = document.getElementById("dob");
+    var upFileAnh = document.getElementById("fileInput");
+    var isUserInput = false;
+
+    function validateTenUser() {
+        var text = tenUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("username-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập tên";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    // function validateGenderUser() {
+    //     var maleCheckbox = document.getElementById("male");
+    //     var femaleCheckbox = document.getElementById("female");
+    //     var error = document.getElementById("gender-error");
+    //
+    //     // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
+    //     if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+    //         error.textContent = "Vui lòng chọn giới tính";
+    //         error.style.display = "block";
+    //         return false;
+    //     } else {
+    //         error.style.display = "none";
+    //         return true;
+    //     }
+    // }
+
+    function validateEmailUser() {
+        var text = emailUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("email-error");
+
+        // Check if the email contains "@gmail.com"
+        if (!text.includes("@gmail.com")) {
+            error.textContent = "Email phải chứa địa chỉ @gmail.com";
+            error.style.display = "block";
+            return false;
+        }
+
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập email";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateAddressUser() {
+        var text = addressUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("address-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập địa chỉ";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validatePhoneNumberUser() {
+        var text = phoneNumberUser.value;
+        var numericRegex = /^\d+$/;
+        var error = document.getElementById("phoneNumber-error");
+
+        if (text.length === 0 || text === null) {
+            error.textContent = "Vui lòng nhập số điện thoại";
+            error.style.display = "block";
+            return false;
+        } else if (!numericRegex.test(text)) {
+            error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateDateOfBirth() {
+        var dateOfBirthInput = document.getElementById("dob");
+        var dateOfBirthValue = dateOfBirthInput.value;
+        var error = document.getElementById("dob-error");
+
+        // Kiểm tra xem ngày tháng năm có được nhập hay không
+        if (dateOfBirthValue.length === 0 || dateOfBirthValue == null) {
+            error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra định dạng ngày tháng năm
+        var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(dateOfBirthValue)) {
+            error.textContent = "Định dạng ngày tháng năm không hợp lệ.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra xem ngày tháng năm có hợp lệ trong quy tắc lịch hay không (ví dụ: không nhập ngày từ tương lai)
+        var currentDate = new Date();
+        var inputDate = new Date(dateOfBirthValue);
+        if (inputDate > currentDate) {
+            error.textContent = "Ngày tháng năm sinh không được là ngày ở tương lai.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
+        error.style.display = "none";
+        return true;
+    }
+
+    function validateFileUpload() {
+        var inputUpload = document.getElementById("fileInput");
+        var error = document.getElementById("fileUpload-error");
+
+        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
+        if (inputUpload.files.length === 0) {
+            error.textContent = "Vui lòng chọn file ảnh.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra định dạng tệp (ở đây, mình chỉ cho phép tệp hình ảnh)
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        if (!allowedExtensions.test(inputUpload.value)) {
+            error.textContent = "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
+        error.style.display = "none";
+        return true;
+    }
+
+
+
+    tenUser.addEventListener("blur", validateTenUser);
+    emailUser.addEventListener("blur", validateEmailUser);
+    addressUser.addEventListener("blur", validateAddressUser);
+    phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
+    dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
+    upFileAnh.addEventListener("blur", validateFileUpload);
 
 </script>
 

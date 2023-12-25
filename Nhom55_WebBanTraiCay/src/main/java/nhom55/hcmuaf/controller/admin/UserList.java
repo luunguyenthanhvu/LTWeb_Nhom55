@@ -13,12 +13,6 @@ import java.util.List;
 public class UserList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        HttpSession session = request.getSession();
-//        Users user = (Users) session.getAttribute("loginedUser");
-
-        List<Users> users = UserService.getInstance().showInfoUser();
-        request.setAttribute("listUser", users);
-
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/user-list.jsp");
         dispatcher.forward(request, response);

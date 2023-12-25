@@ -145,15 +145,14 @@
                     border: none; ">
             <tr>
               <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
-
-              <td><span style="position: relative; top: -5px; margin-left: 80px"  id="ten_nd">${loginedUser.getUsername()}</span></td>
+                <td><span style="position: relative; top: -5px; margin-left: 80px"  id="ten_nd">  ${(empty userUpdate) ? loginedUser.getUsername() : userUpdate.getUsername()}</span></td>
             </tr>
             <td><br></td>
 
             <tr>
               <td><label for="email_nd">Email <span style="color: red">*</span></label></td>
-
-              <td><span style="position: relative; top: -5px; margin-left: 80px" id="email_nd" type="text">${loginedUser.getEmail()}</span></td>
+              <td><span style="position: relative; top: -5px; margin-left: 80px" id="email_nd" type="text">${(empty userUpdate) ? loginedUser.getEmail() : userUpdate.getEmail()}
+              </span></td>
             </tr>
             <td><br></td>
 
@@ -162,15 +161,12 @@
 
             <tr>
               <td><label for="gender">Giới tính <span style="color: red">*</span></label></td>
-
-              <td><span style="position: relative; top: -5px; margin-left: 80px"  id="gender">${loginedUser.getSexual()}</span></td>
+              <td><span style="position: relative; top: -5px; margin-left: 80px"  id="gender">${(empty userUpdate) ? loginedUser.getSexual() : userUpdate.getSexual()}</span></td>
             </tr>
             <td><br></td>
-
             <tr>
               <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
-
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="dc_nd" type="text">${loginedUser.getAddress()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="dc_nd" type="text">${(empty userUpdate) ? loginedUser.getAddress() : userUpdate.getAddress()}</span></td>
             </tr>
             <td><br></td>
 
@@ -178,28 +174,27 @@
             <tr>
               <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
 
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sdt_nd">${loginedUser.getPhoneNumber()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sdt_nd">${(empty userUpdate) ? loginedUser.getPhoneNumber() : userUpdate.getPhoneNumber()}</span></td>
             </tr>
             <td><br></td>
             <tr>
               <td><label for="sn_nd">Sinh nhật <span
                       style="color: red">*</span></label></td>
 
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sn_nd">${loginedUser.getDateOfBirth()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sn_nd"> ${(empty userUpdate) ? loginedUser.getDateOfBirth() : userUpdate.getDateOfBirth()}</span></td>
 
             </tr>
             <td><br></td>
           </table>
         </div>
         <div class="anhNguoiDung">
-          <img class="anhCuaNguoiDung" src="static/images/accountPicture.png" alt="">
+          <img class="anhCuaNguoiDung" src="${(empty userUpdate) ? loginedUser.getImg() : userUpdate.getImg()}" alt="">
         </div>
       </div>
-        <p style="color: red; padding: 30px">${message}</p>
-
+      <p style="color: red;padding: 30px"> ${result}</p>
     </div>
 
-  </div>
+    </div>
 
 
 

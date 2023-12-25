@@ -6,7 +6,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title> Thông tin quản trị viên </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/admin-css/admin-profile.css">
@@ -121,7 +121,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="userList">Danh sách người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/listUserForward">Danh sách người dùng</a></li>
                 </ul>
             </li>
 
@@ -145,10 +145,10 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../static/images/accountPicture.png" alt="profileImg">
+                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${loginedUser.getUsername()}</div>
+                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">
@@ -180,32 +180,32 @@
                         <table>
                             <tr>
                                 <td>Tên người dùng</td>
-                                <td>${loginedUser.getUsername()}</td>
+                                <td>${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>${loginedUser.getEmail()}</td>
+                                <td>${(empty adminUpdate) ? loginedUser.getEmail() : adminUpdate.getEmail()}</td>
                             </tr>
                             <tr>
                                 <td>Ngày sinh</td>
-                                <td>${loginedUser.getDateOfBirth()}</td>
+                                <td>${(empty adminUpdate) ? loginedUser.getDateOfBirth() : adminUpdate.getDateOfBirth()}</td>
                             </tr>
                             <tr>
                                 <td>Giới Tính</td>
-                                <td>${loginedUser.getSexual()}</td>
+                                <td>${(empty adminUpdate) ? loginedUser.getSexual() : adminUpdate.getSexual()}</td>
                             </tr>
                             <tr>
                                 <td>Số điện thoại</td>
-                                <td>${loginedUser.getPhoneNumber()}</td>
+                                <td>${(empty adminUpdate) ? loginedUser.getPhoneNumber() : adminUpdate.getPhoneNumber()}</td>
                             </tr>
                             <tr>
                                 <td>Địa chỉ</td>
-                                <td>${loginedUser.getAddress()}</td>
+                                <td>${(empty adminUpdate) ? loginedUser.getAddress() : adminUpdate.getAddress()}</td>
                             </tr>
                         </table>
                     </div>
                     <div class="img-admin">
-                        <img src="${loginedUser.getImg()}" alt="">
+                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="">
                     </div>
                 </div>
                 <div class="edit-admin">
@@ -217,7 +217,7 @@
                     </a>
                 </div>
             </div>
-            <p style="color: red; padding: 30px">${message}</p>
+            <p style="color: red; padding: 30px">${result}</p>
 
         </div>
 

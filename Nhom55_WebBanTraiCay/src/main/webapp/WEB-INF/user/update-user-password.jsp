@@ -127,40 +127,42 @@
                   <label for="old-password">Mật khẩu cũ<span class="not-empty"> *</span></label>
                 </td>
                 <td>
-                  <input type="password" id="old-password" name="old-password" >
+                  <input type="password" id="old-password" name="old-password" value="${oldPass}" >
                   <span class="error-msg required" id="old-password-error" style="display: none;"></span>
                 </td>
-                <c:if test="${not empty error_oldPassword}" >
-                  <p style="color: red;padding: 30px"> ${error_oldPassword}</p>
-                </c:if>
               </tr>
+              <c:if test="${not empty error_oldPassword}" >
+                <p style="color: red;padding: 30px"> ${error_oldPassword}</p>
+              </c:if>
+
               <tr>
                 <td>
                   <label for="new-password">Mật khẩu mới<span class="not-empty"> *</span></label>
                 </td>
                 <td>
-                  <input type="password" id="new-password" name="new-password">
+                  <input type="password" id="new-password" name="new-password" value="${newPass}">
                   <span class="error-msg required" id="new-password-error" style="display: none;"></span>
+                  <c:if test="${not empty error_newPassword}" >
+                    <p style="color: red;padding: 30px"> ${error_newPassword}</p>
+                  </c:if>
+                  <c:if test="${not empty error_checkOldAndNewPass}" >
+                    <p style="color: red;padding: 30px"> ${error_checkOldAndNewPass}</p>
+                  </c:if>
                 </td>
-                <c:if test="${not empty error_newPassword}" >
-                  <p style="color: red;padding: 30px"> ${error_newPassword}</p>
-                </c:if>
-                <c:if test="${not empty error_checkOldAndNewPass}" >
-                  <p style="color: red;padding: 30px"> ${error_checkOldAndNewPass}</p>
-                </c:if>
+
               </tr>
               <tr>
                 <td>
                   <label for="retype-password">Nhập lại mật khẩu mới<span class="not-empty"> *</span></label>
                 </td>
                 <td>
-                  <input type="password" id="retype-password" name="retype-password">
+                  <input type="password" id="retype-password" name="retype-password" value="${retypePass}">
                   <span class="error-msg required" id="retype-password-error" style="display: none;"></span>
                   <span class="error-msg required" id="retype-mismatch-error" style="display: none;"></span>
+                  <c:if test="${not empty error_checkNewAndRetypePass}" >
+                    <p style="color: red;padding: 30px"> ${error_checkNewAndRetypePass}</p>
+                  </c:if>
                 </td>
-                <c:if test="${not empty error_checkNewAndRetypePass}" >
-                  <p style="color: red;padding: 30px"> ${error_checkNewAndRetypePass}</p>
-                </c:if>
               </tr>
             </table>
 
@@ -178,9 +180,7 @@
               </button>
             </div>
 
-            <c:if test="${not empty result}" >
-              <p style="color: red;padding: 30px"> ${result}</p>
-            </c:if>
+
           </form>
         </div>
       </div>

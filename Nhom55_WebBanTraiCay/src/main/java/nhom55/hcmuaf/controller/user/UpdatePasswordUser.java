@@ -16,9 +16,6 @@ public class UpdatePasswordUser extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    HttpSession session = request.getSession();
-    Users user = (Users) session.getAttribute("loginedUser");
-
     RequestDispatcher dispatcher = this.getServletContext()
         .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
     dispatcher.forward(request, response);
@@ -38,27 +35,22 @@ public class UpdatePasswordUser extends HttpServlet {
       // Kiểm tra mật khẩu cũ
       if (UserService.getInstance().checkPassUser(user.getId(), MyUtils.encodePass(oldPassword))) {
         String result = UserService.getInstance().changePass(user.getId(), newPassword);
-        System.out.println("trước success");
         if (result.equals("SUCCESS")) {
-          Users updatedUser = UserService.getInstance().getUserById(user.getId());
-
           request.setAttribute("result", "Đổi mật khẩu thành công");
           // xoa session hien tai
           MyUtils.removeLoginedUser(session);
           MyUtils.removeCart(session);
-          System.out.println("test");
-          System.out.println("vaicadai");
           RequestDispatcher dispatcher = this.getServletContext()
-              .getRequestDispatcher("/WEB-INF/login/login.jsp");
+                  .getRequestDispatcher("/WEB-INF/login/login.jsp");
           dispatcher.forward(request, response);
         } else {
           request.setAttribute("result", "Có lỗi xảy ra khi đổi mật khẩu");
           RequestDispatcher dispatcher = this.getServletContext()
-              .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
+                  .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
           dispatcher.forward(request, response);
         }
       } else {
-        request.setAttribute("result", "mật khẩu cũ không trùng khớp");
+        request.setAttribute("result", "Mật khẩu cũ không trùng khớp");
         RequestDispatcher dispatcher = this.getServletContext()
             .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
         dispatcher.forward(request, response);
@@ -84,6 +76,7 @@ public class UpdatePasswordUser extends HttpServlet {
 
     String checkOldPassword = UserValidator.validateOldPass(oldPassword);
     String checkNewPassword = UserValidator.validateNewPass(newPassword);
+    String checkRetypePassword = UserValidator.validateNewPass(newPassword);
     String checkOldAndNewPass = UserValidator.validateOldAndNewPass(oldPassword, newPassword);
     String checkNewAndRetypePass = UserValidator.validateNewAndRetypePass(newPassword,
         retypePassword);
@@ -94,11 +87,29 @@ public class UpdatePasswordUser extends HttpServlet {
     if (!checkOldPassword.isEmpty()) {
       count++;
       request.setAttribute("error_oldPassword", checkOldPassword);
+    } else {
+      request.setAttribute("oldPass", oldPassword);
     }
 
     if (!checkNewPassword.isEmpty()) {
       count++;
       request.setAttribute("error_newPassword", checkNewPassword);
+    } else {
+      request.setAttribute("newPass", newPassword);
+    }
+
+    if (!checkNewPassword.isEmpty()) {
+      count++;
+      request.setAttribute("error_newPassword", checkNewPassword);
+    } else {
+      request.setAttribute("newPass", newPassword);
+    }
+
+    if (!checkNewPassword.isEmpty()) {
+      count++;
+      request.setAttribute("error_retypePassword", checkNewPassword);
+    } else {
+      request.setAttribute("retypePass", retypePassword);
     }
 
     if (!checkOldAndNewPass.isEmpty()) {

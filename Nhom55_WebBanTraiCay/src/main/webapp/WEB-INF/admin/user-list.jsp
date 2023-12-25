@@ -6,7 +6,7 @@
 <head>
   <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title> Kết quả tìm kiếm người dùng </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 
@@ -114,7 +114,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="user-list.html">Danh sách người dùng</a></li>
+                    <li><a href="#">Danh sách người dùng</a></li>
                 </ul>
             </li>
 
@@ -125,7 +125,7 @@
                                 <img src="${loginedUser.getImg()}" alt="profileImg">
                             </div>
                             <div class="name-job">
-                                <div class="profile_name">${loginedUser.getUsername()}</div>
+                                <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
                                 <div class="job">Quản trị viên</div>
                             </div>
                             <a href="${pageContext.request.contextPath}/logout">
@@ -148,27 +148,22 @@
             <span class="text">Danh sách người dùng</span>
         </div>
         <div class="find-product">
-            <form action="" method="get">
+            <form action="listController?index=1" method="post">
                 <div class="fill-product">
-                    <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng">
+                    <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng" name="txtSearch">
 
-                    <select class="fill-by">
-                        <option value="" disabled selected class="font_bold"><span class="font_bold">Lọc theo</span>
-                        </option>
-                        <option value="service1">ID</option>
-                        <option value="service2">Ngày sinh</option>
-                        <option value="service3">Ngày đăng ký</option>
-                    </select>
 
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-                        </svg>
-                    </button>
+                    <div class="filter-icon" onclick="toggleFilter()">
+                        <span class="font_bold">Lọc theo</span>
+                        <div id="filterDropdown" class="filter-dropdown" style="display: none;">
+                            <a href="FilterForAllUser?sortBy=username&amp;order=asc&amp;pageId=1">Tên</a>
+                        </div>
+                    </div>
+                    <input style="width: 100px" type="submit" value="Tìm kiếm">
                 </div>
             </form>
         </div>
+
         <div class="container" style="margin: 30px 30px 0 30px">
             <div class="table-sanpham">
 
@@ -183,7 +178,7 @@
                             <th style="width: 100px;">Tình trạng</th>
                             <th style="width: 100px;">Chức năng</th>
                         </tr>
-                      <c:forEach items="${listUser}" var="user">
+                      <c:forEach items="${listOfUser}" var="user">
                         <tr>
                             <td>${user.getId()}</td>
                             <td>${user.getUsername()}</td>
@@ -229,19 +224,66 @@
 
                     </table>
             </div>
+
             <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#" class="active">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">&raquo;</a>
+                <ul class="pagination-list">
+                            <%--    Trường hợp tìm ra số người dùng chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                            <c:if test="${pageId== 1 && haveMaxPage ==1}">
+                                <li><a>&lt;</a></li>
+                                <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                    <li id="${i}"><a
+                                            href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                    </li>
+                                </c:forEach>
+                                <li><a>></a></li>
+                            </c:if>
+
+                            <c:if test="${ haveMaxPage !=1}">
+                                <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                                <c:if test="${pageId ==1}">
+                                    <li><a>&lt;</a></li>
+                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                        <li id="${i}"><a
+                                                href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                                    </li>
+                                </c:if>
+
+                                <%--  Còn trường hợp này nút nào cũng xài được--%>
+                                <c:if test="${pageId >1 && pageId<haveMaxPage}">
+                                    <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                        <li id="${i}"><a
+                                                href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                                    </li>
+                                </c:if>
+                                <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+
+                                <c:if test="${pageId ==haveMaxPage}">
+                                    <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                        <li id="${i}"><a
+                                                href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li><a>></a></li>
+                                </c:if>
+                            </c:if>
+                        </ul>
             </div>
+            <p style="color: red;padding: 100px"> ${result}</p>
         </div>
+
     </section>
 </div>
+
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
@@ -279,6 +321,17 @@
         });
     });
 </script>
+
+<%--Script xuất hiện bảng cho filter--%>
+<script>
+    document.getElementById('${pageId}').classList.add("active")
+
+    function toggleFilter() {
+        var dropdown = document.getElementById("filterDropdown");
+        dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+    }
+</script>
+
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>
 </html>

@@ -58,7 +58,6 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
           <li><a href="product-list">Danh sách sản phẩm</a></li>
-
           <li><a href="add-new-product">Thêm sản phẩm</a></li>
           <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
         </ul>
@@ -109,12 +108,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-<<<<<<< HEAD
-          <li><a href="UserList">Danh sách người dùng</a></li>
+          <li><a href="userList">Danh sách người dùng</a></li>
           <li><a href="AddUser">Thêm người dùng</a></li>
-=======
-          <li><a href="user-list.jsp">Danh sách người dùng</a></li>
->>>>>>> origin/master
         </ul>
       </li>
 

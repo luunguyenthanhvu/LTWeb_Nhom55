@@ -159,12 +159,12 @@ import java.util.regex.Pattern;
 
 
             public static String validateMatKhau(String matKhau) {
-                String regex = "^(?=.*[A-Za-z0-9.@#$%]{8,})[A-Za-z0-9.@#$%]+$";
+                String regex = "^(?=.*[A-Za-z0-9.@#$%]{6,})[A-Za-z0-9.@#$%]+$";
                 if (matKhau == null || matKhau.isEmpty()) {
                     return "Vui lòng nhập mật khẩu.";
                 }
                 if(!(matKhau.matches(regex))) {
-                    return "Độ dài mật khẩu có ít nhất 8 kí tự";
+                    return "Độ dài mật khẩu có ít nhất 6 kí tự";
                 }
 
 

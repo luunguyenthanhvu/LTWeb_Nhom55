@@ -27,15 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="myFunction()" style="margin:0;">
-<c:if test="${not empty notify }">
-  <script>
-    function showPopup() {
-      // Hiển thị popup thông báo
-      alert("${notify}");
-    }
-    showPopup();
-  </script>
-</c:if>
+
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
   <div class="sidebar close">
@@ -83,7 +75,6 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
           <li><a href="product-list">Danh sách sản phẩm</a></li>
-
           <li><a href="add-new-product">Thêm sản phẩm</a></li>
           <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
         </ul>
@@ -140,7 +131,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="UserList">Danh sách người dùng</a></li>
+          <li><a href="userList">Danh sách người dùng</a></li>
           <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
@@ -190,7 +181,8 @@
     </div>
     <div class="container">
       <!--       code thêm ở đây-->
-      <div style="padding:10px; width:570px" class="form-sp">
+<%--      Chỉnh thêm 1 xíu css cho form--%>
+      <div style="padding:10px; width:570px;height: 920px" class="form-sp">
         <form id="FormThemSanPham" action="AddUser" method="post"
               enctype="multipart/form-data">
           <table style="border-collapse:collapse;
@@ -331,6 +323,10 @@
               <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/>
             </svg>
           </button>
+          <c:if test="${not empty notify }">
+            <span style="position:absolute; top:950px; right:750px; ">${notify}</span>
+          </c:if>
+
         </form>
       </div>
     </div>
@@ -414,15 +410,15 @@
 
   function validateMatKhau() {
     var text = matKhau.value;
-    // Regex này sẽ kiểm tra độ dài mật khẩu có ít nhất 8 kí tự, 1 kí tự hoa và thường, 1 chữ số
-    var kyTuHopLe =/^(?=.*[A-Za-z0-9.@#$%]{8,})[A-Za-z0-9.@#$%]+$/;
+    // Regex này sẽ kiểm tra độ dài mật khẩu có ít nhất 6 kí tự
+    var kyTuHopLe =/^(?=.*[A-Za-z0-9.@#$%]{6,})[A-Za-z0-9.@#$%]+$/;
     var error = document.getElementById("mk_user_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập mật khẩu";
       error.style.display = "block";
       return false;
     }  else if(!kyTuHopLe.test(text)) {
-      error.textContent = "Mật khẩu có ít nhất 8 kí tự.";
+      error.textContent = "Mật khẩu có ít nhất 6 kí tự.";
       error.style.display = "block";
       return false;
     }

@@ -145,7 +145,7 @@
                     border: none; ">
             <tr>
               <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
-                <td><span style="position: relative; top: -5px; margin-left: 80px"  id="ten_nd">  ${(empty userUpdate) ? loginedUser.getUsername() : userUpdate.getUsername()}</span></td>
+                <td><span style="position: relative; top: -5px; margin-left: 80px"  id="ten_nd">${(empty userUpdate) ? loginedUser.getUsername() : userUpdate.getUsername()}</span></td>
             </tr>
             <td><br></td>
 

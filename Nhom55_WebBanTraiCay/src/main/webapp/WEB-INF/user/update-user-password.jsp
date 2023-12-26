@@ -119,7 +119,7 @@
         <div class="container-child-right">
           <h4>Đổi mật khẩu</h4>
           <hr style="border-top: 1px solid #000000;">
-          <form class="change-password" action="updatePasswordUser" method="post">
+          <form class="change-password" action="updatePasswordUserController" method="post">
             <table style="border-collapse:collapse;
                     border: none; ">
               <tr>

@@ -154,7 +154,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${loginedUser.getUsername()}" >
+                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}" >
                                         <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
                                         <c:if test="${not empty error_name}" >
                                             <p style="color: red">${error_name}</p>
@@ -163,7 +163,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
-                                    <td><input id="email_nd" placeholder="email" name="email" value="${loginedUser.getEmail()}">
+                                    <td><input id="email_nd" placeholder="email" name="email" value="${(empty adminUpdate) ? loginedUser.getEmail() : adminUpdate.getEmail()}">
                                         <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_email}" >
                                              <p style="color: red">${error_email}</p>
@@ -172,7 +172,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
-                                    <td><input type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}">
+                                    <td><input type="date" id="dob" name="dob" value="${(empty adminUpdate) ? loginedUser.getDateOfBirth() : adminUpdate.getDateOfBirth()}">
                                         <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_dob}" >
                                             <p style="color: red">${error_dob}</p>
@@ -183,15 +183,15 @@
                                 <tr>
                                     <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
                                     <td class="gender-td" id="gioi_tinh_nd">
-                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" ${loginedUser.getSexual().equals("Nam") ? 'checked' : ''}>
+                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam"${((empty adminUpdate) ? loginedUser.getSexual() : adminUpdate.getSexual()).equals("Nam") ? 'checked' : ''}>
                                         <label for="male">Nam</label>
-                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ" ${loginedUser.getSexual().equals("Nữ") ? 'checked' : ''}>
+                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ"${((empty adminUpdate) ? loginedUser.getSexual() : adminUpdate.getSexual()).equals("Nữ") ? 'checked' : ''}>
                                         <label for="female">Nữ</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label for="sdt_nd">Số điện thoại<span class="not-empty"> *</span></label></td>
-                                    <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${loginedUser.getPhoneNumber()}" >
+                                    <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${(empty adminUpdate) ? loginedUser.getPhoneNumber() : adminUpdate.getPhoneNumber()}" >
                                         <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_phoneNumber}" >
                                             <p style="color: red">${error_phoneNumber}</p>
@@ -201,7 +201,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="dc_nd">Địa chỉ<span class="not-empty"> *</span></label></td>
-                                    <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${ loginedUser.getAddress()}" >
+                                    <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${(empty adminUpdate) ? loginedUser.getAddress() : adminUpdate.getAddress()}" >
                                         <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_address}" >
                                             <p style="color: red">${error_address}</p>
@@ -210,7 +210,7 @@
                                 </tr>
                             </table>
                             <div class="img-admin">
-                                <img id="previewImage" src="${loginedUser.getImg()}" alt="">
+                                <img id="previewImage" src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="">
                                 <div class="chose-new-img">
                                     <label for="fileInput" class="chose-new-img">
                                         <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -232,9 +232,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                 <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
                         </button>
-                        <c:if test="${not empty result}" >
-                            <p style="color: red;padding: 30px"> ${result}</p>
-                        </c:if>
+                        <p style="color: red;padding: 30px"> ${result}</p>
                     </Form>
                 </div>
             </div>

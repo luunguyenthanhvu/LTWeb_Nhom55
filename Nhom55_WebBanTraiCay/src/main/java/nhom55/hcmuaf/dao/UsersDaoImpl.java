@@ -180,18 +180,6 @@ public class UsersDaoImpl implements UsersDao {
      * @return username, email, address, phoneNumber, datOfBirth
      */
     public String updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual) {
-        // check if exist
-        List<Users> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
-                        .bind(0, newEmail)
-                        .mapToBean(Users.class)
-                        .stream()
-                        .collect(Collectors.toList())
-        );
-        if (!users.isEmpty()) {
-            return "FAIL";
-        }
-
         boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
             int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
@@ -213,18 +201,6 @@ public class UsersDaoImpl implements UsersDao {
      */
     @Override
     public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth , String img, String newSexual) {
-        // check if exist
-        List<Users> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery("SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
-                        .bind(0, newEmail)
-                        .mapToBean(Users.class)
-                        .stream()
-                        .collect(Collectors.toList())
-        );
-        if (!users.isEmpty()) {
-            return "FAIL";
-        }
-
         boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
             int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
@@ -379,5 +355,14 @@ public class UsersDaoImpl implements UsersDao {
         );
 
         return result;
+    }
+
+    @Override
+    public void deleteUser(int id) {
+        JDBIConnector.get().withHandle(h -> {
+            return h.createUpdate("DELETE from users where id = :id")
+                    .bind("id",id)
+                    .execute();
+        });
     }
 }

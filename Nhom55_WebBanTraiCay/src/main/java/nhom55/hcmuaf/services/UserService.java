@@ -95,6 +95,8 @@ public class UserService {
     return  userDao.sortByFilter(index,role,sortBy,order);
   }
 
-
+  public void deleteUser(int id) {
+      userDao.deleteUser(id);
+  }
 
 }

@@ -217,7 +217,7 @@
                     </a>
                 </div>
             </div>
-            <p style="color: red; padding: 30px">${result}</p>
+            <p style="color: red; padding-left: 60px">${result}</p>
 
         </div>
 

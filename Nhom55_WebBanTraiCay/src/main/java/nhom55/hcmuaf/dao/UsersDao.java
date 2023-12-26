@@ -38,7 +38,9 @@ public interface UsersDao {
     List<Users> sortByFilter(int index, int quantityDefault, String sortBy, String order);
 
     int countTotalRowUserInDatabase();
-     List<Users> get5UsersForEachPage(int index, int quantityDefault);
+    List<Users> get5UsersForEachPage(int index, int quantityDefault);
+
+    void deleteUser(int id);
 
 }
 

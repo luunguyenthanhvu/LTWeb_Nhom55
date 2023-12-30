@@ -27,7 +27,7 @@ public class UserList extends HttpServlet {
         List<Users> listUser = UserService.getInstance().get5UsersForEachPage(pageNumber,quantityDefault);
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/user-list.jsp");
-        request.setAttribute("listUser",listUser);
+        request.setAttribute("listOfUser",listUser);
         request.setAttribute("haveMaxPage",haveMaxPage);
         request.setAttribute("pageId",pageNumber);
         dispatcher.forward(request, response);

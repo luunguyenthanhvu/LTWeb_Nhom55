@@ -17,7 +17,8 @@ public class UpdatePasswordAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
-        dispatcher.forward(request, response);    }
+        dispatcher.forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

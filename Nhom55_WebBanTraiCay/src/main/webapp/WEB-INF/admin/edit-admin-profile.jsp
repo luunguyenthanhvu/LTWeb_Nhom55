@@ -41,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
-                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile?id=${admin.getId()}">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin?id=${admin.getId()}">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -116,10 +116,10 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="profileImg">
+                        <img src="${admin.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">
@@ -150,11 +150,11 @@
                             <table>
                                 <tr>
                                     <td><label for="id">ID người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="id" placeholder="ID" name="id-admin" value="${loginedUser.getId()}" readonly ></td>
+                                    <td><input id="id" placeholder="ID" name="id-admin" value="${admin.getId()}" readonly ></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}" >
+                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${admin.getUsername()}" >
                                         <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
                                         <c:if test="${not empty error_name}" >
                                             <p style="color: red">${error_name}</p>
@@ -163,7 +163,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
-                                    <td><input id="email_nd" placeholder="email" name="email" value="${(empty adminUpdate) ? loginedUser.getEmail() : adminUpdate.getEmail()}">
+                                    <td><input id="email_nd" placeholder="email" name="email" value="${admin.getEmail()}">
                                         <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_email}" >
                                              <p style="color: red">${error_email}</p>
@@ -172,7 +172,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
-                                    <td><input type="date" id="dob" name="dob" value="${(empty adminUpdate) ? loginedUser.getDateOfBirth() : adminUpdate.getDateOfBirth()}">
+                                    <td><input type="date" id="dob" name="dob" value="${admin.getDateOfBirth()}">
                                         <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_dob}" >
                                             <p style="color: red">${error_dob}</p>
@@ -183,15 +183,15 @@
                                 <tr>
                                     <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
                                     <td class="gender-td" id="gioi_tinh_nd">
-                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam"${((empty adminUpdate) ? loginedUser.getSexual() : adminUpdate.getSexual()).equals("Nam") ? 'checked' : ''}>
+                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam"${admin.getSexual().equals("Nam") ? 'checked' : ''}>
                                         <label for="male">Nam</label>
-                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ"${((empty adminUpdate) ? loginedUser.getSexual() : adminUpdate.getSexual()).equals("Nữ") ? 'checked' : ''}>
+                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ"${admin.getSexual().equals("Nữ") ? 'checked' : ''}>
                                         <label for="female">Nữ</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label for="sdt_nd">Số điện thoại<span class="not-empty"> *</span></label></td>
-                                    <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${(empty adminUpdate) ? loginedUser.getPhoneNumber() : adminUpdate.getPhoneNumber()}" >
+                                    <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${admin.getPhoneNumber()}" >
                                         <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_phoneNumber}" >
                                             <p style="color: red">${error_phoneNumber}</p>
@@ -201,7 +201,7 @@
                                 </tr>
                                 <tr>
                                     <td><label for="dc_nd">Địa chỉ<span class="not-empty"> *</span></label></td>
-                                    <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${(empty adminUpdate) ? loginedUser.getAddress() : adminUpdate.getAddress()}" >
+                                    <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${admin.getAddress()}" >
                                         <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_address}" >
                                             <p style="color: red">${error_address}</p>
@@ -210,7 +210,7 @@
                                 </tr>
                             </table>
                             <div class="img-admin">
-                                <img id="previewImage" src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="">
+                                <img id="previewImage" src="${admin.getImg()}" alt="">
                                 <div class="chose-new-img">
                                     <label for="fileInput" class="chose-new-img">
                                         <input type="file" id="fileInput" name="avatar" accept="image/*">

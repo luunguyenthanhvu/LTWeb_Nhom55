@@ -92,7 +92,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="${pageContext.request.contextPath}/userProfile?id=${loginedUser.getId()}">
+                    <a href="${pageContext.request.contextPath}/userProfile?id=${user.getId()}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                             <path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/>
@@ -110,7 +110,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${loginedUser.getId()}">
+                    <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${user.getId()}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                             <path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/>
@@ -154,7 +154,7 @@
                                 <td><label for="id">ID <span style="color: red">*</span></label></td>
                                 <td>
                                     <input style="margin-left: 60px; width: 250px" type="text" id="id" name="id"
-                                           value="${loginedUser.getId()}"
+                                           value="${user.getId()}"
                                            readonly>
                                 </td>
                             </tr>
@@ -164,7 +164,7 @@
                                 <td>
                                     <input style="margin-left: 60px; width: 250px" type="text" id="ten_nd"
                                            name="ten_nguoi_dung"
-                                           value="${(empty userUpdate) ? loginedUser.getUsername() : userUpdate.getUsername()}">
+                                           value="${user.getUsername()}">
                                     <span class="error-msg required" id="username-error"
                                           style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_name}">
@@ -180,7 +180,7 @@
                                 <td>
                                     <input style="margin-left: 60px; width: 250px" name="email_nguoi_dung" id="email_nd"
                                            type="email"
-                                           value="${(empty userUpdate) ? loginedUser.getEmail() : userUpdate.getEmail()}">
+                                           value="${user.getEmail()}">
                                     <span class="error-msg required" id="email-error"
                                           style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_email}">
@@ -193,10 +193,10 @@
                                 <td><label for="gioi_tinh_nd">Giới tính <span style="color: red">*</span></label></td>
                                 <td class="gender-td" id="gioi_tinh_nd">
                                     <input style="margin-left: 60px" type="radio" id="male" name="gender"
-                                           value="Nam" ${((empty userUpdate) ? loginedUser.getSexual() : userUpdate.getSexual()).equals("Nam") ? 'checked' : ''}>
+                                           value="Nam" ${user.getSexual().equals("Nam") ? 'checked' : ''}>
                                     <label for="male">Nam</label>
                                     <input style="margin-left: 30px" type="radio" id="female" name="gender"
-                                           value="Nữ" ${((empty userUpdate) ? loginedUser.getSexual() : userUpdate.getSexual()).equals("Nữ") ? 'checked' : ''}>
+                                           value="Nữ" ${user.getSexual().equals("Nữ") ? 'checked' : ''}>
                                     <label for="female">Nữ</label>
                                 </td>
                             </tr>
@@ -206,7 +206,7 @@
                                 <td>
                                     <input style="margin-left: 60px; width: 250px" name="dia_chi_nguoi_dung" id="dc_nd"
                                            type="text"
-                                           value="${(empty userUpdate) ? loginedUser.getAddress() : userUpdate.getAddress()}">
+                                           value="${user.getAddress()}">
                                     <span class="error-msg required" id="address-error"
                                           style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_address}">
@@ -220,7 +220,7 @@
                                 <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
                                 <td><input style="margin-left: 60px; width: 250px" name="so_dien_thoai_nguoi_dung"
                                            id="sdt_nd"
-                                           value="${(empty userUpdate) ? loginedUser.getPhoneNumber() : userUpdate.getPhoneNumber()}">
+                                           value="${user.getPhoneNumber()}">
                                     <span class="error-msg required" id="phoneNumber-error"
                                           style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_phoneNumber}">
@@ -233,7 +233,7 @@
                                 <td><label for="dob">Sinh nhật<span class="not-empty"> *</span></label></td>
                                 <td>
                                     <input style="margin-left: 60px; width: 250px" type="date" id="dob" name="dob"
-                                           value="${(empty userUpdate) ? loginedUser.getDateOfBirth() : userUpdate.getDateOfBirth()}">
+                                           value="${user.getDateOfBirth()}">
                                     <span class="error-msg required" id="dob-error"
                                           style="display: none;margin-left: 60px;color: red"></span>
                                     <c:if test="${not empty error_dob}">
@@ -244,7 +244,7 @@
                         </table>
                     </div>
                     <div class="user-img">
-                        <img id="previewImage" src="${(empty userUpdate) ? loginedUser.getImg() : userUpdate.getImg()}"
+                        <img id="previewImage" src="${user.getImg()}"
                              alt="">
                         <div class="chose-new-img">
                             <label for="fileInput" class="chose-new-img">
@@ -364,6 +364,9 @@
 
             // validate phone number
             isValid = validateInput("sdt_nd", "phoneNumber-error", "Vui lòng nhập số điện thoại", "Số điện thoại chỉ được chứa ký tự số.", /^\d+$/) && isValid;
+
+            // validate gender
+            isValid = validateInput("gioi_tinh_nd", "gender-error", "Vui lòng chọn giới tính", "", /^(nam|nữ)$/i) && isValid;
 
             // validate date of birth
             isValid = validateInput("dob", "dob-error", "Vui lòng nhập ngày tháng năm sinh", "Định dạng ngày tháng năm không hợp lệ.", /^\d{4}-\d{2}-\d{2}$/) && isValid;

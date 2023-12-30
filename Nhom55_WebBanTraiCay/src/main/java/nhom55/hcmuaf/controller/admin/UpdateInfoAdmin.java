@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
@@ -26,6 +27,17 @@ public class UpdateInfoAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
+
+        List<Users> listUser= UserService.getInstance().showInfoUser();
+        for(Users u: listUser) {
+            if(u.getId() == admin.getId()) {
+                admin =u;
+                break;
+            }
+        }
+        request.setAttribute("admin", admin);
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
         dispatcher.forward(request, response);
 
@@ -81,16 +93,22 @@ public class UpdateInfoAdmin extends HttpServlet {
                 if (result.equals("SUCCESS")) {
                     // lấy ra thông tin mới của người dùng
                     Users admins = UserService.getInstance().getUserById(admin.getId());
-                    request.setAttribute("adminUpdate", admins);
+                    request.setAttribute("admin", admins);
                     request.setAttribute("result", "Cập nhật thành công");
                     RequestDispatcher dispatcher = this.getServletContext()
                             .getRequestDispatcher("/WEB-INF/admin/admin-profile.jsp");
                     dispatcher.forward(request, response);
+//                    response.sendRedirect(request.getContextPath() + "/adminProfile?id=" +admins.getId());
+
                 } else {
+                    Users admins = UserService.getInstance().getUserById(admin.getId());
+                    request.setAttribute("admin", admins);
                     request.setAttribute("result", "Cập nhật thất bại");
-                    RequestDispatcher dispatcher = this.getServletContext()
-                            .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
-                    dispatcher.forward(request, response);
+//                    RequestDispatcher dispatcher = this.getServletContext()
+//                            .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
+//                    dispatcher.forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/updateInfoAdmin");
+
                 }
             } else {
                 // Nếu email được thay đổi
@@ -102,14 +120,19 @@ public class UpdateInfoAdmin extends HttpServlet {
                             .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
                 } else {
+                    Users admins = UserService.getInstance().getUserById(admin.getId());
+                    request.setAttribute("admin", admins);
                     request.setAttribute("result", "Cập nhật thất bại");
-                    RequestDispatcher dispatcher = this.getServletContext()
-                            .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
-                    dispatcher.forward(request, response);
+//                    RequestDispatcher dispatcher = this.getServletContext()
+//                            .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
+//                    dispatcher.forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/updateInfoAdmin");
                 }
             }
             // không checkValidate
         } else {
+            Users admins = UserService.getInstance().getUserById(admin.getId());
+            request.setAttribute("admin", admins);
             RequestDispatcher dispatcher = this.getServletContext()
                     .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
             dispatcher.forward(request, response);
@@ -186,8 +209,4 @@ public class UpdateInfoAdmin extends HttpServlet {
         }
         return true;
     }
-
-
-
-
 }

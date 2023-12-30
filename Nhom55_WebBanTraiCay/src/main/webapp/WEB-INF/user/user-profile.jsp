@@ -103,13 +103,13 @@
           </a>
         </li>
         <li>
-          <a href="${pageContext.request.contextPath}/updateInfoUser?id=${loginedUser.getId()}">
+          <a href="${pageContext.request.contextPath}/updateInfoUser?id=${user.getId()}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M402.6 83.2l90.2 90.2c3.8 3.8 3.8 10 0 13.8L274.4 405.6l-92.8 10.3c-12.4 1.4-22.9-9.1-21.5-21.5l10.3-92.8L388.8 83.2c3.8-3.8 10-3.8 13.8 0zm162-22.9l-48.8-48.8c-15.2-15.2-39.9-15.2-55.2 0l-35.4 35.4c-3.8 3.8-3.8 10 0 13.8l90.2 90.2c3.8 3.8 10 3.8 13.8 0l35.4-35.4c15.2-15.3 15.2-40 0-55.2zM384 346.2V448H64V128h229.8c3.2 0 6.2-1.3 8.5-3.5l40-40c7.6-7.6 2.2-20.5-8.5-20.5H48C21.5 64 0 85.5 0 112v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V306.2c0-10.7-12.9-16-20.5-8.5l-40 40c-2.2 2.3-3.5 5.3-3.5 8.5z"/></svg>
             Chỉnh sửa thông tin
           </a>
         </li>
         <li>
-          <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${loginedUser.getId()}">
+          <a href="${pageContext.request.contextPath}/updatePasswordUser?id=${user.getId()}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zM376 96a40 40 0 1 1 0 80 40 40 0 1 1 0-80z"/></svg>
             Đổi mật khẩu
           </a>
@@ -145,13 +145,13 @@
                     border: none; ">
             <tr>
               <td><label for="ten_nd">Tên người dùng <span style="color: red">*</span></label></td>
-                <td><span style="position: relative; top: -5px; margin-left: 80px"  id="ten_nd">${(empty userUpdate) ? loginedUser.getUsername() : userUpdate.getUsername()}</span></td>
+                <td><span style="position: relative; top: -5px; margin-left: 80px"  id="ten_nd">${user.getUsername()}</span></td>
             </tr>
             <td><br></td>
 
             <tr>
               <td><label for="email_nd">Email <span style="color: red">*</span></label></td>
-              <td><span style="position: relative; top: -5px; margin-left: 80px" id="email_nd" type="text">${(empty userUpdate) ? loginedUser.getEmail() : userUpdate.getEmail()}
+              <td><span style="position: relative; top: -5px; margin-left: 80px" id="email_nd" type="text">${user.getEmail()}
               </span></td>
             </tr>
             <td><br></td>
@@ -161,12 +161,12 @@
 
             <tr>
               <td><label for="gender">Giới tính <span style="color: red">*</span></label></td>
-              <td><span style="position: relative; top: -5px; margin-left: 80px"  id="gender">${(empty userUpdate) ? loginedUser.getSexual() : userUpdate.getSexual()}</span></td>
+              <td><span style="position: relative; top: -5px; margin-left: 80px"  id="gender">${user.getSexual()}</span></td>
             </tr>
             <td><br></td>
             <tr>
               <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="dc_nd" type="text">${(empty userUpdate) ? loginedUser.getAddress() : userUpdate.getAddress()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="dc_nd" type="text">${(user.getAddress()}</span></td>
             </tr>
             <td><br></td>
 
@@ -174,21 +174,21 @@
             <tr>
               <td><label for="sdt_nd">Số điện thoại <span style="color: red">*</span></label></td>
 
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sdt_nd">${(empty userUpdate) ? loginedUser.getPhoneNumber() : userUpdate.getPhoneNumber()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sdt_nd">${user.getPhoneNumber()}</span></td>
             </tr>
             <td><br></td>
             <tr>
               <td><label for="sn_nd">Sinh nhật <span
                       style="color: red">*</span></label></td>
 
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sn_nd"> ${(empty userUpdate) ? loginedUser.getDateOfBirth() : userUpdate.getDateOfBirth()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="sn_nd"> ${user.getDateOfBirth()}</span></td>
 
             </tr>
             <td><br></td>
           </table>
         </div>
         <div class="anhNguoiDung">
-          <img class="anhCuaNguoiDung" src="${(empty userUpdate) ? loginedUser.getImg() : userUpdate.getImg()}" alt="">
+          <img class="anhCuaNguoiDung" src="${user.getImg()}" alt="">
         </div>
       </div>
       <p style="color: red;padding: 30px"> ${result}</p>

@@ -19,9 +19,17 @@ public class DeleteUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users loginedUser = MyUtils.getLoginedUser(session);
+
         int id = Integer.valueOf(request.getParameter("id"));
+        if(loginedUser.getId()==id) {
+            UserService.getInstance().deleteUser(id);
+            MyUtils.removeLoginedUser(session);
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
         UserService.getInstance().deleteUser(id);
-        response.sendRedirect("userList");
+        response.sendRedirect(request.getContextPath() + "/userList");
     }
 
     @Override

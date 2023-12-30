@@ -23,7 +23,7 @@ public interface UsersDao {
 
     boolean checkPassUser(int userId, String password);
 
-    String updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String sexual);
+    void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String sexual, int status, int role);
 
     String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String img, String sexual);
 

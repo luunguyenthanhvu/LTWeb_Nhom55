@@ -85,6 +85,20 @@ public class Users implements Serializable {
   public Users() {
   }
 
+  public Users(int id, String username, String email, String address, String phoneNumber, int status, LocalDate dateOfBirth, String gender, int role) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.role = role;
+    this.dateOfBirth = dateOfBirth;
+    this.sexual = gender;
+  }
+
   public String getHash() {
     return hash;
   }

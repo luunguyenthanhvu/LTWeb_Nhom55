@@ -41,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -57,9 +57,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
                     <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
@@ -109,7 +109,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="user-list.jsp">Danh sách người dùng</a></li>
+                    <li><a href="userList">Danh sách người dùng</a></li>
                 </ul>
             </li>
 
@@ -140,7 +140,7 @@
         </div>
 
         <div class="content-container" >
-            <form action="updateUserController" method="post" class="main-content" enctype="multipart/form-data">
+            <form action="updateUser" method="post" class="main-content">
                 <div class="user-info">
                     <div class="img-user">
                         <img style="width: 100px; height: 100px" src="${user.getImg()}">
@@ -148,21 +148,18 @@
                     <table>
                         <tr>
                             <td><label for="id">ID người dùng <span class="not-empty"> *</span></label></td>
-                            <td><input id="id" placeholder="ID" name="id-user" value="${user.getId()}" readonly ></td>
+                            <td><input id="id" placeholder="ID" name="id_nguoi_dung" value="${user.getId()}" readonly >></td>
+<%--                            <td> <input type="hidden" name="id_nguoi_dung" value="${user.getId()}"</td>--%>
                         </tr>
                         <tr>
                             <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
                             <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${user.getUsername()}" >
-                                <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
+                                <span class="error-msg required" id="username-error"  style="display: none;color: red" ></span>
                                 <c:if test="${not empty error_name}" >
                                     <p style="color: red">${error_name}</p>
                                 </c:if>
                             </td>
                         </tr>
-<%--                        <tr>--%>
-<%--                            <td><label for="id">Mật khẩu <span class="not-empty"> *</span></label></td>--%>
-<%--                            <td><input id="password" placeholder="password" name="pass-admin" value="${user.getPassword()}"></td>--%>
-<%--                        </tr>--%>
                         <tr>
                             <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
                             <td class="gender-td" id="gioi_tinh_nd">
@@ -192,7 +189,7 @@
                         <tr>
                             <td><label for="dc_nd">Địa chỉ<span class="not-empty"> *</span></label></td>
                             <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${user.getAddress()}" >
-                                <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
+                                <span class="error-msg required" id="address-error" style="display: none;color: red"></span>
                                 <c:if test="${not empty error_address}" >
                                     <p style="color: red">${error_address}</p>
                                 </c:if>

@@ -40,8 +40,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tài khoản</a></li>
-          <li><a href="admin-profile">Thông tin tài khoản</a></li>
-          <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
+          <li><a href="admin-profile?id=${admin.getId()}">Thông tin tài khoản</a></li>
+          <li><a href="updatePasswordAdmin?id=${admin.getId()}">Đổi mật khẩu</a></li>
         </ul>
       </li>
       <li>
@@ -115,10 +115,10 @@
       <li>
         <div class="profile-details">
           <div class="profile-content">
-            <img src="${loginedUser.getImg()}" alt="profileImg">
+            <img src="${admin.getImg()}" alt="profileImg">
           </div>
           <div class="name-job">
-            <div class="profile_name">${loginedUser.getUsername()}</div>
+            <div class="profile_name">${admin.getUsername()}</div>
             <div class="job">Quản trị viên</div>
           </div>
           <a href="${pageContext.request.contextPath}/logout">

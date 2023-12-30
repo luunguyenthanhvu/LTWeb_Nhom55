@@ -4,7 +4,7 @@
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
-  <%@ page isELIgnored="false" %>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Kết quả tìm kiếm người dùng </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
@@ -41,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -59,9 +59,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
                     <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
@@ -119,23 +119,23 @@
             </li>
 
             <li>
-
-                        <div class="profile-details">
-                            <div class="profile-content">
-                                <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="profileImg">
-                            </div>
-                            <div class="name-job">
-                                <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
-                                <div class="job">Quản trị viên</div>
-                            </div>
-                            <a href="${pageContext.request.contextPath}/logout">
-                                <i style="transform: rotate(180deg); ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                                        <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
-                                    </svg>
-                                </i>
-                            </a>
-                        </div>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}"
+                             alt="profileImg">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
+                        <div class="job">Quản trị viên</div>
+                    </div>
+                    <a href="${pageContext.request.contextPath}/logout">
+                        <i style="transform: rotate(180deg); ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+                            </svg>
+                        </i>
+                    </a>
+                </div>
 
             </li>
         </ul>
@@ -151,36 +151,33 @@
             <form action="listController?index=1" method="post">
                 <div class="fill-product">
                     <input id="find-product" type="text" placeholder="Tìm kiếm tên người dùng" name="txtSearch">
-
-
+                    <input style="width: 100px" type="submit" value="Tìm kiếm">
                     <div class="filter-icon" onclick="toggleFilter()">
                         <span class="font_bold">Lọc theo</span>
                         <div id="filterDropdown" class="filter-dropdown" style="display: none;">
                             <a href="FilterForAllUser?sortBy=username&amp;order=asc&amp;pageId=1">Tên</a>
                         </div>
                     </div>
-                    <input style="width: 100px" type="submit" value="Tìm kiếm">
                 </div>
             </form>
         </div>
 
         <div class="container" style="margin: 30px 30px 0 30px">
             <div class="table-sanpham">
-
-                    <table class="table-sanpham">
+                <table class="table-sanpham">
+                    <tr>
+                        <th style="width: 70px;">ID</th>
+                        <th style="width: 200px;">Tên người dùng</th>
+                        <th style="width: 100px;">Hình ảnh</th>
+                        <th style="width: 150px;">Email</th>
+                        <th style="width: 150px;">Số điện thoại</th>
+                        <th style="width: 200px;">Địa chỉ</th>
+                        <th style="width: 100px;">Tình trạng</th>
+                        <th style="width: 100px;">Chức năng</th>
+                    </tr>
+                    <c:forEach items="${listOfUser}" var="user">
                         <tr>
-                            <th style="width: 70px;">ID</th>
-                            <th style="width: 200px;">Tên người dùng</th>
-                            <th style="width: 100px;">Hình ảnh</th>
-                            <th style="width: 150px;">Email</th>
-                            <th style="width: 150px;">Số điện thoại</th>
-                            <th style="width: 200px;">Địa chỉ</th>
-                            <th style="width: 100px;">Tình trạng</th>
-                            <th style="width: 100px;">Chức năng</th>
-                        </tr>
-                      <c:forEach items="${listOfUser}" var="user">
-                        <tr>
-                            <td name="id">${user.getId()}</td>
+                            <td>${user.getId()}</td>
                             <td>${user.getUsername()}</td>
                             <td class="img-product">
                                 <img src="${user.getImg()}">
@@ -189,7 +186,7 @@
                             <td>${user.getPhoneNumber()}</td>
                             <td>${user.getAddress()}</td>
                             <td>
-                                <c:set var="status" value="${user.getStatus()}" />
+                                <c:set var="status" value="${user.getStatus()}"/>
                                 <c:choose>
                                     <c:when test="${status eq '1'}">
                                         <div class="account">Hoạt động</div>
@@ -202,7 +199,6 @@
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-
                             <td class="function-product">
                                 <a href="updateUser?id=${user.getId()}">
                                     <svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em"
@@ -220,69 +216,64 @@
                                 </a>
                             </td>
                         </tr>
-                      </c:forEach>
-
-                    </table
-                <p style="color: red; padding-left: 60px">${result}</p>
-
+                    </c:forEach>
+                </table
             </div>
 
             <div class="pagination">
                 <ul class="pagination-list">
-                            <%--    Trường hợp tìm ra số người dùng chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
-                            <c:if test="${pageId== 1 && haveMaxPage ==1}">
-                                <li><a>&lt;</a></li>
-                                <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                                    <li id="${i}"><a
-                                            href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
-                                    </li>
-                                </c:forEach>
-                                <li><a>></a></li>
-                            </c:if>
+                    <%--    Trường hợp tìm ra số người dùng chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                    <c:if test="${pageId== 1 && haveMaxPage ==1}">
+                        <li><a>&lt;</a></li>
+                        <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                            <li id="${i}"><a
+                                    href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                            </li>
+                        </c:forEach>
+                        <li><a>></a></li>
+                    </c:if>
 
-                            <c:if test="${ haveMaxPage !=1}">
-                                <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
-                                <c:if test="${pageId ==1}">
-                                    <li><a>&lt;</a></li>
-                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                                        <li id="${i}"><a
-                                                href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
-                                        </li>
-                                    </c:forEach>
-                                    <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
-                                    </li>
-                                </c:if>
+                    <c:if test="${ haveMaxPage !=1}">
+                        <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                        <c:if test="${pageId ==1}">
+                            <li><a>&lt;</a></li>
+                            <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                <li id="${i}"><a
+                                        href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                            </li>
+                        </c:if>
 
-                                <%--  Còn trường hợp này nút nào cũng xài được--%>
-                                <c:if test="${pageId >1 && pageId<haveMaxPage}">
-                                    <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
-                                    </li>
-                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                                        <li id="${i}"><a
-                                                href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
-                                        </li>
-                                    </c:forEach>
-                                    <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
-                                    </li>
-                                </c:if>
-                                <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                        <%--  Còn trường hợp này nút nào cũng xài được--%>
+                        <c:if test="${pageId >1 && pageId<haveMaxPage}">
+                            <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                            </li>
+                            <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                <li id="${i}"><a
+                                        href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                            </li>
+                        </c:if>
+                        <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
 
-                                <c:if test="${pageId ==haveMaxPage}">
-                                    <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
-                                    </li>
-                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                                        <li id="${i}"><a
-                                                href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
-                                        </li>
-                                    </c:forEach>
-                                    <li><a>></a></li>
-                                </c:if>
-                            </c:if>
-                        </ul>
+                        <c:if test="${pageId ==haveMaxPage}">
+                            <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                            </li>
+                            <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                <li id="${i}"><a
+                                        href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                </li>
+                            </c:forEach>
+                            <li><a>></a></li>
+                        </c:if>
+                    </c:if>
+                </ul>
             </div>
-            <p style="color: red;padding: 100px"> ${result}</p>
         </div>
-
     </section>
 </div>
 

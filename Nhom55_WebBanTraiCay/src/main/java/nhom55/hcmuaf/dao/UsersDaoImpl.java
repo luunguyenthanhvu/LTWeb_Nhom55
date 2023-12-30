@@ -12,131 +12,132 @@ import java.util.stream.Collectors;
 
 public class UsersDaoImpl implements UsersDao {
 
-  /**
-   * @param email
-   * @return user
-   */
-  @Override
-  public Users getUserByEmail(String email) {
-    List<Users> users = JDBIConnector.get().withHandle(h ->
-        h.createQuery(
-                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
-            .bind(0, email)
-            .mapToBean(Users.class)
-            .stream()
-            .collect(Collectors.toList())
-    );
+    /**
+     * @param email
+     * @return user
+     */
+    @Override
+    public Users getUserByEmail(String email) {
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
 
-    if (users.isEmpty()) {
-      return null;
-    }
+        if (users.isEmpty()) {
+            return null;
+        }
 
         return users.get(0);
     }
 
 
-  /**
-   * @param username
-   * @param password
-   * @param hash
-   * @param email
-   * @param phoneNumber
-   * @param address
-   * @return String result
-   */
-  @Override
-  public String addNewUser(String username, String password, String hash, String email,
-      String phoneNumber, String address) {
-    // check if exist
-    List<Users> users = JDBIConnector.get().withHandle(h ->
-        h.createQuery(
-                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
-            .bind(0, email)
-            .mapToBean(Users.class)
-            .stream()
-            .collect(Collectors.toList())
-    );
-      if (!users.isEmpty()) {
-          return "FAIL";
-      }
+    /**
+     * @param username
+     * @param password
+     * @param hash
+     * @param email
+     * @param phoneNumber
+     * @param address
+     * @return String result
+     */
+    @Override
+    public String addNewUser(String username, String password, String hash, String email,
+                             String phoneNumber, String address) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
 
-    // add new user
-    return JDBIConnector.get().withHandle(handle -> {
-      handle.createUpdate(
-              "INSERT INTO Users (username, password, hash, email, phoneNumber, address, status) VALUES (:username, :password, :hash, :email, :phoneNumber, :address, :status)")
-          .bind("username", username)
-          .bind("password", password)
-          .bind("hash", hash)
-          .bind("email", email)
-          .bind("phoneNumber", phoneNumber)
-          .bind("address", address)
-          .bind("status", 0)
-          .execute();
-      return "SUCCESS";
-    });
-  }
+        // add new user
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate(
+                            "INSERT INTO Users (username, password, hash, email, phoneNumber, address, status) VALUES (:username, :password, :hash, :email, :phoneNumber, :address, :status)")
+                    .bind("username", username)
+                    .bind("password", password)
+                    .bind("hash", hash)
+                    .bind("email", email)
+                    .bind("phoneNumber", phoneNumber)
+                    .bind("address", address)
+                    .bind("status", 0)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
 
-  /**
-   * @param email
-   * @param hash
-   * @return String result
-   */
-  @Override
-  public String updateUserStatus(String email, String hash) {
-    // check is exit
-    List<Users> users = JDBIConnector.get().withHandle(h ->
-        h.createQuery(
-                "SELECT email, hash, status  FROM Users WHERE email = :email AND hash = :hash AND status = 0")
-            .bind("email", email)
-            .bind("hash", hash)
-            .mapToBean(Users.class)
-            .stream()
-            .collect(Collectors.toList())
-    );
-      if (users.isEmpty()) {
-          return "FAIL";
-      }
-    Users user = users.get(0);
-    return JDBIConnector.get().withHandle(handle -> {
-      handle.createUpdate("update Users set status = 1 where email = :email AND hash = :hash ")
-          .bind("hash", hash)
-          .bind("email", email)
-          .execute();
-      return "SUCCESS";
-    });
-  }
+    /**
+     * @param email
+     * @param hash
+     * @return String result
+     */
+    @Override
+    public String updateUserStatus(String email, String hash) {
+        // check is exit
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT email, hash, status  FROM Users WHERE email = :email AND hash = :hash AND status = 0")
+                        .bind("email", email)
+                        .bind("hash", hash)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (users.isEmpty()) {
+            return "FAIL";
+        }
+        Users user = users.get(0);
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate("update Users set status = 1 where email = :email AND hash = :hash ")
+                    .bind("hash", hash)
+                    .bind("email", email)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
 
-  /**
-   * update new password for user
-   *
-   * @param email
-   * @param password
-   */
-  @Override
-  public String updateNewPassWord(String email, String password) {
-    List<Users> users = JDBIConnector.get().withHandle(h ->
-        h.createQuery("SELECT email, hash, status  FROM Users WHERE email = :email")
-            .bind("email", email)
-            .mapToBean(Users.class)
-            .stream()
-            .collect(Collectors.toList())
-    );
-      if (users.isEmpty()) {
-          return "FAIL";
-      }
-    Users user = users.get(0);
-    return JDBIConnector.get().withHandle(handle -> {
-      handle.createUpdate("update Users set password = :password where email = :email")
-          .bind("password", password)
-          .bind("email", email)
-          .execute();
-      return "SUCCESS";
-    });
-  }
+    /**
+     * update new password for user
+     *
+     * @param email
+     * @param password
+     */
+    @Override
+    public String updateNewPassWord(String email, String password) {
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT email, hash, status  FROM Users WHERE email = :email")
+                        .bind("email", email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (users.isEmpty()) {
+            return "FAIL";
+        }
+        Users user = users.get(0);
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate("update Users set password = :password where email = :email")
+                    .bind("password", password)
+                    .bind("email", email)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
 
     /**
      * show List user
-     * @return  id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status, role
+     *
+     * @return id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
     public List<Users> showInfoUser() {
@@ -151,11 +152,12 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * get User show profile
-     * @return  id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
+     *
+     * @return id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
     public Users getUserById(int userId) {
-       return JDBIConnector.get().withHandle(handle ->
+        return JDBIConnector.get().withHandle(handle ->
                 handle.createQuery("SELECT * FROM users where id = :id")
                         .bind("id", userId)
                         .mapToBean(Users.class)
@@ -163,6 +165,7 @@ public class UsersDaoImpl implements UsersDao {
                         .orElse(null)
         );
     }
+
     @Override
     public boolean checkPassUser(int id, String password) {
         Users user = JDBIConnector.get().withHandle(handle ->
@@ -177,11 +180,12 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * update profile: change one or more than
+     *
      * @return username, email, address, phoneNumber, datOfBirth
      */
-    public String updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual) {
-        boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
-            int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual WHERE id = :id")
+    public void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual, int newStatus, int newRole) {
+      JDBIConnector.get().withHandle(handle ->
+            handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual, status = :status, role = :role WHERE id = :id")
                     .bind("id", userId)
                     .bind("username", newUserName)
                     .bind("email", newEmail)
@@ -189,18 +193,19 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("phoneNumber", newPhoneNumber)
                     .bind("dateOfBirth", newDateOfBirth)
                     .bind("sexual", newSexual)
-                    .execute();
-            return updateResult > 0; // Trả về true nếu có ít nhất một dòng được cập nhật
-        });
-        return updateSuccess ? "SUCCESS" : "FAIL";
+                    .bind("status", newStatus)
+                    .bind("role", newRole)
+                    .execute()
+        );
     }
 
     /**
      * update profile: change one or more than
+     *
      * @return username, email, address, phoneNumber, datOfBirth, img
      */
     @Override
-    public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth , String img, String newSexual) {
+    public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String img, String newSexual) {
         boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
             int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
@@ -219,7 +224,8 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * update new password for user in user-profile
-     * @return  id, password
+     *
+     * @return id, password
      */
     public String updatePassWordUser(int id, String password) {
         Users user = JDBIConnector.get().withHandle(handle ->
@@ -284,7 +290,7 @@ public class UsersDaoImpl implements UsersDao {
 
     @Override
     public List<Users> searchFilter(String sortBy, String order, String search, int index,
-                                       int sizePage) {
+                                    int sizePage) {
         List<Users> resultList = JDBIConnector.get().withHandle(h ->
                 h.createQuery("with testThu as (select ROW_NUMBER() over (order by " + sortBy + " " + order
                                 + ") as r, id,username, hash, email,phoneNumber,address,status,img,dateOfBirth,sexual, role from users where username like :search)\n"
@@ -317,6 +323,7 @@ public class UsersDaoImpl implements UsersDao {
 
         return result;
     }
+
     //    Đếm Số dòng record của tất cả sản phẩm trong database
     @Override
     public int countTotalRowUserInDatabase() {
@@ -361,7 +368,7 @@ public class UsersDaoImpl implements UsersDao {
     public void deleteUser(int id) {
         JDBIConnector.get().withHandle(h -> {
             return h.createUpdate("DELETE from users where id = :id")
-                    .bind("id",id)
+                    .bind("id", id)
                     .execute();
         });
     }

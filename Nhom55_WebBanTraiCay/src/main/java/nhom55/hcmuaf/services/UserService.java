@@ -1,8 +1,6 @@
 package nhom55.hcmuaf.services;
 
-import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.dao.ProductDaoImpl;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
 import nhom55.hcmuaf.util.MyUtils;
 
@@ -44,8 +42,8 @@ public class UserService {
    *
    * @param
    */
-  public String updateProfileNoImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual) {
-    return userDao.updateProfileNoImage(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, newSexual);
+  public void updateProfile(int userId, String newUserName, String newEmail,  String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual, int newStatus, int newRole) {
+      userDao.updateProfile(userId, newUserName, newEmail, newAddress, newPhoneNumber, newDateOfBirth, newSexual, newStatus, newRole);
   }
 
   /**

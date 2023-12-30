@@ -166,7 +166,7 @@
             <td><br></td>
             <tr>
               <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
-              <td><span style="position: relative; top: -5px;margin-left: 80px" id="dc_nd" type="text">${(user.getAddress()}</span></td>
+              <td><span style="position: relative; top: -5px;margin-left: 80px" id="dc_nd" type="text">${user.getAddress()}</span></td>
             </tr>
             <td><br></td>
 

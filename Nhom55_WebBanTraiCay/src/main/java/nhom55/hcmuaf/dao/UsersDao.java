@@ -1,9 +1,7 @@
 package nhom55.hcmuaf.dao;
 
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.services.UserService;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +19,6 @@ public interface UsersDao {
                              String phoneNumber, String address, Date dob, String gioiTinh, String img, int quyenHan);
 
 
-    List<Users> getUser();
 
     List<Users> showInfoUser();
 

@@ -70,9 +70,6 @@ public class UpdateUser extends HttpServlet {
                 UserService.getInstance().updateProfile(id, username, email, address, phoneNumber, myBirthDay, gender, status, role);
                 response.sendRedirect(request.getContextPath() + "/userList");
 
-
-
-
                 // không checkValidate
             } else {
                 List<Users> listUser = UserService.getInstance().showInfoUser();

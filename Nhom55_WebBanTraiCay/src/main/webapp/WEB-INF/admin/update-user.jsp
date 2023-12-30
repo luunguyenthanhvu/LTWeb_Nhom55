@@ -116,10 +116,10 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}" alt="profileImg">
+                        <img src="${user.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
+                        <div class="profile_name">${user.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">

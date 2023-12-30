@@ -48,7 +48,7 @@ public class UserValidator {
         return "";
     }
 
-    public static String validateDateOfBirth(LocalDate dateOfBirth) {
+    public static String validateDateOfBirth(String dateOfBirth) {
         if (dateOfBirth == null) {
             return "Vui lòng chọn ngày sinh nhật";
         }

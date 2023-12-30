@@ -1,15 +1,10 @@
 package nhom55.hcmuaf.dao;
 
-import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
 
-
 import java.sql.Date;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -219,28 +214,29 @@ public class UsersDaoImpl implements UsersDao {
      * update profile: change one or more than
      * @return username, email, address, phoneNumber, datOfBirth
      */
-    public void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String newSexual, int newStatus, int newRole) {
-      JDBIConnector.get().withHandle(handle ->
-            handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual, status = :status, role = :role WHERE id = :id")
-                    .bind("id", userId)
-                    .bind("username", newUserName)
-                    .bind("email", newEmail)
-                    .bind("address", newAddress)
-                    .bind("phoneNumber", newPhoneNumber)
-                    .bind("dateOfBirth", newDateOfBirth)
-                    .bind("sexual", newSexual)
-                    .bind("status", newStatus)
-                    .bind("role", newRole)
-                    .execute()
+    public void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, java.util.Date newDateOfBirth, String newSexual, int newStatus, int newRole) {
+        JDBIConnector.get().withHandle(handle ->
+                handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual, status = :status, role = :role WHERE id = :id")
+                        .bind("id", userId)
+                        .bind("username", newUserName)
+                        .bind("email", newEmail)
+                        .bind("address", newAddress)
+                        .bind("phoneNumber", newPhoneNumber)
+                        .bind("dateOfBirth", newDateOfBirth)
+                        .bind("sexual", newSexual)
+                        .bind("status", newStatus)
+                        .bind("role", newRole)
+                        .execute()
         );
     }
+
 
     /**
      * update profile: change one or more than
      * @return username, email, address, phoneNumber, datOfBirth, img
      */
     @Override
-    public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String img, String newSexual) {
+    public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, java.util.Date newDateOfBirth, String img, String newSexual) {
         boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
             int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)

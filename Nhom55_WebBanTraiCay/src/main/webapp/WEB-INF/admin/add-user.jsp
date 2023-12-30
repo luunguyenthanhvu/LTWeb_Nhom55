@@ -27,6 +27,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="myFunction()" style="margin:0;">
+
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
   <div class="sidebar close">
@@ -55,7 +56,7 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Tài khoản</a></li>
           <li><a href="admin-profile">Thông tin tài khoản</a></li>
-          <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
+          <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
         </ul>
       </li>
       <li>
@@ -134,6 +135,7 @@
           <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
+
       <li>
         <div class="iocn-link">
           <a href="#">
@@ -175,39 +177,140 @@
            viewBox="0 0 448 512">
         <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
       </svg>
-      <span class="text">Thêm nhà cung cấp</span>
+      <span class="text">Thêm tài khoản</span>
     </div>
     <div class="container">
       <!--       code thêm ở đây-->
-      <div class="form-sp">
-        <form style="width: 700px" id="FormThemSanPham" action="AddProvider" method="post"
-             >
+<%--      Chỉnh thêm 1 xíu css cho form--%>
+      <div style="padding:10px; width:570px;height: 920px" class="form-sp">
+        <form id="FormThemSanPham" action="AddUser" method="post"
+              enctype="multipart/form-data">
           <table style="border-collapse:collapse;
                 border: none; ">
             <tr>
-              <td><label for="ten_nhacungcap">Tên nhà cung cấp <span
+              <td><label for="ten_user">Tên người dùng <span
                       style="color: red">*</span></label></td>
-              <td><input name="ten_nha_cung_cap" style="width: 300px" id="ten_nhacungcap"
-                         type="text" value="${ten_NCC}"></td>
+              <td><input name="ten_nguoi_dung" style="width: 300px" id="ten_user"
+                         type="text" value="${ten_user}"></td>
             </tr>
             <td><br></td>
-            <td><p class="error" id="ten_nha_cung_cap_error"></td>
-            <c:if test="${not empty ten_ncc_error}" >
-              <td><p style="color: red">${ten_ncc_error}</p></td>
+            <td><p class="error" id="ten_user_error"></td>
+            <c:if test="${not empty ten_user_error}" >
+              <td><p style="color: red">${ten_user_error}</p></td>
             </c:if>
             <tr>
-              <td><label for="diachi_nhacungcap">Địa chỉ nhà cung cấp <span
+              <td><label for="mk_user">Mật khẩu <span
                       style="color: red">*</span></label></td>
-              <td><textarea cols="44" rows="7" id="diachi_nhacungcap"
-                            name="dia_chi_nha_cung_cap">${diachi_NCC}</textarea></td>
+              <td><input style="width: 300px" name="mat_khau_nguoi_dung" id="mk_user"
+                         type="password" value="${mat_khau}"></td>
 
             </tr>
             <td><br></td>
-            <td><p class="error" id="dia_chi_nha_cung_cap_error"></td>
-            <c:if test="${not empty dia_chi_NCC_error}" >
-              <td><p style="color: red">${dia_chi_NCC_error}</p></td>
+            <td><p class="error" id="mk_user_error"></td>
+            <c:if test="${not empty mat_khau_error}" >
+              <td><p style="color: red">${mat_khau_error}</p></td>
+            </c:if>
+            <tr>
+              <td><label for="mk_user_repeat">Nhập lại mật khẩu <span
+                      style="color: red">*</span></label></td>
+              <td><input style="width: 300px" name="nhap_lai_mat_khau_nguoi_dung" id="mk_user_repeat"
+                         type="password" value="${nhap_LaiMK}"></td>
+
+            </tr>
+            <td><br></td>
+            <td><p class="error" id="mk_user_repeat_error"></td>
+            <c:if test="${not empty nhap_lai_MK_error}" >
+              <td><p style="color: red">${nhap_lai_MK_error}</p></td>
+            </c:if>
+            <tr>
+              <td><label for="email_user">Email<span
+                      style="color: red">*</span></label></td>
+              <td><input style="width: 300px" name="email_nguoi_dung" id="email_user"
+                         type="text" value="${email}"></td>
+
+            </tr>
+            <td><br></td>
+            <td><p class="error" id="email_user_error"></td>
+            <c:if test="${not empty email_error}" >
+              <td><p style="color: red">${email_error}</p></td>
             </c:if>
 
+            <tr>
+              <td><label for="phone_user">Số điện thoại<span
+                      style="color: red">*</span></label></td>
+              <td><input style="width: 300px" name="sdt_nguoi_dung" id="phone_user"
+                         type="text" value="${sdt_user}"></td>
+
+            </tr>
+            <td><br></td>
+            <td><p class="error" id="phone_user_error"></td>
+            <c:if test="${not empty sdt_error}" >
+              <td><p style="color: red">${sdt_error}</p></td>
+            </c:if>
+            <tr>
+              <td><label>Giới tính<span
+                      style="color: red">*</span></label></td>
+              <td><input type="radio" name="gioiTinh" value="nam" checked> Nam </td>
+              <td> <input style="position:relative; right:220px" type="radio" name="gioiTinh" value="nữ"><span style="position:relative; right:215px">Nữ</span></td>
+              <td> <input id="value_gioiTinh"  type="hidden" name="value_gioiTinh" ></td>
+            </tr>
+            <td><br></td>
+            <tr>
+              <td><label for="dob">Ngày sinh <span
+                      style="color: red">*</span></label></td>
+              <td><input style="width: 300px" name="ngay_sinh_user" id="dob"
+                         type="date" value="${dob}"></td>
+
+            </tr>
+            <td><br></td>
+            <td><p class="error" id="dob_error"></td>
+            <c:if test="${not empty ngay_sinh_error}" >
+              <td><p style="color: red">${ngay_sinh_error}</p></td>
+            </c:if>
+            <tr>
+              <td><label for="address_user">Địa chỉ<span
+                      style="color: red">*</span></label></td>
+              <td><textarea cols="44" rows="7" id="address_user"
+                            name="dia_chi_nguoi_dung">${address}</textarea></td>
+
+            </tr>
+            <td><br></td>
+            <td><p class="error" id="address_user_error"></td>
+            <c:if test="${not empty dia_chi_error}" >
+              <td><p style="color: red">${dia_chi_error}</p></td>
+            </c:if>
+            <tr>
+              <td><label>Quyền hạn <span style="color: red">*</span></label></td>
+              <td>
+                <select style="width: 300px" id="roleSelect" name="selectedRoleID">
+                  <c:forEach items="${listRole}" var="role">
+                    <option value="${role.getId()}">${role.getRoleName()}</option>
+                  </c:forEach>
+                </select>
+              </td>
+            </tr>
+            <td><br></td>
+            <tr>
+              <td><label for="upfileAnh">Up file ảnh cá nhân <span
+                      style="color: red">*</span></label></td>
+              <td><input style="width: 300px" name="file"
+                         id="upfileAnh" type="file"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <div class="product-img">
+                  <img id="previewImage" src="../images/product-demo.jpg">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><p class="error" id="upfileAnh_error"></td>
+              <c:if test="${not empty file_anh_error}" >
+                <td><p style="color: red">${file_anh_error}</p></td>
+              </c:if>
+            </tr>
           </table>
           <button type="submit" id="submit_product_btn">
             Lưu thông tin
@@ -215,12 +318,15 @@
               <path d="M288 109.3V352c0 17.7-14.3 32-32 32s-32-14.3-32-32V109.3l-73.4 73.4c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l128-128c12.5-12.5 32.8-12.5 45.3 0l128 128c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L288 109.3zM64 352H192c0 35.3 28.7 64 64 64s64-28.7 64-64H448c35.3 0 64 28.7 64 64v32c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V416c0-35.3 28.7-64 64-64zM432 456a24 24 0 1 0 0-48 24 24 0 1 0 0 48z"/>
             </svg>
           </button>
-          <button type="reset">
+          <button onclick="resetAllDataInput()" type="button" >
             Làm mới
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
               <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/>
             </svg>
           </button>
+          <c:if test="${not empty notify }">
+            <span style="position:absolute; top:950px; right:750px; ">${notify}</span>
+          </c:if>
+
         </form>
       </div>
     </div>
@@ -261,22 +367,39 @@
     document.getElementById("loader").style.display = "none";
     document.getElementById("myDiv").style.display = "block";
   }
+  // Lấy giá trị của radio được chọn
+  function getSelectedGender() {
+    var gioiTinhElements = document.getElementsByName("gioiTinh");
+    for (var i = 0; i < gioiTinhElements.length; i++) {
+      if (gioiTinhElements[i].checked) {
+        return gioiTinhElements[i].value;
+      }
+    }
+    return ""; // Trả về giá trị mặc định nếu không có giới tính nào được chọn
+  }
+  document.getElementById("value_gioiTinh").value = getSelectedGender();
 
   // validate for input
-  var tenNhaCungCap = document.getElementById("ten_nhacungcap");
-  var diaChiNhaCungCap = document.getElementById("diachi_nhacungcap");
+  var tenNguoiDung = document.getElementById("ten_user");
+  var diaChi = document.getElementById("address_user");
+  var matKhau = document.getElementById("mk_user");
+  var nhapLaiMK = document.getElementById("mk_user_repeat");
+  var email = document.getElementById("email_user");
+  var sdt = document.getElementById("phone_user");
+  var gioiTinh = getSelectedGender();
+  var ngaySinh = document.getElementById("dob");
+  var upfileAnh = document.getElementById("upfileAnh");
 
-
-  function validateTenNCC() {
-    var text = tenNhaCungCap.value;
-    var kyTuHopLe = /^[\p{L}\s'0-9]+$/u;
-    var error = document.getElementById("ten_nha_cung_cap_error");
+  function validateTenNguoiDung() {
+    var text = tenNguoiDung.value;
+    var kyTuHopLe = /^[\p{L}\s']+$/u;
+    var error = document.getElementById("ten_user_error");
     if (text.length == 0 || text == null) {
-      error.textContent = "Vui lòng nhập tên nhà cung cấp";
+      error.textContent = "Vui lòng nhập tên người dùng";
       error.style.display = "block";
       return false;
     } else if (!kyTuHopLe.test(text)) {
-      error.textContent = "Tên nhà cung cấp chỉ có chữ cái và số, không có kí tự đặc biệt.";
+      error.textContent = "Tên người dùng  chỉ chứa ký tự chữ cái, khoảng trắng.";
       error.style.display = "block";
       return false;
     } else {
@@ -285,35 +408,163 @@
     }
   }
 
-  function validateDiaChiNhaCungCap() {
-    var text = diaChiNhaCungCap.value;
-    var kyTuHopLe = /^(?=.*[^\s]).*$/;
-    var error = document.getElementById("dia_chi_nha_cung_cap_error");
+  function validateMatKhau() {
+    var text = matKhau.value;
+    // Regex này sẽ kiểm tra độ dài mật khẩu có ít nhất 6 kí tự
+    var kyTuHopLe =/^(?=.*[A-Za-z0-9.@#$%]{6,})[A-Za-z0-9.@#$%]+$/;
+    var error = document.getElementById("mk_user_error");
     if (text.length == 0 || text == null) {
-      error.textContent = "Vui lòng nhập địa chỉ nhà cung cấp.";
+      error.textContent = "Vui lòng nhập mật khẩu";
       error.style.display = "block";
       return false;
-    } else if (!kyTuHopLe.test(text)) {
-      error.textContent = "Địa chỉ nhà cung cấp chỉ chứa chữ cái, chữ số.";
+    }  else if(!kyTuHopLe.test(text)) {
+      error.textContent = "Mật khẩu có ít nhất 6 kí tự.";
+      error.style.display = "block";
+      return false;
+    }
+    else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateNhapLaiMK() {
+     var password = matKhau.value;
+     var password_repeat = nhapLaiMK.value;
+    var error = document.getElementById("mk_user_repeat_error");
+    if (password_repeat.length == 0 || password_repeat == null) {
+      error.textContent = "Vui lòng nhập mật khẩu";
+      error.style.display = "block";
+      return false;
+    } else if(!(password === password_repeat)) {
+      error.textContent = "Mật khẩu không giống ở trên. Vui lòng nhập lại .";
+      error.style.display = "block";
+      return false;
+    }
+    else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateFileUpload() {
+    var inputUploadFile = document.getElementById("upfileAnh");
+    var error = document.getElementById("upfileAnh_error");
+
+    // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
+    if (inputUploadFile.files.length === 0) {
+      error.textContent = "Vui lòng chọn file ảnh.";
       error.style.display = "block";
       return false;
     } else {
       error.style.display = "none";
       return true;
     }
+  }
+
+  function validateEmail() {
+    var text = email.value;
+    var error = document.getElementById("email_user_error");
+    var emailHopLe =  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập email.";
+      error.style.display = "block";
+      return false;
+    } else if (!(emailHopLe.test(text))) {
+      error.textContent = "Email của bạn không đúng định dạng abc@xyz.abc . Vui lòng nhập lại.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateSDT() {
+    var text = sdt.value;
+    var error = document.getElementById("phone_user_error");
+    var check =/^(0[1-9]|84[1-9])(\d{8,9})$/;
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập số điện thoại.";
+      error.style.display = "block";
+      return false;
+    } else if (!(check.test(text))) {
+      error.textContent = "Không đúng điịnh dạng số điện thoại. Vui lòng nhập lại (Vd: 0982407940)";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateNgaySinh() {
+    var NgaySinh = new Date(ngaySinh.value);
+    var error = document.getElementById("dob_error");
+    if (isNaN(NgaySinh.getTime())) {
+      error.textContent = "Vui lòng chọn ngày sinh.";
+      error.style.display = "block";
+      return false;
+    }
+     else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  function validateDiaChi() {
+    var text = diaChi.value;
+    var kyTuHopLe = /^(?=.*[^\s]).*$/;
+    var error = document.getElementById("address_user_error");
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập địa chỉ.";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      error.textContent = "Địa chỉ chỉ chứa chữ cái, chữ số.";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+  // Hàm xóa tất cả nội dung thẻ form
+  function  resetAllDataInput() {
+  tenNguoiDung.value ="";
+  diaChi.value ="";
+   matKhau.value ="";
+ nhapLaiMK.value ="";
+ email.value ="";
+  sdt.value ="";
+     gioiTinh.value ="";
+    ngaySinh.value ="";
+   upfileAnh.value ="";
   }
 
   // add event to check input
-  tenNhaCungCap.addEventListener("blur", validateTenNCC);
-  diaChiNhaCungCap.addEventListener("blur", validateDiaChiNhaCungCap);
+  tenNguoiDung.addEventListener("blur", validateTenNguoiDung);
+  diaChi.addEventListener("blur", validateDiaChi);
+  matKhau.addEventListener("blur", validateMatKhau);
+  nhapLaiMK.addEventListener("blur", validateNhapLaiMK);
+  email.addEventListener("blur", validateEmail);
+  sdt.addEventListener("blur", validateSDT);
+  ngaySinh.addEventListener("blur", validateNgaySinh);
+  upfileAnh.addEventListener("blur", validateFileUpload);
 
   // stop user send post to server
   var submitBtn = document.getElementById("submit_product_btn");
   submitBtn.addEventListener("click", function (event) {
-    var isTenNCCValid = validateTenNCC();
-    var isDiaChiNCCValid = validateDiaChiNhaCungCap();
-
-    if (!isTenNCCValid || !isDiaChiNCCValid ) {
+    var isTenNguoiDungValid = validateTenNguoiDung();
+    var isdiaChiValid = validateDiaChi();
+    var isMatKhauValid = validateMatKhau();
+    var isNhapLaiMKValid = validateNhapLaiMK();
+    var isEmailValid = validateEmail();
+    var isSDTValid = validateSDT();
+    var isNgaySinhValid = validateNgaySinh();
+    var isFileValid = validateFileUpload();
+    if (!isTenNguoiDungValid || !isdiaChiValid || !isMatKhauValid || !isNhapLaiMKValid
+            || !isEmailValid || !isSDTValid || !isNgaySinhValid || !isFileValid) {
       event.preventDefault();
     }
   })

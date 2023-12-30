@@ -1,6 +1,5 @@
 package nhom55.hcmuaf.dao;
 
-import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.UserService;
 
@@ -16,6 +15,13 @@ public interface UsersDao {
     String updateUserStatus(String email, String hash);
 
     String updateNewPassWord(String email, String password);
+
+
+    String addNewUserOfAdmin(String username, String password, String hash, String email,
+                             String phoneNumber, String address, Date dob, String gioiTinh, String img, int quyenHan);
+
+
+    List<Users> getUser();
 
     List<Users> showInfoUser();
 
@@ -43,8 +49,4 @@ public interface UsersDao {
     void deleteUser(int id);
 
 }
-
-
-
-
 

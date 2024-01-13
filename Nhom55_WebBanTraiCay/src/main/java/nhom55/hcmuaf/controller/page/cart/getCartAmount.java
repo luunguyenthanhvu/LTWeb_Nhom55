@@ -5,10 +5,9 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "getCartAmount", value = "/get-cart-amount")
-public class getCartAmount extends HttpServlet {
+public class GetCartAmount extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)

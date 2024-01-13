@@ -23,27 +23,32 @@ public class AddCartController extends HttpServlet {
       throws ServletException, IOException {
     HttpSession session = request.getSession();
     Users users = MyUtils.getLoginedUser(session);
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
     // check if user doesn't login
-    System.out.println("ok");
     if (users == null) {
-      System.out.println("User is not logged in. Redirecting to login page.");
-      response.getWriter().write("{\"status\":\"error\",\"message\":\"Vui Lòng đăng nhập.\"}");
+      response.getWriter().write("{\"status\":\"success\",\"message\":\"Null User\"}");
     } else {
       int id = Integer.parseInt(request.getParameter("productId"));
       int quantity = Integer.parseInt(request.getParameter("quantity"));
 
       Products product = ProductService.getInstance().getById(id);
       Cart cart = (Cart) request.getSession().getAttribute("cart");
-
-      cart.add(id, quantity);
+      String result = cart.add(id, quantity);
 
       // update cart
       MyUtils.storeCart(session, cart);
 
-      response.setContentType("application/json");
-      response.setCharacterEncoding("UTF-8");
-      response.getWriter()
-          .write("{ \"status\": \"success\", \"message\": \"Product added to cart.\" }");
+      if(result.equals("Success")) {
+        response.getWriter()
+            .write("{ \"status\": \"success\", \"message\": \"Success\" }");
+      } else if(result.equals("Out of quantity")) {
+        response.getWriter()
+            .write("{ \"status\": \"success\", \"message\": \"Out of quantity\" }");
+      } else if(result.equals("Product does not exist")) {
+        response.getWriter()
+            .write("{ \"status\": \"success\", \"message\": \"Product does not exist\" }");
+      }
 
     }
   }

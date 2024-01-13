@@ -12,26 +12,28 @@ public class Cart {
 
   private Map<Integer, CartProduct> data = new HashMap<>();
 
-  public boolean add(int add) {
+  public String add(int add) {
     return add(add, 1);
   }
 
-  public boolean add(int add, int quantity) {
+  public String add(int add, int quantity) {
     Products p = ProductService.getInstance().getById(add);
     if (p == null) {
-      return false;
+      return "Product does not exist";
     }
     CartProduct cartProduct = null;
     if (data.containsKey(add)) {
       cartProduct = data.get(add);
-      if(cartProduct.getQuantity() < cartProduct.getProducts().getWeight()) {
+      if(cartProduct.getQuantity() + quantity < cartProduct.getProducts().getWeight()) {
         cartProduct.increQuantity(quantity);
+      } else {
+        return "Out of quantity";
       }
     } else {
       cartProduct = new CartProduct(quantity, p);
     }
     data.put(add, cartProduct);
-    return true;
+    return "Success";
   }
   public boolean remove(int id) {
     return remove(id, 1);

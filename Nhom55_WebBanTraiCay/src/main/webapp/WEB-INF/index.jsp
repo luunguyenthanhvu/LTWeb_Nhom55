@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -98,7 +97,7 @@
                             <a href="${pageContext.request.contextPath}/login"
                                class="nav-link cart-info-container">
                                 <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                                [<span class="cart-total-amount">0</span>]
                             </a>
                         </li>
                     </c:otherwise>
@@ -152,8 +151,9 @@
     </div>
     <!-- END nav -->
 </nav>
+<div id="toast">
+</div>
 <!-- END nav -->
-
 <section id="home-section" class="hero">
     <div class="home-slider owl-carousel">
         <div class="slider-item"
@@ -432,57 +432,7 @@
     </svg>
 </div>
 
-
-<script>
-  // ajax add to cart
-  function addToCart(productId) {
-    $.ajax({
-      type: 'POST',
-      url: '/add-cart',
-      // value mặc định là 1
-      data: {
-        productId: productId,
-        quantity: 1
-      },
-      success: function (response) {
-        alert(response.message);
-
-        // cập nhập giỏ hàng
-        updateCartAmount();
-      },
-      error: function (error) {
-        console.log(error); // Xem nội dung của error object trong console
-
-        // Kiểm tra xem có thuộc tính message hay không
-        if (error.hasOwnProperty('message')) {
-          alert(error.message);
-        } else {
-          alert("Lỗi không xác định");
-        }
-      }
-
-    });
-
-    return false;
-  }
-
-  function updateCartAmount() {
-    $.ajax({
-      type: 'GET',
-      url: '/get-cart-amount',
-      data: {},
-      success: function (response) {
-        $(".cart-total-amount").html(response);
-      },
-      error: function (error) {
-        // Xử lý khi có lỗi
-        alert('Đã xảy ra lỗi khi thêm vào giỏ hàng');
-      }
-    })
-  }
-
-
-</script>
+<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

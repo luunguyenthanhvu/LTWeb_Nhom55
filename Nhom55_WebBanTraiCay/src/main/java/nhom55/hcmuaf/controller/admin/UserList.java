@@ -1,3 +1,4 @@
+
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Users;
@@ -28,4 +29,5 @@ public class UserList extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
 }

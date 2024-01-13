@@ -2,8 +2,10 @@
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en" dir="ltr">
 <head>
+  <fmt:setLocale value="vi_VN"/>
   <%@ page isELIgnored="false" %>
   <meta charset="UTF-8">
   <title> Drop Down Sidebar Menu | CodingLab </title>
@@ -56,7 +58,6 @@
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
           <li><a href="product-list">Danh sách sản phẩm</a></li>
-
           <li><a href="add-new-product">Thêm sản phẩm</a></li>
           <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
         </ul>
@@ -107,7 +108,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Người dùng</a></li>
-          <li><a href="user-list.jsp">Danh sách người dùng</a></li>
+          <li><a href="userList">Danh sách người dùng</a></li>
+          <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
 
@@ -181,7 +183,7 @@
             <td class="img-product">
               <img src="${product.getImg()}">
             </td>
-            <td>${product.getPrice()}</td>
+            <td><fmt:formatNumber pattern="#,##0 ₫" value="${product.getPrice()}"/> </td>
             <td>${product.getDateOfImporting()}</td>
             <td>${product.getExpriredDay()}</td>
             <td class="function-product">

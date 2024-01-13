@@ -265,7 +265,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
                     <div class="product">
                         <a href="" class="img-prod"><img
-                                style="width: 205px; height: 164px; object-fit: cover"
+                                style="width: 253.4px; height: 164px; object-fit: cover"
                                 class="img-fluid" src="${product.getImg()}"
                                 alt="Colorlib Template">
 
@@ -438,7 +438,7 @@
   function addToCart(productId) {
     $.ajax({
       type: 'POST',
-      url: '/Nhom55_WebBanTraiCay/add-cart',
+      url: '/add-cart',
       // value mặc định là 1
       data: {
         productId: productId,
@@ -480,6 +480,8 @@
       }
     })
   }
+
+
 </script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>

@@ -7,6 +7,7 @@ import nhom55.hcmuaf.services.UserService;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import nhom55.hcmuaf.beans.Users;
 
 public interface UsersDao {
     Users getUserByEmail(String email);
@@ -32,5 +33,3 @@ public interface UsersDao {
 
     String updatePassWordUser(int userId, String password);
 }
-
-

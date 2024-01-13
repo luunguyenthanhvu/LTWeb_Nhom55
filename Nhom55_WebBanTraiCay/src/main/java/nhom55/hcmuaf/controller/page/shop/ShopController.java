@@ -23,9 +23,6 @@ public class ShopController extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // save url
-    HttpSession session = request.getSession();
-    MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 
     String txtSearch = request.getParameter("txtSearch");
     String sortBy = request.getParameter("sortBy");

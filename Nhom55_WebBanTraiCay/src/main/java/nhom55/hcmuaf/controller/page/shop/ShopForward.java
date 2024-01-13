@@ -15,9 +15,6 @@ import nhom55.hcmuaf.util.MyUtils;
 public class ShopForward extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // save url
-        HttpSession session = request.getSession();
-        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 
         ProductDaoImpl productDaoImpl = new ProductDaoImpl();
         String sortBy = request.getParameter("sortBy");

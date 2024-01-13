@@ -548,7 +548,7 @@
   }
 
   function validateThanhPho() {
-    var text = diaChi.value;
+    var text = thanhPho.value;
     var kyTuHopLe = /^[a-zA-Z ]+$/;
     var error = document.getElementById("city_error");
     if (text.length == 0 || text == null) {
@@ -620,15 +620,15 @@
   }
 
   function validateTheCVC() {
-    var text = soThe.value;
+    var text = theCVC.value;
     var cvcPattern = /^\d{3}$/;
     var error = document.getElementById("cardCVC_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập dữ liệu";
       error.style.display = "block";
       return false;
-    } else if (!kyTuHopLe.test(text)) {
-      error.textContent =  "Mã CVC không hợp lệ. Vui lòng nhập 3 chữ số.";
+    } else if (!cvcPattern.test(text)) {
+      error.textContent = "Mã CVC không hợp lệ. Vui lòng nhập 3 chữ số.";
       error.style.display = "block";
       return false;
     } else {

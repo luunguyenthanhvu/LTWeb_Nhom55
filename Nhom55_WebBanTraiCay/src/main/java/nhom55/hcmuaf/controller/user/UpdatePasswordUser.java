@@ -46,8 +46,7 @@ public class UpdatePasswordUser extends HttpServlet {
           // xoa session hien tai
           MyUtils.removeLoginedUser(session);
           MyUtils.removeCart(session);
-          System.out.println("test");
-          System.out.println("vaicadai");
+
           RequestDispatcher dispatcher = this.getServletContext()
               .getRequestDispatcher("/WEB-INF/login/login.jsp");
           dispatcher.forward(request, response);

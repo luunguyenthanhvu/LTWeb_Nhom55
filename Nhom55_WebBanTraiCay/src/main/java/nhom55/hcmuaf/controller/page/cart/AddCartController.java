@@ -16,26 +16,22 @@ public class AddCartController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+   }
+
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
     HttpSession session = request.getSession();
     Users users = MyUtils.getLoginedUser(session);
     // check if user doesn't login
+    System.out.println("ok");
     if (users == null) {
-      response.sendRedirect("login");
+      System.out.println("User is not logged in. Redirecting to login page.");
+      response.getWriter().write("{\"status\":\"error\",\"message\":\"Vui Lòng đăng nhập.\"}");
     } else {
-      // to redirect to the previous page
-      String url = (String) session.getAttribute("previousURL");
-      int id = Integer.parseInt(request.getParameter("id"));
-      String quantityParameter = request.getParameter("quantity");
+      int id = Integer.parseInt(request.getParameter("productId"));
+      int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-      int quantity = 1;
-
-      if (quantityParameter != null) {
-        try {
-          quantity = Integer.parseInt(quantityParameter);
-        } catch (NumberFormatException e) {
-          e.printStackTrace();
-        }
-      }
       Products product = ProductService.getInstance().getById(id);
       Cart cart = (Cart) request.getSession().getAttribute("cart");
 
@@ -43,13 +39,12 @@ public class AddCartController extends HttpServlet {
 
       // update cart
       MyUtils.storeCart(session, cart);
-      response.sendRedirect(url);
-    }
-  }
 
-  @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    // Handle POST requests if needed
+      response.setContentType("application/json");
+      response.setCharacterEncoding("UTF-8");
+      response.getWriter()
+          .write("{ \"status\": \"success\", \"message\": \"Product added to cart.\" }");
+
+    }
   }
 }

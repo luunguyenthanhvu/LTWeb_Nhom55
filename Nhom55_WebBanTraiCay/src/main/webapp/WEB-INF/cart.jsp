@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -148,7 +148,8 @@
     </div>
 </nav>
 <!-- END nav -->
-
+<div id="toast">
+</div>
 <div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg_1.jpg');">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -177,12 +178,12 @@
                                 <th>Tổng tiền</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="mainContent">
                             <c:forEach items="${cart.getCartProduct()}" var="item" varStatus="loop">
                                 <tr class="text-center">
                                     <td class="product-remove"><a
-                                            href="${pageContext.request.contextPath}/remove-product-cart?id=${item.getProducts().getId()}"
-                                            onclick="if (!(confirm('Bạn có muốn xóa sản phẩm ra khỏi giỏ hàng không?'))) return false"><span
+                                            href="javascript:void(0);"
+                                            onclick="deleteProduct(${item.getProducts().getId()})"><span
                                             class="ion-ios-close"></span></a></td>
                                     <td><input name="selectedProducts"
                                                value="${item.getProducts().getId()}"
@@ -204,13 +205,15 @@
                                     </td>
 
                                     <td class="price">
-                                        <fmt:formatNumber pattern="#,##0 ₫" value="${item.getProducts().getPrice()}"/>
+                                        <fmt:formatNumber pattern="#,##0 ₫"
+                                                          value="${item.getProducts().getPrice()}"/>
                                     </td>
 
                                     <td class="quantity">
                                         <div class="input-group mb-3">
                                 <span class="input-group-btn mr-2">
-                                    <a href="${pageContext.request.contextPath}/quantity-inc-dec?action=dec&id=${item.getProducts().getId()}"
+                                    <a href="javascript:void(0);"
+                                       onclick="decProduct(${item.getProducts().getId()})"
                                        class="btn-plus-indre"
                                        data-type="minus" data-field="">
                                         <i class="ion-ios-remove"></i>
@@ -220,7 +223,8 @@
                                                    class="form-control input-number"
                                                    value="${item.getQuantity()}" min="1">
                                             <span class="input-group-btn ml-2">
-                                    <a href="${pageContext.request.contextPath}/quantity-inc-dec?action=inc&id=${item.getProducts().getId()}"
+                                    <a href="javascript:void(0);"
+                                       onclick="incProduct(${item.getProducts().getId()})"
                                        class="btn-plus-indre"
                                        data-type="plus" data-field="">
                                         <i class="ion-ios-add"></i>
@@ -230,7 +234,8 @@
 
                                     </td>
                                     <td class="total">
-                                        <fmt:formatNumber pattern="#,##0 ₫" value="${item.getPrice()}"/>
+                                        <fmt:formatNumber pattern="#,##0 ₫"
+                                                          value="${item.getPrice()}"/>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -242,7 +247,8 @@
             <div class="row justify-content-end">
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                     <div class="form-group d-flex">
-                        <input type="submit" value="Tiến hành kiểm tra" class="submit px-3 btn btn-primary py-3 px-4">
+                        <input type="submit" value="Tiến hành kiểm tra"
+                               class="submit px-3 btn btn-primary py-3 px-4">
                     </div>
                 </div>
             </div>
@@ -395,7 +401,7 @@
   });
 
 </script>
-
+<script src="${pageContext.request.contextPath}/static/js/web-js/cart.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

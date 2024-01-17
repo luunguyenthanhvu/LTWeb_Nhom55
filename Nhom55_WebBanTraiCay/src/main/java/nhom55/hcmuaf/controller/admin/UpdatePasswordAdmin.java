@@ -16,33 +16,29 @@ public class UpdatePasswordAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("loginedUser");
-
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
-        dispatcher.forward(request, response);    }
+        dispatcher.forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("loginedUser");
+        Users admin = MyUtils.getLoginedUser(session);
 
         String oldPassword = request.getParameter("old-password");
         String newPassword = request.getParameter("new-password");
         String retypePassword = request.getParameter("retype-password");
 
-        if (checkValidate(request,response,oldPassword,newPassword,retypePassword)) {
+        if (checkValidate(request, response, oldPassword, newPassword, retypePassword)) {
             // Kiểm tra mật khẩu cũ
-            if (UserService.getInstance().checkPassUser(user.getId(), MyUtils.encodePass(oldPassword))) {
-                // Đổi mật khẩu
-                String result = UserService.getInstance().changePass(user.getId(), newPassword);
-
+            if (UserService.getInstance().checkPassUser(admin.getId(), MyUtils.encodePass(oldPassword))) {
+                String result = UserService.getInstance().changePass(admin.getId(), newPassword);
                 if (result.equals("SUCCESS")) {
-                    Users updatedUser = UserService.getInstance().getUserById(user.getId());
-                    // Mật khẩu mới bị mã hóa
-                    request.setAttribute("hashedNewPassword", updatedUser.getHash());
                     request.setAttribute("result", "Đổi mật khẩu thành công");
+                    // xoa session hien tai
+                    MyUtils.removeLoginedUser(session);
+                    MyUtils.removeCart(session);
                     RequestDispatcher dispatcher = this.getServletContext()
                             .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
@@ -52,7 +48,16 @@ public class UpdatePasswordAdmin extends HttpServlet {
                             .getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
                     dispatcher.forward(request, response);
                 }
+            } else {
+                request.setAttribute("result", "Mật khẩu cũ không trùng khớp");
+                RequestDispatcher dispatcher = this.getServletContext()
+                        .getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
+                dispatcher.forward(request, response);
             }
+        } else {
+            RequestDispatcher dispatcher = this.getServletContext()
+                    .getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
@@ -65,45 +70,65 @@ public class UpdatePasswordAdmin extends HttpServlet {
      * @return
      */
 
-    private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
-                                         String oldPassword, String newPassword, String retypePassword) {
+        private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
+                String oldPassword, String newPassword, String retypePassword) {
 
-        String checkOldPassword = UserValidator.validateOldPass(oldPassword);
-        String checkNewPassword = UserValidator.validateNewPass(newPassword);
-        String checkOldAndNewPass = UserValidator.validateOldAndNewPass(oldPassword, newPassword);
-        String checkNewAndRetypePass = UserValidator.validateNewAndRetypePass(newPassword, retypePassword);
+            String checkOldPassword = UserValidator.validateOldPass(oldPassword);
+            String checkNewPassword = UserValidator.validateNewPass(newPassword);
+            String checkRetypePassword = UserValidator.validateNewPass(newPassword);
+            String checkOldAndNewPass = UserValidator.validateOldAndNewPass(oldPassword, newPassword);
+            String checkNewAndRetypePass = UserValidator.validateNewAndRetypePass(newPassword,
+                    retypePassword);
 
-        // count for validate
-        int count = 0;
+            // count for validate
+            int count = 0;
 
-        if (!checkOldPassword.isEmpty()) {
-            count++;
-            request.setAttribute("error_oldPassword", checkOldPassword);
-        } else {
+            if (!checkOldPassword.isEmpty()) {
+                count++;
+                request.setAttribute("error_oldPassword", checkOldPassword);
+            } else {
+                request.setAttribute("oldPass", oldPassword);
+            }
 
+            if (!checkNewPassword.isEmpty()) {
+                count++;
+                request.setAttribute("error_newPassword", checkNewPassword);
+            } else {
+                request.setAttribute("newPass", newPassword);
+            }
+
+            if (!checkNewPassword.isEmpty()) {
+                count++;
+                request.setAttribute("error_newPassword", checkNewPassword);
+            } else {
+                request.setAttribute("newPass", newPassword);
+            }
+
+            if (!checkNewPassword.isEmpty()) {
+                count++;
+                request.setAttribute("error_retypePassword", checkNewPassword);
+            } else {
+                request.setAttribute("retypePass", retypePassword);
+            }
+
+            if (!checkOldAndNewPass.isEmpty()) {
+                count++;
+                request.setAttribute("error_checkOldAndNewPass", checkOldAndNewPass);
+            }
+
+            if (!checkNewAndRetypePass.isEmpty()) {
+                count++;
+                request.setAttribute("error_checkNewAndRetypePass", checkNewAndRetypePass);
+            }
+
+            if (count > 0) {
+                return false;
+            }
+            return true;
         }
 
-        if (!checkNewPassword.isEmpty()) {
-            count++;
-            request.setAttribute("error_newPassword", checkNewPassword);
-        }
 
-        if (!checkOldAndNewPass.isEmpty()) {
-            count++;
-            request.setAttribute("error_checkOldAndNewPass", checkOldAndNewPass);
-        }
 
-        if (!checkNewAndRetypePass.isEmpty()) {
-            count++;
-            request.setAttribute("error_checkNewAndRetypePass", checkNewAndRetypePass);
-        }
 
-        if (count > 0) {
-            return false;
-        }
-        return true;
+
     }
-
-
-
-}

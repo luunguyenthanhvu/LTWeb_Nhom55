@@ -28,11 +28,11 @@ public class UpdateProduct extends HttpServlet {
                 products =p;
                 break;
             }
-        }
-        ProviderDao dao = new ProviderDaoImpl();
-        List<Providers> listProvider = dao.getAllProvider();
-        RequestDispatcher dispatcher = this.getServletContext()
-                .getRequestDispatcher("/WEB-INF/admin/update-product.jsp");
+    }
+    ProviderDao dao = new ProviderDaoImpl();
+    List<Providers> listProvider = dao.getAllProvider();
+    RequestDispatcher dispatcher = this.getServletContext()
+            .getRequestDispatcher("/WEB-INF/admin/update-product.jsp");
         request.setAttribute("product",products);
         request.setAttribute("listProvider",listProvider);
         dispatcher.forward(request, response);

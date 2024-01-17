@@ -24,7 +24,7 @@ public class Cart {
     CartProduct cartProduct = null;
     if (data.containsKey(add)) {
       cartProduct = data.get(add);
-      if(cartProduct.getQuantity() + quantity < cartProduct.getProducts().getWeight()) {
+      if(cartProduct.getQuantity() + quantity <= cartProduct.getProducts().getWeight()) {
         cartProduct.increQuantity(quantity);
       } else {
         return "Out of quantity";

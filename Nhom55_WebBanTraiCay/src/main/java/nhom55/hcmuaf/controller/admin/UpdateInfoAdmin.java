@@ -2,6 +2,7 @@ package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.UserService;
+import nhom55.hcmuaf.util.MyUtils;
 import nhom55.hcmuaf.util.UserValidator;
 
 import javax.servlet.*;
@@ -9,7 +10,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
@@ -21,8 +28,16 @@ public class UpdateInfoAdmin extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("loginedUser");
+        Users admin = MyUtils.getLoginedUser(session);
 
+        List<Users> listUser= UserService.getInstance().showInfoUser();
+        for(Users u: listUser) {
+            if(u.getId() == admin.getId()) {
+                admin =u;
+                break;
+            }
+        }
+        request.setAttribute("admin", admin);
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
         dispatcher.forward(request, response);
 
@@ -32,51 +47,72 @@ public class UpdateInfoAdmin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Users user = (Users) session.getAttribute("loginedUser");
+        Users admin = MyUtils.getLoginedUser(session);
 
-        String username = request.getParameter("ten_nguoi_dung");
-        String email = request.getParameter("email_nguoi_dung");
-        String address = request.getParameter("dia_chi_nguoi_dung");
-        String phoneNumber = request.getParameter("so_dien_thoai_nguoi_dung");
-        LocalDate dateOfBirth = LocalDate.parse(request.getParameter("dob"));
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String phoneNumber = request.getParameter("phoneNum");
+        String dateOfBirth = request.getParameter("dob");
         String gender = request.getParameter("gender");
         Part filePart = request.getPart("avatar");
         String filePartString = filePart.getSubmittedFileName();
 
 
-        if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, filePartString, gender)) {
-            if (filePart == null || filePart.getSize() == 0) {
-                // Người dùng không chọn file, xử lý tại đây
+        if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, filePartString)) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-                Users userUpdate = UserService.getInstance().updateProfileNoImage(user.getId(), username, email, address, phoneNumber, dateOfBirth,gender);
-
-//                request.setAttribute("message", "Cập nhật thành công");
-//                RequestDispatcher dispatcher = request
-//                        .getRequestDispatcher("/WEB-INF/admin/admin-profile.jsp");
-//                dispatcher.forward(request, response);
-
-                response.sendRedirect(request.getContextPath() + "/updateInfoAdmin");
-            } else {
-                // Người dùng chọn file ảnh
-                String imgUser ="";
-                String fileName = filePart.getSubmittedFileName();
-                ServletContext servletContext = getServletContext();
-                File root = new File(servletContext.getRealPath("/") + "/data");
-                if (!root.exists()) root.mkdirs();
-                for (Part part : request.getParts()) {
-                    part.write(root.getAbsolutePath() + "/" + fileName);
-                    imgUser ="/data/" + fileName;
-                }
-
-                Users userUpdate = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, dateOfBirth,imgUser,gender);
-
-                request.setAttribute("message", "Cập nhật thành công");
-//                RequestDispatcher dispatcher = request
-//                        .getRequestDispatcher("/WEB-INF/admin/admin-profile.jsp");
-//                dispatcher.forward(request, response);
-                response.sendRedirect(request.getContextPath() + "/adminProfile");
-
+            Date myBirthDay = null;
+            try {
+                myBirthDay = dateFormat.parse(dateOfBirth);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+
+            String imgUser = "";
+
+            String fileName = filePart.getSubmittedFileName();
+            ServletContext servletContext = getServletContext();
+
+            File root = new File(servletContext.getRealPath("/") + "/data");
+
+            // create a new folder if not exists
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            // save img to data folder
+            for (Part part : request.getParts()) {
+                part.write(root.getAbsolutePath() + '/' + fileName);
+                imgUser = "/data/" + fileName;
+            }
+
+            String result = UserService.getInstance().updateProfileWithImage(admin.getId(), username, email, address, phoneNumber, myBirthDay, imgUser, gender);
+
+            // Nếu email được thay đổi
+            if (!admin.getEmail().equals(email)) {
+                if (result.equals("SUCCESS")) {
+                    request.setAttribute("result", "Đổi email thành công. Vui lòng đăng nhập lại!");
+                    // xoa session hien tai
+                    MyUtils.removeLoginedUser(session);
+                    RequestDispatcher dispatcher = this.getServletContext()
+                            .getRequestDispatcher("/WEB-INF/login/login.jsp");
+                    dispatcher.forward(request, response);
+                }
+            }
+            request.setAttribute("result", "Cập nhật thành công");
+            response.sendRedirect(request.getContextPath() + "/admin-profile");
+            // không checkValidate
+        } else {
+            List<Users> listUser= UserService.getInstance().showInfoUser();
+            for(Users u: listUser) {
+                if(u.getId() == admin.getId()) {
+                    admin =u;
+                    break;
+                }
+            }
+            request.setAttribute("admin", admin);
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
+            dispatcher.forward(request, response);
         }
     }
 
@@ -93,15 +129,15 @@ public class UpdateInfoAdmin extends HttpServlet {
 
     private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
                                          String userName, String email, String address,
-                                         String phoneNumber, LocalDate dateOfBirth, String filePart, String gender) {
+                                         String phoneNumber, String dateOfBirth, String img) {
 
         String checkName = UserValidator.validateName(userName);
         String checkEmail = UserValidator.validateEmail(email);
         String checkAddress = UserValidator.validateAddress(address);
         String checkPhoneNumber = UserValidator.validatePhoneNumber(phoneNumber);
         String checkDateOfBirth = UserValidator.validateDateOfBirth(dateOfBirth);
-        String checkFilePart = UserValidator.validateFileUpload(filePart);
-        String checkGender = UserValidator.validateGender(gender);
+        String checkFilePart = UserValidator.validateFileUpload(img);
+//        String checkGender = UserValidator.validateGender(gender);
         // count for validate
         int count = 0;
 
@@ -109,35 +145,35 @@ public class UpdateInfoAdmin extends HttpServlet {
             count++;
             request.setAttribute("error_name", checkName);
         } else {
-            request.setAttribute("name", userName);
+            request.setAttribute("name_user", userName);
         }
 
         if (!checkEmail.isEmpty()) {
             count++;
             request.setAttribute("error_email", checkEmail);
         } else {
-            request.setAttribute("email", email);
+            request.setAttribute("emailUser", email);
         }
 
         if (!checkAddress.isEmpty()) {
             count++;
             request.setAttribute("error_address", checkAddress);
         } else {
-            request.setAttribute("dc_nd", address);
+            request.setAttribute("address_user", address);
         }
 
         if (!checkPhoneNumber.isEmpty()) {
             count++;
             request.setAttribute("error_phoneNumber", checkPhoneNumber);
         } else {
-            request.setAttribute("phoneNumber", phoneNumber);
+            request.setAttribute("phoneNumber_user", phoneNumber);
         }
 
         if (!checkDateOfBirth.isEmpty()) {
             count++;
             request.setAttribute("error_dob", checkDateOfBirth);
         } else {
-            request.setAttribute("dateOfBirth", dateOfBirth);
+            request.setAttribute("dateOfBirth_user", dateOfBirth);
         }
 
         if (!checkFilePart.isEmpty()) {
@@ -145,20 +181,9 @@ public class UpdateInfoAdmin extends HttpServlet {
             request.setAttribute("file_anh_error", checkFilePart);
         }
 
-        if (!checkGender.isEmpty()) {
-            count++;
-            request.setAttribute("error_gender", checkGender);
-        } else {
-            request.setAttribute("gender", gender);
-        }
-
         if (count > 0) {
             return false;
         }
         return true;
     }
-
-
-
-
 }

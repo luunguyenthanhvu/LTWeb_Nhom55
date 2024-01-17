@@ -78,4 +78,13 @@ public class MyUtils {
         session.setAttribute("role", role);
     }
 
+    /**
+     * set url for session
+     * @param session
+     * @param url
+     */
+    public static void setPreviousURL(HttpSession session, String url) {
+        session.setAttribute("previousURL", url);
+    }
+
 }

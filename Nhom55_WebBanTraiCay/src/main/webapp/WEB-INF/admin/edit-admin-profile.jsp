@@ -6,7 +6,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title> Đổi thông tin quản trị viên </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/edit-admin.css">
 
@@ -41,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
-                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile?id=${admin.getId()}">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin?id=${admin.getId()}">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -116,16 +116,18 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${loginedUser.getImg()}" alt="profileImg">
+                        <img src="${admin.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${loginedUser.getUsername()}</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
-                    <i style="transform: rotate(180deg); ">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
-                    </i>
+                    <a href="${pageContext.request.contextPath}/logout">
+                        <i style="transform: rotate(180deg); ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+                        </i>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -147,74 +149,75 @@
                         <div class="basic-info">
                             <table>
                                 <tr>
-                                    <td><label for="id">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="id" placeholder="ID" name="id-admin" value="${loginedUser.getId()}" readonly ></td>
+                                    <td><label for="id">ID người dùng <span class="not-empty"> *</span></label></td>
+                                    <td><input id="id" placeholder="ID" name="id-admin" value="${admin.getId()}" readonly ></td>
                                 </tr>
                                 <tr>
                                     <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
-                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${loginedUser.getUsername()}" >
+                                    <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${admin.getUsername()}" >
                                         <span class="error-msg required" id="username-error"  style="display: none;margin-left: 60px;color: red" ></span>
                                         <c:if test="${not empty error_name}" >
-                                            <td><p style="color: red">${error_name}</p></td>
+                                            <p style="color: red">${error_name}</p>
                                         </c:if>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
-                                    <td><input id="email_nd" placeholder="email" name="email" value="${loginedUser.getEmail()}" readonly >
+                                    <td><input id="email_nd" placeholder="email" name="email" value="${admin.getEmail()}">
                                         <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_email}" >
-                                             <td><p style="color: red">${error_email}</p></td>
+                                             <p style="color: red">${error_email}</p>
                                         </c:if>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
-                                    <td><input type="date" id="dob" name="dob" value="${loginedUser.getDateOfBirth()}" required></td>
-                                    <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
-                                    <c:if test="${not empty error_dob}" >
-                                        <td><p style="color: red">${error_dob}</p></td>
-                                    </c:if>
+                                    <td><input type="date" id="dob" name="dob" value="${admin.getDateOfBirth()}">
+                                        <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
+                                        <c:if test="${not empty error_dob}" >
+                                            <p style="color: red">${error_dob}</p>
+                                        </c:if>
+                                    </td>
+
                                 </tr>
                                 <tr>
                                     <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
                                     <td class="gender-td" id="gioi_tinh_nd">
-                                        <input type="radio" id="male" name="gender" value="male" checked>
+                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam"${admin.getSexual().equals("Nam") ? 'checked' : ''}>
                                         <label for="male">Nam</label>
-                                        <input type="radio" id="female" name="gender" value="female">
+                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ"${admin.getSexual().equals("Nữ") ? 'checked' : ''}>
                                         <label for="female">Nữ</label>
                                     </td>
-                                    <c:if test="${not empty error_gender}" >
-                                        <td><p style="color: red">${error_gender}</p></td>
-                                    </c:if>
                                 </tr>
                                 <tr>
-                                    <td><label for="phoneNumber">Số điện thoại<span class="not-empty"> *</span></label></td>
-                                    <td><input type="text" id="phoneNumber" name="phoneNum" placeholder="số điện thoại" value="${loginedUser.getPhoneNumber()}" >
+                                    <td><label for="sdt_nd">Số điện thoại<span class="not-empty"> *</span></label></td>
+                                    <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${admin.getPhoneNumber()}" >
                                         <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_phoneNumber}" >
-                                            <td><p style="color: red">${error_phoneNumber}</p></td>
+                                            <p style="color: red">${error_phoneNumber}</p>
                                         </c:if>
                                     </td>
+
                                 </tr>
                                 <tr>
-                                    <td><label for="address">Địa chỉ<span class="not-empty"> *</span></label></td>
-                                    <td><input id="address" name="address" placeholder="địa chỉ" value="${loginedUser.getAddress()}" >
+                                    <td><label for="dc_nd">Địa chỉ<span class="not-empty"> *</span></label></td>
+                                    <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${admin.getAddress()}" >
                                         <span class="error-msg required" id="address-error" style="display: none;margin-left: 60px;color: red"></span>
                                         <c:if test="${not empty error_address}" >
-                                            <td><p style="color: red">${error_address}</p></td>
+                                            <p style="color: red">${error_address}</p>
                                         </c:if>
                                     </td>
                                 </tr>
                             </table>
                             <div class="img-admin">
-                                <img id="previewImage" src="${loginedUser.getImg()}" alt="">
+                                <img id="previewImage" src="${admin.getImg()}" alt="">
                                 <div class="chose-new-img">
                                     <label for="fileInput" class="chose-new-img">
                                         <input type="file" id="fileInput" name="avatar" accept="image/*">
+                                        <span class="error-msg required" id="fileUpload-error" style="display: none;margin-left: 60px;color: red"></span>
                                     </label>
                                     <c:if test="${not empty file_anh_error}" >
-                                        <td><p style="color: red">${file_anh_error}</p></td>
+                                        <p style="color: red">${file_anh_error}</p>
                                     </c:if>
                                 </div>
                             </div>
@@ -229,6 +232,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                 <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
                         </button>
+                        <p style="color: red;padding: 30px"> ${result}</p>
                     </Form>
                 </div>
             </div>
@@ -279,7 +283,6 @@
 
 
 <script>
-
     $(document).ready(function(){
         $('#fileInput').change(function(e) {
             var file = e.target.files[0];
@@ -293,8 +296,10 @@
 
     var tenUser = document.getElementById("ten_nd");
     var emailUser = document.getElementById("email_nd");
+    // var genderUser = document.getElementById("gioi_tinh_nd");
     var addressUser = document.getElementById("dc_nd");
     var phoneNumberUser = document.getElementById("sdt_nd");
+    var dateOfBirthUser = document.getElementById("dob");
     var upFileAnh = document.getElementById("fileInput");
 
     function validateTenUser() {
@@ -315,22 +320,21 @@
         }
     }
 
-    function validateGenderUser() {
-        var maleCheckbox = document.getElementById("male");
-        var femaleCheckbox = document.getElementById("female");
-        var error = document.getElementById("gender-error");
-
-        // Kiểm tra xem người dùng đã chọn ít nhất một trong hai giới tính chưa
-        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
-            error.textContent = "Vui lòng chọn giới tính";
-            error.style.display = "block";
-            return false;
-        } else {
-            error.style.display = "none";
-            return true;
-        }
-    }
-
+    // function validateGenderUser() {
+    //     var maleCheckbox = document.getElementById("male");
+    //     var femaleCheckbox = document.getElementById("female");
+    //     var error = document.getElementById("gender-error");
+    //
+    //     // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
+    //     if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+    //         error.textContent = "Vui lòng chọn giới tính";
+    //         error.style.display = "block";
+    //         return false;
+    //     } else {
+    //         error.style.display = "none";
+    //         return true;
+    //     }
+    // }
 
     function validateEmailUser() {
         var text = emailUser.value;
@@ -393,15 +397,75 @@
         }
     }
 
+    function validateDateOfBirth() {
+        var dateOfBirthInput = document.getElementById("dob");
+        var dateOfBirthValue = dateOfBirthInput.value;
+        var error = document.getElementById("dob-error");
+
+        // Kiểm tra xem ngày tháng năm có được nhập hay không
+        if (dateOfBirthValue.length === 0 || dateOfBirthValue == null) {
+            error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra định dạng ngày tháng năm
+        var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!dateRegex.test(dateOfBirthValue)) {
+            error.textContent = "Định dạng ngày tháng năm không hợp lệ.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra xem ngày tháng năm có hợp lệ trong quy tắc lịch hay không (ví dụ: không nhập ngày từ tương lai)
+        var currentDate = new Date();
+        var inputDate = new Date(dateOfBirthValue);
+        if (inputDate > currentDate) {
+            error.textContent = "Ngày tháng năm sinh không được là ngày ở tương lai.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
+        error.style.display = "none";
+        return true;
+    }
+
+    function validateFileUpload() {
+        var inputUpload = document.getElementById("fileInput");
+        var error = document.getElementById("fileUpload-error");
+
+        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
+        if (inputUpload.files.length === 0) {
+            error.textContent = "Vui lòng chọn file ảnh.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra định dạng tệp (ở đây, mình chỉ cho phép tệp hình ảnh)
+        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+        if (!allowedExtensions.test(inputUpload.value)) {
+            error.textContent = "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
+        error.style.display = "none";
+        return true;
+    }
+
+
+
     tenUser.addEventListener("blur", validateTenUser);
     emailUser.addEventListener("blur", validateEmailUser);
-    genderUser.addEventListener("blur", validateEmailUser);
     addressUser.addEventListener("blur", validateAddressUser);
     phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
-    upFileAnh.addEventListener("blur", validatePhoneNumberUser);
-
+    dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
+    upFileAnh.addEventListener("blur", validateFileUpload);
 
 </script>
+
 
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

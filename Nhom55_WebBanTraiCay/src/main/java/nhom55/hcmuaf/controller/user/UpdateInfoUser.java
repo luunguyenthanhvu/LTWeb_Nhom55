@@ -86,23 +86,8 @@ public class UpdateInfoUser extends HttpServlet {
 
             String result = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, myBirthDay, imgUser, gender);
 
-            // Người dùng không thay đổi email
-            if (user.getEmail().equals(email)) {
-                if (result.equals("SUCCESS")) {
-                    // lấy ra thông tin mới của người dùng
-                    Users users = UserService.getInstance().getUserById(user.getId());
-                    request.setAttribute("user", users);
-                    request.setAttribute("result", "Cập nhật thành công");
-                    RequestDispatcher dispatcher = this.getServletContext()
-                            .getRequestDispatcher("/WEB-INF/user/user-profile.jsp");
-                    dispatcher.forward(request, response);
-                } else {
-                    request.setAttribute("result", "Cập nhật thất bại");
-                    RequestDispatcher dispatcher = this.getServletContext()
-                            .getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
-                    dispatcher.forward(request, response);
-                }
-            } else {
+            // Nếu người dùng thay đổi email
+            if(!user.getEmail().equals(email)) {
                 // Nếu email được thay đổi
                 if (result.equals("SUCCESS")) {
                     request.setAttribute("result", "Đổi email thành công. Vui lòng đăng nhập lại!");
@@ -111,15 +96,21 @@ public class UpdateInfoUser extends HttpServlet {
                     RequestDispatcher dispatcher = this.getServletContext()
                             .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
-                } else {
-                    request.setAttribute("result", "Cập nhật thất bại");
-                    RequestDispatcher dispatcher = this.getServletContext()
-                            .getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
-                    dispatcher.forward(request, response);
                 }
             }
+            request.setAttribute("result", "Cập nhật thành công");
+            response.sendRedirect(request.getContextPath() + "/userProfile");
+
             // không checkValidate
         } else {
+            List<Users> listUser= UserService.getInstance().showInfoUser();
+            for(Users u: listUser) {
+                if(u.getId() == user.getId()) {
+                    user =u;
+                    break;
+                }
+            }
+            request.setAttribute("user", user);
             RequestDispatcher dispatcher = this.getServletContext()
                     .getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
             dispatcher.forward(request, response);

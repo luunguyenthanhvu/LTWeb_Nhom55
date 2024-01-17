@@ -41,6 +41,8 @@ public class UpdateUser extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
 
         String parameterValue = request.getParameter("id_nguoi_dung");
         String username = request.getParameter("username");
@@ -68,8 +70,17 @@ public class UpdateUser extends HttpServlet {
                 }
 
                 UserService.getInstance().updateProfile(id, username, email, address, phoneNumber, myBirthDay, gender, status, role);
-                response.sendRedirect(request.getContextPath() + "/userList");
 
+                // Nếu thay đổi email
+                if(!admin.getEmail().equals(email)) {
+                    request.setAttribute("result", "Đổi email thành công. Vui lòng đăng nhập lại!");
+                    // xoa session hien tai
+                    MyUtils.removeLoginedUser(session);
+                    RequestDispatcher dispatcher = this.getServletContext()
+                                .getRequestDispatcher("/WEB-INF/login/login.jsp");
+                    dispatcher.forward(request, response);
+                }
+                response.sendRedirect(request.getContextPath() + "/userList");
                 // không checkValidate
             } else {
                 List<Users> listUser = UserService.getInstance().showInfoUser();

@@ -88,30 +88,8 @@ public class UpdateInfoAdmin extends HttpServlet {
 
             String result = UserService.getInstance().updateProfileWithImage(admin.getId(), username, email, address, phoneNumber, myBirthDay, imgUser, gender);
 
-            // Người dùng không thay đổi email
-            if (admin.getEmail().equals(email)) {
-                if (result.equals("SUCCESS")) {
-                    // lấy ra thông tin mới của người dùng
-                    Users admins = UserService.getInstance().getUserById(admin.getId());
-                    request.setAttribute("admin", admins);
-                    request.setAttribute("result", "Cập nhật thành công");
-                    RequestDispatcher dispatcher = this.getServletContext()
-                            .getRequestDispatcher("/WEB-INF/admin/admin-profile.jsp");
-                    dispatcher.forward(request, response);
-//                    response.sendRedirect(request.getContextPath() + "/adminProfile?id=" +admins.getId());
-
-                } else {
-                    Users admins = UserService.getInstance().getUserById(admin.getId());
-                    request.setAttribute("admin", admins);
-                    request.setAttribute("result", "Cập nhật thất bại");
-//                    RequestDispatcher dispatcher = this.getServletContext()
-//                            .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
-//                    dispatcher.forward(request, response);
-                    response.sendRedirect(request.getContextPath() + "/updateInfoAdmin");
-
-                }
-            } else {
-                // Nếu email được thay đổi
+            // Nếu email được thay đổi
+            if (!admin.getEmail().equals(email)) {
                 if (result.equals("SUCCESS")) {
                     request.setAttribute("result", "Đổi email thành công. Vui lòng đăng nhập lại!");
                     // xoa session hien tai
@@ -119,22 +97,21 @@ public class UpdateInfoAdmin extends HttpServlet {
                     RequestDispatcher dispatcher = this.getServletContext()
                             .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
-                } else {
-                    Users admins = UserService.getInstance().getUserById(admin.getId());
-                    request.setAttribute("admin", admins);
-                    request.setAttribute("result", "Cập nhật thất bại");
-//                    RequestDispatcher dispatcher = this.getServletContext()
-//                            .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
-//                    dispatcher.forward(request, response);
-                    response.sendRedirect(request.getContextPath() + "/updateInfoAdmin");
                 }
             }
+            request.setAttribute("result", "Cập nhật thành công");
+            response.sendRedirect(request.getContextPath() + "/admin-profile");
             // không checkValidate
         } else {
-            Users admins = UserService.getInstance().getUserById(admin.getId());
-            request.setAttribute("admin", admins);
-            RequestDispatcher dispatcher = this.getServletContext()
-                    .getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
+            List<Users> listUser= UserService.getInstance().showInfoUser();
+            for(Users u: listUser) {
+                if(u.getId() == admin.getId()) {
+                    admin =u;
+                    break;
+                }
+            }
+            request.setAttribute("admin", admin);
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/edit-admin-profile.jsp");
             dispatcher.forward(request, response);
         }
     }

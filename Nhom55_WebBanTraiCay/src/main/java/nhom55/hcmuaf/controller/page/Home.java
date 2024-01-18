@@ -27,10 +27,6 @@ public class Home extends HttpServlet {
     List<Products> products = ProductService.getInstance().getProduct();
     request.setAttribute("listProducts", products);
 
-    // save url
-    HttpSession session = request.getSession();
-    MyUtils.setPreviousURL(session, request.getRequestURL().toString());
-
     RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
     dispatcher.forward(request, response);
   }

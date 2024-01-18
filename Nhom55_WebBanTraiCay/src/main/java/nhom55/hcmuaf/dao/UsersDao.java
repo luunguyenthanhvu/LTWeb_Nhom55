@@ -4,46 +4,47 @@ import nhom55.hcmuaf.beans.Users;
 
 import java.util.Date;
 import java.util.List;
+import nhom55.hcmuaf.beans.Users;
 
 public interface UsersDao {
-    Users getUserByEmail(String email);
+  Users getUserByEmail(String email);
 
-    String addNewUser(String username, String password, String hash, String email, String phoneNumber, String address);
+  String addNewUser(String username, String password, String hash, String email, String phoneNumber, String address);
 
-    String updateUserStatus(String email, String hash);
+  String updateUserStatus(String email, String hash);
 
-    String updateNewPassWord(String email, String password);
-
-
-    String addNewUserOfAdmin(String username, String password, String hash, String email,
-                             String phoneNumber, String address, Date dob, String gioiTinh, String img, int quyenHan);
+  String updateNewPassWord(String email, String password);
 
 
+  String addNewUserOfAdmin(String username, String password, String hash, String email,
+      String phoneNumber, String address, Date dob, String gioiTinh, String img, int quyenHan);
 
-    List<Users> showInfoUser();
 
-    Users getUserById(int userId);
 
-    boolean checkPassUser(int userId, String password);
+  List<Users> showInfoUser();
 
-    void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String sexual, int status, int role);
+  Users getUserById(int userId);
 
-    String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String img, String sexual);
+  boolean checkPassUser(int userId, String password);
 
-    String updatePassWordUser(int userId, String password);
+  void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String sexual, int status, int role);
 
-    int countResultSearchingUser(String txtSearch);
+  String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, Date newDateOfBirth, String img, String sexual);
 
-    List<Users> search(String search, int index, int sizePage);
+  String updatePassWordUser(int userId, String password);
 
-    List<Users> searchFilter(String sortBy, String order, String search, int index, int sizePage);
+  int countResultSearchingUser(String txtSearch);
 
-    List<Users> sortByFilter(int index, int quantityDefault, String sortBy, String order);
+  List<Users> search(String search, int index, int sizePage);
 
-    int countTotalRowUserInDatabase();
-    List<Users> get5UsersForEachPage(int index, int quantityDefault);
+  List<Users> searchFilter(String sortBy, String order, String search, int index, int sizePage);
 
-    void deleteUser(int id);
+  List<Users> sortByFilter(int index, int quantityDefault, String sortBy, String order);
 
+  int countTotalRowUserInDatabase();
+  List<Users> get5UsersForEachPage(int index, int quantityDefault);
+
+  void deleteUser(int id);
 }
+
 

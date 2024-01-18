@@ -40,6 +40,8 @@ public class UpdatePasswordUser extends HttpServlet {
           request.setAttribute("result", "Đổi mật khẩu thành công");
           // xoa session hien tai
           MyUtils.removeLoginedUser(session);
+          MyUtils.removeCart(session);
+
           RequestDispatcher dispatcher = this.getServletContext()
                   .getRequestDispatcher("/WEB-INF/login/login.jsp");
           dispatcher.forward(request, response);

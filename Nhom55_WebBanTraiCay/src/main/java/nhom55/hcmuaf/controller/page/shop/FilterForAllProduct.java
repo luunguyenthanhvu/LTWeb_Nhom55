@@ -19,9 +19,6 @@ public class FilterForAllProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // save url
-        HttpSession session = request.getSession();
-        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 //       Lấy các thuộc tính của filter
         String sortBy = request.getParameter("sortBy");
         String order = request.getParameter("order");

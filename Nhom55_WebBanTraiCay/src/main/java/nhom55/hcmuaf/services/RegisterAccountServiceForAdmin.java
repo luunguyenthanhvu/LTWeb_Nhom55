@@ -1,6 +1,5 @@
 package nhom55.hcmuaf.services;
 
-import nhom55.hcmuaf.beans.RegisterBean;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
 

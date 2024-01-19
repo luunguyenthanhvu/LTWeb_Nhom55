@@ -5,20 +5,16 @@
   z-index: 9999999;
 }
 
-.popup-add-quantity {
-  display: none;
-  z-index: 10000;
-  position: absolute; /* Thay đổi từ fixed thành absolute */
-  top: 50%; /* Giữ ở giữa theo chiều dọc */
-  left: 50%; /* Giữ ở giữa theo chiều ngang */
-  transform: translate(-50%, -50%); /* Dịch chuyển để căn giữa */
-  max-width: 450px;
+.toast {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 2px;
   min-width: 400px;
-  border: 1px solid #11101d;
-  border-radius: 20px;
-  box-shadow: 0px 24px 36px -11px rgba(0, 0, 0, 0.09);
-  animation-duration: 0.5s;
-  max-height: 300px;
+  max-width: 450px;
+  border-left: 4px solid;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.08);
+  animation: showUpAndFade 3s forwards;
 }
 
 

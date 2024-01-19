@@ -25,7 +25,6 @@ public class AddUser extends HttpServlet {
         request.setAttribute("listRole",listRole);
        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/add-user.jsp");
        dispatcher.forward(request,response);
-
     }
 
     @Override

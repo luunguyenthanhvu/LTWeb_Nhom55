@@ -256,12 +256,14 @@
     </a>
   </div>
   <div id="form-popup-quantity">
-    <form action="" method="post">
+    <form action="javascript:void(0);" method="post">
       <h3 style="padding: 10px 0">Thêm số lượng sản phẩm</h3>
-      <input class="input-quantity" type="text" placeholder="Nhập vào số lượng"
-             name="quantity">
+      <input id="input-quantity" class="input-quantity" type="text" placeholder="Nhập vào số lượng" name="quantity">
+      <p class="error" style="color: red; display: none" id="input-quantity-error"></p>
       <br>
-      <input class="btn__submit-add-quantity" type="submit" value="Thêm số lượng">
+      <button id="btn__submit-add-quantity" class="btn__submit-add-quantity" type="submit">
+        Thêm số lượng
+      </button>
     </form>
   </div>
 </div>
@@ -293,7 +295,7 @@
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/static/js/admin-js/popup-quantity.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/admin-js/product-list.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

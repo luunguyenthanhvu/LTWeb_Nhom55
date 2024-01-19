@@ -291,7 +291,7 @@
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/static/js/admin-js/popup-quantity.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/admin-js/product-list.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

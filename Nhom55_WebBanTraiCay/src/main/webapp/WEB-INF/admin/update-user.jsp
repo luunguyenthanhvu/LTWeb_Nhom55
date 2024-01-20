@@ -23,7 +23,8 @@
         <div class="logo-details">
             <i>
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512">
-                    <path d="M36.8 192H603.2c20.3 0 36.8-16.5 36.8-36.8c0-7.3-2.2-14.4-6.2-20.4L558.2 21.4C549.3 8 534.4 0 518.3 0H121.7c-16 0-31 8-39.9 21.4L6.2 134.7c-4 6.1-6.2 13.2-6.2 20.4C0 175.5 16.5 192 36.8 192zM64 224V384v80c0 26.5 21.5 48 48 48H336c26.5 0 48-21.5 48-48V384 224H320V384H128V224H64zm448 0V480c0 17.7 14.3 32 32 32s32-14.3 32-32V224H512z"/></svg>
+                    <path d="M36.8 192H603.2c20.3 0 36.8-16.5 36.8-36.8c0-7.3-2.2-14.4-6.2-20.4L558.2 21.4C549.3 8 534.4 0 518.3 0H121.7c-16 0-31 8-39.9 21.4L6.2 134.7c-4 6.1-6.2 13.2-6.2 20.4C0 175.5 16.5 192 36.8 192zM64 224V384v80c0 26.5 21.5 48 48 48H336c26.5 0 48-21.5 48-48V384 224H320V384H128V224H64zm448 0V480c0 17.7 14.3 32 32 32s32-14.3 32-32V224H512z"/>
+                </svg>
             </i>
             <span class="logo_name">Quản trị viên</span>
         </div>
@@ -33,11 +34,12 @@
                     <a href="#">
                         <i>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                                <path d="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/></svg>
+                                <path d="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z"/>
+                            </svg>
                         </i>
                         <span class="link_name">Tài khoản</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
@@ -49,11 +51,13 @@
                 <div class="iocn-link">
                     <a href="#">
                         <i>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M121 32C91.6 32 66 52 58.9 80.5L1.9 308.4C.6 313.5 0 318.7 0 323.9V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V323.9c0-5.2-.6-10.4-1.9-15.5l-57-227.9C446 52 420.4 32 391 32H121zm0 64H391l48 192H387.8c-12.1 0-23.2 6.8-28.6 17.7l-14.3 28.6c-5.4 10.8-16.5 17.7-28.6 17.7H195.8c-12.1 0-23.2-6.8-28.6-17.7l-14.3-28.6c-5.4-10.8-16.5-17.7-28.6-17.7H73L121 96z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <path d="M121 32C91.6 32 66 52 58.9 80.5L1.9 308.4C.6 313.5 0 318.7 0 323.9V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V323.9c0-5.2-.6-10.4-1.9-15.5l-57-227.9C446 52 420.4 32 391 32H121zm0 64H391l48 192H387.8c-12.1 0-23.2 6.8-28.6 17.7l-14.3 28.6c-5.4 10.8-16.5 17.7-28.6 17.7H195.8c-12.1 0-23.2-6.8-28.6-17.7l-14.3-28.6c-5.4-10.8-16.5-17.7-28.6-17.7H73L121 96z"/>
+                            </svg>
                         </i>
                         <span class="link_name">Sản phẩm</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
@@ -67,11 +71,12 @@
                     <a href="#">
                         <i>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
-                                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                            </svg>
                         </i>
                         <span class="link_name">Đơn hàng</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Đơn hàng</a></li>
@@ -83,11 +88,12 @@
                     <a href="#">
                         <i>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                                <path d="M160 80c0-26.5 21.5-48 48-48h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V80zM0 272c0-26.5 21.5-48 48-48H80c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V272zM368 96h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H368c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48z"/></svg>
+                                <path d="M160 80c0-26.5 21.5-48 48-48h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H208c-26.5 0-48-21.5-48-48V80zM0 272c0-26.5 21.5-48 48-48H80c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V272zM368 96h32c26.5 0 48 21.5 48 48V432c0 26.5-21.5 48-48 48H368c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48z"/>
+                            </svg>
                         </i>
                         <span class="link_name">Doanh thu</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Doanh thu</a></li>
@@ -100,11 +106,12 @@
                     <a href="#">
                         <i>
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512">
-                                <path d="M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H106.7C47.8 192 0 239.8 0 298.7zM320 320c24 0 45.9-8.8 62.7-23.3c2.5-3.7 5.2-7.3 8-10.7c2.7-3.3 5.7-6.1 9-8.3C410 262.3 416 243.9 416 224c0-53-43-96-96-96s-96 43-96 96s43 96 96 96zm65.4 60.2c-10.3-5.9-18.1-16.2-20.8-28.2H261.3C187.7 352 128 411.7 128 485.3c0 14.7 11.9 26.7 26.7 26.7H455.2c-2.1-5.2-3.2-10.9-3.2-16.4v-3c-1.3-.7-2.7-1.5-4-2.3l-2.6 1.5c-16.8 9.7-40.5 8-54.7-9.7c-4.5-5.6-8.6-11.5-12.4-17.6l-.1-.2-.1-.2-2.4-4.1-.1-.2-.1-.2c-3.4-6.2-6.4-12.6-9-19.3c-8.2-21.2 2.2-42.6 19-52.3l2.7-1.5c0-.8 0-1.5 0-2.3s0-1.5 0-2.3l-2.7-1.5zM533.3 192H490.7c-15.9 0-31 3.5-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 17.4-3.5 33.9-9.7 49c2.5 .9 4.9 2 7.1 3.3l2.6 1.5c1.3-.8 2.6-1.6 4-2.3v-3c0-19.4 13.3-39.1 35.8-42.6c7.9-1.2 16-1.9 24.2-1.9s16.3 .6 24.2 1.9c22.5 3.5 35.8 23.2 35.8 42.6v3c1.3 .7 2.7 1.5 4 2.3l2.6-1.5c16.8-9.7 40.5-8 54.7 9.7c2.3 2.8 4.5 5.8 6.6 8.7c-2.1-57.1-49-102.7-106.6-102.7zm91.3 163.9c6.3-3.6 9.5-11.1 6.8-18c-2.1-5.5-4.6-10.8-7.4-15.9l-2.3-4c-3.1-5.1-6.5-9.9-10.2-14.5c-4.6-5.7-12.7-6.7-19-3L574.4 311c-8.9-7.6-19.1-13.6-30.4-17.6v-21c0-7.3-4.9-13.8-12.1-14.9c-6.5-1-13.1-1.5-19.9-1.5s-13.4 .5-19.9 1.5c-7.2 1.1-12.1 7.6-12.1 14.9v21c-11.2 4-21.5 10-30.4 17.6l-18.2-10.5c-6.3-3.6-14.4-2.6-19 3c-3.7 4.6-7.1 9.5-10.2 14.6l-2.3 3.9c-2.8 5.1-5.3 10.4-7.4 15.9c-2.6 6.8 .5 14.3 6.8 17.9l18.2 10.5c-1 5.7-1.6 11.6-1.6 17.6s.6 11.9 1.6 17.5l-18.2 10.5c-6.3 3.6-9.5 11.1-6.8 17.9c2.1 5.5 4.6 10.7 7.4 15.8l2.4 4.1c3 5.1 6.4 9.9 10.1 14.5c4.6 5.7 12.7 6.7 19 3L449.6 457c8.9 7.6 19.2 13.6 30.4 17.6v21c0 7.3 4.9 13.8 12.1 14.9c6.5 1 13.1 1.5 19.9 1.5s13.4-.5 19.9-1.5c7.2-1.1 12.1-7.6 12.1-14.9v-21c11.2-4 21.5-10 30.4-17.6l18.2 10.5c6.3 3.6 14.4 2.6 19-3c3.7-4.6 7.1-9.4 10.1-14.5l2.4-4.2c2.8-5.1 5.3-10.3 7.4-15.8c2.6-6.8-.5-14.3-6.8-17.9l-18.2-10.5c1-5.7 1.6-11.6 1.6-17.5s-.6-11.9-1.6-17.6l18.2-10.5zM472 384a40 40 0 1 1 80 0 40 40 0 1 1 -80 0z"/></svg>
+                                <path d="M144 160A80 80 0 1 0 144 0a80 80 0 1 0 0 160zm368 0A80 80 0 1 0 512 0a80 80 0 1 0 0 160zM0 298.7C0 310.4 9.6 320 21.3 320H234.7c.2 0 .4 0 .7 0c-26.6-23.5-43.3-57.8-43.3-96c0-7.6 .7-15 1.9-22.3c-13.6-6.3-28.7-9.7-44.6-9.7H106.7C47.8 192 0 239.8 0 298.7zM320 320c24 0 45.9-8.8 62.7-23.3c2.5-3.7 5.2-7.3 8-10.7c2.7-3.3 5.7-6.1 9-8.3C410 262.3 416 243.9 416 224c0-53-43-96-96-96s-96 43-96 96s43 96 96 96zm65.4 60.2c-10.3-5.9-18.1-16.2-20.8-28.2H261.3C187.7 352 128 411.7 128 485.3c0 14.7 11.9 26.7 26.7 26.7H455.2c-2.1-5.2-3.2-10.9-3.2-16.4v-3c-1.3-.7-2.7-1.5-4-2.3l-2.6 1.5c-16.8 9.7-40.5 8-54.7-9.7c-4.5-5.6-8.6-11.5-12.4-17.6l-.1-.2-.1-.2-2.4-4.1-.1-.2-.1-.2c-3.4-6.2-6.4-12.6-9-19.3c-8.2-21.2 2.2-42.6 19-52.3l2.7-1.5c0-.8 0-1.5 0-2.3s0-1.5 0-2.3l-2.7-1.5zM533.3 192H490.7c-15.9 0-31 3.5-44.6 9.7c1.3 7.2 1.9 14.7 1.9 22.3c0 17.4-3.5 33.9-9.7 49c2.5 .9 4.9 2 7.1 3.3l2.6 1.5c1.3-.8 2.6-1.6 4-2.3v-3c0-19.4 13.3-39.1 35.8-42.6c7.9-1.2 16-1.9 24.2-1.9s16.3 .6 24.2 1.9c22.5 3.5 35.8 23.2 35.8 42.6v3c1.3 .7 2.7 1.5 4 2.3l2.6-1.5c16.8-9.7 40.5-8 54.7 9.7c2.3 2.8 4.5 5.8 6.6 8.7c-2.1-57.1-49-102.7-106.6-102.7zm91.3 163.9c6.3-3.6 9.5-11.1 6.8-18c-2.1-5.5-4.6-10.8-7.4-15.9l-2.3-4c-3.1-5.1-6.5-9.9-10.2-14.5c-4.6-5.7-12.7-6.7-19-3L574.4 311c-8.9-7.6-19.1-13.6-30.4-17.6v-21c0-7.3-4.9-13.8-12.1-14.9c-6.5-1-13.1-1.5-19.9-1.5s-13.4 .5-19.9 1.5c-7.2 1.1-12.1 7.6-12.1 14.9v21c-11.2 4-21.5 10-30.4 17.6l-18.2-10.5c-6.3-3.6-14.4-2.6-19 3c-3.7 4.6-7.1 9.5-10.2 14.6l-2.3 3.9c-2.8 5.1-5.3 10.4-7.4 15.9c-2.6 6.8 .5 14.3 6.8 17.9l18.2 10.5c-1 5.7-1.6 11.6-1.6 17.6s.6 11.9 1.6 17.5l-18.2 10.5c-6.3 3.6-9.5 11.1-6.8 17.9c2.1 5.5 4.6 10.7 7.4 15.8l2.4 4.1c3 5.1 6.4 9.9 10.1 14.5c4.6 5.7 12.7 6.7 19 3L449.6 457c8.9 7.6 19.2 13.6 30.4 17.6v21c0 7.3 4.9 13.8 12.1 14.9c6.5 1 13.1 1.5 19.9 1.5s13.4-.5 19.9-1.5c7.2-1.1 12.1-7.6 12.1-14.9v-21c11.2-4 21.5-10 30.4-17.6l18.2 10.5c6.3 3.6 14.4 2.6 19-3c3.7-4.6 7.1-9.4 10.1-14.5l2.4-4.2c2.8-5.1 5.3-10.3 7.4-15.8c2.6-6.8-.5-14.3-6.8-17.9l-18.2-10.5c1-5.7 1.6-11.6 1.6-17.5s-.6-11.9-1.6-17.6l18.2-10.5zM472 384a40 40 0 1 1 80 0 40 40 0 1 1 -80 0z"/>
+                            </svg>
                         </i>
                         <span class="link_name">Người dùng</span>
                     </a>
-                    <i class='bx bxs-chevron-down arrow' ></i>
+                    <i class='bx bxs-chevron-down arrow'></i>
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
@@ -116,7 +123,7 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${user.getImg()}" alt="profileImg">
+                        <img src="${admin.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
                         <div class="profile_name">${user.getUsername()}</div>
@@ -125,7 +132,8 @@
                     <a href="${pageContext.request.contextPath}/logout">
                         <i style="transform: rotate(180deg); ">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+                            </svg>
                         </i>
                     </a>
                 </div>
@@ -135,74 +143,106 @@
     <section class="home-section">
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
-                <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+                <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+            </svg>
             <span class="text">Cập nhật thông tin người dùng</span>
         </div>
 
-        <div class="content-container" >
+        <div class="content-container">
             <form action="updateUser" method="post" class="main-content">
                 <div class="user-info">
                     <div class="img-user">
-                        <img style="width: 100px; height: 100px" src="${user.getImg()}">
+                        <img style="width: 100px; height: 100px" src="/static/images/accountPicture.png">
                     </div>
                     <table>
                         <tr>
                             <td><label for="id">ID người dùng <span class="not-empty"> *</span></label></td>
-                            <td><input id="id" placeholder="ID" name="id_nguoi_dung" value="${user.getId()}" readonly >></td>
-<%--                            <td> <input type="hidden" name="id_nguoi_dung" value="${user.getId()}"</td>--%>
+                            <td><input id="id" placeholder="ID" name="id_nguoi_dung" value="${user.getId()}" readonly>
+                            </td>
+                            <%--                            <td> <input type="hidden" name="id_nguoi_dung" value="${user.getId()}"</td>--%>
                         </tr>
                         <tr>
                             <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
-                            <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${user.getUsername()}" >
-                                <span class="error-msg required" id="username-error"  style="display: none;color: red" ></span>
-                                <c:if test="${not empty error_name}" >
+                            <td><input id="ten_nd" placeholder="họ & tên" name="username" value="${user.getUsername()}">
+                                <span class="error-msg required" id="username-error"
+                                      style="display: none;margin-left: 20px; color: red"></span>
+                                <c:if test="${not empty error_name}">
                                     <p style="color: red">${error_name}</p>
                                 </c:if>
                             </td>
                         </tr>
                         <tr>
-                            <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
+                            <td><label for="gioi_tinh_nd">Giới tính <span style="color: red">*</span></label></td>
                             <td class="gender-td" id="gioi_tinh_nd">
-                                <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" ${user.getSexual().equals("Nam") ? 'checked' : ''}>
-                                <label for="male">Nam</label>
-                                <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ" ${user.getSexual().equals("Nữ") ? 'checked' : ''}>
-                                <label for="female">Nữ</label>
+                                <c:choose>
+                                    <c:when test="${not empty user.getSexual() and user.getSexual().equals('Nam')}">
+                                        <!-- Nếu giới tính là Nam, đặt checked cho radio button Nam -->
+                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" checked>
+                                        <label for="male">Nam</label>
+                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ">
+                                        <label for="female">Nữ</label>
+                                    </c:when>
+                                    <c:when test="${not empty user.getSexual() and user.getSexual().equals('Nữ')}">
+                                        <!-- Nếu giới tính là Nữ, đặt checked cho radio button Nữ -->
+                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam">
+                                        <label for="male">Nam</label>
+                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ" checked>
+                                        <label for="female">Nữ</label>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Nếu giới tính là null hoặc giá trị không xác định, đặt mặc định là Nam -->
+                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" checked>
+                                        <label for="male">Nam</label>
+                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ">
+                                        <label for="female">Nữ</label>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:if test="${not empty error_gender}">
+                                    <p style="color: red; margin-left: 60px">${error_gender}</p>
+                                </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td><label for="dob">Ngày sinh<span class="not-empty"> *</span></label></td>
-                            <td><input type="date" id="dob" name="dob" value="${user.getDateOfBirth()}"></td>
-                            <span class="error-msg required" id="dob-error" style="display: none;margin-left: 60px;color: red"></span>
-                            <c:if test="${not empty error_dob}" >
-                                <p style="color: red">${error_dob}</p>
-                            </c:if>
+                            <td><input type="date" id="dob" name="dob" value="${user.getDateOfBirth()}">
+                                <span class="error-msg required" id="dob-error"
+                                      style="display: none;margin-left: 20px;color: red"></span>
+                                <c:if test="${not empty error_dob}">
+                                    <p style="color: red">${error_dob}</p>
+                                </c:if>
+                            </td>
                         </tr>
                         <tr>
                             <td><label for="email_nd">Email <span class="not-empty"> *</span></label></td>
                             <td><input id="email_nd" placeholder="email" name="email" value="${user.getEmail()}">
-                                <span class="error-msg required" id="email-error" style="display: none;margin-left: 60px;color: red"></span>
-                                <c:if test="${not empty error_email}" >
+                                <span class="error-msg required" id="email-error"
+                                      style="display: none;margin-left: 20px;color: red"></span>
+                                <c:if test="${not empty error_email}">
                                     <p style="color: red">${error_email}</p>
                                 </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td><label for="dc_nd">Địa chỉ<span class="not-empty"> *</span></label></td>
-                            <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${user.getAddress()}" >
-                                <span class="error-msg required" id="address-error" style="display: none;color: red"></span>
-                                <c:if test="${not empty error_address}" >
+                            <td><input id="dc_nd" name="address" placeholder="địa chỉ" value="${user.getAddress()}">
+                                <span class="error-msg required" id="address-error"
+                                      style="display: none;margin-left: 20px;color: red"></span>
+                                <c:if test="${not empty error_address}">
                                     <p style="color: red">${error_address}</p>
                                 </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td><label for="sdt_nd">Số điện thoại<span class="not-empty"> *</span></label></td>
-                            <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại" value="${user.getPhoneNumber()}" >
+                            <td><input type="text" id="sdt_nd" name="phoneNum" placeholder="số điện thoại"
+                                       value="${user.getPhoneNumber()}">
+                                <span class="error-msg required" id="phoneNumber-error"
+                                      style="display: none;margin-left: 20px;color: red"></span>
+                                <c:if test="${not empty error_phoneNumber}">
+                                    <p style="color: red">${error_phoneNumber}</p>
+                                </c:if>
                             </td>
-                            <span class="error-msg required" id="phoneNumber-error" style="display: none;margin-left: 60px;color: red"></span>
-                            <c:if test="${not empty error_phoneNumber}" >
-                                <p style="color: red">${error_phoneNumber}</p>
-                            </c:if>
+
                         </tr>
                         <tr>
                             <td>Vai trò</td>
@@ -225,29 +265,28 @@
                             </td>
                         </tr>
                     </table>
-                    <button class="update-admin">
+                    <button id="saveUserInfo" class="update-admin" type="submit">
                         Lưu Thông tin
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
+                            <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/>
+                        </svg>
                     </button>
-                    <button  class="update-admin" type="reset">
+                    <button class="update-admin" type="reset">
                         Làm mới
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/></svg>
+                            <path d="M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z"/>
+                        </svg>
                     </button>
                 </div>
-                <p style="color: red;text-align: center"> ${result}</p>
             </form>
-
         </div>
-
     </section>
 </div>
 
 <script>
     let arrow = document.querySelectorAll(".arrow");
     for (var i = 0; i < arrow.length; i++) {
-        arrow[i].addEventListener("click", (e)=>{
+        arrow[i].addEventListener("click", (e) => {
             let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
             arrowParent.classList.toggle("showMenu");
         });
@@ -256,15 +295,15 @@
     let sidebarBtn = document.querySelector(".bx-menu");
 
     console.log(sidebarBtn);
-    sidebarBtn.addEventListener("click", ()=>{
+    sidebarBtn.addEventListener("click", () => {
         sidebar.classList.toggle("close");
     });
 
-    $(document).ready(function(){
-        $('#fileInput').change(function(e) {
+    $(document).ready(function () {
+        $('#fileInput').change(function (e) {
             var file = e.target.files[0];
             var reader = new FileReader();
-            reader.onload = function(event) {
+            reader.onload = function (event) {
                 $('#previewImage').attr('src', event.target.result);
             };
             reader.readAsDataURL(file);
@@ -272,9 +311,11 @@
     });
 
     var myVar;
+
     function myFunction() {
         myVar = setTimeout(showPage, 800);
     }
+
     function showPage() {
         document.getElementById("loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
@@ -301,229 +342,175 @@
                 reader.readAsDataURL(file);
             });
         });
-
-
-        function validateInput(inputId, errorId, requiredErrorMsg, formatErrorMsg, validationRegex) {
-            var text = document.getElementById(inputId).value;
-            var error = document.getElementById(errorId);
-
-            if (text.length === 0 || text === null) {
-                error.textContent = requiredErrorMsg;
-                error.style.display = "block";
-                return false;
-            } else if (!validationRegex.test(text)) {
-                error.textContent = formatErrorMsg;
-                error.style.display = "block";
-                return false;
-            } else {
-                error.style.display = "none";
-                return true;
-            }
-        }
-
-        function validateForm() {
-            // var tenUser = document.getElementById("ten_nd").value;
-            // var emailUser = document.getElementById("email_nd").value;
-            // // var genderUser = document.getElementById("gioi_tinh_nd");
-            // var addressUser = document.getElementById("dc_nd").value;
-            // var phoneNumberUser = document.getElementById("sdt_nd").value;
-            // var dateOfBirthUser = document.getElementById("dob").value;
-            // var upFileAnh = document.getElementById("fileInput").value;
-            var isValid = true;
-
-            // validate userName
-            isValid = validateInput("ten_nd", "username-error", "Vui lòng nhập tên", "Tên chỉ chứa ký tự chữ cái, khoảng trắng.", /^[\p{L}\s']+$/u) && isValid;
-
-            // validate email
-            isValid = validateInput("email_nd", "email-error", "Vui lòng nhập email", "Định dạng email không hợp lệ.", /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/) && isValid;
-
-            // validate address
-            isValid = validateInput("dc_nd", "address-error", "Vui lòng nhập địa chỉ", "Địa chỉ chỉ chứa ký tự chữ cái, khoảng trắng.", /^[\p{L}\s']+$/u) && isValid;
-
-            // validate phone number
-            isValid = validateInput("sdt_nd", "phoneNumber-error", "Vui lòng nhập số điện thoại", "Số điện thoại chỉ được chứa ký tự số.", /^\d+$/) && isValid;
-
-            // validate date of birth
-            isValid = validateInput("dob", "dob-error", "Vui lòng nhập ngày tháng năm sinh", "Định dạng ngày tháng năm không hợp lệ.", /^\d{4}-\d{2}-\d{2}$/) && isValid;
-
-            // validate file upload
-            // isValid = validateInput("fileInput", "fileUpload-error", "Vui lòng chọn file ảnh", "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.", /(\.jpg|\.jpeg|\.png|\.gif)$/i) && isValid;
-
-            return isValid;
-        }
     });
 
-    // var tenUser = document.getElementById("ten_nd");
-    // var emailUser = document.getElementById("email_nd");
-    // // var genderUser = document.getElementById("gioi_tinh_nd");
-    // var addressUser = document.getElementById("dc_nd");
-    // var phoneNumberUser = document.getElementById("sdt_nd");
-    // var dateOfBirthUser = document.getElementById("dob");
-    // var upFileAnh = document.getElementById("fileInput");
-    // var isUserInput = false;
-    //
-    // function validateTenUser() {
-    //     var text = tenUser.value;
-    //     var kyTuHopLe = /^[\p{L}\s']+$/u;
-    //     var error = document.getElementById("username-error");
-    //     if (text.length == 0 || text == null) {
-    //         error.textContent = "Vui lòng nhập tên";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else if (!kyTuHopLe.test(text)) {
-    //         error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else {
-    //         error.style.display = "none";
-    //         return true;
-    //     }
-    // }
-    //
-    // // function validateGenderUser() {
-    // //     var maleCheckbox = document.getElementById("male");
-    // //     var femaleCheckbox = document.getElementById("female");
-    // //     var error = document.getElementById("gender-error");
-    // //
-    // //     // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
-    // //     if (!maleCheckbox.checked && !femaleCheckbox.checked) {
-    // //         error.textContent = "Vui lòng chọn giới tính";
-    // //         error.style.display = "block";
-    // //         return false;
-    // //     } else {
-    // //         error.style.display = "none";
-    // //         return true;
-    // //     }
-    // // }
-    //
-    // function validateEmailUser() {
-    //     var text = emailUser.value;
-    //     var kyTuHopLe = /^[\p{L}\s']+$/u;
-    //     var error = document.getElementById("email-error");
-    //
-    //     // Check if the email contains "@gmail.com"
-    //     if (!text.includes("@gmail.com")) {
-    //         error.textContent = "Email phải chứa địa chỉ @gmail.com";
-    //         error.style.display = "block";
-    //         return false;
-    //     }
-    //
-    //     if (text.length == 0 || text == null) {
-    //         error.textContent = "Vui lòng nhập email";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else if (!kyTuHopLe.test(text)) {
-    //         error.style.display = "block";
-    //         return false;
-    //     } else {
-    //         error.style.display = "none";
-    //         return true;
-    //     }
-    // }
-    //
-    // function validateAddressUser() {
-    //     var text = addressUser.value;
-    //     var kyTuHopLe = /^[\p{L}\s']+$/u;
-    //     var error = document.getElementById("address-error");
-    //     if (text.length == 0 || text == null) {
-    //         error.textContent = "Vui lòng nhập địa chỉ";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else if (!kyTuHopLe.test(text)) {
-    //         error.style.display = "block";
-    //         return false;
-    //     } else {
-    //         error.style.display = "none";
-    //         return true;
-    //     }
-    // }
-    //
-    // function validatePhoneNumberUser() {
-    //     var text = phoneNumberUser.value;
-    //     var numericRegex = /^\d+$/;
-    //     var error = document.getElementById("phoneNumber-error");
-    //
-    //     if (text.length === 0 || text === null) {
-    //         error.textContent = "Vui lòng nhập số điện thoại";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else if (!numericRegex.test(text)) {
-    //         error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else {
-    //         error.style.display = "none";
-    //         return true;
-    //     }
-    // }
-    //
-    // function validateDateOfBirth() {
-    //     var dateOfBirthInput = document.getElementById("dob");
-    //     var dateOfBirthValue = dateOfBirthInput.value;
-    //     var error = document.getElementById("dob-error");
-    //
-    //     // Kiểm tra xem ngày tháng năm có được nhập hay không
-    //     if (dateOfBirthValue.length === 0 || dateOfBirthValue == null) {
-    //         error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
-    //         error.style.display = "block";
-    //         return false;
-    //     }
-    //
-    //     // Kiểm tra định dạng ngày tháng năm
-    //     var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    //     if (!dateRegex.test(dateOfBirthValue)) {
-    //         error.textContent = "Định dạng ngày tháng năm không hợp lệ.";
-    //         error.style.display = "block";
-    //         return false;
-    //     }
-    //
-    //     // Kiểm tra xem ngày tháng năm có hợp lệ trong quy tắc lịch hay không (ví dụ: không nhập ngày từ tương lai)
-    //     var currentDate = new Date();
-    //     var inputDate = new Date(dateOfBirthValue);
-    //     if (inputDate > currentDate) {
-    //         error.textContent = "Ngày tháng năm sinh không được là ngày ở tương lai.";
-    //         error.style.display = "block";
-    //         return false;
-    //     }
-    //
-    //     // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
-    //     error.style.display = "none";
-    //     return true;
-    // }
-    //
-    // function validateFileUpload() {
-    //     var inputUpload = document.getElementById("fileInput");
-    //     var error = document.getElementById("fileUpload-error");
-    //
-    //     // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
-    //     if (inputUpload.files.length === 0) {
-    //         error.textContent = "Vui lòng chọn file ảnh.";
-    //         error.style.display = "block";
-    //         return false;
-    //     }
-    //
-    //     // Kiểm tra định dạng tệp (ở đây, mình chỉ cho phép tệp hình ảnh)
-    //     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-    //     if (!allowedExtensions.test(inputUpload.value)) {
-    //         error.textContent = "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.";
-    //         error.style.display = "block";
-    //         return false;
-    //     }
-    //
-    //     // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
-    //     error.style.display = "none";
-    //     return true;
-    // }
-    //
-    //
-    //
-    // tenUser.addEventListener("blur", validateTenUser);
-    // emailUser.addEventListener("blur", validateEmailUser);
-    // addressUser.addEventListener("blur", validateAddressUser);
-    // phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
-    // dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
-    // upFileAnh.addEventListener("blur", validateFileUpload);
+    var tenUser = document.getElementById("ten_nd");
+    var emailUser = document.getElementById("email_nd");
+    var genderUser = document.getElementById("gioi_tinh_nd");
+    var addressUser = document.getElementById("dc_nd");
+    var phoneNumberUser = document.getElementById("sdt_nd");
+    var dateOfBirthUser = document.getElementById("dob");
+    var upFileAnh = document.getElementById("fileInput");
 
+    function validateTenUser() {
+        var text = tenUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("username-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập tên";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateGenderUser() {
+        var maleCheckbox = document.getElementById("male");
+        var femaleCheckbox = document.getElementById("female");
+        var error = document.getElementById("gender-error");
+
+        // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
+        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+            error.textContent = "Vui lòng chọn giới tính";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateEmailUser() {
+        var text = emailUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("email-error");
+
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập email";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            // Check if the email contains "@gmail.com"
+            if (!text.includes("@gmail.com")) {
+                error.textContent = "Email phải chứa địa chỉ @gmail.com";
+                error.style.display = "block";
+                return false;
+            }
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateAddressUser() {
+        var text = addressUser.value;
+        var kyTuHopLe = /^[a-zA-Z0-9\s]*$/;
+        var error = document.getElementById("address-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập địa chỉ.";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Địa chỉ chỉ chứa chữ cái, chữ số, khoảng trắng";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validatePhoneNumberUser() {
+        var text = phoneNumberUser.value;
+        var error = document.getElementById("phoneNumber-error");
+
+        if (text.length === 0 || text === null) {
+            error.textContent = "Vui lòng nhập số điện thoại";
+            error.style.display = "block";
+            return false;
+        } else if (isNaN(text)) {
+            error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateDateOfBirth() {
+        var dateOfBirthInput = document.getElementById("dob");
+        var dateOfBirthValue = dateOfBirthInput.value;
+        var error = document.getElementById("dob-error");
+
+        // Kiểm tra xem ngày tháng năm có được nhập hay không
+        if (dateOfBirthValue.length === 0 || dateOfBirthValue == null) {
+            error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra xem ngày tháng năm có hợp lệ trong quy tắc lịch hay không (ví dụ: không nhập ngày từ tương lai)
+        var currentDate = new Date();
+        var inputDate = new Date(dateOfBirthValue);
+        if (inputDate > currentDate) {
+            error.textContent = "Ngày tháng năm sinh không được là ngày ở tương lai.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
+        error.style.display = "none";
+        return true;
+    }
+
+    function validateFileUpload() {
+        var inputUploadFile = document.getElementById("fileInput");
+        var error = document.getElementById("fileUpload-error");
+
+        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
+        if (inputUploadFile.files.length === 0) {
+            error.textContent = "Vui lòng chọn file ảnh.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+
+    tenUser.addEventListener("blur", validateTenUser);
+    emailUser.addEventListener("blur", validateEmailUser);
+    genderUser.addEventListener("blur", validateGenderUser);
+    addressUser.addEventListener("blur", validateAddressUser);
+    phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
+    dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
+    upFileAnh.addEventListener("blur", validateFileUpload);
+
+    // stop user send post to server
+    var submit = document.getElementById("saveUserInfo");
+    submit.addEventListener("click", function (event) {
+        var isTenUser = validateTenUser();
+        var isEmail = validateEmail();
+        var isGenderUser = validateGenderUser();
+        var isAddressUser = validateAddressUser();
+        var isPhoneNumberUser = validatePhoneNumberUser();
+        var isDateOfBirth = validateDateOfBirth();
+        var isFileUpLoad = validateFileUpload();
+        if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
+            || !isPhoneNumberUser || !isDateOfBirth || !isFileUpLoad) {
+            event.preventDefault();
+        }
+    })
 </script>
 
 </body>

@@ -262,7 +262,7 @@
             <c:forEach items="${listProducts}" var="product">
                 <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
                     <div class="product">
-                        <a href="" class="img-prod"><img
+                        <a href="/static/images/accountPicture.png" class="img-prod"><img
                                 style="width: 205px; height: 164px; object-fit: cover"
                                 class="img-fluid" src="${product.getImg()}"
                                 alt="Colorlib Template">

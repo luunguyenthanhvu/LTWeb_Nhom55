@@ -3,9 +3,11 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/edit-admin-profile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/searchUserResult.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/user-list.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/admin" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/login/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/login" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user/chinh-sua-thong-tin-user.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user" />
       </map>
     </option>

@@ -41,17 +41,18 @@ public class UpdatePasswordUser extends HttpServlet {
           // xoa session hien tai
           MyUtils.removeLoginedUser(session);
           MyUtils.removeCart(session);
+
           RequestDispatcher dispatcher = this.getServletContext()
                   .getRequestDispatcher("/WEB-INF/login/login.jsp");
           dispatcher.forward(request, response);
         } else {
-          request.setAttribute("result", "Đổi mật khẩu không thành công");
+          request.setAttribute("result", "Có lỗi xảy ra khi đổi mật khẩu");
           RequestDispatcher dispatcher = this.getServletContext()
                   .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
           dispatcher.forward(request, response);
         }
       } else {
-        request.setAttribute("result", "Mật khẩu cũ không đúng");
+        request.setAttribute("result", "Mật khẩu cũ không trùng khớp");
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/user/update-user-password.jsp");
         dispatcher.forward(request, response);

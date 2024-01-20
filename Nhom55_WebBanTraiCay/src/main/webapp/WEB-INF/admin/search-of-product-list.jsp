@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="myFunction()" style="margin:0;">
+<div id="toast">
+</div>
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
     <div class="sidebar close">
@@ -291,6 +294,7 @@
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>
+
 <script src="${pageContext.request.contextPath}/static/js/admin-js/product-list.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>

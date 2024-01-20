@@ -33,6 +33,11 @@ public class Products {
         this.provider = provider;
     }
 
+    public Products(int id, double weight) {
+        this.id = id;
+        this.weight = weight;
+    }
+
     public int getId() {
         return id;
     }

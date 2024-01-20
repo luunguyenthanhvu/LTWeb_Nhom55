@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<%--
+  Created by IntelliJ IDEA.
+  User: PC
+  Date: 21/01/2024
+  Time: 2:58 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en" dir="ltr">
 <head>
-    <fmt:setLocale value="vi_VN"/>
-    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Link Icon-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/admin-css/add-product.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/popup.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
+
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="myFunction()" style="margin:0;">
-<div id="toast">
-</div>
 <div id="loader"></div>
 <div style="display:none;" id="myDiv" class="animate-bottom">
     <div class="sidebar close">
@@ -48,7 +56,7 @@
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
                     <li><a href="admin-profile">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
+                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -125,6 +133,7 @@
                     <li><a class="link_name" href="#">Người dùng</a></li>
                     <li><a href="userList">Danh sách người dùng</a></li>
                     <li><a href="AddUser">Thêm người dùng</a></li>
+
                 </ul>
             </li>
 
@@ -167,179 +176,68 @@
             </li>
         </ul>
     </div>
-    <section class="home-section" style="height: 100%; margin-bottom: 20px">
+    <section class="home-section">
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em"
                  viewBox="0 0 448 512">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
             </svg>
-            <span class="text">Danh sách sản phẩm</span>
+            <span class="text">
+                Doanh thu theo tháng</span>
         </div>
-        <div class="find-product">
-            <form action="ProductListController?index=1" method="post">
-                <div class="fill-product">
-                    <input id="find-product" type="text" placeholder="Tìm kiếm tên sản phẩm"
-                           name="txtSearch">
-                    <button type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                            <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-                        </svg>
-                    </button>
+        <div class="mb-4 container" id="doanhThuThang" style="margin-bottom: 20px">
+            <div class="card" style="background-color: white; border-radius: 20px;">
+                <div class="card-header py-3">
+                    <h5 style="text-align:  center; font-size: 24px; font-weight: bold; padding-bottom: 10px">Doanh thu theo tháng</h5>
                 </div>
-            </form>
-        </div>
-        <div class="container" style="margin: 30px 30px 0 30px">
-            <div class="table-sanpham">
-                <table class="table-sanpham">
-                    <tr>
-                        <th style="width: 80px;">ID</th>
-                        <th style="width: 200px">Tên sản phẩm</th>
-                        <th style="width: 100px;">Hình ảnh</th>
-                        <th style="width: 100px;">Giá tiền</th>
-                        <th style="width: 90px;">Ngày nhập</th>
-                        <th style="width: 90px;">Hạn sử dụng</th>
-                        <th style="width: 90px;">Hàng tồn kho</th>
-                        <th style="width: 120px;">Chức năng</th>
-                    </tr>
-
-                    <c:forEach items="${listProduct}" var="product">
-                        <tr data-product-id="${product.getId()}">
-                            <td>${product.getId()}</td>
-                            <td>${product.getNameOfProduct()}</td>
-                            <td class="img-product">
-                                <img src="${product.getImg()}">
-                            </td>
-                            <td><fmt:formatNumber pattern="#,##0 ₫"
-                                                  value="${product.getPrice()}"/></td>
-                            <td>${product.getDateOfImporting()}</td>
-                            <td>${product.getExpriredDay()}</td>
-                            <td class="weight-product">${product.getWeight()} kg</td>
-                            <td class="function-product">
-                                <a href="update-product?id=${product.getId()}">
-                                    <svg class="fill-red" xmlns="http://www.w3.org/2000/svg"
-                                         height="1em" viewBox="0 0 512 512">
-                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
-                                    </svg>
-                                </a>
-                                <a href="delete-productController?id=${product.getId()}">
-                                    <svg class="fill-black" xmlns="http://www.w3.org/2000/svg"
-                                         height="1em" viewBox="0 0 448 512">
-                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
-                                    </svg>
-                                </a>
-                                <a href="javascript:void(0);"
-                                   onclick="addQuantity(${product.getId()})">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                         viewBox="0 0 512 512">
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                                        <path
-                                                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/>
-                                    </svg>
-                                </a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </div>
-            <div class="pagination">
-                <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
-                <c:if test="${pageId== 1 && haveMaxPage ==1}">
-                    <a>&laquo;</a>
-                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                        <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-                    </c:forEach>
-                    <a>&raquo;</a>
-                </c:if>
-                <c:if test="${ haveMaxPage !=1}">
-                    <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
-                    <c:if test="${pageId ==1}">
-                        <a>&laquo;</a>
-                        <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                            <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-                        </c:forEach>
-                        <a href="product-list?pageId=${pageId+1}">&raquo;</a>
-                    </c:if>
-                    <%--  Còn trường hợp này nút nào cũng xài được--%>
-                    <c:if test="${pageId >1 && pageId<haveMaxPage}">
-                        <a href="product-list?pageId=${pageId-1}">&laquo;</a>
-                        <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                            <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-                        </c:forEach>
-                        <a href="product-list?pageId=${pageId+1}">&raquo;</a>
-                    </c:if>
-
-                    <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
-                    <c:if test="${pageId ==haveMaxPage}">
-                        <a href="product-list?pageId=${pageId-1}">&laquo;</a>
-                        <c:forEach begin="1" end="${haveMaxPage}" var="i">
-                            <a id="${i}" href="product-list?pageId=${i}">${i}</a>
-                        </c:forEach>
-                        <a>&raquo;</a>
-                    </c:if>
-                </c:if>
+                <div class="card-body">
+                    <canvas id="horizontalBar"></canvas>
+                </div>
             </div>
         </div>
     </section>
 </div>
-<div class="popup-add-quantity" id="popup-add-quantity">
-    <div class="close-popup">
-        <a href="javascript:void(0);"
-           onclick="closePopup()">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 512 512">
-                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path
-                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z"/>
-            </svg>
-        </a>
-    </div>
-    <div id="form-popup-quantity">
-        <form action="javascript:void(0);" method="post">
-            <h3 style="padding: 10px 0">Thêm số lượng sản phẩm</h3>
-            <input id="input-quantity" class="input-quantity" type="text"
-                   placeholder="Nhập vào số lượng" name="quantity">
-            <p class="error" style="color: red; display: none" id="input-quantity-error"></p>
-            <br>
-            <button id="btn__submit-add-quantity" class="btn__submit-add-quantity" type="submit">
-                Thêm số lượng
-            </button>
-        </form>
-    </div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script>
-  let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e) => {
-      let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-      arrowParent.classList.toggle("showMenu");
-    });
-  }
-  let sidebar = document.querySelector(".sidebar");
-  let sidebarBtn = document.querySelector(".bx-menu");
-  console.log(sidebarBtn);
-  sidebarBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
+  new Chart(document.getElementById("horizontalBar"), {
+    "type": "horizontalBar",
+    "data": {
+      "labels": ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7",
+        "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+      "datasets": [{
+        "label": "Doanh thu VNĐ",
+        "data": [${totalMoneyMonth1}, ${totalMoneyMonth2}, ${totalMoneyMonth3},
+          ${totalMoneyMonth4}, ${totalMoneyMonth5}, ${totalMoneyMonth6}, ${totalMoneyMonth7},
+          ${totalMoneyMonth8}, ${totalMoneyMonth9}, ${totalMoneyMonth10}, ${totalMoneyMonth11},
+          ${totalMoneyMonth12}],
+        "fill": false,
+        "backgroundColor": ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)",
+          "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)",
+          "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "#99FF99", "#FFFF99", "#FFC1C1",
+          "#FFB5C5", "#DDC488"
+        ],
+        "borderColor": ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)",
+          "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)",
+          "	#66FF99", "#FFFF66", "#EEB4B4", "#EEA9B8", "#ECAB53"
+        ],
+        "borderWidth": 1
+      }]
+    },
+    "options": {
+      "scales": {
+        "xAxes": [{
+          "ticks": {
+            "beginAtZero": true
+          }
+        }]
+      }
+    }
   });
-
-  var myVar;
-
-  function myFunction() {
-    myVar = setTimeout(showPage, 800);
-  }
-
-  function showPage() {
-    document.getElementById("loader").style.display = "none";
-    document.getElementById("myDiv").style.display = "block";
-  }
-
-  //   Highlight cho nút đang được chọn ở phân trang
-  document.getElementById('${pageId}').classList.add("active")
 </script>
 </body>
+</body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/static/js/admin-js/product-list.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/admin-js/monthly-revenue.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

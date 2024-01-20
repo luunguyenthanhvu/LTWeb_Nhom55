@@ -1,4 +1,5 @@
 var productId;
+
 function addQuantity(id) {
   resetInput();
   productId = id;
@@ -25,6 +26,7 @@ function addQuantity(id) {
 }
 
 function closePopup() {
+  console.log("Closing popup");
   $(".overlay").hide();
   $("#popup-add-quantity").removeClass("show").addClass("hide");
   setTimeout(function () {
@@ -72,18 +74,21 @@ submitQuantity.addEventListener("click", function (event) {
   }
 });
 
-function addToCart(productId, quantity) {
+function addToCart(productId, weight) {
   $.ajax({
     type: 'POST',
     url: '/add-more-weight-product',
     data: {
       productId: productId,
-      quantity: quantity
+      weight: weight
     },
     success: function (response) {
-
+      hidePopup();
+      closePopup();
       showToast(response.message);
-
+      const row = document.querySelector(
+          'tr[data-product-id="' + productId + '"]');
+      $(row).find('.weight-product').text(response.updatedWeight + ' kg');
     },
     error: function (error) {
       console.log(error); // Xem nội dung của error object trong console
@@ -160,28 +165,14 @@ function toast({
 }
 
 function showToast(response) {
-  if(response === "Null User") {
-    toast({
-      title: 'Chưa đăng nhập',
-      message: 'Để sử dụng chức năng này bạn cần phải đăng nhập!',
-      type: 'warning',
-      duration: 3000
-    })
-  }  if(response === "Success") {
+  if (response === "Success") {
     toast({
       title: 'Thành công',
-      message: 'Sản phẩm đã được thêm vào giỏ hàng!',
+      message: 'Sản phẩm đã được thêm số lượng!',
       type: 'success',
       duration: 3000
     })
-  } else if(response === "Out of quantity") {
-    toast({
-      title: 'Tối đa sản phẩm',
-      message: 'Giỏ hàng không thể vượt quá tối đa sản phẩm tồn kho!',
-      type: 'info',
-      duration: 3000
-    })
-  } else if(response === "Product does not exist") {
+  } else if (response === "Product does not exist") {
     toast({
       title: 'Lỗi',
       message: 'Sản phẩm không tồn tại!',

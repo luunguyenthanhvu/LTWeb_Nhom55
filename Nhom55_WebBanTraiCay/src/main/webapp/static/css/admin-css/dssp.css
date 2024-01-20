@@ -180,5 +180,8 @@
 .filter-dropdown a:hover {
     background-color: #f1f1f1;
 }
+.function-product a {
+    text-decoration: none;
+}
 
 

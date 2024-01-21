@@ -184,8 +184,11 @@
                                 <label for="lastname">Họ <span style="color: red">*</span></label>
                                 <input name="ho_nguoi-dung" style="color: black !important;"
                                        id="lastname" type="text" class="form-control"
-                                       placeholder="Họ">
+                                       placeholder="Họ" value="${lastName}">
                                 <p style="color: red; display: none" id="lastname_error"></p>
+                                <c:if test="${not empty lastNameError}" >
+                                    <p style="color: red">${lastNameError}</p>
+                                </c:if>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -193,8 +196,11 @@
                                 <label for="firstname">Tên <span style="color: red">*</span></label>
                                 <input name="ten_nguoi-dung" style="color: black !important;"
                                        id="firstname" type="text" class="form-control"
-                                       placeholder="Tên">
+                                       placeholder="Tên" value="${firstName}">
                                 <p style="color: red; display: none" id="firstname_error"></p>
+                                <c:if test="${not empty firstNameError}" >
+                                   <p style="color: red">${firstNameError}</p>
+                                </c:if>
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -205,8 +211,11 @@
                                         style="color: red">*</span></label>
                                 <input name="dia-chi_nguoi-dung" style="color: black !important;"
                                        id="street-address" type="text" class="form-control"
-                                       placeholder="Tên đường và số nhà">
+                                       placeholder="Tên đường và số nhà" value="${address}">
                                 <p style="color: red; display: none" id="address_error"></p>
+                                <c:if test="${not empty addressError}" >
+                                    <p style="color: red">${addressError}</p>
+                                </c:if>
                             </div>
                         </div>
                         <div class="w-100"></div>
@@ -216,8 +225,11 @@
                                         style="color: red">*</span></label>
                                 <input name="thanh-pho" style="color: black !important;"
                                        id="city" type="text" class="form-control"
-                                       placeholder="Thị Trấn / Thành phố">
+                                       placeholder="Thị Trấn / Thành phố" value="${city}">
                                 <p style="color: red; display: none" id="city_error"></p>
+                                <c:if test="${not empty cityError}" >
+                                    <p style="color: red">${cityError}</p>
+                                </c:if>
                             </div>
                         </div>
 
@@ -228,8 +240,11 @@
                                         style="color: red">*</span></label>
                                 <input name="sdt_nguoi-dung" style="color: black !important;"
                                        id="phone" type="text" class="form-control"
-                                       placeholder="Số điện thoại">
+                                       placeholder="Số điện thoại" value="${phone}">
                                 <p style="color: red; display: none" id="phone_error"></p>
+                                <c:if test="${not empty phoneError}" >
+                                    <p style="color: red">${phoneError}</p>
+                                </c:if>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -237,8 +252,11 @@
                                 <label for="email">Email <span style="color: red">*</span></label>
                                 <input name="email_nguoi-dung" style="color: black !important;"
                                        id="email" type="text" class="form-control"
-                                       placeholder="email">
+                                       placeholder="email" value="${email}">
                                 <p style="color: red; display: none" id="email_error"></p>
+                                <c:if test="${not empty emailError}" >
+                                    <p style="color: red">${emailError}</p>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -300,7 +318,7 @@
                                             <span style="position:relative;top:-5px; right:10px">Thẻ tín dụng</span>
                                         </label>
                                         <input type="radio" class="payment__choice" id="credit_card"
-                                               name="payment_selection">
+                                               name="payment_selection" value="The tin dung" checked>
                                     </div>
 
 
@@ -315,7 +333,7 @@
                                             <span style="position:relative;top:-5px; right:10px">Paypal</span>
                                         </label>
                                         <input type="radio" class="payment__choice" id="paypal"
-                                               name="payment_selection">
+                                               name="payment_selection" value="Paypal">
                                     </div>
                                 </div>
 

@@ -213,17 +213,17 @@
                             </tr>
 
                             <c:forEach items="${detailList}" var="billDetail" varStatus="loopStatus">
-                                <c:set var="linkAnhSpVar" value="${linkAnhSp}"/>
+
                                 <tr>
                                     <td>${loopStatus.index}</td>
-                                    <td>${billDetail.getNameOfProduct()}</td>
+                                    <td>${billDetail.getProducts().getNameOfProduct()}</td>
                                     <td class="img-product">
-                                        <img src="${billDetail.getImg()}">
+                                        <img src="${billDetail.getProducts().getImg()}">
                                     </td>
-                                    <td>${linkAnhSpVar[loopStatus.index]}</td>
-                                    <td class="gia-thanh">${billDetail.getPrice()}</td>
+                                    <td>${billDetail.getProducts().getExpriredDay()}</td>
+                                    <td class="gia-thanh">${billDetail.getProducts().getPrice()}</td>
                                     <td class="so-luong">${billDetail.getQuantity()}</td>
-                                    <input class="tong-tien" type="hidden" value="${billDetail.getPrice() *billDetail.getQuantity()}">
+                                    <input class="tong-tien" type="hidden" value="${billDetail.getProducts().getPrice() *billDetail.getQuantity()}">
                                 </tr>
                             </c:forEach>
 

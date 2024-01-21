@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.dao;
 
-import nhom55.hcmuaf.beans.BillDetail;
+
+import nhom55.hcmuaf.beans.BillDetails;
 import nhom55.hcmuaf.beans.Bills;
 
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public interface BillDao {
     public boolean degreeAmountWhenOderingSuccessfully(int idProduct, int quantity);
 
     public List<Bills> getListBills(int idUser);
-    public List<BillDetail> getListProductInABill( int idBills);
+    public List<BillDetails> getListProductInABill(int idBills);
     public int countTotalRowProductInDatabase();
     public List<Bills> get10BillsForEachPage(int index, int quantityDefault);
 

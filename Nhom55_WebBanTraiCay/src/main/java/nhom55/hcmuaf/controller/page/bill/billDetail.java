@@ -1,6 +1,6 @@
 package nhom55.hcmuaf.controller.page.bill;
 
-import nhom55.hcmuaf.beans.BillDetail;
+import nhom55.hcmuaf.beans.BillDetails;
 import nhom55.hcmuaf.dao.BillDao;
 import nhom55.hcmuaf.dao.BillDaoImpl;
 
@@ -16,7 +16,7 @@ public class billDetail extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idBill = Integer.valueOf(request.getParameter("idBills"));
         BillDao orderDao = new BillDaoImpl();
-        List<BillDetail> list = orderDao.getListProductInABill(idBill);
+        List<BillDetails> list = orderDao.getListProductInABill(idBill);
         request.setAttribute("list",list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/user/chi-tiet-hoa-don.jsp");
         dispatcher.forward(request,response);

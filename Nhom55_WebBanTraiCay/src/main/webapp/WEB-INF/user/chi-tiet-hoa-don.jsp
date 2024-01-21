@@ -100,17 +100,17 @@
                 </a>
               </td>
               <td>
-                <img class="img-product" src="${product.getImg()}">
+                <img class="img-product" src="${product.getProducts().getImg()}">
               </td>
               <td>
                 <div class="product-name">
-                  <h6>${product.getNameOfProduct()}</h6>
+                  <h6>${product.getProducts().getNameOfProduct()}</h6>
                 </div>
                 <div class="product-describe">
-                  <p>${product.getDescription()}.</p>
+                  <p>${product.getProducts().getDescription()}.</p>
                 </div>
               </td>
-              <td>${product.getPrice()}</td>
+              <td>${product.getProducts().getPrice()}</td>
               <td>
                 <div class="quantity">
                   <span>${product.getQuantity()}</span>

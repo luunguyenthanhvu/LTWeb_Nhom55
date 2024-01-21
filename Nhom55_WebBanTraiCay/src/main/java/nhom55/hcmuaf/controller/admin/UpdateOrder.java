@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.controller.admin;
 
-import nhom55.hcmuaf.beans.BillDetail;
+
+import nhom55.hcmuaf.beans.BillDetails;
 import nhom55.hcmuaf.beans.Bills;
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
@@ -24,19 +25,11 @@ public class UpdateOrder extends HttpServlet {
         HttpSession session = request.getSession();
         Users admin = MyUtils.getLoginedUser(session);
         BillDao orderDao = new BillDaoImpl();
-        ProductDaoImpl productDao = new ProductDaoImpl();
-        List<BillDetail> detailList = orderDao.getListProductInABill(idBill);
-        List<String> linkAnhSp = new ArrayList<>();
-        for(BillDetail bd: detailList) {
-            Products products = productDao.getProductById(bd.getId());
-            String temp = products.getExpriredDay().toString();
-            linkAnhSp.add(temp);
-        }
+        List<BillDetails> detailList = orderDao.getListProductInABill(idBill);
         Bills bill = orderDao.getABill(idBill);
         request.setAttribute("admin", admin);
         request.setAttribute("bill",bill);
         request.setAttribute("detailList",detailList);
-        request.setAttribute("linkAnhSp",linkAnhSp);
         request.setAttribute("idBill",idBill);
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/update-order.jsp");
         dispatcher.forward(request,response);

@@ -1,7 +1,9 @@
 package nhom55.hcmuaf.dao;
 
-import nhom55.hcmuaf.beans.BillDetail;
+
+import nhom55.hcmuaf.beans.BillDetails;
 import nhom55.hcmuaf.beans.Bills;
+import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.database.JDBIConnector;
 
 import java.time.LocalDateTime;
@@ -99,12 +101,40 @@ public class BillDaoImpl implements BillDao {
         });
     }
     @Override
-    public List<BillDetail> getListProductInABill( int idBills){
-        return JDBIConnector.get().withHandle(h ->{
-            return h.createQuery("SELECT products.id, products.img,products.nameOfProduct, products.description,products.price, bill_details.quantity,bill_details.totalPrice from products " +
-                            "join bill_details on products.id = bill_details.idProduct where bill_details.idBills = :idBills ")
-                    .bind("idBills",idBills).mapToBean(BillDetail.class).stream().toList();
-        });
+    public List<BillDetails> getListProductInABill(int idBills){
+       return  JDBIConnector.get().withHandle(handle -> {
+
+           String sql =
+                   "SELECT bd.id, bd.quantity, bd.totalPrice, p.id as idProduct, p.nameOfProduct, p.description, p.price,p.img,p.dateOfImporting,p.expriredDay "
+                           +
+                           "FROM bill_details bd " +
+                           "JOIN products p ON bd.idProduct = p.id " +
+                           "WHERE bd.idBills = ?";
+
+           // Ánh xạ kết quả vào đối tượng BillsDetails và Product
+           return handle.createQuery(sql)
+                   .bind(0, idBills)
+                   .map((rs, ctx) -> {
+                       BillDetails bd = new BillDetails();
+                       bd.setId(rs.getInt("id"));
+                       bd.setQuantity(rs.getInt("quantity"));
+                       bd.setTotalPrice(rs.getDouble("totalPrice"));
+
+                       Products p = new Products();
+                       p.setId(rs.getInt("idProduct"));
+                       p.setNameOfProduct(rs.getString("nameOfProduct"));
+                       p.setDescription(rs.getString("description"));
+                       p.setPrice(rs.getDouble("price"));
+                       p.setImg(rs.getString("img"));
+                       p.setDateOfImporting(rs.getDate("dateOfImporting"));
+                       p.setExpriredDay(rs.getDate("expriredDay"));
+                       bd.setProducts(p);
+
+                       return bd;
+                   }).stream().toList();
+
+
+       });
     }
 
     @Override
@@ -188,4 +218,12 @@ public class BillDaoImpl implements BillDao {
                     .execute();
         });
   }
+
+    public static void main(String[] args) {
+        BillDaoImpl billDao = new BillDaoImpl();
+        List<BillDetails> billDetails = billDao.getListProductInABill(24);
+        for(BillDetails b: billDetails) {
+            System.out.println(b.toString());
+        }
+    }
 }

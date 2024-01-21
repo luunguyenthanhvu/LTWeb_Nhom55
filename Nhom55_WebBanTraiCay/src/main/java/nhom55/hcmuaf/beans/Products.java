@@ -33,6 +33,13 @@ public class Products {
         this.provider = provider;
     }
 
+    public Products(int id, String nameOfProduct, String description, double price) {
+        this.id = id;
+        this.nameOfProduct = nameOfProduct;
+        this.description = description;
+        this.price = price;
+    }
+
     public Products(int id, double weight) {
         this.id = id;
         this.weight = weight;

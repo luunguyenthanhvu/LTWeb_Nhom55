@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en" dir="ltr">
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <head>
+    <fmt:setLocale value="vi_VN"/>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
@@ -39,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.html">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile?id=${admin.getId()}">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin?id=${admin.getId()}">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -106,7 +108,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="userList">Danh sách người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/listUserForward">Danh sách người dùng</a></li>
                     <li><a href="AddUser">Thêm người dùng</a></li>
                 </ul>
             </li>
@@ -127,35 +129,38 @@
                     <li><a href="AdminAddProvider">Thêm nhà cung cấp</a></li>
                 </ul>
             </li>
-
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../static/images/accountPicture.png" alt="profileImg">
+                        <img src="${admin.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">VuLuu</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
-                    <i style="transform: rotate(180deg); ">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
-                    </i>
+                    <a href="${pageContext.request.contextPath}/logout">
+                        <i style="transform: rotate(180deg); ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+                            </svg>
+                        </i>
+                    </a>
                 </div>
             </li>
         </ul>
     </div>
+
     <section class="home-section">
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-            <span class="text">Danh sách nhà cung cấp</span>
+            <span class="text">Đơn hàng</span>
         </div>
         <div class="find-product">
-            <form action="ProviderListController?index=1" method="post">
+            <form action="OrderListController?index=1" method="post">
                 <div class="fill-product">
-                    <input id="find-product" type="text" placeholder="Tìm kiếm nhà cung cấp" name="txtSearch">
-                    <button type="submit">
+                    <input id="find-product" type="text" placeholder="Tìm kiếm tên khách hàng" name="txtSearch">
+                    <button>
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
                     </button>
                 </div>
@@ -165,20 +170,25 @@
             <div class="table-sanpham">
                 <table class="table-sanpham">
                     <tr>
-                        <th style="width: 80px;">ID</th>
-                        <th style="width: 200px">Tên nhà cung cấp</th>
-                        <th style="width: 100px;">Địa chỉ nhà cung cấp</th>
-                        <th style="width: 100px;">Chức năng</th>
+                        <th style="width: 100px;">Id</th>
+                        <th style="width: 200px;">Tên người dùng</th>
+                        <th style="width: 150px;">Ngày đặt hàng</th>
+                        <th style="width: 150px;">Tổng tiền</th>
+                        <th style="width: 150px;">Tình trạng</th>
+                        <th style="width: 100px;"></th>
                     </tr>
-
-                    <c:forEach items="${listSearch}" var="provider">
+                    <c:forEach items="${listSearch}" var="bill">
                         <tr>
-                            <td>${provider.getId()}</td>
-                            <td>${provider.getProviderName()}</td>
-                            <td>${provider.getAddressOfProvider()}</td>
+                            <td>${bill.getId()}</td>
+                            <td>${bill.getLastName()}  ${bill.getFirstName()}</td>
+                            <td>${bill.getOrderedDate().getDayOfMonth()}/${bill.getOrderedDate().getMonthValue()}/${bill.getOrderedDate().getYear()}</td>
+                            <td><fmt:formatNumber pattern="#,##0 ₫" value="${bill.getTotalPrice()}"/></td>
+                            <td>
+                                <div class="order-status">${bill.getStatus()}</div>
+                            </td>
                             <td class="function-product">
-                                <a href="update-product?id=${provider.getId()}"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
-                                <a href="delete-productController?id=${provider.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
+                                <a href="update-order.jsp"><svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/></svg></a>
+                                <a href=""><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -189,7 +199,7 @@
                 <c:if test="${pageId== 1 && indexEnd ==1}">
                     <a >&laquo;</a>
                     <c:forEach begin="1" end="${indexEnd}" var= "i">
-                        <a id="${i}" href="ProviderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                        <a id="${i}" href="OrderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
                     </c:forEach>
                     <a >&raquo;</a>
                 </c:if>
@@ -198,24 +208,24 @@
                     <c:if test="${pageId ==1}" >
                         <a >&laquo;</a>
                         <c:forEach begin="1" end="${indexEnd}" var= "i">
-                            <a id="${i}" href="ProviderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                            <a id="${i}" href="OrderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
                         </c:forEach>
-                        <a href="ProviderListController?index=${pageId+1}&txtSearch=${txtSearch}">&raquo;</a>
+                        <a href="OrderListController?index=${pageId+1}&txtSearch=${txtSearch}">&raquo;</a>
                     </c:if>
                     <%--  Còn trường hợp này nút nào cũng xài được--%>
                     <c:if test="${pageId >1 && pageId<indexEnd}" >
-                        <a href="ProviderListController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
+                        <a href="OrderListController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
                         <c:forEach begin="1" end="${indexEnd}" var= "i">
-                            <a id="${i}" href="ProviderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                            <a id="${i}" href="OrderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
                         </c:forEach>
-                        <a href="ProviderListController?index=${pageId+1}&txtSearch=${txtSearch}">&raquo;</a>
+                        <a href="OrderListController?index=${pageId+1}&txtSearch=${txtSearch}">&raquo;</a>
                     </c:if>
 
                     <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
                     <c:if test="${pageId ==indexEnd}" >
-                        <a href="ProviderListController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
+                        <a href="OrderListController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
                         <c:forEach begin="1" end="${indexEnd}" var= "i">
-                            <a id="${i}" href="ProviderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                            <a id="${i}" href="OrderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>
                         </c:forEach>
                         <a >&raquo;</a>
                     </c:if>
@@ -241,14 +251,29 @@
 
     var myVar;
     function myFunction() {
-        myVar = setTimeout(showPage, 800);
+        myVar = setTimeout(showPage, 600);
     }
     function showPage() {
         document.getElementById("loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }
-    //   Highlight cho nút đang được chọn ở phân trang
-    document.getElementById('${pageId}').classList.add("active")
+
+    document.addEventListener('DOMContentLoaded', function () {
+        let orderStatusList = document.querySelectorAll(".order-status");
+
+        orderStatusList.forEach(function (status) {
+            if (status.innerHTML.toLowerCase() === "đang xử lý") {
+                status.classList.add('processing-order');
+            } else if (status.innerHTML.toLowerCase() === "đang giao") {
+                status.classList.add('on-delivering');
+            } else if (status.innerHTML.toLowerCase() === "đã giao") {
+                status.classList.add('delivered');
+            } else if (status.innerHTML.toLowerCase() === "đã hủy") {
+                status.classList.add('cancelled');
+            }
+        });
+    });
+
 </script>
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

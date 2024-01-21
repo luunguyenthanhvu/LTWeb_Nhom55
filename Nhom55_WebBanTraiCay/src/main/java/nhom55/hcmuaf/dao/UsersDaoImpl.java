@@ -297,13 +297,10 @@ public class UsersDaoImpl implements UsersDao {
             try {
                 // Thực hiện câu lệnh SQL với giá trị của index và sizePage thay thế trực tiếp
                 List<Users> resultList = handle.createQuery(
-                                "with testThu as (select ROW_NUMBER() over (order by " + "id"
-                                        + "  asc) as r,id,username, hash, email,phoneNumber,address,status,img,dateOfBirth,sexual, role from users where username LIKE ?)\n"
-                                        +
-                                        "\n" +
-                                        "select * FROM testThu where r between " + (index * sizePage - 4) + " and " + (
-                                        index * sizePage))
+                                "with testThu as (select ROW_NUMBER() over (order by id asc) as r, id, username, hash, email, phoneNumber, address, status, img, dateOfBirth, sexual, role from users where userName LIKE ? or id = ?)\n" +
+                                        "select * FROM testThu where r between " + (index * sizePage - 4) + " and " + (index * sizePage))
                         .bind(0, "%" + search + "%")
+                        .bind(1, search) // Bind giá trị cho tham số thứ hai
                         .mapToBean(Users.class)
                         .list();
                 // Commit kết nối

@@ -16,40 +16,40 @@ public class AddCartController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    HttpSession session = request.getSession();
-    Users users = MyUtils.getLoginedUser(session);
-    // check if user doesn't login
-    if (users == null) {
-      response.sendRedirect("login");
-    } else {
-      // to redirect to the previous page
-      String url = (String) session.getAttribute("previousURL");
-      int id = Integer.parseInt(request.getParameter("id"));
-      String quantityParameter = request.getParameter("quantity");
-
-      int quantity = 1;
-
-      if (quantityParameter != null) {
-        try {
-          quantity = Integer.parseInt(quantityParameter);
-        } catch (NumberFormatException e) {
-          e.printStackTrace();
-        }
-      }
-      Products product = ProductService.getInstance().getById(id);
-      Cart cart = (Cart) request.getSession().getAttribute("cart");
-
-      cart.add(id, quantity);
-
-      // update cart
-      MyUtils.storeCart(session, cart);
-      response.sendRedirect(url);
-    }
-  }
+   }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    // Handle POST requests if needed
+    HttpSession session = request.getSession();
+    Users users = MyUtils.getLoginedUser(session);
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    // check if user doesn't login
+    if (users == null) {
+      response.getWriter().write("{\"status\":\"success\",\"message\":\"Null User\"}");
+    } else {
+      int id = Integer.parseInt(request.getParameter("productId"));
+      int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+      Products product = ProductService.getInstance().getById(id);
+      Cart cart = (Cart) request.getSession().getAttribute("cart");
+      String result = cart.add(id, quantity);
+
+      // update cart
+      MyUtils.storeCart(session, cart);
+
+      if(result.equals("Success")) {
+        response.getWriter()
+            .write("{ \"status\": \"success\", \"message\": \"Success\" }");
+      } else if(result.equals("Out of quantity")) {
+        response.getWriter()
+            .write("{ \"status\": \"success\", \"message\": \"Out of quantity\" }");
+      } else if(result.equals("Product does not exist")) {
+        response.getWriter()
+            .write("{ \"status\": \"success\", \"message\": \"Product does not exist\" }");
+      }
+
+    }
   }
 }

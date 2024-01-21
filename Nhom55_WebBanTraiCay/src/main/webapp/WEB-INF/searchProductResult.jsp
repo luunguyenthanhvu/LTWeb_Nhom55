@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
 
 
 
@@ -87,14 +87,22 @@
                                         class="nav-link">Liên Hệ</a></li>
                 <c:choose>
                     <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored"><a
-                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                        <li class="nav-item cta cta-colored">
+                            <a href="${pageContext.request.contextPath}/cart"
+                               class="nav-link cart-info-container">
+                                <span class="icon-shopping_cart"></span>
+                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                            </a>
+                        </li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item cta cta-colored"><a
-                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
-                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                        <li class="nav-item cta cta-colored">
+                            <a href="${pageContext.request.contextPath}/login"
+                               class="nav-link cart-info-container">
+                                <span class="icon-shopping_cart"></span>
+                                [<span class="cart-total-amount">0</span>]
+                            </a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
 
@@ -110,7 +118,7 @@
                             <b>${loginedUser.getUsername()}</b>
                         </a>
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="user/user-profile.jsp">
+                            <a class="account dropdown-item" href="userProfile?id=${loginedUser.getId()}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -144,7 +152,8 @@
     </div>
 </nav>
 <!-- END nav -->
-
+<div id="toast">
+</div>
 <div class="hero-wrap hero-bread"
      style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
     <div class="container">
@@ -161,64 +170,6 @@
     <div class="container">
         <div class="row justify-content-center">
             <div style="display: block" class="col-md-10 mb-5 text-center">
-
-
-
-                <!--                <ul class="product-category">-->
-                <!--                    <li><a href="#" class="active">All</a></li>-->
-                <!--                    <li><a href="#">Vegetables</a></li>-->
-                <!--                    <li><a href="#">Fruits</a></li>-->
-                <!--                    <li><a href="#">Juice</a></li>-->
-                <!--                    <li><a href="#">Dried</a></li>-->
-                <!--                </ul> -->
-
-                <!--                    <div class="box">-->
-                <!--                        <form action ="#">-->
-                <!--                            <div class="input_box">-->
-                <!--                                <input type="text" placeholder="Search for fruits..." required>-->
-                <!--                                <div class="selection"><p>All</p><span></span></div>-->
-
-                <!--                                <div class ="categories">-->
-                <!--                                    <p class="option">1</p>-->
-                <!--                                    <p class="option">2</p>-->
-                <!--                                    <p class="option">3</p>-->
-                <!--                                    <p class="option">4</p>-->
-
-                <!--                                </div>-->
-
-                <!--                            </div>-->
-                <!--                        </form>-->
-                <!--                    </div>-->
-
-
-
-
-
-
-
-
-
-                <!--                <ul class="nav nav-pills mb-3 product-category" id="pills-tab" role="tablist">-->
-                <!--                    <li class="nav-item " role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" fdprocessedid="pda0gw" >All</button>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link active" style="outline: 0!important;" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" tabindex="-1">Vegetables</button>-->
-                <!--                    </li>-->
-
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" tabindex="-1">Fruits</button>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Juice-tab" data-bs-toggle="pill" data-bs-target="#pills-Juice" type="button" role="tab" aria-controls="pills-Juice" aria-selected="false" tabindex="-1">Juice</button>-->
-                <!--                    </li>-->
-                <!--                    <li class="nav-item" role="presentation">-->
-                <!--                        <button class="nav-link" style="outline: 0!important;" id="pills-Dried-tab" data-bs-toggle="pill" data-bs-target="#pills-Dried" type="button" role="tab" aria-controls="pills-Dried" aria-selected="false" fdprocessedid="x9oioe" tabindex="-1">Dried</button>-->
-                <!--                    </li>-->
-                <!--                </ul>-->
-
-
-
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px"
                           action="ShopController?index=1" method="post">
@@ -276,7 +227,8 @@
                                                        class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                         <span><i class="ion-ios-menu"></i></span>
                                                     </a>
-                                                    <a href="add-cart?id=${product.getId()}"
+                                                    <a href="javascript:void(0);"
+                                                       onclick="addToCart(${product.getId()})"
                                                        class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                         <span><i class="ion-ios-cart"></i></span>
                                                     </a>
@@ -476,7 +428,7 @@
     dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
   }
 </script>
-
+<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
 <script src="static/js/jquery.min.js"></script>
 <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="static/js/popper.min.js"></script>

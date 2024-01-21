@@ -75,7 +75,7 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Đơn hàng</a></li>
-          <li><a href="order-list.html">Quản lý đơn hàng</a></li>
+          <li><a href="OrderList">Quản lý đơn hàng</a></li>
         </ul>
       </li>
       <li>

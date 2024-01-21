@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <head>
+    <fmt:setLocale value="vi_VN"/>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/dssp.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/update-order.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/update-order.css">
 </head>
 <body onload="myFunction()" style="margin:0;">
 <div id="loader"></div>
@@ -37,8 +42,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile?id=${admin.getId()}">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin?id=${admin.getId()}">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -53,10 +58,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
-
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
-                    <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>
@@ -72,7 +76,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Đơn hàng</a></li>
-                    <li><a href="order-list.html">Quản lý đơn hàng</a></li>
+                    <li><a href="OrderList">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
             <li>
@@ -105,23 +109,43 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="user-list.jsp">Danh sách người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/listUserForward">Danh sách người dùng</a></li>
+                    <li><a href="AddUser">Thêm người dùng</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M64 32C46.3 32 32 46.3 32 64V304v48 80c0 26.5 21.5 48 48 48H496c26.5 0 48-21.5 48-48V304 152.2c0-18.2-19.4-29.7-35.4-21.1L352 215.4V152.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4V64c0-17.7-14.3-32-32-32H64z"/></svg>
+                        </i>
+                        <span class="link_name">Nhà cung cấp</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Nhà cung cấp</a></li>
+                    <li><a href="ProviderList">Danh sách nhà cung cấp</a></li>
+                    <li><a href="AdminAddProvider">Thêm nhà cung cấp</a></li>
                 </ul>
             </li>
 
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="../../static/images/accountPicture.png" alt="profileImg">
+                        <img src="${admin.getImg()}" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">VuLuu</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
-                    <i style="transform: rotate(180deg); ">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
-                    </i>
+                    <a href="${pageContext.request.contextPath}/logout">
+                        <i style="transform: rotate(180deg); ">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
+                            </svg>
+                        </i>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -138,25 +162,25 @@
                     <h4>Thông tin người đặt hàng</h4>
                     <div class="user-name-img">
                         <div class="img-user">
-                            <img src="../images/accountPicture.png">
+                            <img src="">
                         </div>
                         <div class="user-name">
-                            <span>Anh Long</span>
+                            <span>${bill.getLastName()} ${bill.getFirstName()}</span>
                         </div>
                     </div>
 
                     <div class="user-info">
                         <div class="simple-info">
                             <span>Số điện thoại:</span>
-                            <span>0123456789</span>
+                            <span>${bill.getPhoneNumber()}</span>
                         </div>
                         <div class="simple-info">
                             <span>Email:</span>
-                            <span>anhLong123@gmail.com</span>
+                            <span>${bill.getEmail()}</span>
                         </div>
                         <div class="simple-info">
                             <span>Địa chỉ:</span>
-                            <span>12 Cầu Giấy, HCM.</span>
+                            <span>${bill.getStreetAddress()}.</span>
                         </div>
                     </div>
 
@@ -164,8 +188,10 @@
                 <div class="right-container">
                     <form action="" method="post">
                         <div class="update-status">
+                            <form action="UpdateOrder" method="post">
                             <h3>Cập nhập trạng thái</h3>
-                            <select class="option-status">
+                                <input type="hidden" name="idBill" value="${idBill}">
+                            <select class="option-status"  name="selectedStatus">
                                 <option>Đang xử lý</option>
                                 <option>Đang giao</option>
                                 <option>Đã giao</option>
@@ -173,6 +199,7 @@
                             </select>
 
                             <button type="submit">Cập nhập trạng thái</button>
+                            </form>
                         </div>
                         <table class="table-sanpham">
                             <h4 style="padding: 10px">Thông tin đơn hàng</h4>
@@ -185,36 +212,21 @@
                                 <th style="width: 50px;">Số lượng</th>
                             </tr>
 
-                            <tr>
-                                <td>1</td>
-                                <td>Thanh Long</td>
-                                <td class="img-product">
-                                    <img src="/images/traiThanhLong.jpg">
-                                </td>
-                                <td>30/06/2022</td>
-                                <td class="gia-thanh">20.000</td>
-                                <td class="so-luong">2</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Dưa Hấu</td>
-                                <td class="img-product">
-                                    <img src="/images/dua-hau-tam-boi-1.jpg">
-                                </td>
-                                <td>30/06/2022</td>
-                                <td class="gia-thanh">20.000</td>
-                                <td class="so-luong">10</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Cam</td>
-                                <td class="img-product">
-                                    <img src="/images/cam.jpg">
-                                </td>
-                                <td>30/06/2022</td>
-                                <td class="gia-thanh">20.000</td>
-                                <td class="so-luong">10</td>
-                            </tr>
+                            <c:forEach items="${detailList}" var="billDetail" varStatus="loopStatus">
+
+                                <tr>
+                                    <td>${loopStatus.index}</td>
+                                    <td>${billDetail.getProducts().getNameOfProduct()}</td>
+                                    <td class="img-product">
+                                        <img src="${billDetail.getProducts().getImg()}">
+                                    </td>
+                                    <td>${billDetail.getProducts().getExpriredDay()}</td>
+                                    <td class="gia-thanh">${billDetail.getProducts().getPrice()}</td>
+                                    <td class="so-luong">${billDetail.getQuantity()}</td>
+                                    <input class="tong-tien" type="hidden" value="${billDetail.getProducts().getPrice() *billDetail.getQuantity()}">
+                                </tr>
+                            </c:forEach>
+
                         </table>
                         <div class="total-product">
                             <div class="grid-container">
@@ -265,7 +277,7 @@
     let totalAmount = 0;
     let totalPrice = 0;
     let finalPrice = 0;
-    let shipPrice = 30;
+    let shipPrice = 30000;
 
     document.addEventListener('DOMContentLoaded', function () {
         let getAllSL = document.querySelectorAll(".so-luong");
@@ -273,15 +285,15 @@
             totalAmount +=   Number(getAll.innerHTML);
         });
         totalAmountHTMl.innerHTML = totalAmount;
-        shipPriceHTML.innerHTML = shipPrice + ".000đ"
-        let getAllGT = document.querySelectorAll(".gia-thanh");
+        shipPriceHTML.innerHTML = shipPrice +" VNĐ";
+        let getAllGT = document.querySelectorAll(".tong-tien");
         getAllGT.forEach(function (getAll){
-            totalPrice += Number(getAll.innerHTML);
+            totalPrice += Number(getAll.value);
         });
-        totalPrice *= totalAmount;
-        totalSub.innerHTML = totalPrice + ".000đ";
-        finalPrice =  totalPrice + shipPrice + ".000đ";
-        finalPriceHTML.innerHTML = finalPrice;
+
+        totalSub.innerHTML = totalPrice +" VNĐ";
+        finalPrice =  totalPrice + shipPrice
+        finalPriceHTML.innerHTML = finalPrice +" VNĐ";
     });
 
 

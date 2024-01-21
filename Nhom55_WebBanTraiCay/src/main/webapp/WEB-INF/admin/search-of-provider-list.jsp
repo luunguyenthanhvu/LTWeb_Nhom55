@@ -73,7 +73,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Đơn hàng</a></li>
-                    <li><a href="order-list.html">Quản lý đơn hàng</a></li>
+                    <li><a href="OrderList">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
             <li>
@@ -212,7 +212,7 @@
                     </c:if>
 
                     <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
-                    <c:if test="${pageId ==haveMaxPage}" >
+                    <c:if test="${pageId ==indexEnd}" >
                         <a href="ProviderListController?index=${pageId-1}&txtSearch=${txtSearch}">&laquo;</a>
                         <c:forEach begin="1" end="${indexEnd}" var= "i">
                             <a id="${i}" href="ProviderListController?index=${i}&txtSearch=${txtSearch}">${i}</a>

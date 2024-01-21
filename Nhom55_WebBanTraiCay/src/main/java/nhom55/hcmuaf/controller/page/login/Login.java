@@ -3,7 +3,6 @@ package nhom55.hcmuaf.controller.page.login;
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.CartProduct;
 import nhom55.hcmuaf.cart.UserCart;
 import nhom55.hcmuaf.dao.LoginDao;
 import nhom55.hcmuaf.dao.UsersDao;

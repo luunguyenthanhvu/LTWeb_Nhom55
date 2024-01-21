@@ -1,6 +1,5 @@
 package nhom55.hcmuaf.services;
 
-import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
 import nhom55.hcmuaf.sendmail.MailProperties;
@@ -13,7 +12,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.security.SecureRandom;
-import java.util.List;
 import java.util.Properties;
 
 public class ForgetPasswordService {

@@ -20,10 +20,6 @@ public class ProductDetails extends HttpServlet {
     if (parameterValue != null && !parameterValue.isEmpty()) { // Kiểm tra xem giá trị có null không
       int productId = Integer.parseInt(request.getParameter("id"));
 
-      // save url
-      HttpSession session = request.getSession();
-      MyUtils.setPreviousURL(session, "productDetails?id=" + productId);
-
       Products product = ProductService.getInstance()
           .showProductDetails(productId);  // Gọi phương thức để lấy chi tiết sản phẩm
 

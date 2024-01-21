@@ -12,49 +12,53 @@ public class Cart {
 
   private Map<Integer, CartProduct> data = new HashMap<>();
 
-  public boolean add(int add) {
+  public String add(int add) {
     return add(add, 1);
   }
 
-  public boolean add(int add, int quantity) {
+  public String add(int add, int quantity) {
     Products p = ProductService.getInstance().getById(add);
     if (p == null) {
-      return false;
+      return "Product does not exist";
     }
     CartProduct cartProduct = null;
     if (data.containsKey(add)) {
       cartProduct = data.get(add);
-      if(cartProduct.getQuantity() < cartProduct.getProducts().getWeight()) {
+      if(cartProduct.getQuantity() + quantity <= cartProduct.getProducts().getWeight()) {
         cartProduct.increQuantity(quantity);
+      } else {
+        return "Out of quantity";
       }
     } else {
       cartProduct = new CartProduct(quantity, p);
     }
     data.put(add, cartProduct);
-    return true;
+    return "Success";
   }
-  public boolean remove(int id) {
+  public String remove(int id) {
     return remove(id, 1);
   }
-  public boolean remove(int id, int quantity) {
+  public String remove(int id, int quantity) {
+    String result = "";
     Products p = ProductService.getInstance().getById(id);
     if (p == null) {
-      return false;
+      return "Product does not exist";
     }
     CartProduct cartProduct = null;
     if (data.containsKey(id)) {
       cartProduct = data.get(id);
       if(cartProduct.getQuantity() == 1) {
         deleteProduct(id);
-        return true;
+        result = "Removed from cart";
       } else {
         cartProduct.decreQuantity(quantity);
+        result = "Success";
       }
     } else {
-      return false;
+      return "Product does not exist";
     }
     data.put(id, cartProduct);
-    return true;
+    return result;
   }
   public void deleteProduct(int id) {
     if(data.containsKey(id)) {

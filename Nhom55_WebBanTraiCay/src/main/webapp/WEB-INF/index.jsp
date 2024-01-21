@@ -1,12 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: tuanh
-  Date: 11/27/2023
-  Time: 1:07 PM
-  To change this template use File | Settings | File Templates.
---%>
-
-
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -53,7 +44,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -77,10 +68,11 @@
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/ShopForward">Cửa
+                        <a class="dropdown-item"
+                           href="${pageContext.request.contextPath}/ShopForward">Cửa
                             hàng</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/wishlist">Danh
-                            sách yêu thích</a>cửa hàng
+                            sách yêu thích</a>
 
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/checkout">Thủ
                             tục thanh toán</a>
@@ -92,14 +84,22 @@
                                         class="nav-link">Liên Hệ</a></li>
                 <c:choose>
                     <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored"><a
-                                href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                        <li class="nav-item cta cta-colored">
+                            <a href="${pageContext.request.contextPath}/cart"
+                               class="nav-link cart-info-container">
+                                <span class="icon-shopping_cart"></span>
+                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                            </a>
+                        </li>
                     </c:when>
                     <c:otherwise>
-                        <li class="nav-item cta cta-colored"><a
-                                href="${pageContext.request.contextPath}/login" class="nav-link"><span
-                                class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                        <li class="nav-item cta cta-colored">
+                            <a href="${pageContext.request.contextPath}/login"
+                               class="nav-link cart-info-container">
+                                <span class="icon-shopping_cart"></span>
+                                [<span class="cart-total-amount">0</span>]
+                            </a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
 
@@ -116,7 +116,8 @@
                         </a>
 
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="userProfile?id=${loginedUser.getId()}">
+                            <a class="account dropdown-item"
+                               href="userProfile?id=${loginedUser.getId()}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -150,8 +151,9 @@
     </div>
     <!-- END nav -->
 </nav>
+<div id="toast">
+</div>
 <!-- END nav -->
-
 <section id="home-section" class="hero">
     <div class="home-slider owl-carousel">
         <div class="slider-item"
@@ -166,7 +168,7 @@
                         <h2 class="subheading mb-4">Chúng tôi sẽ cung cấp những trái cây mà bạn
                             muốn</h2>
                         <p><a href="${pageContext.request.contextPath}/ShopForward"
-                              class="btn btn-primary">Xem </a></p>
+                              class="btn btn-primary">Xem cửa hàng</a></p>
                     </div>
 
                 </div>
@@ -263,7 +265,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate fadeInUp ftco-animated">
                     <div class="product">
                         <a href="" class="img-prod"><img
-                                style="width: 205px; height: 164px; object-fit: cover"
+                                style="width: 253.4px; height: 164px; object-fit: cover"
                                 class="img-fluid" src="${product.getImg()}"
                                 alt="Colorlib Template">
 
@@ -273,10 +275,10 @@
                             <h3><a href="">${product.getNameOfProduct()} </a></h3>
                             <div class="d-flex">
                                 <div class="pricing">
-<%--                                    <p class="price"><span--%>
-<%--                                            class="price">${product.getPrice()} VNĐ</span></p>--%>
                                     <p class="price"><span
-                                            class="price"><fmt:formatNumber pattern="#,##0 đ" value="${product.getPrice()}"/></span></p>
+                                            class="price"><fmt:formatNumber pattern="#,##0 đ"
+                                                                            value="${product.getPrice()}"/></span>
+                                    </p>
                                 </div>
                             </div>
                             <div class="bottom-area d-flex px-3">
@@ -287,7 +289,8 @@
                                        class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                         <span><i class="ion-ios-menu"></i></span>
                                     </a>
-                                    <a href="add-cart?id=${product.getId()}"
+                                    <a href="javascript:void(0);"
+                                       onclick="addToCart(${product.getId()})"
                                        class="buy-now d-flex justify-content-center align-items-center mx-1">
                                         <span><i class="ion-ios-cart"></i></span>
                                     </a>
@@ -327,8 +330,6 @@
         </div>
     </div>
 </section>
-
-<!--Theo dõi tin tức-->
 
 <footer class="ftco-footer ftco-section">
     <div class="container">
@@ -430,8 +431,7 @@
                 stroke="#F96D00"/>
     </svg>
 </div>
-
-
+<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

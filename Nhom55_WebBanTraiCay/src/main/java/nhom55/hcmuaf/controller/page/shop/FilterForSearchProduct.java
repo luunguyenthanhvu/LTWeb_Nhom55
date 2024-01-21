@@ -14,9 +14,6 @@ import nhom55.hcmuaf.util.MyUtils;
 public class FilterForSearchProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // save url
-        HttpSession session = request.getSession();
-        MyUtils.setPreviousURL(session, request.getRequestURL().toString());
 
         String txtSearch = request.getParameter("txtSearch");
         String sortBy = request.getParameter("sortBy");

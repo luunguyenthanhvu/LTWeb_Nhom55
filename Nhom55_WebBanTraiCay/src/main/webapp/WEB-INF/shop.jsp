@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -86,9 +84,26 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <li class="nav-item cta cta-colored"><a
-                        href="${pageContext.request.contextPath}/cart" class="nav-link"><span
-                        class="icon-shopping_cart"></span>[${cart.getTotal()}]</a></li>
+                <c:choose>
+                    <c:when test="${not empty loginedUser}">
+                        <li class="nav-item cta cta-colored">
+                            <a href="${pageContext.request.contextPath}/cart"
+                               class="nav-link cart-info-container">
+                                <span class="icon-shopping_cart"></span>
+                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                            </a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="nav-item cta cta-colored">
+                            <a href="${pageContext.request.contextPath}/login"
+                               class="nav-link cart-info-container">
+                                <span class="icon-shopping_cart"></span>
+                                [<span class="cart-total-amount">0</span>]
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
 
             </ul>
         </div>
@@ -102,7 +117,7 @@
                             <b>${loginedUser.getUsername()}</b>
                         </a>
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="user/user-profile.jsp">
+                            <a class="account dropdown-item" href="userProfile?id=${loginedUser.getId()}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -136,7 +151,8 @@
     </div>
 </nav>
 <!-- END nav -->
-
+<div id="toast">
+</div>
 <div class="hero-wrap hero-bread"
      style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
     <div class="container">
@@ -154,23 +170,36 @@
         <div class="row justify-content-center">
             <div class="col-md-10 mb-5 text-center">
                 <div class="tab-content" id="pills-tabContent">
-                    <form style="position: relative; top:-40px; left: 350px" action="ShopController?index=1" method="post">
-                        <input style="width: 300px" type="text" placeholder="Tìm trái cây mà bạn cần" name="txtSearch" >
-                        <input style="width: 100px" type="submit"  value="Tìm kiếm">
+                    <form style="position: relative; top:-40px; left: 350px"
+                          action="ShopController?index=1" method="post">
+                        <input style="width: 300px" type="text"
+                               placeholder="Tìm trái cây mà bạn cần" name="txtSearch">
+                        <input style="width: 100px" type="submit" value="Tìm kiếm">
                     </form>
                     <form action="">
                         <!-- Icon Filter -->
-                        <div style="position: absolute; top: -45px;left: 570px" class="filter-icon" onclick="toggleFilter()">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
+                        <div style="position: absolute; top: -45px;left: 570px" class="filter-icon"
+                             onclick="toggleFilter()">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16"
+                                 viewBox="0 0 512 512">
+                                <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                <path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/>
+                            </svg>
                         </div>
 
                         <!-- Dropdown Filter -->
-                        <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
-                            <a href="FilterForAllProduct?sortBy=price&order=asc&pageId=1" >Sắp xếp giá tăng dần</a>
-                            <a href="FilterForAllProduct?sortBy=price&order=desc&pageId=1" >Sắp xếp giá giảm dần</a>
-                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=asc&pageId=1" >Sắp xếp theo tên từ  A-Z</a>
-                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=desc&pageId=1" >Sắp xếp theo tên từ  Z-A</a>
-                            <a href="FilterForAllProduct?sortBy=dateOfImporting&order=desc&pageId=1" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                        <div style="top: -30px;left: 250px" id="filterDropdown"
+                             class="filter-dropdown">
+                            <a href="FilterForAllProduct?sortBy=price&order=asc&pageId=1">Sắp xếp
+                                giá tăng dần</a>
+                            <a href="FilterForAllProduct?sortBy=price&order=desc&pageId=1">Sắp xếp
+                                giá giảm dần</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=asc&pageId=1">Sắp
+                                xếp theo tên từ A-Z</a>
+                            <a href="FilterForAllProduct?sortBy=nameOfProduct&order=desc&pageId=1">Sắp
+                                xếp theo tên từ Z-A</a>
+                            <a href="FilterForAllProduct?sortBy=dateOfImporting&order=desc&pageId=1">Sắp
+                                xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
@@ -203,7 +232,8 @@
                                                        class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                         <span><i class="ion-ios-menu"></i></span>
                                                     </a>
-                                                    <a href="add-cart?id=${product.getId()}"
+                                                    <a href="javascript:void(0);"
+                                                       onclick="addToCart(${product.getId()})"
                                                        class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                         <span><i class="ion-ios-cart"></i></span>
                                                     </a>
@@ -229,45 +259,60 @@
                 <div class="col text-center">
                     <div style="min-width: 350px" class="block-27">
                         <ul>
-<%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                            <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
                             <c:if test="${pageId== 1 && haveMaxPage ==1}">
-                                <li><a >&lt;</a></li>
-                                <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                                    <li id="${i}" ><a href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                <li><a>&lt;</a></li>
+                                <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                    <li id="${i}"><a
+                                            href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                    </li>
                                 </c:forEach>
-                                <li><a >></a></li>
+                                <li><a>></a></li>
                             </c:if>
 
-                             <c:if test="${ haveMaxPage !=1}">
-        <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
-                             <c:if test="${pageId ==1}" >
-                                 <li><a >&lt;</a></li>
-                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                                <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
-                                 </c:forEach>
-                                  <li><a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
-                               </c:if>
+                            <c:if test="${ haveMaxPage !=1}">
+                                <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                                <c:if test="${pageId ==1}">
+                                    <li><a>&lt;</a></li>
+                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                        <li id="${i}"><a
+                                                href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li>
+                                        <a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                                    </li>
+                                </c:if>
 
-        <%--  Còn trường hợp này nút nào cũng xài được--%>
-                              <c:if test="${pageId >1 && pageId<haveMaxPage}" >
-                                  <li><a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
-                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                                 <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
-                                 </c:forEach>
-                                  <li><a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
-                              </c:if>
-        <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                                <%--  Còn trường hợp này nút nào cũng xài được--%>
+                                <c:if test="${pageId >1 && pageId<haveMaxPage}">
+                                    <li>
+                                        <a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                        <li id="${i}"><a
+                                                href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li>
+                                        <a href="ShopForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                                    </li>
+                                </c:if>
+                                <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
 
-                                 <c:if test="${pageId ==haveMaxPage}" >
-                                 <li><a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
-                                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                                  <li id="${i}" ><a  href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a></li>
-                                 </c:forEach>
-                                <li><a>></a></li>
-                                 </c:if>
+                                <c:if test="${pageId ==haveMaxPage}">
+                                    <li>
+                                        <a href="ShopForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${haveMaxPage}" var="i">
+                                        <li id="${i}"><a
+                                                href="ShopForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li><a>></a></li>
+                                </c:if>
 
-                             </c:if>
-
+                            </c:if>
 
 
                         </ul>
@@ -319,9 +364,12 @@
                     <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
                     <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span
+                                class="icon-instagram"></span></a></li>
                     </ul>
                 </div>
             </div>
@@ -373,11 +421,12 @@
         <div class="row">
             <div class="col-md-12 text-center">
 
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>document.write(new Date().getFullYear());</script>
                     All rights reserved | Mẫu thiết kế của <i class="icon-heart color-danger"
-                                                              aria-hidden="true"></i>  <a
-                            href="https://colorlib.com" target="_blank">Colorlib</a>
+                                                              aria-hidden="true"></i> <a
+                        href="https://colorlib.com" target="_blank">Colorlib</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
@@ -389,8 +438,10 @@
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
     <svg class="circular" width="48px" height="48px">
-        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke-miterlimit="10"
                 stroke="#F96D00"/>
     </svg>
 </div>
@@ -403,7 +454,19 @@
     dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
   }
 </script>
+<%--Thông báo nếu khách hàng đặt hàng thành công--%>
+<script>
+    // Kiểm tra biến isOrderPlacedSuccessfully từ server
+    var isOrderPlacedSuccessfully = <%= request.getAttribute("isOrderSuccessfully") %>;
 
+    // Nếu đặt hàng thành công, hiển thị thông báo và chuyển hướng trang
+    if (isOrderPlacedSuccessfully) {
+        alert("Bạn đã đặt hàng thành công. Vui lòng kiểm tra email.");
+        window.location.href = "http://localhost:8080/ShopForward";
+    }
+</script>
+
+<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

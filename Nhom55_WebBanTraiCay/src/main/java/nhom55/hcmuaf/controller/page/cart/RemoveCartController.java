@@ -13,21 +13,24 @@ public class RemoveCartController extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    HttpSession session = request.getSession();
-
-    int id = Integer.parseInt(request.getParameter("id"));
-
-    Cart cart = (Cart) request.getSession().getAttribute("cart");
-    cart.deleteProduct(id);
-
-    // update cart
-    MyUtils.storeCart(session, cart);
-    response.sendRedirect(request.getContextPath() + "/cart");
   }
 
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    HttpSession session = request.getSession();
 
+    int id = Integer.parseInt(request.getParameter("productId"));
+
+    Cart cart = (Cart) request.getSession().getAttribute("cart");
+    cart.deleteProduct(id);
+
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    response.getWriter()
+        .write("{ \"status\": \"success\", \"message\": \"Removed from cart\" }");
+
+    // update cart
+    MyUtils.storeCart(session, cart);
   }
 }

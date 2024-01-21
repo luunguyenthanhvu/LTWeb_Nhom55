@@ -48,16 +48,17 @@ public class Cart {
     if (data.containsKey(id)) {
       cartProduct = data.get(id);
       if(cartProduct.getQuantity() == 1) {
-        deleteProduct(id);
+        data.remove(id);
         result = "Removed from cart";
+
       } else {
         cartProduct.decreQuantity(quantity);
+        data.put(id, cartProduct);
         result = "Success";
       }
     } else {
       return "Product does not exist";
     }
-    data.put(id, cartProduct);
     return result;
   }
   public void deleteProduct(int id) {

@@ -159,7 +159,6 @@
         </div>
     </div>
 </div>
-
 <section class="ftco-section ftco-cart">
     <form action="submit-selected-products" method="post">
         <div class="container">

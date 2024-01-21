@@ -7,6 +7,7 @@ import nhom55.hcmuaf.cart.UserCart;
 import nhom55.hcmuaf.dao.LoginDao;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
+import nhom55.hcmuaf.services.UserService;
 import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
@@ -18,7 +19,6 @@ import java.io.IOException;
 public class Login extends HttpServlet {
 
   private LoginDao loginDao = new LoginDao();
-  private UsersDao usersDao = new UsersDaoImpl();
 
   public Login() {
     super();
@@ -74,7 +74,7 @@ public class Login extends HttpServlet {
       dispatcher.forward(request, response);
     } else {
       HttpSession session = request.getSession();
-      Users user = usersDao.getUserByEmail(email);
+      Users user = UserService.getInstance().getUserByEmail(email);
       MyUtils.storeLoginedUser(session, user);
 
       // create a new cart

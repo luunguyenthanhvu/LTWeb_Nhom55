@@ -54,4 +54,18 @@ public class ProductService {
     return productDao.showProductDetails(productId);
   }
 
+  /**
+   * add more quantity
+   */
+  public boolean addMoreWeight(int id, double weight) {
+    return productDao.addMoreWeight(id,weight);
+  }
+
+  /**
+   * get revenue
+   */
+  public double getTotalMoneyMonth(int month) {
+    return productDao.getTotalMoneyMonth(month);
+  }
+
 }

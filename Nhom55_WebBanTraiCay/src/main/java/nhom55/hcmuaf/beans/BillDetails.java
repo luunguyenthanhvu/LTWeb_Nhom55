@@ -1,9 +1,8 @@
 package nhom55.hcmuaf.beans;
 
 public class BillDetails {
-
-    private int quantity;
     private int id;
+    private int quantity;
     private double totalPrice;
     private Products products;
     private Bills bills;

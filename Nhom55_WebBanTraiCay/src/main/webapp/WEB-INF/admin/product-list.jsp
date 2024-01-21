@@ -189,7 +189,6 @@
                 </div>
             </form>
         </div>
-<<<<<<< HEAD
         <div class="container" style="margin: 30px 30px 0 30px">
             <div class="table-sanpham">
                 <table class="table-sanpham">
@@ -203,7 +202,7 @@
                         <th style="width: 90px;">Hàng tồn kho</th>
                         <th style="width: 120px;">Chức năng</th>
                     </tr>
-=======
+
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Chức năng</a></li>
           <li><a href="product-list">Danh sách sản phẩm</a></li>
@@ -261,8 +260,6 @@
           <li><a href="AddUser">Thêm người dùng</a></li>
         </ul>
       </li>
->>>>>>> origin/master
-
                     <c:forEach items="${listProduct}" var="product">
                         <tr data-product-id="${product.getId()}">
                             <td>${product.getId()}</td>

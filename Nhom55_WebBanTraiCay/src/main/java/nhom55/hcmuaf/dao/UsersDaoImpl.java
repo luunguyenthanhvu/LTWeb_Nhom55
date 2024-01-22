@@ -303,6 +303,7 @@ public class UsersDaoImpl implements UsersDao {
                         .bind(1, search) // Bind giá trị cho tham số thứ hai
                         .mapToBean(Users.class)
                         .list();
+
                 // Commit kết nối
                 handle.commit();
                 return resultList;
@@ -314,7 +315,6 @@ public class UsersDaoImpl implements UsersDao {
         });
         return result;
     }
-
     @Override
     public List<Users> searchFilter(String sortBy, String order, String search, int index,
                                     int sizePage) {
@@ -399,5 +399,4 @@ public class UsersDaoImpl implements UsersDao {
                     .execute();
         });
     }
-
 }

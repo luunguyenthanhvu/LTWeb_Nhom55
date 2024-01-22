@@ -37,8 +37,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input type="text" placeholder="Tên người dùng" name="username">
                 <input type="text" placeholder="Số điện thoại" name="phoneNum">
                 <input type="text" placeholder="Địa chỉ" name="address">
-                <input type="email" placeholder="Email" name="email">
-                <input type="password" placeholder="Mật khẩu" name="password">
+
+                <input type="email" placeholder="Email" name="email" id="email_nd" value="${email_user}">
+                <span class="error" id="email-error" style="display: none;color: red; font-size: 14px;"></span>
+                <c:if test="${not empty error_email}">
+                    <p style="color: red; padding: 10px; text-align: center"> ${error_email}</p>
+                </c:if>
+
+                <input type="password" placeholder="Mật khẩu" name="password" id="password_nd" value="${pass_user}">
+                <span class="error" id="password-error"
+                      style="display: none;color: red; font-size: 14px"></span>
+                <c:if test="${not empty error_password}">
+                    <p style="color: red; padding: 10px; text-align: center"> ${error_password}</p>
+                </c:if>
                 <c:if test="${not empty result}" >
                     <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
                 </c:if>
@@ -55,12 +66,63 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </div>
 
-
-
-
-
 <div class="footer-w3l">
 
 </div>
+
+<script>
+    // validate for input
+    var email = document.getElementById("email_nd");
+    var password = document.getElementById("password_nd");
+
+    function validateEmail() {
+        var text = email.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("email-error");
+
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập email";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            // Check if the email contains "@gmail.com"
+            if (!text.includes("@gmail.com")) {
+                error.textContent = "Email phải chứa địa chỉ @gmail.com";
+                error.style.display = "block";
+                return false;
+            }
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validatePassword() {
+        var text = document.getElementById("password_nd").value;
+        var error = document.getElementById("password-error");
+
+        if (text.length === 0) {
+            error.textContent = "Vui lòng nhập mật khẩu";
+            error.style.display = "block";
+            return false;
+        } else if (text.length < 6) {
+            error.textContent = "Mật khẩu phải chứa ít nhất 6 ký tự";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+
+    // add event to check input
+    email.addEventListener("blur", validateEmail);
+    password.addEventListener("blur", validatePassword);
+
+</script>
+
 </body>
 </html>

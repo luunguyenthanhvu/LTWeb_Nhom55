@@ -83,7 +83,6 @@
   .nav-item dropdown {
     margin-left: 250px;
   }
-
 </style>
 
 <!-- END nav -->
@@ -188,7 +187,7 @@
           </table>
         </div>
         <div class="anhNguoiDung">
-          <img class="anhCuaNguoiDung" src="${user.getImg()}" alt="">
+          <img class="anhCuaNguoiDung" src="/static/images/accountPicture.png" alt="">
         </div>
       </div>
       <p style="color: red;padding: 30px"> ${result}</p>

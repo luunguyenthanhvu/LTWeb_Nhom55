@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "UpdatePasswordAdmin", value = "/updatePasswordAdmin")
 public class UpdatePasswordAdmin extends HttpServlet {
@@ -43,17 +44,18 @@ public class UpdatePasswordAdmin extends HttpServlet {
                             .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.setAttribute("result", "Có lỗi xảy ra khi đổi mật khẩu");
+                    request.setAttribute("result", "Đổi mật khẩu không thành công");
                     RequestDispatcher dispatcher = this.getServletContext()
                             .getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
                     dispatcher.forward(request, response);
                 }
             } else {
-                request.setAttribute("result", "Mật khẩu cũ không trùng khớp");
+                request.setAttribute("result", "Mật khẩu cũ không đúng");
                 RequestDispatcher dispatcher = this.getServletContext()
                         .getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
                 dispatcher.forward(request, response);
             }
+            // không checkValidate
         } else {
             RequestDispatcher dispatcher = this.getServletContext()
                     .getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
@@ -73,13 +75,10 @@ public class UpdatePasswordAdmin extends HttpServlet {
         private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
                 String oldPassword, String newPassword, String retypePassword) {
 
-            String checkOldPassword = UserValidator.validateOldPass(oldPassword);
-            String checkNewPassword = UserValidator.validateNewPass(newPassword);
-            String checkRetypePassword = UserValidator.validateNewPass(newPassword);
+            String checkOldPassword = UserValidator.validateMatKhau(oldPassword);
+            String checkNewPassword = UserValidator.validateMatKhau(newPassword);
             String checkOldAndNewPass = UserValidator.validateOldAndNewPass(oldPassword, newPassword);
-            String checkNewAndRetypePass = UserValidator.validateNewAndRetypePass(newPassword,
-                    retypePassword);
-
+            String checkNewAndRetypePass = UserValidator.validateNhapLaiMatKhau(newPassword, retypePassword);
             // count for validate
             int count = 0;
 
@@ -95,20 +94,6 @@ public class UpdatePasswordAdmin extends HttpServlet {
                 request.setAttribute("error_newPassword", checkNewPassword);
             } else {
                 request.setAttribute("newPass", newPassword);
-            }
-
-            if (!checkNewPassword.isEmpty()) {
-                count++;
-                request.setAttribute("error_newPassword", checkNewPassword);
-            } else {
-                request.setAttribute("newPass", newPassword);
-            }
-
-            if (!checkNewPassword.isEmpty()) {
-                count++;
-                request.setAttribute("error_retypePassword", checkNewPassword);
-            } else {
-                request.setAttribute("retypePass", retypePassword);
             }
 
             if (!checkOldAndNewPass.isEmpty()) {

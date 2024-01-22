@@ -85,7 +85,7 @@
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #fff;
+    background-color: green;
 }
 
 .img-product img{

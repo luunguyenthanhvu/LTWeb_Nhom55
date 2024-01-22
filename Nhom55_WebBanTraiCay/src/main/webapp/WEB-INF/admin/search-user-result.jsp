@@ -41,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile.html">Thông tin tài khoản</a></li>
-                    <li><a href="update-admin-password.jsp">Đổi mật khẩu</a></li>
+                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
+                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -59,9 +59,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list.html">Danh sách sản phẩm</a></li>
+                    <li><a href="product-list">Danh sách sản phẩm</a></li>
 
-                    <li><a href="add-product.html">Thêm sản phẩm</a></li>
+                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
                     <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
@@ -122,11 +122,11 @@
 
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${loginedUser.getImg()}"
+                        <img src="${admin.getImg()}"
                              alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">
@@ -152,40 +152,10 @@
             <form action="listController?index=1" method="post">
                 <div class="fill-product">
                     <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng" name="txtSearch">
-
-                    <form action="" class="filter-form">
-                        <div class="filter-icon" onclick="toggleFilter()">
-                            <span class="font_bold">Lọc theo</span>
-                        </div>
-                        <div id="filterDropdown" class="filter-dropdown">
-                            <a href="FilterForSearchUser?sortBy=username&order=asc&pageId=1&txtSearch=${txtSearch}">Tên</a>
-                        </div>
-                    </form>
                     <input style="width: 100px" type="submit" value="Tìm kiếm">
 
                 </div>
             </form>
-
-            <%--            <form action="">--%>
-            <%--                <div value="" disabled selected class="font_bold" onclick="toggleFilter()">--%>
-            <%--                    <span class="font_bold">Lọc theo</span>--%>
-            <%--                </div>--%>
-
-            <%--                <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">--%>
-            <%--                    <a href="FilterForSearchUser?sortBy=id&order=asc&pageId=1">ID</a>--%>
-            <%--                    <a href="FilterForSearchUser?sortBy=username&order=asc&pageId=1">Tên</a>--%>
-            <%--                    <a href="FilterForSearchUser?sortBy=role&order=asc&pageId=1">Vai trò</a>--%>
-            <%--                    &lt;%&ndash;                        <a href="FilterForAllUser?sortBy=id&order=asc&pageId=1" value="service1" >Ngày đăng ký</a>&ndash;%&gt;--%>
-            <%--                </div>--%>
-            <%--            </form>--%>
-            <%--            <form action="listController?index=1" method="post">--%>
-            <%--                <button type="submit">--%>
-            <%--                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">--%>
-            <%--                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->--%>
-            <%--                        <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>--%>
-            <%--                    </svg>--%>
-            <%--                </button>--%>
-            <%--            </form>--%>
         </div>
         <div class="container" style="margin: 30px 30px 0 30px">
             <div class="table-sanpham">
@@ -206,7 +176,7 @@
                             <td>${user.getId()}</td>
                             <td>${user.getUsername()}</td>
                             <td class="img-product">
-                                <img src="${user.getImg()}">
+                                <img src="${admin.getImg()}">
                             </td>
                             <td>${user.getEmail()}</td>
                             <td>${user.getPhoneNumber()}</td>
@@ -227,14 +197,14 @@
                             </td>
 
                             <td class="function-product">
-                                <a href="updateUser?id=${loginedUser.getId()}">
+                                <a href="updateUser?id=${user.getId()}">
                                     <svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em"
                                          viewBox="0 0 512 512">
                                         <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                         <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
                                     </svg>
                                 </a>
-                                <a href="">
+                                <a href="deleteUser?id=${user.getId()}">
                                     <svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em"
                                          viewBox="0 0 448 512">
                                         <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->

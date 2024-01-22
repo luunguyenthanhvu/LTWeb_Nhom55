@@ -2,14 +2,13 @@ package nhom55.hcmuaf.controller.page.cart;
 
 import java.text.NumberFormat;
 import java.util.Collection;
-import java.util.List;
 import java.util.Locale;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.CartProduct;
+import nhom55.hcmuaf.beans.cart.Cart;
+import nhom55.hcmuaf.beans.cart.CartProduct;
 
 @WebServlet(name = "cart", value = "/cart")
 public class ShowCart extends HttpServlet {

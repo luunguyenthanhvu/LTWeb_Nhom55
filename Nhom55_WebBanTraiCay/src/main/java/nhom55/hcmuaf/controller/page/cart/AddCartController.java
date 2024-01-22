@@ -6,7 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.cart.Cart;
+import nhom55.hcmuaf.beans.cart.Cart;
 import nhom55.hcmuaf.services.ProductService;
 import nhom55.hcmuaf.util.MyUtils;
 

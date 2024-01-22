@@ -40,11 +40,11 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop_style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast_style.css">
 
 
 

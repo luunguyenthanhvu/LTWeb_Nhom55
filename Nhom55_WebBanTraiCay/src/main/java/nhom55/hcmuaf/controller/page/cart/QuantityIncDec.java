@@ -1,13 +1,10 @@
 package nhom55.hcmuaf.controller.page.cart;
 
-import java.net.http.HttpResponse;
-import java.util.Collection;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.CartProduct;
+import nhom55.hcmuaf.beans.cart.Cart;
 import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "QuantityIncDec", value = "/quantity-inc-dec")

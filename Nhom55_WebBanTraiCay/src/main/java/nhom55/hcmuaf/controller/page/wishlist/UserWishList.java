@@ -1,20 +1,18 @@
-package nhom55.hcmuaf.controller.page.cart;
+package nhom55.hcmuaf.controller.page.wishlist;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import nhom55.hcmuaf.beans.cart.Cart;
 
-@WebServlet(name = "getCartAmount", value = "/get-cart-amount")
-public class GetCartAmount extends HttpServlet {
+@WebServlet(name = "WishList", value = "/wish-list")
+public class UserWishList extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    Cart cart = (Cart) request.getSession().getAttribute("cart");
-    int cartCount = (cart != null) ? cart.getTotal() : 0;
-    response.getWriter().write(String.valueOf(cartCount));
+    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/wish-list.jsp");
+    dispatcher.forward(request, response);
   }
 
   @Override

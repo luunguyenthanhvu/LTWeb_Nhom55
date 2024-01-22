@@ -1,10 +1,8 @@
 package nhom55.hcmuaf.util;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-import javax.servlet.http.Part;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.cart.Cart;
+import nhom55.hcmuaf.beans.cart.Cart;
+import nhom55.hcmuaf.beans.wishlist.WishList;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.http.HttpSession;
@@ -87,5 +85,7 @@ public class MyUtils {
         session.setAttribute("previousURL", url);
     }
 
-
+    public static void storeWishList(HttpSession session, WishList wishList) {
+        session.setAttribute("wishList", wishList);
+    }
 }

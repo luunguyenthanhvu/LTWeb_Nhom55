@@ -17,8 +17,8 @@ import java.util.Properties;
 
 import nhom55.hcmuaf.beans.Bills;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.CartProduct;
+import nhom55.hcmuaf.beans.cart.Cart;
+import nhom55.hcmuaf.beans.cart.CartProduct;
 import nhom55.hcmuaf.dao.BillDao;
 import nhom55.hcmuaf.dao.BillDaoImpl;
 import nhom55.hcmuaf.sendmail.MailProperties;

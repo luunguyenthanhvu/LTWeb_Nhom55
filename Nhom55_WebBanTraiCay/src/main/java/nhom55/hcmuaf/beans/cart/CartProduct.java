@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.cart;
+package nhom55.hcmuaf.beans.cart;
 
 import nhom55.hcmuaf.beans.Products;
 

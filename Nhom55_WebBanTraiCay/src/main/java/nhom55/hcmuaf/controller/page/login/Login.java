@@ -2,8 +2,10 @@ package nhom55.hcmuaf.controller.page.login;
 
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.UserCart;
+import nhom55.hcmuaf.beans.cart.Cart;
+import nhom55.hcmuaf.beans.cart.UserCart;
+import nhom55.hcmuaf.beans.wishlist.UserWishList;
+import nhom55.hcmuaf.beans.wishlist.WishList;
 import nhom55.hcmuaf.dao.LoginDao;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
@@ -82,6 +84,10 @@ public class Login extends HttpServlet {
                 // create a new cart
                 Cart cart = UserCart.getUserCart(user.getId());
                 MyUtils.storeCart(session, cart);
+
+                // create a wish list
+                WishList wishList = UserWishList.getUserWishList(user.getId());
+                MyUtils.storeWishList(session,wishList);
 
                 if (result.equals("ADMIN")) {
                     // redirect to admin page

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/popup.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast_style.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

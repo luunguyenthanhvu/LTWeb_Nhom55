@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import nhom55.hcmuaf.cart.Cart;
+import nhom55.hcmuaf.beans.cart.Cart;
 import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "RemoveCartController", value = "/remove-product-cart")

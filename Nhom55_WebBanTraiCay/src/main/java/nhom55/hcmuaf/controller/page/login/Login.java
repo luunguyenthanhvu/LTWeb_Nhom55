@@ -101,7 +101,6 @@ public class Login extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
-
     /**
      * check validate for form input
      *
@@ -136,6 +135,4 @@ public class Login extends HttpServlet {
         }
         return true;
     }
-
-
 }

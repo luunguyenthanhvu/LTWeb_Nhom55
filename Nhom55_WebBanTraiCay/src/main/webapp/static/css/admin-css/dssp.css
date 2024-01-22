@@ -28,7 +28,7 @@
 /*    text-align: center;*/
 /*}*/
 .table-sanpham table tr:hover {
-     background-color:lightgray;
+    background-color:lightgray;
 }
 
 .th-function-sanpham {
@@ -180,5 +180,3 @@
 .filter-dropdown a:hover {
     background-color: #f1f1f1;
 }
-
-

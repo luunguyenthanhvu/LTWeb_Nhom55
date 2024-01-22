@@ -23,6 +23,10 @@ public class UserService {
     return instance;
   }
 
+  public  Users getUserByEmail(String email) {
+    return userDao.getUserByEmail(email);
+  }
+
 
   /**
    * show profile

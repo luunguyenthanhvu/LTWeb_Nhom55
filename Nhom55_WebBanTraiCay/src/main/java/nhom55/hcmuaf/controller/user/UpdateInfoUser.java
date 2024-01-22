@@ -12,8 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -57,7 +55,7 @@ public class UpdateInfoUser extends HttpServlet {
         String filePartString = filePart.getSubmittedFileName();
 
 
-        if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, filePartString)) {
+        if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, filePartString, gender)) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date myBirthDay = null;
@@ -85,6 +83,7 @@ public class UpdateInfoUser extends HttpServlet {
             }
 
             String result = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, myBirthDay, imgUser, gender);
+            request.setAttribute("result", "Cập nhật thành công");
 
             // Nếu người dùng thay đổi email
             if(!user.getEmail().equals(email)) {
@@ -93,12 +92,12 @@ public class UpdateInfoUser extends HttpServlet {
                     request.setAttribute("result", "Đổi email thành công. Vui lòng đăng nhập lại!");
                     // xoa session hien tai
                     MyUtils.removeLoginedUser(session);
+                    MyUtils.removeCart(session);
                     RequestDispatcher dispatcher = this.getServletContext()
                             .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
                 }
             }
-            request.setAttribute("result", "Cập nhật thành công");
             response.sendRedirect(request.getContextPath() + "/userProfile");
 
             // không checkValidate
@@ -130,15 +129,15 @@ public class UpdateInfoUser extends HttpServlet {
 
     private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
                                          String userName, String email, String address,
-                                         String phoneNumber, String dateOfBirth, String img) {
+                                         String phoneNumber, String dateOfBirth, String img, String gender) {
 
-        String checkName = UserValidator.validateName(userName);
+        String checkName = UserValidator.validateTenNguoiDung(userName);
         String checkEmail = UserValidator.validateEmail(email);
-        String checkAddress = UserValidator.validateAddress(address);
-        String checkPhoneNumber = UserValidator.validatePhoneNumber(phoneNumber);
-        String checkDateOfBirth = UserValidator.validateDateOfBirth(dateOfBirth);
-        String checkImg = UserValidator.validateFileUpload(img);
-//        String checkGender = UserValidator.validateGender(gender);
+        String checkAddress = UserValidator.validateDiaChi(address);
+        String checkPhoneNumber = UserValidator.validateSDT(phoneNumber);
+        String checkDateOfBirth = UserValidator.validateNgaySinh(dateOfBirth);
+        String checkImg = UserValidator.validateUpFileAnh(img);
+        String checkGender = UserValidator.validateGioiTinh(gender);
         // count for validate
         int count = 0;
 
@@ -181,6 +180,14 @@ public class UpdateInfoUser extends HttpServlet {
             count++;
             request.setAttribute("file_anh_error", checkImg);
         }
+
+        if (!checkGender.isEmpty()) {
+            count++;
+            request.setAttribute("error_gender", checkGender);
+        } else {
+            request.setAttribute("gender_user", gender);
+        }
+
 
         if (count > 0) {
             return false;

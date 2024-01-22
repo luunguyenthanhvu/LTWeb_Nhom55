@@ -38,7 +38,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <h2 class="login-header w3_header">Quên mật khẩu</h2>
     <div class="w3l_grid">
       <form class="login-container" action="#" method="post">
-        <input type="email" placeholder="email" Name="email" required="" >
+        <input type="email" placeholder="email" Name="email" id="email_nd" value="${email_user}" >
+        <span class="error" id="email-error" style="display: none;color: red; font-size: 14px"></span>
+        <c:if test="${not empty error_email}">
+          <p style="color: red; padding: 10px; text-align: center"> ${error_email}</p>
+        </c:if>
+
         <input type="submit" value="Gửi lại mật khẩu">
         <c:if test="${not empty result}" >
           <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
@@ -57,5 +62,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="footer-w3l">
 
 </div>
+
+<script>
+  // validate for input
+  var email = document.getElementById("email_nd");
+
+  function validateEmail() {
+    var text = email.value;
+    var kyTuHopLe = /^[\p{L}\s']+$/u;
+    var error = document.getElementById("email-error");
+
+    if (text.length == 0 || text == null) {
+      error.textContent = "Vui lòng nhập email";
+      error.style.display = "block";
+      return false;
+    } else if (!kyTuHopLe.test(text)) {
+      // Check if the email contains "@gmail.com"
+      if (!text.includes("@gmail.com")) {
+        error.textContent = "Email phải chứa địa chỉ @gmail.com";
+        error.style.display = "block";
+        return false;
+      }
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
+    }
+  }
+
+  // add event to check input
+  email.addEventListener("blur", validateEmail);
+
+</script>
 </body>
 </html>

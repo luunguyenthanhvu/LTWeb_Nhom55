@@ -57,7 +57,7 @@ public class UpdateUser extends HttpServlet {
         if (parameterValue != null && !parameterValue.isEmpty()) { // Kiểm tra xem giá trị có null không
             int id = Integer.parseInt(parameterValue);
 
-            if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth)) {
+            if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth,gender)) {
                 int status = Integer.parseInt(statusParam);
                 int role = Integer.parseInt(roleParam);
 
@@ -76,8 +76,20 @@ public class UpdateUser extends HttpServlet {
                     request.setAttribute("result", "Đổi email thành công. Vui lòng đăng nhập lại!");
                     // xoa session hien tai
                     MyUtils.removeLoginedUser(session);
+                    MyUtils.removeCart(session);
                     RequestDispatcher dispatcher = this.getServletContext()
                                 .getRequestDispatcher("/WEB-INF/login/login.jsp");
+                    dispatcher.forward(request, response);
+                }
+
+                // Nếu thay đổi role (vai trò)
+                if(admin.getRole()!=role) {
+                    request.setAttribute("result", "Đổi vai trò thành công. Vui lòng đăng nhập lại!");
+                    // xoa session hien tai
+                    MyUtils.removeLoginedUser(session);
+                    MyUtils.removeCart(session);
+                    RequestDispatcher dispatcher = this.getServletContext()
+                            .getRequestDispatcher("/WEB-INF/login/login.jsp");
                     dispatcher.forward(request, response);
                 }
                 response.sendRedirect(request.getContextPath() + "/userList");
@@ -113,14 +125,14 @@ public class UpdateUser extends HttpServlet {
 
     private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
                                          String userName, String email, String address,
-                                         String phoneNumber, String dateOfBirth) {
+                                         String phoneNumber, String dateOfBirth, String gender) {
 
-        String checkName = UserValidator.validateName(userName);
+        String checkName = UserValidator.validateTenNguoiDung(userName);
         String checkEmail = UserValidator.validateEmail(email);
-        String checkAddress = UserValidator.validateAddress(address);
-        String checkPhoneNumber = UserValidator.validatePhoneNumber(phoneNumber);
-        String checkDateOfBirth = UserValidator.validateDateOfBirth(dateOfBirth);
-//        String checkGender = UserValidator.validateGender(gender);
+        String checkAddress = UserValidator.validateDiaChi(address);
+        String checkPhoneNumber = UserValidator.validateSDT(phoneNumber);
+        String checkDateOfBirth = UserValidator.validateNgaySinh(dateOfBirth);
+        String checkGender = UserValidator.validateGioiTinh(gender);
         // count for validate
         int count = 0;
 
@@ -159,6 +171,12 @@ public class UpdateUser extends HttpServlet {
             request.setAttribute("dateOfBirth_user", dateOfBirth);
         }
 
+        if (!checkGender.isEmpty()) {
+            count++;
+            request.setAttribute("error_gender", checkGender);
+        } else {
+            request.setAttribute("gender_user", gender);
+        }
         if (count > 0) {
             return false;
         }

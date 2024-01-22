@@ -48,18 +48,18 @@ public class MonthlyRevenue extends HttpServlet {
     double totalMoneyMonth11 = ProductService.getInstance().getTotalMoneyMonth(11);
     double totalMoneyMonth12 = ProductService.getInstance().getTotalMoneyMonth(12);
 
-    request.setAttribute("totalMoneyMonth1", currencyFormatter.format(totalMoneyMonth1));
-    request.setAttribute("totalMoneyMonth2", currencyFormatter.format(totalMoneyMonth2));
-    request.setAttribute("totalMoneyMonth3", currencyFormatter.format(totalMoneyMonth3));
-    request.setAttribute("totalMoneyMonth4", currencyFormatter.format(totalMoneyMonth4));
-    request.setAttribute("totalMoneyMonth5", currencyFormatter.format(totalMoneyMonth5));
-    request.setAttribute("totalMoneyMonth6", currencyFormatter.format(totalMoneyMonth6));
-    request.setAttribute("totalMoneyMonth7", currencyFormatter.format(totalMoneyMonth7));
-    request.setAttribute("totalMoneyMonth8", currencyFormatter.format(totalMoneyMonth8));
-    request.setAttribute("totalMoneyMonth9", currencyFormatter.format(totalMoneyMonth9));
-    request.setAttribute("totalMoneyMonth10", currencyFormatter.format(totalMoneyMonth10));
-    request.setAttribute("totalMoneyMonth11", currencyFormatter.format(totalMoneyMonth11));
-    request.setAttribute("totalMoneyMonth12", currencyFormatter.format(totalMoneyMonth12));
+    request.setAttribute("totalMoneyMonth1", totalMoneyMonth1);
+    request.setAttribute("totalMoneyMonth2", totalMoneyMonth2);
+    request.setAttribute("totalMoneyMonth3", totalMoneyMonth3);
+    request.setAttribute("totalMoneyMonth4", totalMoneyMonth4);
+    request.setAttribute("totalMoneyMonth5", totalMoneyMonth5);
+    request.setAttribute("totalMoneyMonth6", totalMoneyMonth6);
+    request.setAttribute("totalMoneyMonth7", totalMoneyMonth7);
+    request.setAttribute("totalMoneyMonth8", totalMoneyMonth8);
+    request.setAttribute("totalMoneyMonth9", totalMoneyMonth9);
+    request.setAttribute("totalMoneyMonth10", totalMoneyMonth10);
+    request.setAttribute("totalMoneyMonth11", totalMoneyMonth11);
+    request.setAttribute("totalMoneyMonth12", totalMoneyMonth12);
 
     RequestDispatcher dispatcher = this.getServletContext()
         .getRequestDispatcher("/WEB-INF/admin/monthly-revenue.jsp");

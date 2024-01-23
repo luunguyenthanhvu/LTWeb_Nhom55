@@ -2,6 +2,7 @@ package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.UserService;
+import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,6 +26,11 @@ public class UserList extends HttpServlet {
         int totalRow = UserService.getInstance().countTotalUserInDatabase();
         int haveMaxPage = (totalRow/quantityDefault) +1;
         List<Users> listUser = UserService.getInstance().get5UsersForEachPage(pageNumber,quantityDefault);
+
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
+
+        request.setAttribute("admin", admin);
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/user-list.jsp");
         request.setAttribute("listOfUser",listUser);

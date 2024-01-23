@@ -281,8 +281,16 @@
                         </table>
                     </div>
                     <div class="user-img">
-                        <img id="previewImage" src="/static/images/accountPicture.png"
-                             alt="">
+                        <c:choose>
+                            <c:when test="${not empty user.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img id="previewImage" src="${user.getImg()}" alt="">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img id="previewImage" src="/static/images/accountPicture.png" alt="">
+                            </c:otherwise>
+                        </c:choose>
                         <div class="chose-new-img">
                             <label for="fileInput" class="chose-new-img">
                                 <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -422,14 +430,14 @@
 
     function validateAddressUser() {
         var text = addressUser.value;
-        var kyTuHopLe = /^[a-zA-Z0-9\s]*$/;
+        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
         var error = document.getElementById("address-error");
-        if (text.length == 0 || text == null) {
+        if (text.trim() === "") {
             error.textContent = "Vui lòng nhập địa chỉ.";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Địa chỉ chỉ chứa chữ cái, chữ số, khoảng trắng";
+            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
             error.style.display = "block";
             return false;
         } else {

@@ -123,10 +123,19 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${admin.getImg()}" alt="profileImg">
+                        <c:choose>
+                            <c:when test="${not empty admin.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${admin.getImg()}" alt="profileImg">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${user.getUsername()}</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">
@@ -152,14 +161,22 @@
             <form action="updateUser" method="post" class="main-content">
                 <div class="user-info">
                     <div class="img-user">
-                        <img style="width: 100px; height: 100px" src="/static/images/accountPicture.png">
+                        <c:choose>
+                            <c:when test="${not empty user.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${user.getImg()}" alt="">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <table>
                         <tr>
                             <td><label for="id">ID người dùng <span class="not-empty"> *</span></label></td>
                             <td><input id="id" placeholder="ID" name="id_nguoi_dung" value="${user.getId()}" readonly>
                             </td>
-                            <%--                            <td> <input type="hidden" name="id_nguoi_dung" value="${user.getId()}"</td>--%>
                         </tr>
                         <tr>
                             <td><label for="ten_nd">Tên người dùng <span class="not-empty"> *</span></label></td>
@@ -249,7 +266,7 @@
 
                             <td>
                                 <select id="role_user" name="role">
-                                    <option value="0" ${user.getRole() == 0 ? 'selected' : ''}>Người dùng</option>
+                                    <option value="2" ${user.getRole() == 2 ? 'selected' : ''}>Người dùng</option>
                                     <option value="1" ${user.getRole() == 1 ? 'selected' : ''}>Quản trị viên</option>
                                 </select>
                             </td>
@@ -412,14 +429,14 @@
 
     function validateAddressUser() {
         var text = addressUser.value;
-        var kyTuHopLe = /^[a-zA-Z0-9\s]*$/;
+        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
         var error = document.getElementById("address-error");
         if (text.length == 0 || text == null) {
             error.textContent = "Vui lòng nhập địa chỉ.";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Địa chỉ chỉ chứa chữ cái, chữ số, khoảng trắng";
+            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
             error.style.display = "block";
             return false;
         } else {

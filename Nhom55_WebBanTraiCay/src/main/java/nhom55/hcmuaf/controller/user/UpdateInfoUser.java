@@ -98,6 +98,7 @@ public class UpdateInfoUser extends HttpServlet {
                     dispatcher.forward(request, response);
                 }
             }
+
             response.sendRedirect(request.getContextPath() + "/userProfile");
 
             // không checkValidate

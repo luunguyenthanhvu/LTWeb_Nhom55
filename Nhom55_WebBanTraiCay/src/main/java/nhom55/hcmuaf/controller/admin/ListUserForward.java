@@ -42,6 +42,8 @@ public class ListUserForward extends HttpServlet {
             int haveMaxPage = (totalRow/quantityDefault) +1;
             List<Users> list = UserService.getInstance().get5UsersForEachPage(pageNumber,quantityDefault);
 
+            Users admin = MyUtils.getLoginedUser(session);
+            request.setAttribute("admin", admin);
             RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/admin/user-list.jsp");
             request.setAttribute("haveMaxPage",haveMaxPage);
             request.setAttribute("listOfUser",list);

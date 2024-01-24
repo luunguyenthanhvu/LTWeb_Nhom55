@@ -145,7 +145,16 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${admin.getImg()}" alt="profileImg">
+                        <c:choose>
+                            <c:when test="${not empty admin.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${admin.getImg()}" alt="profileImg">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="name-job">
                         <div class="profile_name">${admin.getUsername()}</div>
@@ -205,7 +214,16 @@
                         </table>
                     </div>
                     <div class="img-admin">
-                        <img src="${admin.getImg()}" alt="">
+                        <c:choose>
+                            <c:when test="${not empty admin.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${admin.getImg()}" alt="">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="edit-admin">

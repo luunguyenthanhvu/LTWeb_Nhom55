@@ -114,9 +114,16 @@
 
       <li>
         <div class="profile-details">
-          <div class="profile-content">
-            <img src="/static/images/accountPicture.png" alt="profileImg">
-          </div>
+          <c:choose>
+            <c:when test="${not empty admin.getImg()}">
+              <!-- Ảnh mới từ sau khi đổi ảnh -->
+              <img src="${admin.getImg()}" alt="profileImg">
+            </c:when>
+            <c:otherwise>
+              <!-- Ảnh mặc định khi mới đăng ký -->
+              <img src="/static/images/accountPicture.png" alt="profileImg">
+            </c:otherwise>
+          </c:choose>
           <div class="name-job">
             <div class="profile_name">${admin.getUsername()}</div>
             <div class="job">Quản trị viên</div>

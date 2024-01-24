@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import nhom55.hcmuaf.util.MyUtils;
 
 public class UsersDaoImpl implements UsersDao {
 
@@ -70,6 +71,34 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("address", address)
                     .bind("status", 0)
                     .execute();
+            return "SUCCESS";
+        });
+    }
+
+    @Override
+    public String addNewGoogleUser(String username,String email, String img) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+            h.createQuery(
+                    "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                .bind(0, email)
+                .mapToBean(Users.class)
+                .stream()
+                .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
+
+        // add new user
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate(
+                    "INSERT INTO Users (username, email, status, img) VALUES (:username, :email, :status, :img)")
+                .bind("username", username)
+                .bind("email", email)
+                .bind("status", 1)
+                .bind("img", img)
+                .execute();
             return "SUCCESS";
         });
     }

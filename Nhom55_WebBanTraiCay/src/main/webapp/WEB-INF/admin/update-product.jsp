@@ -10,7 +10,11 @@
   <title> Drop Down Sidebar Menu | CodingLab </title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
 
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/my-style.css">
+  <link rel="stylesheet"
+        href="${pageContext.request.contextPath}/static/css/admin-css/my-dssp.css">
 
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/my-popup.css">
   <!-- Boxiocns CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/add-product.css">

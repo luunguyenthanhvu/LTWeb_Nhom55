@@ -7,7 +7,20 @@
     <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-toast.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-fix.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/my-shop.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
@@ -40,13 +53,6 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
-
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop_style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast_style.css">
-
-
 
 </head>
 <body class="goto-here">
@@ -85,26 +91,13 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <c:choose>
-                    <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/cart"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/login"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">0</span>]
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+                <li class="nav-item cta cta-colored">
+                    <a href="${pageContext.request.contextPath}/cart"
+                       class="nav-link cart-info-container">
+                        <span class="icon-shopping_cart"></span>
+                        [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -118,7 +111,8 @@
                             <b>${loginedUser.getUsername()}</b>
                         </a>
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="userProfile?id=${loginedUser.getId()}">
+                            <a class="account dropdown-item"
+                               href="userProfile?id=${loginedUser.getId()}">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -190,17 +184,24 @@
                         </div>
 
                         <!-- Dropdown Filter -->
-                        <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
-                            <a href="FilterForSearchProduct?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
-                            <a href="FilterForSearchProduct?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
-                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
-                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
-                            <a href="FilterForSearchProduct?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                        <div style="top: -30px;left: 250px" id="filterDropdown"
+                             class="filter-dropdown">
+                            <a href="FilterForSearchProduct?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}">Sắp
+                                xếp giá tăng dần</a>
+                            <a href="FilterForSearchProduct?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}">Sắp
+                                xếp giá giảm dần</a>
+                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}">Sắp
+                                xếp theo tên từ A-Z</a>
+                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}">Sắp
+                                xếp theo tên từ Z-A</a>
+                            <a href="FilterForSearchProduct?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}">Sắp
+                                xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
 
-                    <div class="tab-pane fade active show" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                    <div class="tab-pane fade active show" id="pills-profile" role="tabpanel"
+                         aria-labelledby="pills-profile-tab" tabindex="0">
                         <div class="row">
 
 
@@ -256,37 +257,53 @@
                 <div class="col text-center">
                     <div style="width: 305px" class="block-27">
                         <ul>
-<%--                            Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
-                             <c:if test="${pageId== 1 && indexEnd ==1}">
-                                 <li><a >&lt;</a></li>
-                                 <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                     <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
-                                 </c:forEach>
-                                 <li><a >></a></li>
+                            <%--                            Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
+                            <c:if test="${pageId== 1 && indexEnd ==1}">
+                                <li><a>&lt;</a></li>
+                                <c:forEach begin="1" end="${indexEnd}" var="i">
+                                    <li id="${i}"><a
+                                            href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                    </li>
+                                </c:forEach>
+                                <li><a>></a></li>
                             </c:if>
 
                             <c:if test="${ indexEnd !=1}">
-<%--                                Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
-                                <c:if test="${pageId ==1}" >
-                                    <li><a >&lt;</a></li>
-                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                <%--                                Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
+                                <c:if test="${pageId ==1}">
+                                    <li><a>&lt;</a></li>
+                                    <c:forEach begin="1" end="${indexEnd}" var="i">
+                                        <li id="${i}"><a
+                                                href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
                                     </c:forEach>
-                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                    <li>
+                                        <a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                                    </li>
                                 </c:if>
-<%--                                 Còn trường hợp này nút nào cũng xài được--%>
-                                <c:if test="${pageId >1 && pageId<indexEnd}" >
-                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
-                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                <%--                                 Còn trường hợp này nút nào cũng xài được--%>
+                                <c:if test="${pageId >1 && pageId<indexEnd}">
+                                    <li>
+                                        <a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${indexEnd}" var="i">
+                                        <li id="${i}"><a
+                                                href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
                                     </c:forEach>
-                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                    <li>
+                                        <a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                                    </li>
                                 </c:if>
-<%--                                Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
-                                <c:if test="${pageId ==indexEnd}" >
-                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
-                                    <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                <%--                                Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
+                                <c:if test="${pageId ==indexEnd}">
+                                    <li>
+                                        <a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                                    </li>
+                                    <c:forEach begin="1" end="${indexEnd}" var="i">
+                                        <li id="${i}"><a
+                                                href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        </li>
                                     </c:forEach>
                                     <li><a>></a></li>
                                 </c:if>
@@ -341,9 +358,12 @@
                     <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
                     <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a>
+                        </li>
+                        <li class="ftco-animate"><a href="#"><span
+                                class="icon-instagram"></span></a></li>
                     </ul>
                 </div>
             </div>

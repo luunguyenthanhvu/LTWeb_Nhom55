@@ -13,6 +13,25 @@
   <url>http://maven.apache.org</url>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>fluent-hc</artifactId>
+      <version>4.5.14</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.13</version> <!-- Use the same version as httpclient-fluent -->
+    </dependency>
+
+    <!-- Google Gson -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.9</version> <!-- Use the latest version available -->
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

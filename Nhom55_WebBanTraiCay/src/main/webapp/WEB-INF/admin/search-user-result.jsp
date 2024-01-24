@@ -9,7 +9,12 @@
     <title> Danh sách người dùng </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/my-style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/admin-css/my-dssp.css">
 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/my-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/my-toast.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

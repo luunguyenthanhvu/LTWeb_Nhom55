@@ -45,6 +45,11 @@ function updateCartAmount() {
   })
 }
 
+// add to wish list
+function addToWishList(productId) {
+
+}
+
 // toast function
 function toast({
   title = '',

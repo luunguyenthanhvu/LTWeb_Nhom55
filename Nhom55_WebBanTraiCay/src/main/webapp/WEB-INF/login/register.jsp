@@ -18,10 +18,10 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
     function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- //custom-theme  -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/my-style.css">
     <!-- font-awesome icons -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome_file.css">
     <!-- //font-awesome icons -->
     <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>

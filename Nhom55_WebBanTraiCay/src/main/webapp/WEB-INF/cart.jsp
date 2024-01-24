@@ -7,6 +7,17 @@
     <fmt:setLocale value="vi_VN"/>
     <title>Giỏ hàng</title>
     <meta charset="utf-8">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-toast.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-fix.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
@@ -41,9 +52,8 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_main.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast_style.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -81,26 +91,14 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <c:choose>
-                    <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/cart"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/login"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">0</span>]
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+
+                <li class="nav-item cta cta-colored">
+                    <a href="${pageContext.request.contextPath}/cart"
+                       class="nav-link cart-info-container">
+                        <span class="icon-shopping_cart"></span>
+                        [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -154,7 +152,7 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-0 bread">Giỏ Hàng của tôi</h1>
+                <h1 class="mb-0 bread">Giỏ Hàng</h1>
             </div>
         </div>
     </div>

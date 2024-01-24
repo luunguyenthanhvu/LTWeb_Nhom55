@@ -39,10 +39,10 @@
   <link rel="stylesheet"
         href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_main.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_file.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix_file.css">
 
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile_file.css">
 
 </head>
 <body class="goto-here">

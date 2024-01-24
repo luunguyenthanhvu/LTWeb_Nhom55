@@ -10,32 +10,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5c1c92e-2c10-4bc0-aa6a-e54c1c79c1ab" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/cart/Cart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/cart/CartProduct.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/cart/UserCart.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/google/GooglePojo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/google/GoogleUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/google/LoginGoogleHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/google/properties/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/google/properties/GoogleProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-admin-profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-dssp.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-edit-admin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-popup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-update-admin-pass.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-update-order.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-update-user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/login-css/my-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-chi-tiet-hoa-don.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-chinh-sua-thong-tin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-ds-hoa-don.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-update-pass.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-user-profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-fix.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-payment.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-shop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-toast.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/payment.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/shop.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/show-toast.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/toast.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/images/google-login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/cart/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/cart/UserCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/cart/UserCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/wishlist/UserWishList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/beans/wishlist/WishList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/AddCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/AddCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/QuantityIncDec.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/QuantityIncDec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/RemoveCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/RemoveCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/ShowCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/ShowCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/getCartAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/getCartAmount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/getCartAmount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/GetCartAmount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/order/CheckOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/order/CheckOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/wishlist/UserWishList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/dao/LoginDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/dao/LoginDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/dao/UsersDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/dao/UsersDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/dao/UsersDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/dao/UsersDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/util/MyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/util/MyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-provider.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-provider.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/edit-admin-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/edit-admin-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/monthly-revenue.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/monthly-revenue.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/order-list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/product-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/product-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/provider-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/provider-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-order-list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-product-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-product-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-provider-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-provider-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-time-expired-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-time-expired-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-user-result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-user-result.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/time-expired-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/time-expired-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-admin-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-admin-password.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-order.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-product.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-provider.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-provider.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/user-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/user-list.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/cart.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkout.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/forget-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/forget-password.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/product-single.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/product-single.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/searchProductResult.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/searchProductResult.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/shop.jsp" afterDir="false" />
@@ -44,15 +93,32 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/danh-sach-hoa-don.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/danh-sach-hoa-don.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/update-user-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/update-user-password.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/payment_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/shop_style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style_main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/toast.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/toast_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/wish-list.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/monthly-revenue.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/google.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/profile1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/login-css/font-awesome.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/login-css/font-awesome_file.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/css/mixins/_text-hide.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-add-product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/fix.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/fix.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/payment_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/shop_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style_main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style_user.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/toast_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/web-js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/web-js/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Servlet" />
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -79,8 +145,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Vu-branch",
+    "last_opened_file_path": "C:/Users/PC/Downloads/AccessGoogle/AccessGoogle",
+    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,6 +157,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\admin-css" />
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\login-css" />
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\user-css" />
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\web-css" />
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\images" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.82" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.82" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
@@ -99,7 +177,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="d14d71f0-cb54-4e6b-b3a8-93c499a93778" />
+        <option name="BASE_DIRECTORY_NAME" value="5ff2b14d-f86e-4666-bebb-e4abdd17f650" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -107,7 +185,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="55228" />
+        <option name="DEBUG_PORT" value="53634" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -186,6 +264,12 @@
       <option name="presentableId" value="Default" />
       <updated>1705913248410</updated>
       <workItem from="1705913251124" duration="602000" />
+      <workItem from="1705931084065" duration="2091000" />
+      <workItem from="1705937842651" duration="7082000" />
+      <workItem from="1705979601836" duration="292000" />
+      <workItem from="1705990392848" duration="7309000" />
+      <workItem from="1706018342511" duration="2874000" />
+      <workItem from="1706060896078" duration="6742000" />
     </task>
     <servers />
   </component>

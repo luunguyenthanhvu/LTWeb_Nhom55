@@ -17,6 +17,15 @@ public class Users implements Serializable {
   private LocalDate dateOfBirth;
   private String sexual;
   private int role;
+  public Users(String username, String password, String hash, String email, String address,
+      String phoneNumber) {
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+  }
 
   public Users(int id, String username, String password, String hash, String email, String address, String phoneNumber, int status, String img, LocalDate dateOfBirth, String sexual, int role) {
     this.id = id;
@@ -30,6 +39,20 @@ public class Users implements Serializable {
     this.img = img;
     this.dateOfBirth = dateOfBirth;
     this.sexual = sexual;
+    this.role = role;
+  }
+
+  public Users(int id, String username, String password, String hash, String email, String address,
+      String phoneNumber, int status, String img, int role) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.img = img;
     this.role = role;
   }
 

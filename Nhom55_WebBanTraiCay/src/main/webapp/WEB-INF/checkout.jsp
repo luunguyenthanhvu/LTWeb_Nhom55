@@ -16,6 +16,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/payment.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-toast.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-fix.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/my-payment.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
@@ -48,9 +58,6 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/payment_style.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"

@@ -7,6 +7,20 @@
     <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-toast.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-css/my-fix.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/my-shop.css">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
@@ -40,11 +54,7 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_main.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop_style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast_style.css">
 
 
 </head>
@@ -84,26 +94,13 @@
                                         class="nav-link">Về Chúng Tôi</a></li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <c:choose>
-                    <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/cart"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/login"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">0</span>]
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+                <li class="nav-item cta cta-colored">
+                    <a href="${pageContext.request.contextPath}/cart"
+                       class="nav-link cart-info-container">
+                        <span class="icon-shopping_cart"></span>
+                        [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                    </a>
+                </li>
 
             </ul>
         </div>

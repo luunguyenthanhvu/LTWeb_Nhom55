@@ -13,7 +13,12 @@
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/admin-css/add-product.css">
 
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/my-style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/admin-css/my-add-product.css">
     <!-- Boxiocns CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
@@ -21,8 +26,6 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/admin-css/add-product.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>

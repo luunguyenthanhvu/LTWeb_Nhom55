@@ -10,7 +10,7 @@ public interface UsersDao {
   Users getUserByEmail(String email);
 
   String addNewUser(String username, String password, String hash, String email, String phoneNumber, String address);
-
+  public String addNewGoogleUser(String username,String email, String img);
   String updateUserStatus(String email, String hash);
 
   String updateNewPassWord(String email, String password);

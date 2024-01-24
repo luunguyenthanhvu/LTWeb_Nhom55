@@ -121,11 +121,19 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${(empty adminUpdate) ? loginedUser.getImg() : adminUpdate.getImg()}"
-                             alt="profileImg">
+                        <c:choose>
+                            <c:when test="${not empty admin.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${admin.getImg()}" alt="profileImg">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${(empty adminUpdate) ? loginedUser.getUsername() : adminUpdate.getUsername()}</div>
+                        <div class="profile_name">${admin.getUsername()}</div>
                         <div class="job">Quản trị viên</div>
                     </div>
                     <a href="${pageContext.request.contextPath}/logout">
@@ -150,14 +158,8 @@
         <div class="find-product">
             <form action="listController?index=1" method="post">
                 <div class="fill-product">
-                    <input id="find-product" type="text" placeholder="Tìm kiếm tên người dùng" name="txtSearch">
+                    <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng" name="txtSearch">
                     <input style="width: 100px" type="submit" value="Tìm kiếm">
-                    <div class="filter-icon" onclick="toggleFilter()">
-                        <span class="font_bold">Lọc theo</span>
-                        <div id="filterDropdown" class="filter-dropdown" style="display: none;">
-                            <a href="FilterForAllUser?sortBy=username&amp;order=asc&amp;pageId=1">Tên</a>
-                        </div>
-                    </div>
                 </div>
             </form>
         </div>
@@ -180,7 +182,16 @@
                             <td>${user.getId()}</td>
                             <td>${user.getUsername()}</td>
                             <td class="img-product">
-                                <img src="${user.getImg()}">
+                                <c:choose>
+                                    <c:when test="${not empty user.getImg()}">
+                                        <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                        <img src="${user.getImg()}" alt="">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Ảnh mặc định khi mới đăng ký -->
+                                        <img src="/static/images/accountPicture.png" alt="">
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                             <td>${user.getEmail()}</td>
                             <td>${user.getPhoneNumber()}</td>
@@ -217,10 +228,11 @@
                             </td>
                         </tr>
                     </c:forEach>
-                </table
+                </table>
+                <p style="color: red;text-align: center"> ${result}</p>
             </div>
 
-            <div class="pagination">
+            <div class="pagination" id="pagination">
                 <ul class="pagination-list">
                     <%--    Trường hợp tìm ra số người dùng chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
                     <c:if test="${pageId== 1 && haveMaxPage ==1}">

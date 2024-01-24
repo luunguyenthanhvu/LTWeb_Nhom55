@@ -39,6 +39,7 @@
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/chinh_sua_thong_tin.css">
@@ -79,6 +80,15 @@
         </div>
     </div>
 </nav>
+<style>
+    .navbar-brand {
+        margin-right: 250px;
+    }
+
+    .nav-item dropdown {
+        margin-left: 250px;
+    }
+</style>
 <!-- END nav -->
 <div class="main-user-content" style="background-color: #e7e6e6; width: 100%">
     <div class="container">
@@ -192,14 +202,41 @@
                             <tr>
                                 <td><label for="gioi_tinh_nd">Giới tính <span style="color: red">*</span></label></td>
                                 <td class="gender-td" id="gioi_tinh_nd">
-                                    <input style="margin-left: 60px" type="radio" id="male" name="gender"
-                                           value="Nam" ${user.getSexual().equals("Nam") ? 'checked' : ''}>
-                                    <label for="male">Nam</label>
-                                    <input style="margin-left: 30px" type="radio" id="female" name="gender"
-                                           value="Nữ" ${user.getSexual().equals("Nữ") ? 'checked' : ''}>
-                                    <label for="female">Nữ</label>
+                                    <c:choose>
+                                        <c:when test="${not empty user.getSexual() and user.getSexual().equals('Nam')}">
+                                            <!-- Nếu giới tính là Nam, đặt checked cho radio button Nam -->
+                                            <input style="margin-left: 60px" type="radio" id="male" name="gender"
+                                                   value="Nam" checked>
+                                            <label for="male">Nam</label>
+                                            <input style="margin-left: 30px" type="radio" id="female" name="gender"
+                                                   value="Nữ">
+                                            <label for="female">Nữ</label>
+                                        </c:when>
+                                        <c:when test="${not empty user.getSexual() and user.getSexual().equals('Nữ')}">
+                                            <!-- Nếu giới tính là Nữ, đặt checked cho radio button Nữ -->
+                                            <input style="margin-left: 60px" type="radio" id="male" name="gender"
+                                                   value="Nam">
+                                            <label for="male">Nam</label>
+                                            <input style="margin-left: 30px" type="radio" id="female" name="gender"
+                                                   value="Nữ" checked>
+                                            <label for="female">Nữ</label>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <!-- Nếu giới tính là null hoặc giá trị không xác định, đặt mặc định là Nam -->
+                                            <input style="margin-left: 60px" type="radio" id="male" name="gender"
+                                                   value="Nam" checked>
+                                            <label for="male">Nam</label>
+                                            <input style="margin-left: 30px" type="radio" id="female" name="gender"
+                                                   value="Nữ">
+                                            <label for="female">Nữ</label>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <c:if test="${not empty error_gender}">
+                                        <p style="color: red; margin-left: 60px">${error_gender}</p>
+                                    </c:if>
                                 </td>
                             </tr>
+
 
                             <tr>
                                 <td><label for="dc_nd">Địa chỉ <span style="color: red">*</span></label></td>
@@ -244,8 +281,16 @@
                         </table>
                     </div>
                     <div class="user-img">
-                        <img id="previewImage" src="${user.getImg()}"
-                             alt="">
+                        <c:choose>
+                            <c:when test="${not empty user.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img id="previewImage" src="${user.getImg()}" alt="">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img id="previewImage" src="/static/images/accountPicture.png" alt="">
+                            </c:otherwise>
+                        </c:choose>
                         <div class="chose-new-img">
                             <label for="fileInput" class="chose-new-img">
                                 <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -305,230 +350,186 @@
 <script src="${pageContext.request.contextPath}/static/js/main.js"></script>
 
 <script>
-
-    document.addEventListener("click", function () {
-        document.querySelector(".update-info").addEventListener("submit", function (event) {
-            if (!validateForm()) {
-                event.preventDefault();
-            }
+    $(document).ready(function () {
+        $('#fileInput').change(function (e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                $('#previewImage').attr('src', event.target.result);
+            };
+            reader.readAsDataURL(file);
         });
-
-        $(document).ready(function () {
-            $('#fileInput').change(function (e) {
-                var file = e.target.files[0];
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    $('#previewImage').attr('src', event.target.result);
-                };
-                reader.readAsDataURL(file);
-            });
-        });
-
-
-        function validateInput(inputId, errorId, requiredErrorMsg, formatErrorMsg, validationRegex) {
-            var text = document.getElementById(inputId).value;
-            var error = document.getElementById(errorId);
-
-            if (text.length === 0 || text === null) {
-                error.textContent = requiredErrorMsg;
-                error.style.display = "block";
-                return false;
-            } else if (!validationRegex.test(text)) {
-                error.textContent = formatErrorMsg;
-                error.style.display = "block";
-                return false;
-            } else {
-                error.style.display = "none";
-                return true;
-            }
-        }
-
-        function validateForm() {
-            // var tenUser = document.getElementById("ten_nd").value;
-            // var emailUser = document.getElementById("email_nd").value;
-            // // var genderUser = document.getElementById("gioi_tinh_nd");
-            // var addressUser = document.getElementById("dc_nd").value;
-            // var phoneNumberUser = document.getElementById("sdt_nd").value;
-            // var dateOfBirthUser = document.getElementById("dob").value;
-            // var upFileAnh = document.getElementById("fileInput").value;
-            var isValid = true;
-
-            // validate userName
-            isValid = validateInput("ten_nd", "username-error", "Vui lòng nhập tên", "Tên chỉ chứa ký tự chữ cái, khoảng trắng.", /^[\p{L}\s']+$/u) && isValid;
-
-            // validate email
-            isValid = validateInput("email_nd", "email-error", "Vui lòng nhập email", "Định dạng email không hợp lệ.", /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/) && isValid;
-
-            // validate address
-            isValid = validateInput("dc_nd", "address-error", "Vui lòng nhập địa chỉ", "Địa chỉ chỉ chứa ký tự chữ cái, khoảng trắng.", /^[\p{L}\s']+$/u) && isValid;
-
-            // validate phone number
-            isValid = validateInput("sdt_nd", "phoneNumber-error", "Vui lòng nhập số điện thoại", "Số điện thoại chỉ được chứa ký tự số.", /^\d+$/) && isValid;
-
-            // validate gender
-            isValid = validateInput("gioi_tinh_nd", "gender-error", "Vui lòng chọn giới tính", "", /^(nam|nữ)$/i) && isValid;
-
-            // validate date of birth
-            isValid = validateInput("dob", "dob-error", "Vui lòng nhập ngày tháng năm sinh", "Định dạng ngày tháng năm không hợp lệ.", /^\d{4}-\d{2}-\d{2}$/) && isValid;
-
-            // validate file upload
-            isValid = validateInput("fileInput", "fileUpload-error", "Vui lòng chọn file ảnh", "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.", /(\.jpg|\.jpeg|\.png|\.gif)$/i) && isValid;
-
-            return isValid;
-        }
-
-
-        // function validateTenUser(inputId, errorId, requiredErrorMsg, formatErrorMsg) {
-        //     var text = document.getElementById(inputId).value();
-        //     var error = document.getElementById(errorId);
-        //
-        //     var kyTuHopLe = /^[\p{L}\s']+$/u;
-        //
-        //     // var error = document.getElementById("username-error");
-        //     if (text.length == 0 || text == null) {
-        //         error.textContent = "Vui lòng nhập tên";
-        //         error.textContent = requiredErrorMsg;
-        //         error.style.display = "block";
-        //         return false;
-        //     } else if (!kyTuHopLe.test(text)) {
-        //         error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
-        //         error.textContent = formatErrorMsg;
-        //         error.style.display = "block";
-        //         return false;
-        //     } else {
-        //         error.style.display = "none";
-        //         return true;
-        //     }
-        // }
-        //
-        // function validateEmailUser() {
-        //     var text = emailUser.value;
-        //     var kyTuHopLe = /^[\p{L}\s']+$/u;
-        //     var error = document.getElementById("email-error");
-        //
-        //     // Check if the email contains "@gmail.com"
-        //     if (!text.includes("@gmail.com")) {
-        //         error.textContent = "Email phải chứa địa chỉ @gmail.com";
-        //         error.style.display = "block";
-        //         return false;
-        //     }
-        //
-        //     if (text.length == 0 || text == null) {
-        //         error.textContent = "Vui lòng nhập email";
-        //         error.style.display = "block";
-        //         return false;
-        //     } else if (!kyTuHopLe.test(text)) {
-        //         error.style.display = "block";
-        //         return false;
-        //     } else {
-        //         error.style.display = "none";
-        //         return true;
-        //     }
-        // }
-        //
-        // function validateAddressUser() {
-        //     var text = addressUser.value;
-        //     var kyTuHopLe = /^[\p{L}\s']+$/u;
-        //     var error = document.getElementById("address-error");
-        //     if (text.length == 0 || text == null) {
-        //         error.textContent = "Vui lòng nhập địa chỉ";
-        //         error.style.display = "block";
-        //         return false;
-        //     } else if (!kyTuHopLe.test(text)) {
-        //         error.style.display = "block";
-        //         return false;
-        //     } else {
-        //         error.style.display = "none";
-        //         return true;
-        //     }
-        // }
-        //
-        // function validatePhoneNumberUser() {
-        //     var text = phoneNumberUser.value;
-        //     var numericRegex = /^\d+$/;
-        //     var error = document.getElementById("phoneNumber-error");
-        //
-        //     if (text.length === 0 || text === null) {
-        //         error.textContent = "Vui lòng nhập số điện thoại";
-        //         error.style.display = "block";
-        //         return false;
-        //     } else if (!numericRegex.test(text)) {
-        //         error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
-        //         error.style.display = "block";
-        //         return false;
-        //     } else {
-        //         error.style.display = "none";
-        //         return true;
-        //     }
-        // }
-        //
-        // function validateDateOfBirth() {
-        //     var dateOfBirthInput = document.getElementById("dob");
-        //     var dateOfBirthValue = dateOfBirthInput.value;
-        //     var error = document.getElementById("dob-error");
-        //
-        //     // Kiểm tra xem ngày tháng năm có được nhập hay không
-        //     if (dateOfBirthValue.length === 0 || dateOfBirthValue == null) {
-        //         error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
-        //         error.style.display = "block";
-        //         return false;
-        //     }
-        //
-        //     // Kiểm tra định dạng ngày tháng năm
-        //     var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        //     if (!dateRegex.test(dateOfBirthValue)) {
-        //         error.textContent = "Định dạng ngày tháng năm không hợp lệ.";
-        //         error.style.display = "block";
-        //         return false;
-        //     }
-        //
-        //     // Kiểm tra xem ngày tháng năm có hợp lệ trong quy tắc lịch hay không (ví dụ: không nhập ngày từ tương lai)
-        //     var currentDate = new Date();
-        //     var inputDate = new Date(dateOfBirthValue);
-        //     if (inputDate > currentDate) {
-        //         error.textContent = "Ngày tháng năm sinh không được là ngày ở tương lai.";
-        //         error.style.display = "block";
-        //         return false;
-        //     }
-        //
-        //     // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
-        //     error.style.display = "none";
-        //     return true;
-        // }
-        //
-        // function validateFileUpload() {
-        //     var inputUpload = document.getElementById("fileInput");
-        //     var error = document.getElementById("fileUpload-error");
-        //
-        //     // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
-        //     if (inputUpload.files.length === 0) {
-        //         error.textContent = "Vui lòng chọn file ảnh.";
-        //         error.style.display = "block";
-        //         return false;
-        //     }
-        //
-        //     // Kiểm tra định dạng tệp (ở đây, mình chỉ cho phép tệp hình ảnh)
-        //     var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-        //     if (!allowedExtensions.test(inputUpload.value)) {
-        //         error.textContent = "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.";
-        //         error.style.display = "block";
-        //         return false;
-        //     }
-        //
-        //     // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
-        //     error.style.display = "none";
-        //     return true;
-        // }
-        //
-        //
-        // tenUser.addEventListener("blur", validateTenUser);
-        // emailUser.addEventListener("blur", validateEmailUser);
-        // addressUser.addEventListener("blur", validateAddressUser);
-        // phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
-        // dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
-        // upFileAnh.addEventListener("blur", validateFileUpload);
     });
 
+    // validate for input
+    var tenUser = document.getElementById("ten_nd");
+    var emailUser = document.getElementById("email_nd");
+    var genderUser = document.getElementById("gioi_tinh_nd");
+    var addressUser = document.getElementById("dc_nd");
+    var phoneNumberUser = document.getElementById("sdt_nd");
+    var dateOfBirthUser = document.getElementById("dob");
+    var upFileAnh = document.getElementById("fileInput");
+
+    function validateTenUser() {
+        var text = tenUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("username-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập tên";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateEmailUser() {
+        var text = emailUser.value;
+        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var error = document.getElementById("email-error");
+
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập email";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            // Check if the email contains "@gmail.com"
+            if (!text.includes("@gmail.com")) {
+                error.textContent = "Email phải chứa địa chỉ @gmail.com";
+                error.style.display = "block";
+                return false;
+            }
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateGenderUser() {
+        var maleCheckbox = document.getElementById("male");
+        var femaleCheckbox = document.getElementById("female");
+        var error = document.getElementById("gender-error");
+
+        // Kiểm tra xem người dùng đã chọn một trong hai giới tính hay không
+        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+            error.textContent = "Vui lòng chọn giới tính";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateAddressUser() {
+        var text = addressUser.value;
+        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
+        var error = document.getElementById("address-error");
+        if (text.trim() === "") {
+            error.textContent = "Vui lòng nhập địa chỉ.";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+
+    function validatePhoneNumberUser() {
+        var text = phoneNumberUser.value;
+        var error = document.getElementById("phoneNumber-error");
+
+        if (text.length === 0 || text === null) {
+            error.textContent = "Vui lòng nhập số điện thoại";
+            error.style.display = "block";
+            return false;
+        } else if (isNaN(text)) {
+            error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateDateOfBirth() {
+        var dateOfBirthInput = document.getElementById("dob");
+        var dateOfBirthValue = new Date(dateOfBirthInput.value);
+        var error = document.getElementById("dob-error");
+
+        // Kiểm tra xem ngày tháng năm có được nhập hay không
+        if (isNaN(dateOfBirthValue.getTime())) {
+            error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
+            error.style.display = "block";
+            return false;
+        }
+
+        // Kiểm tra xem ngày tháng năm có hợp lệ trong quy tắc lịch hay không (ví dụ: không nhập ngày từ tương lai)
+        var currentDate = new Date();
+        var inputDate = new Date(dateOfBirthValue);
+        if (inputDate > currentDate) {
+            error.textContent = "Ngày tháng năm sinh không được là ngày ở tương lai.";
+            error.style.display = "block";
+            return false;
+        } else {
+            // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateFileUpload() {
+        var inputUploadFile = document.getElementById("fileInput");
+        var error = document.getElementById("fileUpload-error");
+
+        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
+        if (inputUploadFile.files.length === 0) {
+            error.textContent = "Vui lòng chọn file ảnh.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    // add event to check input
+    tenUser.addEventListener("blur", validateTenUser);
+    emailUser.addEventListener("blur", validateEmailUser);
+    genderUser.addEventListener("blur", validateGenderUser);
+    addressUser.addEventListener("blur", validateAddressUser);
+    phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
+    dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
+    upFileAnh.addEventListener("blur", validateFileUpload);
+
+    // stop user send post to server
+    var submit = document.getElementById("saveUserInfo");
+    submit.addEventListener("click", function (event) {
+        var isTenUser = validateTenUser();
+        var isEmail = validateEmail();
+        var isGenderUser = validateGenderUser();
+        var isAddressUser = validateAddressUser();
+        var isPhoneNumberUser = validatePhoneNumberUser();
+        var isDateOfBirth = validateDateOfBirth();
+        var isFileUpLoad = validateFileUpload();
+        if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
+            || !isPhoneNumberUser || !isDateOfBirth || !isFileUpLoad) {
+            event.preventDefault();
+        }
+    })
 </script>
 
 </body>

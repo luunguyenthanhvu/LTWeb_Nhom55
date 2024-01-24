@@ -17,6 +17,7 @@
   animation: showUpAndFade 3s forwards;
 }
 
+
 @keyframes showUpAndFade {
   0% {
     opacity: 0;

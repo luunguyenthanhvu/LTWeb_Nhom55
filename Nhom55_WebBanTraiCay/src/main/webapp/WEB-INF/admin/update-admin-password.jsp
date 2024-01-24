@@ -114,9 +114,16 @@
 
       <li>
         <div class="profile-details">
-          <div class="profile-content">
-            <img src="${admin.getImg()}" alt="profileImg">
-          </div>
+          <c:choose>
+            <c:when test="${not empty admin.getImg()}">
+              <!-- Ảnh mới từ sau khi đổi ảnh -->
+              <img src="${admin.getImg()}" alt="profileImg">
+            </c:when>
+            <c:otherwise>
+              <!-- Ảnh mặc định khi mới đăng ký -->
+              <img src="/static/images/accountPicture.png" alt="profileImg">
+            </c:otherwise>
+          </c:choose>
           <div class="name-job">
             <div class="profile_name">${admin.getUsername()}</div>
             <div class="job">Quản trị viên</div>
@@ -152,7 +159,7 @@
               <input type="password" id="old-password" name="old-password">
               <span class="error-msg required" id="old-password-error" style="display: none;margin-left: 30px;color:red"></span>
               <c:if test="${not empty error_oldPassword}" >
-                <p style="color: red;padding: 30px"> ${error_oldPassword}</p>
+                <p style="color: red"> ${error_oldPassword}</p>
               </c:if>
             </td>
 
@@ -163,12 +170,12 @@
             </td>
             <td>
               <input type="password" id="new-password" name="new-password">
-              <span class="error-msg required" id="new-password-error" style="display: none;margin-left: 30px;color:red">Vui lòng điền thông tin vào trường này.</span>
+              <span class="error-msg required" id="new-password-error" style="display: none;margin-left: 30px;color:red"></span>
               <c:if test="${not empty error_newPassword}" >
-                <p style="color: red;padding: 30px"> ${error_newPassword}</p>
+                <p style="color: red"> ${error_newPassword}</p>
               </c:if>
               <c:if test="${not empty error_checkOldAndNewPass}" >
-                <p style="color: red;padding: 30px"> ${error_checkOldAndNewPass}</p>
+                <p style="color: red"> ${error_checkOldAndNewPass}</p>
               </c:if>
             </td>
 
@@ -182,7 +189,7 @@
               <span class="error-msg required" id="retype-password-error" style="display: none;;margin-left: 30px;color:red"></span>
               <span class="error-msg required" id="password-mismatch-error" style="display: none;;margin-left: 30px;color:red"></span>
               <c:if test="${not empty error_checkNewAndRetypePass}" >
-                <p style="color: red;padding: 30px"> ${error_checkNewAndRetypePass}</p>
+                <p style="color: red"> ${error_checkNewAndRetypePass}</p>
               </c:if>
             </td>
 
@@ -228,44 +235,6 @@
     sidebar.classList.toggle("close");
   });
 
-  document.getElementById('old-password').addEventListener('blur', function () {
-    checkIfEmpty('old-password', 'old-password-error');
-  });
-
-
-  document.getElementById('new-password').addEventListener('blur', function () {
-    checkIfEmpty('new-password', 'new-password-error');
-    checkPasswordMatch();
-  });
-
-  document.getElementById('retype-password').addEventListener('blur', function () {
-    checkIfEmpty('retype-password', 'retype-password-error');
-    checkPasswordMatch();
-  });
-
-  function checkIfEmpty(inputId, errorId) {
-    const input = document.getElementById(inputId);
-    const error = document.getElementById(errorId);
-
-    if (input.value.trim() === '') {
-      error.style.display = 'block';
-    } else {
-      error.style.display = 'none';
-    }
-  }
-
-  function checkPasswordMatch() {
-    const newPassword = document.getElementById('new-password').value;
-    const retypePassword = document.getElementById('retype-password').value;
-    const passwordMismatchError = document.getElementById('password-mismatch-error');
-
-    if (newPassword !== retypePassword && newPassword !== '' && retypePassword !== '') {
-      passwordMismatchError.style.display = 'block';
-    } else {
-      passwordMismatchError.style.display = 'none';
-    }
-  }
-
   var myVar;
   function myFunction() {
     myVar = setTimeout(showPage, 800);
@@ -277,79 +246,83 @@
 </script>
 
 <script>
-  document.addEventListener("click", function () {
-    document.querySelector(".change-password").addEventListener("submit", function (event) {
-      if (!validateForm()) {
-        event.preventDefault();
-      }
-    });
+  // validate for input
+  var oldPass = document.getElementById("old-password");
+  var newPass = document.getElementById("new-password");
+  var retypePass = document.getElementById("retype-password");
 
-    function validateForm() {
-      var oldPassword = document.getElementById("old-password").value;
-      var newPassword = document.getElementById("new-password").value;
-      var retypePassword = document.getElementById("retype-password").value;
+  function validateOldPassword() {
+    var text = document.getElementById("old-password").value;
+    var error = document.getElementById("old-password-error");
 
-      var isValid = true;
-
-      // Validate old password
-      if (!validatePassword("old-password", "old-password-error", "Vui lòng nhập mật khẩu cũ.")) {
-        isValid = false;
-      }
-
-      // Validate new password
-      if (!validatePassword("new-password", "new-password-error", "Vui lòng nhập mật khẩu mới.", "Mật khẩu mới phải chứa ít nhất 6 ký tự và ít nhất 1 chữ in hoa.")) {
-        isValid = false;
-      }
-
-      // Validate retype password
-      if (!validateRetypePassword()) {
-        isValid = false;
-      }
-
-      return isValid;
+    if (text.length === 0 || text === null) {
+      error.textContent = "Vui lòng nhập mật khẩu cũ";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
     }
+  }
 
-    function validatePassword(inputId, errorId, requiredErrorMsg, formatErrorMsg) {
-      var text = document.getElementById(inputId).value;
-      var error = document.getElementById(errorId);
+  function validateNewPassword() {
+    var text = document.getElementById("new-password").value;
+    var error = document.getElementById("new-password-error");
 
-      if (text.length === 0 || text === null) {
-        error.textContent = requiredErrorMsg;
-        error.style.display = "block";
-        return false;
-      } else if (formatErrorMsg && (text.length < 6 || !/[A-Z]/.test(text))) {
-        error.textContent = formatErrorMsg;
-        error.style.display = "block";
-        return false;
-      } else {
-        error.style.display = "none";
-        return true;
-      }
+    if (text.length === 0 || text === null) {
+      error.textContent = "Vui lòng nhập mật khẩu mới";
+      error.style.display = "block";
+      return false;
+    } else if (text.length < 6) {
+      error.textContent = "Mật khẩu mới phải chứa ít nhất 6 ký tự";
+      error.style.display = "block";
+      return false;
+    } else {
+      error.style.display = "none";
+      return true;
     }
+  }
 
-    function validateRetypePassword() {
-      var newPassword = document.getElementById("new-password").value;
-      var retypePassword = document.getElementById("retype-password").value;
-      var retypeError = document.getElementById("retype-password-error");
-      var mismatchError = document.getElementById("retype-mismatch-error");
+  function validateRetypePassword() {
+    var newPassword = document.getElementById("new-password").value;
+    var retypePassword = document.getElementById("retype-password").value;
+    var retypeError = document.getElementById("retype-password-error");
+    var mismatchError = document.getElementById("retype-mismatch-error");
 
-      if (retypePassword.length === 0 || retypePassword === null) {
-        retypeError.textContent = "Vui lòng nhập lại mật khẩu mới.";
-        retypeError.style.display = "block";
-        mismatchError.style.display = "none";
-        return false;
-      } else if (newPassword !== retypePassword) {
-        retypeError.style.display = "none";
-        mismatchError.style.display = "block";
-        return false;
-      } else {
-        retypeError.style.display = "none";
-        mismatchError.style.display = "none";
-        return true;
-      }
+    if (retypePassword.length === 0 || retypePassword === null) {
+      retypeError.textContent = "Vui lòng nhập lại mật khẩu mới.";
+      retypeError.style.display = "block";
+      mismatchError.style.display = "none";
+      return false;
+    } else if (newPassword !== retypePassword) {
+      retypeError.style.display = "none";
+      mismatchError.style.display = "block";
+      return false;
+    } else {
+      retypeError.style.display = "none";
+      mismatchError.style.display = "none";
+      return true;
     }
-  });
+  }
+
+  // add event to check input
+  oldPass.addEventListener("blur", validateOldPassword);
+  newPass.addEventListener("blur", validateNewPassword);
+  retypePass.addEventListener("blur", validateRetypePassword);
+
+  // stop user send post to server
+  var submit = document.getElementById("submit_info");
+  submit.addEventListener("click", function (event) {
+    var isOldPass = validateOldPassword();
+    var isNewPass = validateNewPassword();
+    var isRetypePass = validateRetypePassword();
+    if (!isOldPass || !isNewPass || !isRetypePass) {
+      event.preventDefault();
+    }
+  })
+
 </script>
+
 
 </body>
 <script src="https://kit.fontawesome.com/4c38acb8c6.js" crossorigin="anonymous"></script>

@@ -150,7 +150,16 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${admin.getImg()}" alt="profileImg">
+                        <c:choose>
+                            <c:when test="${not empty admin.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${admin.getImg()}" alt="profileImg">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="name-job">
                         <div class="profile_name">${admin.getUsername()}</div>
@@ -215,12 +224,34 @@
 
                                 </tr>
                                 <tr>
-                                    <td><label for="gioi_tinh_nd">Giới Tính<span class="not-empty"> *</span></label></td>
+                                    <td><label for="gioi_tinh_nd">Giới tính <span style="color: red">*</span></label></td>
                                     <td class="gender-td" id="gioi_tinh_nd">
-                                        <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam"${admin.getSexual().equals("Nam") ? 'checked' : ''}>
-                                        <label for="male">Nam</label>
-                                        <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ"${admin.getSexual().equals("Nữ") ? 'checked' : ''}>
-                                        <label for="female">Nữ</label>
+                                        <c:choose>
+                                            <c:when test="${not empty admin.getSexual() and admin.getSexual().equals('Nam')}">
+                                                <!-- Nếu giới tính là Nam, đặt checked cho radio button Nam -->
+                                                <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" checked>
+                                                <label for="male">Nam</label>
+                                                <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ">
+                                                <label for="female">Nữ</label>
+                                            </c:when>
+                                            <c:when test="${not empty admin.getSexual() and admin.getSexual().equals('Nữ')}">
+                                                <!-- Nếu giới tính là Nữ, đặt checked cho radio button Nữ -->
+                                                <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam">
+                                                <label for="male">Nam</label>
+                                                <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ" checked>
+                                                <label for="female">Nữ</label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <!-- Nếu giới tính là null hoặc giá trị không xác định, đặt mặc định là Nam -->
+                                                <input style="margin-left: 60px" type="radio" id="male" name="gender" value="Nam" checked>
+                                                <label for="male">Nam</label>
+                                                <input style="margin-left: 30px" type="radio" id="female" name="gender" value="Nữ">
+                                                <label for="female">Nữ</label>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:if test="${not empty error_gender}">
+                                            <p style="color: red; margin-left: 60px">${error_gender}</p>
+                                        </c:if>
                                     </td>
                                 </tr>
                                 <tr>
@@ -244,7 +275,16 @@
                                 </tr>
                             </table>
                             <div class="img-admin">
-                                <img id="previewImage" src="${admin.getImg()}" alt="">
+                                <c:choose>
+                                    <c:when test="${not empty admin.getImg()}">
+                                        <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                        <img id="previewImage" src="${admin.getImg()}" alt="">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Ảnh mặc định khi mới đăng ký -->
+                                        <img id="previewImage" src="/static/images/accountPicture.png" alt="">
+                                    </c:otherwise>
+                                </c:choose>
                                 <div class="chose-new-img">
                                     <label for="fileInput" class="chose-new-img">
                                         <input type="file" id="fileInput" name="avatar" accept="image/*">
@@ -256,7 +296,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="update-admin">
+                        <button id="saveUserInfo" class="update-admin" type = "submit">
                             Lưu Thông tin
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                 <path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg>
@@ -330,7 +370,7 @@
 
     var tenUser = document.getElementById("ten_nd");
     var emailUser = document.getElementById("email_nd");
-    // var genderUser = document.getElementById("gioi_tinh_nd");
+    var genderUser = document.getElementById("gioi_tinh_nd");
     var addressUser = document.getElementById("dc_nd");
     var phoneNumberUser = document.getElementById("sdt_nd");
     var dateOfBirthUser = document.getElementById("dob");
@@ -354,39 +394,38 @@
         }
     }
 
-    // function validateGenderUser() {
-    //     var maleCheckbox = document.getElementById("male");
-    //     var femaleCheckbox = document.getElementById("female");
-    //     var error = document.getElementById("gender-error");
-    //
-    //     // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
-    //     if (!maleCheckbox.checked && !femaleCheckbox.checked) {
-    //         error.textContent = "Vui lòng chọn giới tính";
-    //         error.style.display = "block";
-    //         return false;
-    //     } else {
-    //         error.style.display = "none";
-    //         return true;
-    //     }
-    // }
+    function validateGenderUser() {
+        var maleCheckbox = document.getElementById("male");
+        var femaleCheckbox = document.getElementById("female");
+        var error = document.getElementById("gender-error");
+
+        // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
+        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
+            error.textContent = "Vui lòng chọn giới tính";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
 
     function validateEmailUser() {
         var text = emailUser.value;
         var kyTuHopLe = /^[\p{L}\s']+$/u;
         var error = document.getElementById("email-error");
 
-        // Check if the email contains "@gmail.com"
-        if (!text.includes("@gmail.com")) {
-            error.textContent = "Email phải chứa địa chỉ @gmail.com";
-            error.style.display = "block";
-            return false;
-        }
-
         if (text.length == 0 || text == null) {
             error.textContent = "Vui lòng nhập email";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
+            // Check if the email contains "@gmail.com"
+            if (!text.includes("@gmail.com")) {
+                error.textContent = "Email phải chứa địa chỉ @gmail.com";
+                error.style.display = "block";
+                return false;
+            }
             error.style.display = "block";
             return false;
         } else {
@@ -397,13 +436,15 @@
 
     function validateAddressUser() {
         var text = addressUser.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
         var error = document.getElementById("address-error");
-        if (text.length == 0 || text == null) {
+
+        if (text.length === 0 || text === null) {
             error.textContent = "Vui lòng nhập địa chỉ";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
             error.style.display = "block";
             return false;
         } else {
@@ -414,14 +455,13 @@
 
     function validatePhoneNumberUser() {
         var text = phoneNumberUser.value;
-        var numericRegex = /^\d+$/;
         var error = document.getElementById("phoneNumber-error");
 
         if (text.length === 0 || text === null) {
             error.textContent = "Vui lòng nhập số điện thoại";
             error.style.display = "block";
             return false;
-        } else if (!numericRegex.test(text)) {
+        } else if (isNaN(text)) {
             error.textContent = "Số điện thoại chỉ được chứa ký tự số.";
             error.style.display = "block";
             return false;
@@ -437,16 +477,8 @@
         var error = document.getElementById("dob-error");
 
         // Kiểm tra xem ngày tháng năm có được nhập hay không
-        if (dateOfBirthValue.length === 0 || dateOfBirthValue == null) {
+        if (isNaN(dateOfBirthValue.getTime())) {
             error.textContent = "Vui lòng nhập ngày tháng năm sinh.";
-            error.style.display = "block";
-            return false;
-        }
-
-        // Kiểm tra định dạng ngày tháng năm
-        var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        if (!dateRegex.test(dateOfBirthValue)) {
-            error.textContent = "Định dạng ngày tháng năm không hợp lệ.";
             error.style.display = "block";
             return false;
         }
@@ -466,38 +498,45 @@
     }
 
     function validateFileUpload() {
-        var inputUpload = document.getElementById("fileInput");
+        var inputUploadFile = document.getElementById("fileInput");
         var error = document.getElementById("fileUpload-error");
 
         // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
-        if (inputUpload.files.length === 0) {
+        if (inputUploadFile.files.length === 0) {
             error.textContent = "Vui lòng chọn file ảnh.";
             error.style.display = "block";
             return false;
+        } else {
+            error.style.display = "none";
+            return true;
         }
-
-        // Kiểm tra định dạng tệp (ở đây, mình chỉ cho phép tệp hình ảnh)
-        var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-        if (!allowedExtensions.test(inputUpload.value)) {
-            error.textContent = "Chỉ chấp nhận các định dạng tệp hình ảnh như JPG, JPEG, PNG, GIF.";
-            error.style.display = "block";
-            return false;
-        }
-
-        // Nếu thông tin hợp lệ, ẩn thông báo lỗi và trả về true
-        error.style.display = "none";
-        return true;
     }
 
 
 
     tenUser.addEventListener("blur", validateTenUser);
+    genderUser.addEventListener("blur", validateGenderUser);
     emailUser.addEventListener("blur", validateEmailUser);
     addressUser.addEventListener("blur", validateAddressUser);
     phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
     dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
     upFileAnh.addEventListener("blur", validateFileUpload);
 
+    // stop user send post to server
+    var submit = document.getElementById("saveUserInfo");
+    submit.addEventListener("click", function (event) {
+        var isTenUser = validateTenUser();
+        var isEmail = validateEmail();
+        var isGenderUser = validateGenderUser();
+        var isAddressUser = validateAddressUser();
+        var isPhoneNumberUser = validatePhoneNumberUser();
+        var isDateOfBirth = validateDateOfBirth();
+        var isFileUpLoad = validateFileUpload();
+        if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
+            || !isPhoneNumberUser || !isDateOfBirth || !isFileUpLoad) {
+            event.preventDefault();
+        }
+    })
 </script>
 
 

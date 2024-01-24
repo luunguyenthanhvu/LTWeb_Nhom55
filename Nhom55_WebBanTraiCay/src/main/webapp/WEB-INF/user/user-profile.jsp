@@ -83,7 +83,6 @@
   .nav-item dropdown {
     margin-left: 250px;
   }
-
 </style>
 
 <!-- END nav -->
@@ -188,7 +187,16 @@
           </table>
         </div>
         <div class="anhNguoiDung">
-          <img class="anhCuaNguoiDung" src="${user.getImg()}" alt="">
+          <c:choose>
+            <c:when test="${not empty user.getImg()}">
+              <!-- Ảnh đã chỉnh sửa -->
+              <img style="width: 300px" src="${user.getImg()}" alt="">
+            </c:when>
+            <c:otherwise>
+              <!-- Ảnh mặc định khi mới đăng ký -->
+              <img style="width: 200px" src="/static/images/accountPicture.png" alt="">
+            </c:otherwise>
+          </c:choose>
         </div>
       </div>
       <p style="color: red;padding: 30px"> ${result}</p>

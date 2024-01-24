@@ -49,7 +49,7 @@ public class FilterForSearchUser extends HttpServlet {
         request.setAttribute("txtSearch", txtSearch);
         request.setAttribute("sortBy", sortBy);
         request.setAttribute("order", order);
-        request.getRequestDispatcher("WEB-INF/admin/searchUserResult.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/admin/search-user-result.jsp").forward(request, response);
     }
 
     @Override

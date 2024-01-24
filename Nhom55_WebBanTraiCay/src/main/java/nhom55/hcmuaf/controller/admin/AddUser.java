@@ -29,7 +29,6 @@ public class AddUser extends HttpServlet {
         request.setAttribute("admin", admin);
        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/add-user.jsp");
        dispatcher.forward(request,response);
-
     }
 
     @Override

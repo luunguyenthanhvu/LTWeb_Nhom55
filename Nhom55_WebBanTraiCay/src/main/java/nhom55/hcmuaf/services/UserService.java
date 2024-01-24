@@ -23,6 +23,10 @@ public class UserService {
     return instance;
   }
 
+  public  Users getUserByEmail(String email) {
+    return userDao.getUserByEmail(email);
+  }
+
 
   /**
    * show profile
@@ -80,7 +84,6 @@ public class UserService {
   public List<Users> search(String search, int index, int sizePage) {
     return  userDao.search(search,index,sizePage);
   }
-
   public List<Users> searchFilter(String sortBy, String order, String search, int index, int sizePage) {
     return  userDao.searchFilter(sortBy,order,search,index,sizePage);
   }

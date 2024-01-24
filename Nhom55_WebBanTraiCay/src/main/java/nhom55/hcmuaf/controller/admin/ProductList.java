@@ -1,5 +1,7 @@
 package nhom55.hcmuaf.controller.admin;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ProductService;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @WebServlet(name = "ProductList", value = "/product-list")
 public class ProductList extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -38,10 +41,12 @@ public class ProductList extends HttpServlet {
         request.setAttribute("pageId",pageNumber);
         dispatcher.forward(request, response);
 
-    }
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  }
 
-    }
+  @Override
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+
+  }
 }

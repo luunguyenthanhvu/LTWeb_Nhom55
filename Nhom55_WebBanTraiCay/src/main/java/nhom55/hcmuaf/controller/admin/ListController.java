@@ -27,6 +27,7 @@ public class ListController extends HttpServlet {
         // save url
         HttpSession session = request.getSession();
         MyUtils.setPreviousURL(session, request.getRequestURL().toString());
+        Users admin = MyUtils.getLoginedUser(session);
 
         String txtSearch = request.getParameter("txtSearch");
         String sortBy = request.getParameter("sortBy");
@@ -59,17 +60,8 @@ public class ListController extends HttpServlet {
             request.setAttribute("listSearch", listSearch);
             request.setAttribute("indexEnd", indexEnd);
             request.setAttribute("txtSearch", txtSearch);
-            request.getRequestDispatcher("WEB-INF/admin/searchUserResult.jsp").forward(request, response);
-        } else {
-            listSearch = UserService.getInstance().searchFilter(sortBy,order,txtSearch, indexInitial,
-                    defaultQuantityUserOnAPage);
-            request.setAttribute("sortBy",sortBy);
-            request.setAttribute("order",order);
-            request.setAttribute("pageId",indexInitial);
-            request.setAttribute("listSearch", listSearch);
-            request.setAttribute("indexEnd", indexEnd);
-            request.setAttribute("txtSearch", txtSearch);
-            request.getRequestDispatcher("WEB-INF/admin/searchUserResult.jsp").forward(request, response);
+            request.setAttribute("admin", admin);
+            request.getRequestDispatcher("WEB-INF/admin/search-user-result.jsp").forward(request, response);
         }
     }
 }

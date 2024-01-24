@@ -2,8 +2,10 @@
 <!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html lang="en" dir="ltr">
 <head>
+    <fmt:setLocale value="vi_VN"/>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
     <title> Drop Down Sidebar Menu | CodingLab </title>
@@ -93,7 +95,6 @@
                     <li><a href="see-each-product-bought-in-a-month.html">Chi tiết</a></li>
                 </ul>
             </li>
-
             <li>
                 <div class="iocn-link">
                     <a href="#">
@@ -111,6 +112,7 @@
                     <li><a href="AddUser">Thêm người dùng</a></li>
                 </ul>
             </li>
+
             <li>
                 <div class="iocn-link">
                     <a href="#">
@@ -127,6 +129,7 @@
                     <li><a href="AdminAddProvider">Thêm nhà cung cấp</a></li>
                 </ul>
             </li>
+
             <li>
                 <div class="iocn-link">
                     <a href="#">
@@ -145,19 +148,16 @@
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${admin.getImg()}" alt="profileImg">
+                        <img src="../../static/images/accountPicture.png" alt="profileImg">
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${admin.getUsername()}</div>
+                        <div class="profile_name">VuLuu</div>
                         <div class="job">Quản trị viên</div>
                     </div>
-                    <a href="${pageContext.request.contextPath}/logout">
-                        <i style="transform: rotate(180deg); ">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                                <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
-                            </svg>
-                        </i>
-                    </a>
+                    <i style="transform: rotate(180deg); ">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                            <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg>
+                    </i>
                 </div>
             </li>
         </ul>
@@ -166,88 +166,45 @@
         <div class="home-content">
             <svg class='bx-menu' xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                 <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
-        <span class="text">Danh sách sản phẩm hết hạn sử dụng</span>
-    </div>
-    <div class="find-product">
-        <form action="ManageExpiredProductController?index=1" method="post">
-            <div class="fill-product">
-                <input id="find-product" type="text" placeholder="Tìm kiếm tên sản phẩm" name="txtSearch">
+            <span class="text">Danh sách liên hệ của khách hàng</span>
+        </div>
+        <div class="find-product">
+            <form action="#" method="">
 
-                <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
-                </button>
-            </div>
-        </form>
-    </div>
-    <div class="container" style="margin: 30px 30px 0 30px">
-        <div class="table-sanpham">
-            <table class="table-sanpham">
-                <tr>
-                    <th style="width: 80px;">ID</th>
-                    <th>Tên sản phẩm</th>
-                    <th style="width: 100px;">Hình ảnh</th>
-                    <th style="width: 100px;">Giá tiền</th>
-                    <th style="width: 150px;">Ngày nhập</th>
-                    <th style="width: 150px;">Hạn sử dụng</th>
-                    <th style="width: 50px;"></th>
-                </tr>
-                <c:forEach items="${listProduct}" var="product">
+            </form>
+        </div>
+        <div class="container" style="margin: 30px 30px 0 30px">
+            <div style="max-height:500px;overflow:auto" class="table-sanpham">
+                <table class="table-sanpham">
                     <tr>
-                        <td>${product.getId()}</td>
-                        <td>${product.getNameOfProduct()}</td>
-                        <td class="img-product">
-                            <img src="${product.getImg()}">
-                        </td>
-                        <td>${product.getPrice()}</td>
-                        <td>${product.getDateOfImporting()}</td>
-                        <td>${product.getExpriredDay()}</td>
-                        <td class="function-product">
-                            <a href="DeleteExpiredProduct?id=${product.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
-                        </td>
+                        <th style="width: 50px;">Số thứ tự</th>
+                        <th style="width: 150px">Tên khách hàng</th>
+                        <th style="width: 120px;">Email khách hàng</th>
+                        <th style="width: 100px;">Đề tài</th>
+                        <th style="width: 400px;">Tin nhắn</th>
+
                     </tr>
-                </c:forEach>
 
-            </table>
-        </div>
-        <div class="pagination">
-            <%--    Trường hợp tìm ra số sản phẩm chỉ có trong 1 trang thì 2 nút <,> ko được xài--%>
-            <c:if test="${pageId== 1 && haveMaxPage ==1}">
-                <a >&laquo;</a>
-                <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                    <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
-                </c:forEach>
-                <a >&raquo;</a>
-            </c:if>
-            <c:if test="${ haveMaxPage !=1}">
-                <%-- Trường hợp đang ở trang 1 thì chỉ ko được xài nút <--%>
-                <c:if test="${pageId ==1}" >
-                    <a >&laquo;</a>
-                    <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
-                    </c:forEach>
-                    <a href="manage-expired-product?pageId=${pageId+1}">&raquo;</a>
-                </c:if>
-                <%--  Còn trường hợp này nút nào cũng xài được--%>
-                <c:if test="${pageId >1 && pageId<haveMaxPage}" >
-                    <a href="manage-expired-product?pageId=${pageId-1}">&laquo;</a>
-                    <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
-                    </c:forEach>
-                    <a href="manage-expired-product?pageId=${pageId+1}">&raquo;</a>
-                </c:if>
+                    <c:forEach items="${listContact}" var="contact" varStatus="index">
+                        <tr>
+                            <td>${index.index}</td>
+                            <td>${contact.getFullName()}</td>
+                            <td >
+                                ${contact.getEmail()}
+                            </td>
 
-                <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
-                <c:if test="${pageId ==haveMaxPage}" >
-                    <a href="manage-expired-product?pageId=${pageId-1}">&laquo;</a>
-                    <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                            <td>${contact.getTopic()}</td>
+                            <td>${contact.getMessage()}</td>
+
+                        </tr>
                     </c:forEach>
-                    <a >&raquo;</a>
-                </c:if>
-            </c:if>
+                </table>
+            </div>
+            <div class="pagination">
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
 <script>
     let arrow = document.querySelectorAll(".arrow");

@@ -1,7 +1,9 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Products;
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ShopService;
+import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,6 +21,9 @@ public class ProductListController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
+
         String txtSearch = request.getParameter("txtSearch");
 
 
@@ -43,6 +48,7 @@ public class ProductListController extends HttpServlet {
         request.setAttribute("listSearch", listSearch);
         request.setAttribute("indexEnd", indexEnd);
         request.setAttribute("txtSearch", txtSearch);
+        request.setAttribute("admin", admin);
         request.getRequestDispatcher("/WEB-INF/admin/search-of-product-list.jsp").forward(request, response);
 
     }

@@ -77,9 +77,9 @@
                             tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/about"
+                <li class="nav-item"><a href="About"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
+                <li class="nav-item"><a href="Contact"
                                         class="nav-link">Liên Hệ</a></li>
                 <c:choose>
                     <c:when test="${not empty loginedUser}">
@@ -302,9 +302,9 @@
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a href="#" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                        <li><a href="ShopForward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+                        <li><a href="About" class="py-2 d-block">Về chúng tôi</a></li>
+                        <li><a href="Contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
                     </ul>
                 </div>
             </div>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.beans.cart.UserCart;
 import nhom55.hcmuaf.controller.page.login.google.properties.GoogleProperties;
 import nhom55.hcmuaf.dao.LoginDao;
 import nhom55.hcmuaf.services.UserService;
@@ -52,6 +53,7 @@ public class LoginGoogleHandler extends HttpServlet {
       }
       Users user = UserService.getInstance().getUserByEmail(googlePojo.getEmail());
       MyUtils.storeLoginedUser(request.getSession(), user);
+      UserCart.updateCart(user.getId(), request.getSession());
       response.sendRedirect(request.getContextPath() + "/home");
     }
   }

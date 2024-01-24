@@ -41,7 +41,7 @@ public class LoginDao {
 
         // check if exist
         List<Users> users = JDBIConnector.get().withHandle(h ->
-            h.createQuery("SELECT username,password,email,phoneNumber,address,status,img,dateOfBirth,sexual,role FROM Users WHERE email = :email AND password = :password")
+            h.createQuery("SELECT id,username,email,status,img,role FROM Users WHERE email = :email")
                 .bind("email", email)
                 .mapToBean(Users.class)
                 .stream()

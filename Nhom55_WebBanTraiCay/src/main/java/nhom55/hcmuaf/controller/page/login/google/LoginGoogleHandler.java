@@ -54,7 +54,16 @@ public class LoginGoogleHandler extends HttpServlet {
       Users user = UserService.getInstance().getUserByEmail(googlePojo.getEmail());
       MyUtils.storeLoginedUser(request.getSession(), user);
       UserCart.updateCart(user.getId(), request.getSession());
-      response.sendRedirect(request.getContextPath() + "/home");
+      String result = loginDao.authorizeLoginGoogle(googlePojo.getEmail());
+      if (result.equals("ADMIN")) {
+        // redirect to admin page
+        MyUtils.setUserRole(request.getSession(), result);
+        response.sendRedirect(request.getContextPath() + "/admin-profile");
+      } else if (result.equals("USER")) {
+        // redirect to home
+        MyUtils.setUserRole(request.getSession(), result);
+        response.sendRedirect(request.getContextPath() + "/home");
+      }
     }
   }
 

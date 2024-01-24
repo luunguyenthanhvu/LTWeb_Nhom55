@@ -95,6 +95,15 @@ public class Users implements Serializable {
     this.status = status;
   }
 
+  public Users(int id, String username, String email, int status, String img, int role) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.status = status;
+    this.img = img;
+    this.role = role;
+  }
+
   public Users(String email, String hash, int status) {
     this.hash = hash;
     this.email = email;

@@ -127,8 +127,16 @@
 
                 <div class="profile-details">
                     <div class="profile-content">
-                        <img src="${admin.getImg()}"
-                             alt="profileImg">
+                        <c:choose>
+                            <c:when test="${not empty admin.getImg()}">
+                                <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                <img src="${admin.getImg()}" alt="profileImg">
+                            </c:when>
+                            <c:otherwise>
+                                <!-- Ảnh mặc định khi mới đăng ký -->
+                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="name-job">
                         <div class="profile_name">${admin.getUsername()}</div>
@@ -181,7 +189,16 @@
                             <td>${user.getId()}</td>
                             <td>${user.getUsername()}</td>
                             <td class="img-product">
-                                <img src="${admin.getImg()}">
+                                <c:choose>
+                                    <c:when test="${not empty user.getImg()}">
+                                        <!-- Ảnh mới từ sau khi đổi ảnh -->
+                                        <img src="${user.getImg()}" alt="">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <!-- Ảnh mặc định khi mới đăng ký -->
+                                        <img src="/static/images/accountPicture.png" alt="=">
+                                    </c:otherwise>
+                                </c:choose>                            '
                             </td>
                             <td>${user.getEmail()}</td>
                             <td>${user.getPhoneNumber()}</td>

@@ -17,6 +17,18 @@ public class UpdatePasswordAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
+
+        List<Users> listUser= UserService.getInstance().showInfoUser();
+        for(Users u: listUser) {
+            if(u.getId() == admin.getId()) {
+                admin =u;
+                break;
+            }
+        }
+        request.setAttribute("admin", admin);
+
         RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/update-admin-password.jsp");
         dispatcher.forward(request, response);
     }

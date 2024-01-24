@@ -4,10 +4,12 @@ import nhom55.hcmuaf.beans.Products;
 
 import nhom55.hcmuaf.beans.Providers;
 
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.ProviderDao;
 import nhom55.hcmuaf.dao.ProviderDaoImpl;
 
 import nhom55.hcmuaf.services.ShopService;
+import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -20,6 +22,8 @@ import java.util.List;
 public class UpdateProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
          int idSanPham = Integer.valueOf(request.getParameter("id"));
         List<Products> listProduct = ShopService.getInstance().getListProducts();
         Products products = new Products();
@@ -35,6 +39,7 @@ public class UpdateProduct extends HttpServlet {
             .getRequestDispatcher("/WEB-INF/admin/update-product.jsp");
         request.setAttribute("product",products);
         request.setAttribute("listProvider",listProvider);
+        request.setAttribute("admin", admin);
         dispatcher.forward(request, response);
     }
 

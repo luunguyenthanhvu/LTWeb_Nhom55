@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Role;
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.dao.RoleDAO;
 import nhom55.hcmuaf.dao.RoleDAOImpl;
 import nhom55.hcmuaf.services.RegisterAccountServiceForAdmin;
@@ -20,9 +21,12 @@ import java.util.List;
 public class AddUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
         RoleDAO dao = new RoleDAOImpl();
         List<Role> listRole = dao.getAllRoles();
         request.setAttribute("listRole",listRole);
+        request.setAttribute("admin", admin);
        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/add-user.jsp");
        dispatcher.forward(request,response);
     }

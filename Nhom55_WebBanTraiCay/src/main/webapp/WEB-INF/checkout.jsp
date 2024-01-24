@@ -86,7 +86,7 @@
                 </li>
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/about"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
+                <li class="nav-item"><a href="Contact"
                                         class="nav-link">Liên Hệ</a></li>
                 <c:choose>
                     <c:when test="${not empty loginedUser}">

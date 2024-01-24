@@ -1,7 +1,9 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Products;
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ShopService;
+import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,7 +21,8 @@ public class ManageExpiredProductController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String txtSearch = request.getParameter("txtSearch");
-
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
         int quantity = ShopService.getInstance().countResultSearchingProduct(txtSearch);
 //        số lượng mặc định 1 trang
         int defaultQuantityProductOnAPage = 20;
@@ -41,6 +44,7 @@ public class ManageExpiredProductController extends HttpServlet {
         request.setAttribute("listSearch", listSearch);
         request.setAttribute("indexEnd", indexEnd);
         request.setAttribute("txtSearch", txtSearch);
+        request.setAttribute("admin", admin);
         request.getRequestDispatcher("/WEB-INF/admin/search-of-time-expired-product.jsp").forward(request, response);
     }
 }

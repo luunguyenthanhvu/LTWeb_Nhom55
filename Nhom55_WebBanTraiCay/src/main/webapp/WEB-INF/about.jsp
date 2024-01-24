@@ -16,25 +16,25 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="static/css/web-css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/web-css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/animate.css">
 
-    <link rel="stylesheet" href="static/css/web-css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/web-css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/web-css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
 
-    <link rel="stylesheet" href="static/css/web-css/aos.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/aos.css">
 
-    <link rel="stylesheet" href="static/css/web-css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
 
-    <link rel="stylesheet" href="static/css/web-css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="static/css/web-css/jquery.timepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet" href="static/css/web-css/flaticon.css">
-    <link rel="stylesheet" href="static/css/web-css/icomoon.css">
-    <link rel="stylesheet" type="text/css" href="static/css/web-css/style.css">
-    <link rel="stylesheet" href="static/css/web-css/fix.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
 
 </head>
@@ -70,9 +70,9 @@
                             tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/about"
+                <li class="nav-item"><a href="About"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
+                <li class="nav-item"><a href="Contact"
                                         class="nav-link">Liên Hệ</a></li>
                 <c:choose>
                     <c:when test="${not empty loginedUser}">
@@ -171,18 +171,20 @@
             <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
                 <div class="heading-section-bold mb-4 mt-md-5">
                     <div class="ml-md-0">
-                        <h2 class="mb-4">Chào mừng bạn đến với Vegefoods, một trang web Thương mại điện tử</h2>
+                        <h2 class="mb-4">Chào mừng bạn đến với cửa hàng trái cây online, trang web của chúng tôi</h2>
                     </div>
                 </div>
                 <div class="pb-md-5">
-                    <p>Xa xa, đằng sau những ngọn núi chữ từ xa, xa từ những đất nước Vokalia và Consonantia,
-                        có những văn bản mù quáng. Bị tách ra, họ sống ở Bookmarksgrove ngay bờ biển Semantics,
-                        một đại dương ngôn ngữ rộng lớn.</p>
-                    <p>Nhưng không có điều gì bản sao nói rằng có thể thuyết phục được cô ấy và vì thế không lâu sau đó cho đến khi một vài
-                        Nhà văn Sao chép xảo quyệt phục kích cô,
-                        ép cô say khướt với Longe và Parole rồi kéo cô vào cơ quan của họ,
-                        nơi họ bạo hành cô vì mục đích của họ.</p>
-                    <p><a href="shop.html" class="btn btn-primary">Mua ngay</a></p>
+                    <p>Dù Việt Nam có một nền kinh tế nông nghiệp phát triển, nhưng việc tiếp cận và mua,
+                        sắm trái cây tươi sạch và chất lượng không phải lúc nào cũng dễ dàng đối với người tiêu dùng.
+                        Để đáp ứng nhu cầu ngày càng cao của khách hàng về sự thuận tiện và đảm bảo chất lượng,
+                       trang web của chúng tôi xuất hiện để phục vụ nhu cầu cho bạn.
+                    </p>
+                    <p>Bạn có thể dễ dàng chọn lựa sản phẩm mà họ muốn, đặt hàng trực tuyến và
+                        nhận được những quả trái cây tươi sức sống được giao hàng tận nơi. Ngoài ra, chúng tôi
+                        thường xuyên cập nhật các ưu đãi, khuyến mãi và chính sách hỗ trợ
+                        khách hàng, tạo ra một trải nghiệm mua sắm trực tuyến an tâm và tiện lợi.</p>
+                    <p><a href="ShopForward" class="btn btn-primary">Mua ngay</a></p>
                 </div>
             </div>
         </div>
@@ -215,8 +217,6 @@
             <div class="col-md-7 heading-section ftco-animate text-center">
                 <span class="subheading">Bằng chứng</span>
                 <h2 class="mb-4"> Khách hàng hài lòng của chúng tôi nói</h2>
-                <p>Xa xôi, sau những dãy núi từ  xa các vương quốc Vokalia và Consonantia,
-                    sống những văn bản mù. Tách biệt, chúng sống trong</p>
             </div>
         </div>
         <div class="row ftco-animate">
@@ -224,13 +224,16 @@
                 <div class="carousel-testimony owl-carousel">
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                            <div class="user-img mb-5" style="background-image: url(/static/images/person_1.jpg)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                             </div>
                             <div class="text text-center">
-                                <p class="mb-5 pl-4 line"> Xa xa xa phía sau những dãy núi chữ, xa các nước Vokalia và Consonantia, có những văn bản mù sống.</p>
+                                <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua trái cây qua một trang web ở Việt Nam và rất hài lòng với
+                                    chất lượng sản phẩm. Trang web cung cấp thông tin chi tiết về nguồn gốc và quy trình chăm sóc trái cây,
+                                     giúp tôi chọn lựa được những sản phẩm tươi ngon và an toàn. Quá trình đặt hàng và thanh toán đơn giản, và tôi nhận được giao hàng đúng
+                                    hẹn. Sự chuyên nghiệp và chất lượng của dịch vụ này khiến tôi muốn quay lại mua sắm nhiều hơn.</p>
                                 <p class="name">Garreth Smith</p>
                                 <span class="position">Giám đốc tiếp thị</span>
                             </div>
@@ -238,14 +241,17 @@
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
+                            <div class="user-img mb-5" style="background-image: url(/static/images/person_2.jpg)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                             </div>
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">
-                                    Xa xa xa phía sau những dãy núi chữ, xa các nước Vokalia và Consonantia, có những văn bản mù sống.</p>
+                                    Đã lâu tôi không tin tưởng mua trái cây trực tuyến, nhưng sau khi thử nghiệm một trang web bán trái cây ở Việt Nam,
+                                    tôi đã hoàn toàn thay đổi quan điểm. Sự đa dạng của sản phẩm và mô tả chi tiết giúp tôi lựa chọn được những loại trái cây ngon nhất.
+                                    Giao hàng nhanh chóng và sản phẩm đến tay tôi vẫn giữ được độ tươi ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang web này
+                                    cho bạn bè và gia đình của mình .</p>
                                 <p class="name">Garreth Smith</p>
                                 <span class="position">Nhà thiết kế giao diện</span>
                             </div>
@@ -253,45 +259,19 @@
                     </div>
                     <div class="item">
                         <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
+                            <div class="user-img mb-5" style="background-image: url(/static/images/person_3.jpg)">
                     <span class="quote d-flex align-items-center justify-content-center">
                       <i class="icon-quote-left"></i>
                     </span>
                             </div>
                             <div class="text text-center">
                                 <p class="mb-5 pl-4 line">
-                                    Xa xa xa phía sau những dãy núi chữ, xa các nước Vokalia và Consonantia, có những văn bản mù sống.</p>
+                                    Trải nghiệm mua sắm trái cây trực tuyến tại một trang web ở Việt Nam đã mang lại cho tôi sự tiện lợi và an tâm.
+                                    Hệ thống đặt hàng dễ sử dụng, và tôi có thể theo dõi đơn hàng của mình mọi lúc. Sản phẩm được đóng gói cẩn thận,
+                                    giữ nguyên hương vị tươi ngon. Họ cũng có chăm sóc khách hàng tận tình, luôn sẵn sàng giải đáp mọi thắc mắc của tôi.
+                                    Mua sắm trái cây trực tuyến qua trang web này là một trải nghiệm đáng giá và đáng tin cậy .</p>
                                 <p class="name">Garreth Smith</p>
                                 <span class="position">Nhà thiết kế giao diện người dùng</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                            </div>
-                            <div class="text text-center">
-                                <p class="mb-5 pl-4 line">
-                                    Xa xa xa phía sau những dãy núi chữ, xa các nước Vokalia và Consonantia, có những văn bản mù sống.</p>
-                                <p class="name">Garreth Smith</p>
-                                <span class="position">Nhà phát triển web</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                            </div>
-                            <div class="text text-center">
-                                <p class="mb-5 pl-4 line"> Xa xa xa phía sau những dãy núi chữ, xa các nước Vokalia và Consonantia, có những văn bản mù sống.</p>
-                                <p class="name">Garreth Smith</p>
-                                <span class="position">Nhà phân tích hệ thống</span>
                             </div>
                         </div>
                     </div>
@@ -377,9 +357,9 @@
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a href="#" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                        <li><a href="ShopForward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+                        <li><a href="About" class="py-2 d-block">Về chúng tôi</a></li>
+                        <li><a href="Contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -443,22 +423,23 @@
 </div>
 
 
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/jquery.easing.1.3.js"></script>
-<script src="static/js/jquery.waypoints.min.js"></script>
-<script src="static/js/jquery.stellar.min.js"></script>
-<script src="static/js/owl.carousel.min.js"></script>
-<script src="static/js/jquery.magnific-popup.min.js"></script>
-<script src="static/js/aos.js"></script>
-<script src="static/js/jquery.animateNumber.min.js"></script>
-<script src="static/js/bootstrap-datepicker.js"></script>
-<script src="static/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="static/js/google-map.js"></script>
-<script src="static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
 
 </body>
 </html>

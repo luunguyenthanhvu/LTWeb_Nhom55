@@ -37,9 +37,12 @@ public class AddProduct extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // get the provider to add new product
+    HttpSession session = request.getSession();
+    Users admin = MyUtils.getLoginedUser(session);
     List<Providers> providerList = ProviderService.getInstance().getAll();
     request.setAttribute("providerList", providerList);
 
+    request.setAttribute("admin", admin);
     RequestDispatcher dispatcher = this.getServletContext()
         .getRequestDispatcher("/WEB-INF/admin/add-product.jsp");
     dispatcher.forward(request, response);
@@ -119,7 +122,7 @@ public class AddProduct extends HttpServlet {
     } else {
       List<Providers> providerList = ProviderService.getInstance().getAll();
       request.setAttribute("providerList", providerList);
-
+      request.setAttribute("admin", admin);
       RequestDispatcher dispatcher = this.getServletContext()
           .getRequestDispatcher("/WEB-INF/admin/add-product.jsp");
       dispatcher.forward(request, response);

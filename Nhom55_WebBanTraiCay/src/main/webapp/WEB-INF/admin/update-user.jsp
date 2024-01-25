@@ -429,14 +429,14 @@
 
     function validateAddressUser() {
         var text = addressUser.value;
-        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
+        var kyTuHopLe = /^[\p{L}0-9\s.,\/;:_-]*$/u;
         var error = document.getElementById("address-error");
-        if (text.length == 0 || text == null) {
+        if (text.trim() === "") {
             error.textContent = "Vui lòng nhập địa chỉ.";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
+            error.textContent = "Địa chỉ chỉ chứa chữ cái, chữ số và một số kí tự đặc biệt.";
             error.style.display = "block";
             return false;
         } else {

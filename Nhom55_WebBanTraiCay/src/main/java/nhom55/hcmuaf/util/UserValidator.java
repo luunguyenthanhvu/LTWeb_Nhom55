@@ -119,11 +119,13 @@ public class UserValidator {
         }
 
         // Adjust the regular expression to match your requirements
-        if (!address.matches("^[a-zA-Z0-9\\s.,/;:_-]*$")) {
-            return "Địa chỉ chỉ chứa chữ cái, chữ số";
+        if (!address.matches("^[\\p{L}0-9\\s.,/;:_-]*$")) {
+            return "Địa chỉ chỉ chứa chữ cái, chữ số và một số kí tự đặc biệt.";
         }
         return "";
     }
+
+
 }
 
 

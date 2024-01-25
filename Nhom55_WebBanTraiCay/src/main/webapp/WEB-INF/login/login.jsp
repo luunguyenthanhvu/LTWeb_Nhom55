@@ -24,7 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       window.scrollTo(0, 1);
     } </script>
     <!-- //custom-theme  -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/my-style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
     <!-- font-awesome icons -->
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">

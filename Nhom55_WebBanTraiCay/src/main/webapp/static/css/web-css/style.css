@@ -4,10 +4,6 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
-
-
 :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -3641,10 +3637,10 @@ input[type="button"].btn-block {
     padding: 0.25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #82ae46;
+    color: #212529;
     text-align: inherit;
     white-space: nowrap;
-    background-color: #f8f9fa;
+    background-color: transparent;
     border: 0;
 }
 
@@ -11221,10 +11217,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 body {
-
-
-    font-family: 'Open Sans', sans-serif;
-    /*font-family: "Poppins", Arial, sans-serif;*/
+    font-family: "Poppins", Arial, sans-serif;
     background: #fff;
     font-size: 15px;
     line-height: 1.8;
@@ -11583,8 +11576,7 @@ h1, h2, h3, h4, h5,
     font-weight: 800;
     color: #fff;
     font-size: 30px;
-    /*font-family: "Poppins", Arial, sans-serif;*/
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Poppins", Arial, sans-serif;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
@@ -12475,26 +12467,20 @@ h1, h2, h3, h4, h5,
 
 .ftco-cart .quantity-left-minus {
     background: transparent;
-    padding: 0px 15px;
+    padding: 16px 20px;
 }
 
 .ftco-cart .quantity-right-plus {
     background: transparent;
-    padding: 0px 15px;
+    padding: 16px 20px;
 }
 
-
 .ftco-cart button, .ftco-cart .form-control {
-    height: 45px !important;
+    height: 54px !important;
     text-align: center;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-    color: #82ae46;
+    bordeR: 1px solid rgba(0, 0, 0, 0.05) !important;
+    color: #000000 !important;
     padding: 0;
-    background: transparent !important;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    border-radius: 0;
     font-size: 14px;
 }
 
@@ -14069,7 +14055,3 @@ textarea.form-control {
         stroke-dashoffset: -136px;
     }
 }
-
-
-
-

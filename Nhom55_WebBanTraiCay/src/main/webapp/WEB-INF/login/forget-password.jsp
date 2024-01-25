@@ -20,7 +20,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   function hideURLbar(){ window.scrollTo(0,1); } </script>
   <!-- //custom-theme  -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/style.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/my-style.css">
   <!-- font-awesome icons -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login-css/font-awesome.css">
   <!-- //font-awesome icons -->

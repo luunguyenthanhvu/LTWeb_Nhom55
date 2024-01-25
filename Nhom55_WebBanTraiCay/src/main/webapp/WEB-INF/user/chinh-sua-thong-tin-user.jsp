@@ -38,11 +38,11 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style_file.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix_file.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile_file.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/chinh_sua_thong_tin_file.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/user-profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user-css/chinh_sua_thong_tin.css">
 </head>
 <body class="goto-here" onload="myFunction()" style="margin:0;">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"

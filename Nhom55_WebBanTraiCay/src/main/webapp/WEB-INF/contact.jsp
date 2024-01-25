@@ -34,6 +34,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-fix-css/toast-style-vuluu.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-fix-css/style-sheet.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-fix-css/fix-style.css">
 </head>
 <body class="goto-here">
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">

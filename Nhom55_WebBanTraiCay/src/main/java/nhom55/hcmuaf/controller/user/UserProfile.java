@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "userProfile", value = "/userProfile")
+@WebServlet(name = "userProfile", value = "/page/user/user-profile")
 public class UserProfile extends HttpServlet {
 
     @Override

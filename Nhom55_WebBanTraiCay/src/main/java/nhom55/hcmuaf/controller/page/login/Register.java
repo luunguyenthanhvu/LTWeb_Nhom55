@@ -12,7 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.Random;
 
-@WebServlet(name = "register", value = "/register")
+@WebServlet(name = "register", value = "/page/login/register")
 public class Register extends HttpServlet {
 
     private RegisterService registerService = new RegisterService();

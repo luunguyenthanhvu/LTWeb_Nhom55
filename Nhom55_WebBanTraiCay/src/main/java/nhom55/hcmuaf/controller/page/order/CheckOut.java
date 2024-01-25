@@ -25,7 +25,7 @@ import nhom55.hcmuaf.sendmail.MailProperties;
 import nhom55.hcmuaf.util.MyUtils;
 import nhom55.hcmuaf.util.OrderValidator;
 
-@WebServlet(name = "CheckOut", value = "/check-out")
+@WebServlet(name = "CheckOut", value = "/page/order/check-out")
 public class CheckOut extends HttpServlet {
 
   @Override
@@ -49,7 +49,7 @@ public class CheckOut extends HttpServlet {
       request.setAttribute("totalPrice", subTotalPrice + 20000);
     }
     request.setAttribute("subTotalPrice", subTotalPrice);
-    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/checkout.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkout.jsp");
     dispatcher.forward(request, response);
   }
 

@@ -95,6 +95,10 @@ public class MyUtils {
     session.setAttribute("role", role);
   }
 
+  public static String getUserRole(HttpSession session) {
+    return (String) session.getAttribute("role");
+  }
+
   /**
    * set url for session
    *

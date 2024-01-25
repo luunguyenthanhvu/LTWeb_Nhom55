@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import org.codehaus.jackson.map.ObjectMapper;
 
-@WebServlet(name = "SubmitProductForOrder", value = "/submit-selected-products")
+@WebServlet(name = "SubmitProductForOrder", value = "/page/order/submit-selected-products")
 public class SubmitProductForOrder extends HttpServlet {
 
   @Override

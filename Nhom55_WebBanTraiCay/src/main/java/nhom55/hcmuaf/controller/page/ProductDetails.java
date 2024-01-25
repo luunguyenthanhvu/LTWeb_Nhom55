@@ -9,7 +9,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "productDetails", value = "/productDetails")
+@WebServlet(name = "productDetails", value = "/page/product/product-details")
 public class ProductDetails extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,7 +25,7 @@ public class ProductDetails extends HttpServlet {
 
       if (product != null) {
         request.setAttribute("showProduct", product);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/product-single.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/product-single.jsp");
         dispatcher.forward(request, response);
       } else {
         // Trường hợp không tìm thấy sản phẩm có ID đã cho

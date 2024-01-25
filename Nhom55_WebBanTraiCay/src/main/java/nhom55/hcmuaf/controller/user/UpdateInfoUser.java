@@ -17,7 +17,7 @@ import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
-@WebServlet(name = "updateInfoUser", value = "/updateInfoUser")
+@WebServlet(name = "updateInfoUser", value = "/page/user/update-info-user")
 public class UpdateInfoUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

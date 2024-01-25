@@ -18,7 +18,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "login", value = "/page/login")
 public class Login extends HttpServlet {
 
   private LoginDao loginDao = new LoginDao();

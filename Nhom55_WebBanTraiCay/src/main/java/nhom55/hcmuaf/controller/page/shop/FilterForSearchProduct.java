@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "FilterForSearchProduct", value = "/FilterForSearchProduct")
+@WebServlet(name = "FilterForSearchProduct", value = "/page/shop/filter-for-search-product")
 public class FilterForSearchProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,7 +43,7 @@ public class FilterForSearchProduct extends HttpServlet {
         request.setAttribute("txtSearch", txtSearch);
         request.setAttribute("sortBy", sortBy);
         request.setAttribute("order", order);
-        request.getRequestDispatcher("WEB-INF/searchProductResult.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/searchProductResult.jsp").forward(request, response);
     }
 
     @Override

@@ -16,7 +16,7 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/static/css/admin-css/add-product.css">
     <!-- Boxiocns CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel='stylesheet'>
 
     <!-- Link Icon-->
     <link rel="stylesheet"

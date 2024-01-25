@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
@@ -9,49 +9,35 @@
     <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap"
-          rel="stylesheet">
-
     <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
+          href="${pageContext.request.contextPath}/static/css/web-fix-css/toast-style-vuluu.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-fix-css/style-sheet.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-fix-css/fix-style.css?v=bl2">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css?v=bl2">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/animate.css">
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/magnific-popup.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/aos.css">
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/ionicons.min.css">
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/jquery.timepicker.css">
 
 
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <script type="application/x-javascript"> addEventListener("load", function () {
-      setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-      window.scrollTo(0, 1);
-    } </script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
 </head>
 <body class="goto-here">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
      id="ftco-navbar">
     <div class="container navbar-container">
@@ -434,12 +420,11 @@
 <script src="${pageContext.request.contextPath}/static/js/jquery.stellar.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/aos.js?v=1"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js?v=1"></script>
 </body>
 
 </html>

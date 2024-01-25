@@ -10,13 +10,13 @@ import java.io.IOException;
 import nhom55.hcmuaf.beans.cart.Cart;
 import nhom55.hcmuaf.beans.cart.CartProduct;
 
-@WebServlet(name = "cart", value = "/cart")
+@WebServlet(name = "cart", value = "/page/cart")
 public class ShowCart extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/cart.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cart.jsp");
     dispatcher.forward(request, response);
   }
 

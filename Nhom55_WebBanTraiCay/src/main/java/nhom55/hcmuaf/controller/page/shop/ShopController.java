@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "ShopController", value = "/ShopController")
+@WebServlet(name = "ShopController", value = "/page/shop")
 public class ShopController extends HttpServlet {
 
   @Override
@@ -55,7 +55,7 @@ public class ShopController extends HttpServlet {
       request.setAttribute("listSearch", listSearch);
       request.setAttribute("indexEnd", indexEnd);
       request.setAttribute("txtSearch", txtSearch);
-      request.getRequestDispatcher("WEB-INF/searchProductResult.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/searchProductResult.jsp").forward(request, response);
     } else {
        listSearch = ShopService.getInstance().searchFilter(sortBy,order,txtSearch, indexInitial,
               defaultQuantityProductOnAPage);
@@ -65,7 +65,7 @@ public class ShopController extends HttpServlet {
       request.setAttribute("listSearch", listSearch);
       request.setAttribute("indexEnd", indexEnd);
       request.setAttribute("txtSearch", txtSearch);
-      request.getRequestDispatcher("WEB-INF/searchProductResult.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/searchProductResult.jsp").forward(request, response);
     }
   }
 }

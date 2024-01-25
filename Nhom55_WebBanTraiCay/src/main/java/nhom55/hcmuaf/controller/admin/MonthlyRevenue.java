@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.services.ProductService;
 
-@WebServlet(name = "MonthlyRevenue", value = "/monthly-revenue")
+@WebServlet(name = "MonthlyRevenue", value = "/admin/monthly-revenue")
 public class MonthlyRevenue extends HttpServlet {
 
   @Override

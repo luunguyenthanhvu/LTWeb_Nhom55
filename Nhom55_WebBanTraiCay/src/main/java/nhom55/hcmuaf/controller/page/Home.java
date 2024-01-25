@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(urlPatterns = {"/home"})
+@WebServlet(urlPatterns = {"/page/home"})
 public class Home extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
@@ -42,7 +42,7 @@ public class Home extends HttpServlet {
       MyUtils.storeCart(session, cart);
     }
 
-    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/index.jsp");
     dispatcher.forward(request, response);
   }
 

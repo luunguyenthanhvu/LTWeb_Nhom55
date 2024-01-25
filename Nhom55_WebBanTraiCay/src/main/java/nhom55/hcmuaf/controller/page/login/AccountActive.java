@@ -10,13 +10,12 @@ import java.io.IOException;
 
 @WebServlet(name = "AccountActive", value = "/account-active")
 public class AccountActive extends HttpServlet {
-    private AdminService adminService = new AdminService ();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter ("key1");
         String hash = request.getParameter ("key2");
 
-       if ( adminService.updateUserStatus (email,hash) != null) {
+       if ( AdminService.getInstance().updateUserStatus (email,hash) != null) {
            RequestDispatcher dispatcher = this.getServletContext ().getRequestDispatcher ("/WEB-INF/login/login.jsp");
            dispatcher.forward (request,response);
        }

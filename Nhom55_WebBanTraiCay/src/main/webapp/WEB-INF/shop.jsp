@@ -12,7 +12,11 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/shop.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/toast.css">
-
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-fix-css/toast-style-vuluu.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/css/web-fix-css/style-sheet.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-fix-css/fix-style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap"

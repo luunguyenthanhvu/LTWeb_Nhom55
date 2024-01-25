@@ -12,7 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListBills", value = "/ListBills")
+@WebServlet(name = "ListBills", value = "/page/bill/list-bills")
 public class ListBills extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,11 +24,11 @@ public class ListBills extends HttpServlet {
             listBills = orderDao.getListBills(users.getId());
             request.setAttribute("listBills",listBills);
             request.setAttribute("user",users);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/user/danh-sach-hoa-don.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/danh-sach-hoa-don.jsp");
             dispatcher.forward(request,response);
         } else {
             request.setAttribute("listBills",listBills);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/user/danh-sach-hoa-don.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/danh-sach-hoa-don.jsp");
             dispatcher.forward(request,response);
         }
 

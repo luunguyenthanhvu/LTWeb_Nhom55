@@ -10,76 +10,107 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5c1c92e-2c10-4bc0-aa6a-e54c1c79c1ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/monthly-revenue.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/css/mixins/_text-hide.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Tomcat_9_0.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/security/SecurityFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/security/SecurityHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/security/UrlAnalysis.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-fix-css/fix-payment.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-fix-css/fix-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-fix-css/style-sheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-fix-css/toast-style-vuluu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_01_2024_9_09_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_01_2024_9_09_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_01_2024_9_09_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_24_01_2024_9_09_PM__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_01_2024_9_15_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_01_2024_9_15_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AddMoreWeightProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/AddMoreWeightProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AddProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/AddProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AddProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/AddProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AddUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/AddUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AdminAddProduct.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AdminAddProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/AdminAddProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/AdminProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/profile/AdminProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ContactFormUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/contact/ContactFormUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/DeleteExpiredProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/expired/DeleteExpiredProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/DeleteProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/DeleteProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/DeleteProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/DeleteProviderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/DeleteUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/DeleteUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/FilterForAllUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/FilterForAllUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/FilterForSearchUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/FilterForSearchUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/ListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ListUserForward.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/ListUserForward.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ManageExpiredProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/expired/ManageExpiredProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ManageExpiredProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/expired/ManageExpiredProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/MonthlyRevenue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/MonthlyRevenue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/OrderList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/order/OrderList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/OrderListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/order/OrderListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ProductList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/ProductList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ProductListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/ProductListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ProviderList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/ProviderList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/ProviderListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/ProviderListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateInfoAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/profile/UpdateInfoAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/order/UpdateOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdatePasswordAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/profile/UpdatePasswordAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/UpdateProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/product/UpdateProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/UpdateProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateProviderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/provider/UpdateProviderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UpdateUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/UpdateUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/UserList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/admin/user/UserList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/ProductDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/ProductDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/about/About.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/about/About.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/CancelBill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/CancelBill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/ForwardToListBills.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/ForwardToListBills.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/ListBills.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/ListBills.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/billDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/bill/billDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/AddCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/AddCartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/ShowCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/cart/ShowCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/contact/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/contact/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/AccountActive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/AccountActive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/ForgetPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/ForgetPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/login/Register.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/order/CheckOut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/order/CheckOut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/order/SubmitProductForOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/order/SubmitProductForOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/FilterForAllProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/FilterForAllProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/FilterForSearchProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/FilterForSearchProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/ShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/ShopForward.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/page/shop/ShopForward.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/user/UpdateInfoUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/user/UpdateInfoUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/user/UpdatePasswordUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/user/UpdatePasswordUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/user/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/controller/user/UserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/services/RegisterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/services/RegisterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/util/MyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhom55/hcmuaf/util/MyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/about.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/about.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-provider.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-provider.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/add-user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/edit-admin-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/edit-admin-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/monthly-revenue.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/monthly-revenue.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/order-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/manage-sale.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/product-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/product-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/provider-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/provider-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-order-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-product-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-product-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-provider-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-provider-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-time-expired-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-of-time-expired-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-user-result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/search-user-result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/time-expired-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/time-expired-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-admin-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-admin-password.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-order.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-product.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-provider.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-provider.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update-user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/user-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/user-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/see-each-product-bought-in-a-month.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/cart.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkout.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkout.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/checkout.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/contact.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/contact.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/forget-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/forget-password.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login/register.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/product-single.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/product-single.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/searchProductResult.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/searchProductResult.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/shop.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/shop.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/chi-tiet-hoa-don.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/chi-tiet-hoa-don.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/chinh-sua-thong-tin-user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/chinh-sua-thong-tin-user.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/danh-sach-hoa-don.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/danh-sach-hoa-don.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/update-user-password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/update-user-password.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user-profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-add-product.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-admin-profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-dssp.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-edit-admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-popup.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-update-admin-pass.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-update-order.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/my-update-user.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/admin-css/profile1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/login-css/my-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-chi-tiet-hoa-don.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-chinh-sua-thong-tin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-ds-hoa-don.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-update-pass.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/user-css/my-user-profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/fix.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/fix.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-fix.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-payment.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-shop.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/my-toast.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/payment.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/payment.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/shop.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/show-toast.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/wishlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/animate.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/animate.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/aos.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/aos.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/bootstrap-datepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/bootstrap-datepicker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/flaticon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/flaticon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/icomoon.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/icomoon.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/ionicons.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/ionicons.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/jquery.timepicker.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/jquery.timepicker.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/magnific-popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/magnific-popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/owl.carousel.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/owl.carousel.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/owl.theme.default.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/owl.theme.default.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/web-css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/facebook-login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/images/google-login.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/web-js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/web-js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/aos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/aos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/google-map.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../WebTraiCay/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../WebTraiCay/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,13 +122,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Servlet" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/shop.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -118,25 +152,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Vu-branch",
-    "last_opened_file_path": "C:/Users/PC/Desktop/Do_An_LTWeb/LTWeb_Nhom55/Nhom55_WebBanTraiCay/src/main/webapp/static",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Vu-branch&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/PC/Desktop/Do_An_LTWeb/LTWeb_Nhom55/Nhom55_WebBanTraiCay/src/main/webapp/static&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static" />
@@ -146,8 +180,9 @@
       <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\web-css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp" />
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\web-fix-css" />
       <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp\static\css\web-css" />
+      <recent name="C:\Users\PC\Desktop\Do_An_LTWeb\LTWeb_Nhom55\Nhom55_WebBanTraiCay\src\main\webapp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -164,7 +199,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="a96e2c7e-1c1a-4088-b53e-d5152a67df7c" />
+        <option name="BASE_DIRECTORY_NAME" value="5cceb487-7c56-4ea7-8c16-f7b725e66042" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -172,7 +207,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="60695" />
+        <option name="DEBUG_PORT" value="52907" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -241,18 +276,6 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -278,6 +301,11 @@
       <workItem from="1706112681772" duration="932000" />
       <workItem from="1706114849090" duration="1904000" />
       <workItem from="1706117186266" duration="1242000" />
+      <workItem from="1706163522465" duration="10439000" />
+      <workItem from="1706174749208" duration="299000" />
+      <workItem from="1706177457882" duration="345000" />
+      <workItem from="1706177842281" duration="88000" />
+      <workItem from="1706195027156" duration="756000" />
     </task>
     <servers />
   </component>

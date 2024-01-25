@@ -83,9 +83,9 @@
                             tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/about"
+                <li class="nav-item"><a href="About"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/contact"
+                <li class="nav-item"><a href="Contact"
                                         class="nav-link">Liên Hệ</a></li>
                 <li class="nav-item cta cta-colored">
                     <a href="${pageContext.request.contextPath}/cart"
@@ -355,8 +355,8 @@
                         =
                         <li><a href="${pageContext.request.contextPath}/ShopForward"
                                class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="#" class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a href="#" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                        <li><a href="About" class="py-2 d-block">Về chúng tôi</a></li>
+                        <li><a href="Contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
                     </ul>
                 </div>
             </div>

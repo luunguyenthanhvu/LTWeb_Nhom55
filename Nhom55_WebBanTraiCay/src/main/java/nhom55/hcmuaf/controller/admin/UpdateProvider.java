@@ -1,7 +1,9 @@
 package nhom55.hcmuaf.controller.admin;
 
 import nhom55.hcmuaf.beans.Providers;
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ProviderService;
+import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -13,6 +15,8 @@ import java.util.List;
 public class UpdateProvider extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
           int idProvider = Integer.valueOf(request.getParameter("id"));
         List<Providers> list = ProviderService.getInstance().getAll();
         Providers provider =null;
@@ -22,6 +26,7 @@ public class UpdateProvider extends HttpServlet {
                 break;
             }
         }
+              request.setAttribute("admin", admin);
              request.setAttribute("provider",provider);
              RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/update-provider.jsp");
              dispatcher.forward(request,response);

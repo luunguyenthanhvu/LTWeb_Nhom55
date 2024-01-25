@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
@@ -33,18 +32,14 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/icomoon.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
-
-
 </head>
 <body class="goto-here">
-<nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-     id="ftco-navbar">
+<nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái
-                Cây</a>
+            <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,191 +136,88 @@
             </c:choose>
         </div>
     </div>
-    <!-- END nav -->
 </nav>
-<div id="toast">
-</div>
-    <!-- END nav -->
+<!-- END nav -->
 
-<div class="hero-wrap hero-bread" style="background-image: url(/static/images/bg1.jpg);filter: brightness(0.8);">
+<div class="hero-wrap hero-bread" style="background-image: url('/static/images/bg1.jpg');filter: brightness(0.8);">
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span>Về chúng tôi</span></p>
-                <h1 class="mb-0 bread">Về chúng tôi</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span>Liên hệ</span>
+                </p>
+                <h1 class="mb-0 bread">Liên hệ</h1>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
+<section class="ftco-section contact-section bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center"
-                 style="background-image: url(/static/images/about.jpg);">
-                <a href="https://vimeo.com/45830194"
-                   class="icon popup-vimeo d-flex justify-content-center align-items-center">
-                    <span class="icon-play"></span>
-                </a>
-            </div>
-            <div class="col-md-7 py-5 wrap-about pb-md-5 ftco-animate">
-                <div class="heading-section-bold mb-4 mt-md-5">
-                    <div class="ml-md-0">
-                        <h2 class="mb-4">Chào mừng bạn đến với cửa hàng trái cây online, trang web của chúng tôi</h2>
-                    </div>
+        <div class="row d-flex mb-5 contact-info">
+            <div class="w-100"></div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Địa chỉ:</span>Trường Đại Học Nông Lâm Thành Phố Hồ Chí Minh, Khu phố 6, Phường Linh Trung, TP. Thủ Đức, TP. Hồ Chí Minh</p>
                 </div>
-                <div class="pb-md-5">
-                    <p>Dù Việt Nam có một nền kinh tế nông nghiệp phát triển, nhưng việc tiếp cận và mua,
-                        sắm trái cây tươi sạch và chất lượng không phải lúc nào cũng dễ dàng đối với người tiêu dùng.
-                        Để đáp ứng nhu cầu ngày càng cao của khách hàng về sự thuận tiện và đảm bảo chất lượng,
-                       trang web của chúng tôi xuất hiện để phục vụ nhu cầu cho bạn.
-                    </p>
-                    <p>Bạn có thể dễ dàng chọn lựa sản phẩm mà họ muốn, đặt hàng trực tuyến và
-                        nhận được những quả trái cây tươi sức sống được giao hàng tận nơi. Ngoài ra, chúng tôi
-                        thường xuyên cập nhật các ưu đãi, khuyến mãi và chính sách hỗ trợ
-                        khách hàng, tạo ra một trải nghiệm mua sắm trực tuyến an tâm và tiện lợi.</p>
-                    <p><a href="ShopForward" class="btn btn-primary">Mua ngay</a></p>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>SĐT:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">pdaotao@hcmuaf.edu.vn</a></p>
+                </div>
+            </div>
+            <div class="col-md-3 d-flex">
+                <div class="info bg-white p-4">
+                    <p><span>Trang mạng</span> <a href="#">yoursite.com</a></p>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+        <div class="row block-9">
+            <div class="col-md-6 order-md-last d-flex">
+                <form  action="Contact" class="bg-white p-5 contact-form" method="post">
+                    <div class="form-group">
+                        <input id="tenKhachHang" value="${tenNguoiDung}" type="text" class="form-control" placeholder="Tên của bạn" name="ten">
+                        <div style="color: red; display: none" id="name_error"></div>
+                        <c:if test="${not empty tenError}" >
+                            <div style="color: red">${tenError}</div>
+                        </c:if>
+                    </div>
+                    <div class="form-group">
+                        <input id="emailKhachHang" value="${emailNguoiDung}"  type="text" class="form-control" placeholder="Email của bạn" name="email">
+                        <div style="color: red; display: none" id="email_error"></div>
+                        <c:if test="${not empty emailError}" >
+                            <div style="color: red">${emailError}</div>
+                        </c:if>
+                    </div>
+                    <div class="form-group">
+                        <input id="deTaiKhachHang" value="${deTaiNguoiDung}" type="text" class="form-control" placeholder="Đề  tài" name="deTai">
+                        <div style="color: red; display: none" id="deTai_error"></div>
+                        <c:if test="${not empty deTaiError}" >
+                            <div style="color: red">${deTaiError}</div>
+                        </c:if>
+                    </div>
+                    <div class="form-group">
+                        <textarea   name="tinNhan" id="textKhachHang" cols="30" rows="7" class="form-control"
+                                  placeholder="Tin nhắn">${tinNhanNguoiDung}</textarea>
+                        <div style="color: red; display: none" id="text_error"></div>
+                        <c:if test="${not empty tinNhanError}" >
+                            <div style="color: red">${tinNhanError}</div>
+                        </c:if>
+                    </div>
+                    <div class="form-group">
+                        <input id="submit-btn" type="submit" value="Gửi tin nhắn" class="btn btn-primary py-3 px-5">
+                    </div>
 
-<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-    <div class="container py-4">
-        <div class="row d-flex justify-content-center py-5">
-            <div class="col-md-6">
-                <h2 style="font-size: 22px;" class="mb-0">Theo dõi bản tin của chúng tôi</h2>
-                <span>Hãy đăng ký bằng email để biết thêm về cửa hàng mới nhất và ưu đãi đặc biệt của chúng tôi</span>
+               </form>
             </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Nhập email tại đây">
-                        <input type="submit" value="Đăng ký" class="submit px-3">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 
+            <div class="col-md-6 d-flex">
+                <div id="map" class="bg-white">
 
-<section class="ftco-section testimony-section">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 heading-section ftco-animate text-center">
-                <span class="subheading">Bằng chứng</span>
-                <h2 class="mb-4"> Khách hàng hài lòng của chúng tôi nói</h2>
-            </div>
-        </div>
-        <div class="row ftco-animate">
-            <div class="col-md-12">
-                <div class="carousel-testimony owl-carousel">
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/static/images/person_1.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                            </div>
-                            <div class="text text-center">
-                                <p class="mb-5 pl-4 line">Tôi đã có trải nghiệm mua trái cây qua một trang web ở Việt Nam và rất hài lòng với
-                                    chất lượng sản phẩm. Trang web cung cấp thông tin chi tiết về nguồn gốc và quy trình chăm sóc trái cây,
-                                     giúp tôi chọn lựa được những sản phẩm tươi ngon và an toàn. Quá trình đặt hàng và thanh toán đơn giản, và tôi nhận được giao hàng đúng
-                                    hẹn. Sự chuyên nghiệp và chất lượng của dịch vụ này khiến tôi muốn quay lại mua sắm nhiều hơn.</p>
-                                <p class="name">Garreth Smith</p>
-                                <span class="position">Giám đốc tiếp thị</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/static/images/person_2.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                            </div>
-                            <div class="text text-center">
-                                <p class="mb-5 pl-4 line">
-                                    Đã lâu tôi không tin tưởng mua trái cây trực tuyến, nhưng sau khi thử nghiệm một trang web bán trái cây ở Việt Nam,
-                                    tôi đã hoàn toàn thay đổi quan điểm. Sự đa dạng của sản phẩm và mô tả chi tiết giúp tôi lựa chọn được những loại trái cây ngon nhất.
-                                    Giao hàng nhanh chóng và sản phẩm đến tay tôi vẫn giữ được độ tươi ngon và chất ượng như họ cam kết. Tôi sẽ giới thiệu trang web này
-                                    cho bạn bè và gia đình của mình .</p>
-                                <p class="name">Garreth Smith</p>
-                                <span class="position">Nhà thiết kế giao diện</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/static/images/person_3.jpg)">
-                    <span class="quote d-flex align-items-center justify-content-center">
-                      <i class="icon-quote-left"></i>
-                    </span>
-                            </div>
-                            <div class="text text-center">
-                                <p class="mb-5 pl-4 line">
-                                    Trải nghiệm mua sắm trái cây trực tuyến tại một trang web ở Việt Nam đã mang lại cho tôi sự tiện lợi và an tâm.
-                                    Hệ thống đặt hàng dễ sử dụng, và tôi có thể theo dõi đơn hàng của mình mọi lúc. Sản phẩm được đóng gói cẩn thận,
-                                    giữ nguyên hương vị tươi ngon. Họ cũng có chăm sóc khách hàng tận tình, luôn sẵn sàng giải đáp mọi thắc mắc của tôi.
-                                    Mua sắm trái cây trực tuyến qua trang web này là một trải nghiệm đáng giá và đáng tin cậy .</p>
-                                <p class="name">Garreth Smith</p>
-                                <span class="position">Nhà thiết kế giao diện người dùng</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row no-gutters ftco-services">
-            <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-1 active d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-shipped"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">MIỄN PHÍ VẬN CHUYỂN</h3>
-                        <span>ĐẶT HÀNG TRÊN $100</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-2 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-diet"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">LUÔN TƯƠI</h3>
-                        <span>GÓI SẢN PHẨM TỐT</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-3 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-award"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">CHẤT LƯỢNG CAO</h3>
-                        <span>CHẤT LƯỢNG SẢN PHẨM</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 text-center d-flex align-self-stretch ftco-animate">
-                <div class="media block-6 services mb-md-0 mb-4">
-                    <div class="icon bg-color-4 d-flex justify-content-center align-items-center mb-2">
-                        <span class="flaticon-customer-service"></span>
-                    </div>
-                    <div class="media-body">
-                        <h3 class="heading">ỦNG HỘ</h3>
-                        <span>HỖ TRỢ 24/7</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -422,7 +314,103 @@
     </svg>
 </div>
 
+<%--Thông báo nếu khách hàng đã gửi liên hệ thành công--%>
+<script>
+    // Kiểm tra biến notify từ server
+    var notify = '<%= request.getAttribute("notify") %>';
 
+    // Nếu đặt hàng thành công, hiển thị thông báo và chuyển hướng trang
+    if (notify !== 'null' && notify !== undefined && notify !== '') {
+        alert(notify);
+        window.location.href = "http://localhost:8080/Contact";
+    }
+</script>
+<script>
+    var ten = document.querySelector('#tenKhachHang');
+    console.log(ten);
+    var email = document.querySelector('#emailKhachHang');
+    var deTai = document.querySelector('#deTaiKhachHang');
+    var text1 = document.querySelector('#textKhachHang');
+
+    function validateTen() {
+        var text = ten.value;
+        console.log(text);
+        var kyTuHopLe = /^[a-zA-ZÀ-ỹ ]+$/;
+        var error = document.querySelector("#name_error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+    function validateEmail() {
+        var text = email.value;
+        var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        var error = document.querySelector("#email_error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Địa chỉ email không hợp lệ.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateDeTai() {
+        var text = deTai.value;
+
+        var error = document.querySelector("#deTai_error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+
+    function validateText() {
+        var text = text1.value;
+
+        var error = document.querySelector("#text_error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+    ten.addEventListener("blur",validateTen)
+    deTai.addEventListener("blur",validateDeTai)
+    email.addEventListener("blur",validateEmail)
+    text1.addEventListener("blur",validateText)
+    var submitBtn = document.getElementById("submit-btn");
+    submitBtn.addEventListener("click", function (event) {
+        var isTen = validateTen();
+        var isEmail = validateEmail();
+        var isDeTai = validateDeTai();
+        var isText = validateText();
+        if(!isTen || !isEmail || !isDeTai || !isText) {
+            event.preventDefault();
+        }
+    })
+
+</script>
 <script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
@@ -437,7 +425,7 @@
 <script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
-<script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/main.js"></script>
 

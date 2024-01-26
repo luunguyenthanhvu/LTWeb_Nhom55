@@ -83,7 +83,6 @@ public class UpdateInfoUser extends HttpServlet {
             }
 
             String result = UserService.getInstance().updateProfileWithImage(user.getId(), username, email, address, phoneNumber, myBirthDay, imgUser, gender);
-            request.setAttribute("result", "Cập nhật thành công");
 
             // Nếu người dùng thay đổi email
             if(!user.getEmail().equals(email)) {
@@ -99,21 +98,13 @@ public class UpdateInfoUser extends HttpServlet {
                 }
             }
 
-            response.sendRedirect(request.getContextPath() + "/userProfile");
+            request.setAttribute("result", "Cập nhật thành công!");
+            doGet(request,response);
 
             // không checkValidate
         } else {
-            List<Users> listUser= UserService.getInstance().showInfoUser();
-            for(Users u: listUser) {
-                if(u.getId() == user.getId()) {
-                    user =u;
-                    break;
-                }
-            }
             request.setAttribute("user", user);
-            RequestDispatcher dispatcher = this.getServletContext()
-                    .getRequestDispatcher("/WEB-INF/user/chinh-sua-thong-tin-user.jsp");
-            dispatcher.forward(request, response);
+            doGet(request,response);
         }
     }
 

@@ -5,6 +5,7 @@ import nhom55.hcmuaf.services.DeleteProductServiceForAdmin;
 import nhom55.hcmuaf.services.UserService;
 import nhom55.hcmuaf.util.MyUtils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +27,15 @@ public class DeleteUser extends HttpServlet {
         if(loginedUser.getId()==id) {
             UserService.getInstance().deleteUser(id);
             MyUtils.removeLoginedUser(session);
-            response.sendRedirect(request.getContextPath() + "/login");
+            request.setAttribute("result", "Xóa người dùng thành công");
+            RequestDispatcher dispatcher = this.getServletContext()
+                    .getRequestDispatcher("/WEB-INF/login/login.jsp");
+            dispatcher.forward(request, response);
         }
         UserService.getInstance().deleteUser(id);
-        response.sendRedirect(request.getContextPath() + "/userList");
+        request.setAttribute("result", "Xóa người dùng thành công");
+        RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/admin/user-list.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override

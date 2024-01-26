@@ -288,17 +288,12 @@
                             </c:when>
                             <c:otherwise>
                                 <!-- Ảnh mặc định khi mới đăng ký -->
-                                <img id="previewImage" src="/static/images/accountPicture.png" alt="">
+                                <img id="previewImage" src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="">
                             </c:otherwise>
                         </c:choose>
                         <div class="chose-new-img">
                             <label for="fileInput" class="chose-new-img">
                                 <input type="file" id="fileInput" name="avatar" accept="image/*">
-                                <span class="error-msg required" id="fileUpload-error"
-                                      style="display: none;margin-left: 60px;color: red"></span>
-                                <c:if test="${not empty file_anh_error}">
-                                    <p style="color: red">${file_anh_error}</p>
-                                </c:if>
                             </label>
                         </div>
                     </div>
@@ -368,7 +363,6 @@
     var addressUser = document.getElementById("dc_nd");
     var phoneNumberUser = document.getElementById("sdt_nd");
     var dateOfBirthUser = document.getElementById("dob");
-    var upFileAnh = document.getElementById("fileInput");
 
     function validateTenUser() {
         var text = tenUser.value;
@@ -491,21 +485,6 @@
         }
     }
 
-    function validateFileUpload() {
-        var inputUploadFile = document.getElementById("fileInput");
-        var error = document.getElementById("fileUpload-error");
-
-        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
-        if (inputUploadFile.files.length === 0) {
-            error.textContent = "Vui lòng chọn file ảnh.";
-            error.style.display = "block";
-            return false;
-        } else {
-            error.style.display = "none";
-            return true;
-        }
-    }
-
     // add event to check input
     tenUser.addEventListener("blur", validateTenUser);
     emailUser.addEventListener("blur", validateEmailUser);
@@ -513,20 +492,18 @@
     addressUser.addEventListener("blur", validateAddressUser);
     phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
     dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
-    upFileAnh.addEventListener("blur", validateFileUpload);
 
     // stop user send post to server
     var submit = document.getElementById("saveUserInfo");
     submit.addEventListener("click", function (event) {
         var isTenUser = validateTenUser();
-        var isEmail = validateEmail();
+        var isEmail = validateEmailUser();
         var isGenderUser = validateGenderUser();
         var isAddressUser = validateAddressUser();
         var isPhoneNumberUser = validatePhoneNumberUser();
         var isDateOfBirth = validateDateOfBirth();
-        var isFileUpLoad = validateFileUpload();
         if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
-            || !isPhoneNumberUser || !isDateOfBirth || !isFileUpLoad) {
+            || !isPhoneNumberUser || !isDateOfBirth) {
             event.preventDefault();
         }
     })

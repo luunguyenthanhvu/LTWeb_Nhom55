@@ -128,7 +128,7 @@
                             </c:when>
                             <c:otherwise>
                                 <!-- Ảnh mặc định khi mới đăng ký -->
-                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                                <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="profileImg">
                             </c:otherwise>
                         </c:choose>
                     </div>
@@ -189,7 +189,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <!-- Ảnh mặc định khi mới đăng ký -->
-                                        <img src="/static/images/accountPicture.png" alt="">
+                                        <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="">
                                     </c:otherwise>
                                 </c:choose>
                             </td>

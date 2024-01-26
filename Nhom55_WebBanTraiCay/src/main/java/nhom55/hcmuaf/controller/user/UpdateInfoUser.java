@@ -52,10 +52,8 @@ public class UpdateInfoUser extends HttpServlet {
         String phoneNumber = request.getParameter("so_dien_thoai_nguoi_dung");
         String dateOfBirth = request.getParameter("dob");
         Part filePart = request.getPart("avatar");
-        String filePartString = filePart.getSubmittedFileName();
 
-
-        if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, filePartString, gender)) {
+        if (checkValidate(request, response, username, email, address, phoneNumber, dateOfBirth, gender)) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             Date myBirthDay = null;
@@ -121,14 +119,13 @@ public class UpdateInfoUser extends HttpServlet {
 
     private static boolean checkValidate(HttpServletRequest request, HttpServletResponse response,
                                          String userName, String email, String address,
-                                         String phoneNumber, String dateOfBirth, String img, String gender) {
+                                         String phoneNumber, String dateOfBirth, String gender) {
 
         String checkName = UserValidator.validateTenNguoiDung(userName);
         String checkEmail = UserValidator.validateEmail(email);
         String checkAddress = UserValidator.validateDiaChi(address);
         String checkPhoneNumber = UserValidator.validateSDT(phoneNumber);
         String checkDateOfBirth = UserValidator.validateNgaySinh(dateOfBirth);
-        String checkImg = UserValidator.validateUpFileAnh(img);
         String checkGender = UserValidator.validateGioiTinh(gender);
         // count for validate
         int count = 0;
@@ -166,11 +163,6 @@ public class UpdateInfoUser extends HttpServlet {
             request.setAttribute("error_dob", checkDateOfBirth);
         } else {
             request.setAttribute("dateOfBirth_user", dateOfBirth);
-        }
-
-        if (!checkImg.isEmpty()) {
-            count++;
-            request.setAttribute("file_anh_error", checkImg);
         }
 
         if (!checkGender.isEmpty()) {

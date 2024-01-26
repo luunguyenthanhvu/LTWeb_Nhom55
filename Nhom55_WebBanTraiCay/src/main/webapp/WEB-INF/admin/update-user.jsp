@@ -517,14 +517,13 @@
     var submit = document.getElementById("saveUserInfo");
     submit.addEventListener("click", function (event) {
         var isTenUser = validateTenUser();
-        var isEmail = validateEmail();
+        var isEmail = validateEmailUser();
         var isGenderUser = validateGenderUser();
         var isAddressUser = validateAddressUser();
         var isPhoneNumberUser = validatePhoneNumberUser();
         var isDateOfBirth = validateDateOfBirth();
-        var isFileUpLoad = validateFileUpload();
         if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
-            || !isPhoneNumberUser || !isDateOfBirth || !isFileUpLoad) {
+            || !isPhoneNumberUser || !isDateOfBirth) {
             event.preventDefault();
         }
     })

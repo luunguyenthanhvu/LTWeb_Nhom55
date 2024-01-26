@@ -2,22 +2,21 @@ package nhom55.hcmuaf.controller.page.cart;
 
 import java.text.NumberFormat;
 import java.util.Collection;
-import java.util.List;
 import java.util.Locale;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.CartProduct;
+import nhom55.hcmuaf.beans.cart.Cart;
+import nhom55.hcmuaf.beans.cart.CartProduct;
 
-@WebServlet(name = "cart", value = "/cart")
+@WebServlet(name = "cart", value = "/page/cart")
 public class ShowCart extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/cart.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/cart.jsp");
     dispatcher.forward(request, response);
   }
 

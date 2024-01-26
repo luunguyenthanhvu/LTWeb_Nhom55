@@ -45,6 +45,7 @@ public interface UsersDao {
   List<Users> get5UsersForEachPage(int index, int quantityDefault);
 
   void deleteUser(int id);
+  public String addNewGoogleUser(String username,String email, String img);
 }
 
 

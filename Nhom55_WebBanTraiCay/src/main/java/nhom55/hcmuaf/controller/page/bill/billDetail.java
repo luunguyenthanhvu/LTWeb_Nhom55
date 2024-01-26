@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "billDetail", value = "/billDetail")
+@WebServlet(name = "billDetail", value = "/page/bill/detail")
 public class billDetail extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,7 +18,7 @@ public class billDetail extends HttpServlet {
         BillDao orderDao = new BillDaoImpl();
         List<BillDetails> list = orderDao.getListProductInABill(idBill);
         request.setAttribute("list",list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/user/chi-tiet-hoa-don.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/user/chi-tiet-hoa-don.jsp");
         dispatcher.forward(request,response);
 
     }

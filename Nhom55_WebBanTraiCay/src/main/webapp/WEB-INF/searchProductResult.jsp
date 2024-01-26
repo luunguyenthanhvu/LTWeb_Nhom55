@@ -54,7 +54,7 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng Trái
                 Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -64,47 +64,21 @@
 
         <div class="nav-bar-link" id="ftco-nav">
             <ul class="navbar-nav">
-                <li class="nav-item active"><a href="${pageContext.request.contextPath}/home"
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/page/home"
                                                class="nav-link">Trang Chủ</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item"
-                           href="${pageContext.request.contextPath}/ShopForward">Cửa
-                            hàng</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/wishlist">Danh
-                            sách yêu thích</a>
-
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/checkout">Thủ
-                            tục thanh toán</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="About"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/page/shop/shop-forward"
+                                        class="nav-link">Cửa Hàng</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/page/about"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="Contact"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/page/contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <c:choose>
-                    <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/cart"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/login"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">0</span>]
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+                <li class="nav-item cta cta-colored">
+                    <a href="${pageContext.request.contextPath}/page/cart"
+                       class="nav-link cart-info-container">
+                        <span class="icon-shopping_cart"></span>
+                        [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -118,7 +92,8 @@
                             <b>${loginedUser.getUsername()}</b>
                         </a>
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="userProfile?id=${loginedUser.getId()}">
+                            <a class="account dropdown-item"
+                               href="${pageContext.request.contextPath}/page/user/user-profile">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -126,7 +101,7 @@
                                 Thông tin
                             </a>
                             <a class="account dropdown-item"
-                               href="${pageContext.request.contextPath}/logout">
+                               href="${pageContext.request.contextPath}/page/logout">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 512 512">
                                     <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
@@ -138,7 +113,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="login-user">
-                        <a class="account" href="${pageContext.request.contextPath}/login">
+                        <a class="account" href="${pageContext.request.contextPath}/page/login">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                  viewBox="0 0 512 512">
                                 <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
@@ -172,7 +147,7 @@
             <div style="display: block" class="col-md-10 mb-5 text-center">
                 <div class="tab-content" id="pills-tabContent">
                     <form style="position: relative; top:-40px; left: 350px"
-                          action="ShopController?index=1" method="post">
+                          action="${pageContext.request.contextPath}/page/shop/shop-controller?index=1" method="post">
                         <input style="width: 300px" type="text"
                                placeholder="Tìm trái cây mà bạn cần" name="txtSearch">
                         <input style="width: 100px" type="submit" value="Tìm kiếm">
@@ -191,11 +166,11 @@
 
                         <!-- Dropdown Filter -->
                         <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
-                            <a href="FilterForSearchProduct?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
-                            <a href="FilterForSearchProduct?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
-                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
-                            <a href="FilterForSearchProduct?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
-                            <a href="FilterForSearchProduct?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 
@@ -223,7 +198,7 @@
                                             </div>
                                             <div class="bottom-area d-flex px-3">
                                                 <div class="m-auto d-flex">
-                                                    <a href="productDetails?id=${product.getId()}"
+                                                    <a href="${pageContext.request.contextPath}/page/product/product-detail?id=${product.getId()}"
                                                        class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                                         <span><i class="ion-ios-menu"></i></span>
                                                     </a>
@@ -231,10 +206,6 @@
                                                        onclick="addToCart(${product.getId()})"
                                                        class="buy-now d-flex justify-content-center align-items-center mx-1">
                                                         <span><i class="ion-ios-cart"></i></span>
-                                                    </a>
-                                                    <a href="#"
-                                                       class="heart d-flex justify-content-center align-items-center ">
-                                                        <span><i class="ion-ios-heart"></i></span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -260,7 +231,7 @@
                              <c:if test="${pageId== 1 && indexEnd ==1}">
                                  <li><a >&lt;</a></li>
                                  <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                     <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                     <li id="${i}" ><a  href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
                                  </c:forEach>
                                  <li><a >></a></li>
                             </c:if>
@@ -270,23 +241,23 @@
                                 <c:if test="${pageId ==1}" >
                                     <li><a >&lt;</a></li>
                                     <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                        <li id="${i}" ><a  href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
                                     </c:forEach>
-                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
                                 </c:if>
 <%--                                 Còn trường hợp này nút nào cũng xài được--%>
                                 <c:if test="${pageId >1 && pageId<indexEnd}" >
-                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
                                     <c:forEach begin="1" end="${indexEnd}" var= "i">
                                         <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
                                     </c:forEach>
-                                    <li><a href="ShopController?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
                                 </c:if>
 <%--                                Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
                                 <c:if test="${pageId ==indexEnd}" >
-                                    <li><a href="ShopController?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
                                     <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                        <li id="${i}" ><a  href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
                                     </c:forEach>
                                     <li><a>></a></li>
                                 </c:if>
@@ -301,31 +272,6 @@
     </div>
 
 </section>
-
-<!--Theo dõi tin tức-->
-
-<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-    <div class="container py-4">
-        <div class="row d-flex justify-content-center py-5">
-            <div class="col-md-6">
-                <h2 style="font-size: 22px;" class="mb-0">Theo dõi bản tin của chúng tôi</h2>
-                <span>Hãy đăng ký bằng email để biết thêm về các cửa hàng mới nhất và ưu đãi đặc biệt của chúng tôi</span>
-            </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Nhập email tại đây">
-                        <input type="submit" value="Đăng ký" class="submit px-3">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--Theo dõi tin tức-->
-
-
 <footer class="ftco-footer ftco-section">
     <div class="container">
         <div class="row">
@@ -351,9 +297,9 @@
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
-                        <li><a href="ShopForward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="About" class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a href="Contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/about" class="py-2 d-block">Về chúng tôi</a></li>
+                        <li><a  href="${pageContext.request.contextPath}/page/contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -428,26 +374,25 @@
     dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
   }
 </script>
-<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
-<script src="static/js/jquery.min.js"></script>
-<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/jquery.easing.1.3.js"></script>
-<script src="static/js/jquery.waypoints.min.js"></script>
-<script src="static/js/jquery.stellar.min.js"></script>
-<script src="static/js/owl.carousel.min.js"></script>
-<script src="static/js/jquery.magnific-popup.min.js"></script>
-<script src="static/js/aos.js"></script>
-<script src="static/js/jquery.animateNumber.min.js"></script>
-<script src="static/js/bootstrap-datepicker.js"></script>
-<script src="static/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="static/js/google-map.js"></script>
-<script src="static/js/main.js"></script>
-
-<!--mylink-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+<script src="${pageContext.request.contextPath}/static/js/web-js/index-page.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.stellar.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/aos.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.animateNumber.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-datepicker.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/scrollax.min.js"></script>
+<script src="${pageContext.request.contextPath}/https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="${pageContext.request.contextPath}/static/js/google-map.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/main.js"></script>
+<script src="${pageContext.request.contextPath}/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 

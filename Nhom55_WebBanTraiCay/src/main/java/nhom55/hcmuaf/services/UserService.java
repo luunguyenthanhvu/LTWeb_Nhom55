@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.services;
 
 import nhom55.hcmuaf.beans.Users;
+import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
 import nhom55.hcmuaf.util.MyUtils;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public class UserService {
 
   private static UserService instance;
-  private UsersDaoImpl userDao;
+  private UsersDao userDao;
 
   public UserService() {
     userDao = new UsersDaoImpl();
@@ -98,6 +99,9 @@ public class UserService {
 
   public void deleteUser(int id) {
       userDao.deleteUser(id);
+  }
+  public String addNewGoogleUser(String username,String email, String img) {
+    return userDao.addNewGoogleUser(username,email, img);
   }
 
 }

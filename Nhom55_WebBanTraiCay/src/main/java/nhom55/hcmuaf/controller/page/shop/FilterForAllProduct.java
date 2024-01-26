@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "FilterForAllProduct", value = "/FilterForAllProduct")
+@WebServlet(name = "FilterForAllProduct", value = "/page/shop/filter-for-all-product")
 public class FilterForAllProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,7 +38,7 @@ public class FilterForAllProduct extends HttpServlet {
 
         List<Products> list =  ShopService.getInstance().sortByFilter(pageNumber,quantityDefault,sortBy,order);
 
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/shop.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/shop.jsp");
             request.setAttribute("sortBy",sortBy);
             request.setAttribute("order",order);
             request.setAttribute("haveMaxPage",haveMaxPage);

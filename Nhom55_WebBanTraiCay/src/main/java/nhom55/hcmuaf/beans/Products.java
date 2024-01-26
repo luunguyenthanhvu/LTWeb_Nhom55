@@ -1,8 +1,9 @@
 package nhom55.hcmuaf.beans;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Products {
+public class Products implements Serializable {
     private int id;
     private String nameOfProduct;
     private String description;

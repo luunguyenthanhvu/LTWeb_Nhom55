@@ -43,8 +43,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
-                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/profile">Thông tin tài khoản</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/profile/update-pass">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -61,9 +61,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list">Danh sách sản phẩm</a></li>
-                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
-                    <li><a href="manage-expired-product">Sản phẩm hết hạn</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/product/product-list">Danh sách sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/product/add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/product/manage-expired">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>
@@ -80,7 +80,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Đơn hàng</a></li>
-                    <li><a href="OrderList">Quản lý đơn hàng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/order/order-list">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
             <li>
@@ -97,8 +97,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Doanh thu</a></li>
-                    <li><a href="manage-sale.html"> Doanh số sản phẩm</a></li>
-                    <li><a href="see-each-product-bought-in-a-month.html">Chi tiết</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/monthly-revenue"> Doanh thu cửa hàng</a></li>
                 </ul>
             </li>
             <li>
@@ -115,11 +114,41 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="userList">Danh sách người dùng</a></li>
-                    <li><a href="AddUser">Thêm người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/user/user-list">Danh sách người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/user/add-user">Thêm người dùng</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M64 32C46.3 32 32 46.3 32 64V304v48 80c0 26.5 21.5 48 48 48H496c26.5 0 48-21.5 48-48V304 152.2c0-18.2-19.4-29.7-35.4-21.1L352 215.4V152.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4V64c0-17.7-14.3-32-32-32H64z"/></svg>
+                        </i>
+                        <span class="link_name">Nhà cung cấp</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Nhà cung cấp</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/provider/provider-list">Danh sách nhà cung cấp</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/provider/add-provider">Thêm nhà cung cấp</a></li>
                 </ul>
             </li>
 
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M384 48c8.8 0 16 7.2 16 16V448c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H384zM96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16H336c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80H208zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V80zM496 192c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V336z"/></svg>
+                        </i>
+                        <span class="link_name">Liên hệ</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="${pageContext.request.contextPath}/admin/contact-form">Danh sách liên hệ của khách hàng</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
@@ -130,15 +159,15 @@
                             </c:when>
                             <c:otherwise>
                                 <!-- Ảnh mặc định khi mới đăng ký -->
-                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                                <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="profileImg">
                             </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${admin.getUsername()}</div>
-                        <div class="job">Quản trị viên</div>
+                        <div class="profile_name">${loginedUser.getUsername()}</div>
+                        <div class="job">${role}</div>
                     </div>
-                    <a href="${pageContext.request.contextPath}/logout">
+                    <a href="${pageContext.request.contextPath}/page/logout">
                         <i style="transform: rotate(180deg); ">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                 <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
@@ -164,11 +193,11 @@
                         <c:choose>
                             <c:when test="${not empty user.getImg()}">
                                 <!-- Ảnh mới từ sau khi đổi ảnh -->
-                                <img src="${user.getImg()}" alt="">
+                                <img  src="${user.getImg()}" alt="">
                             </c:when>
                             <c:otherwise>
                                 <!-- Ảnh mặc định khi mới đăng ký -->
-                                <img src="/static/images/accountPicture.png" alt="">
+                                <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="">
                             </c:otherwise>
                         </c:choose>
                     </div>
@@ -367,7 +396,6 @@
     var addressUser = document.getElementById("dc_nd");
     var phoneNumberUser = document.getElementById("sdt_nd");
     var dateOfBirthUser = document.getElementById("dob");
-    var upFileAnh = document.getElementById("fileInput");
 
     function validateTenUser() {
         var text = tenUser.value;
@@ -489,29 +517,12 @@
         return true;
     }
 
-    function validateFileUpload() {
-        var inputUploadFile = document.getElementById("fileInput");
-        var error = document.getElementById("fileUpload-error");
-
-        // Kiểm tra xem người dùng đã chọn file ảnh hay chưa
-        if (inputUploadFile.files.length === 0) {
-            error.textContent = "Vui lòng chọn file ảnh.";
-            error.style.display = "block";
-            return false;
-        } else {
-            error.style.display = "none";
-            return true;
-        }
-    }
-
-
     tenUser.addEventListener("blur", validateTenUser);
     emailUser.addEventListener("blur", validateEmailUser);
     genderUser.addEventListener("blur", validateGenderUser);
     addressUser.addEventListener("blur", validateAddressUser);
     phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
     dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
-    upFileAnh.addEventListener("blur", validateFileUpload);
 
     // stop user send post to server
     var submit = document.getElementById("saveUserInfo");
@@ -524,7 +535,7 @@
         var isDateOfBirth = validateDateOfBirth();
         var isFileUpLoad = validateFileUpload();
         if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
-            || !isPhoneNumberUser || !isDateOfBirth || !isFileUpLoad) {
+            || !isPhoneNumberUser || !isDateOfBirth) {
             event.preventDefault();
         }
     })

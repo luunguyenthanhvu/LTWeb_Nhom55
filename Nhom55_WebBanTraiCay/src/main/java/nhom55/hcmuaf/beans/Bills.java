@@ -1,9 +1,10 @@
 package nhom55.hcmuaf.beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class Bills {
+public class Bills implements Serializable {
     private int id;
     private LocalDateTime orderedDate;
     private  String productList;

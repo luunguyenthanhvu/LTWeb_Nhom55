@@ -73,7 +73,7 @@ public class RegisterService {
       message.setFrom(new InternetAddress(MailProperties.getEmail()));
       message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
       message.setSubject("Xác thực tài khoản");
-      message.setText("Click Here : " + "http://localhost:8080//account-active?key1="
+      message.setText("Click Here : " + "http://localhost:8080//page/login/account-active?key1="
           + email + "&key2=" + hash);
       Transport.send(message);
     } catch (Exception e) {

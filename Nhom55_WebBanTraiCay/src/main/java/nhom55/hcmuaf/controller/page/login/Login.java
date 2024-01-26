@@ -1,12 +1,15 @@
 package nhom55.hcmuaf.controller.page.login;
 
+import java.util.Map;
 import nhom55.hcmuaf.beans.LoginBean;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.cart.Cart;
-import nhom55.hcmuaf.cart.UserCart;
+import nhom55.hcmuaf.beans.cart.Cart;
+import nhom55.hcmuaf.beans.cart.CartProduct;
+import nhom55.hcmuaf.beans.cart.UserCart;
 import nhom55.hcmuaf.dao.LoginDao;
 import nhom55.hcmuaf.dao.UsersDao;
 import nhom55.hcmuaf.dao.UsersDaoImpl;
+import nhom55.hcmuaf.services.UserService;
 import nhom55.hcmuaf.util.MyUtils;
 import nhom55.hcmuaf.util.UserValidator;
 
@@ -15,7 +18,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "login", value = "/page/login")
 public class Login extends HttpServlet {
 
     private LoginDao loginDao = new LoginDao();
@@ -76,21 +79,23 @@ public class Login extends HttpServlet {
                 dispatcher.forward(request, response);
             } else {
                 HttpSession session = request.getSession();
-                Users user = usersDao.getUserByEmail(email);
+                Users user = UserService.getInstance().getUserByEmail(email);
                 MyUtils.storeLoginedUser(session, user);
 
-                // create a new cart
-                Cart cart = UserCart.getUserCart(user.getId());
-                MyUtils.storeCart(session, cart);
+                UserCart.updateCart(user.getId(), session);
 
                 if (result.equals("ADMIN")) {
                     // redirect to admin page
-                    MyUtils.setUserRole(session, result);
-                    response.sendRedirect(request.getContextPath() + "/admin-profile");
+                    MyUtils.setUserRole(session, "Quản trị viên");
+                    response.sendRedirect(request.getContextPath() + "/admin/profile");
                 } else if (result.equals("USER")) {
                     // redirect to home
-                    MyUtils.setUserRole(session, result);
-                    response.sendRedirect(request.getContextPath() + "/home");
+                    MyUtils.setUserRole(session, "Người dùng");
+                    response.sendRedirect(request.getContextPath() + "/page/home");
+                }  else if (result.equals("Manager")) {
+                    // redirect to home
+                    MyUtils.setUserRole(session, "Quản lý");
+                    response.sendRedirect(request.getContextPath() + "/admin/profile");
                 }
             }
         }
@@ -101,6 +106,7 @@ public class Login extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
+
     /**
      * check validate for form input
      *
@@ -134,5 +140,25 @@ public class Login extends HttpServlet {
             return false;
         }
         return true;
+    }
+
+    private static Map<Integer, CartProduct> getResultCart(Map<Integer, CartProduct> map1,
+                                                           Map<Integer, CartProduct> map2) {
+        for (Map.Entry<Integer, CartProduct> entry : map1.entrySet()) {
+            int productId = entry.getKey();
+            CartProduct cartProduct1 = entry.getValue();
+
+            // Check if map2 contains the same product
+            if (map2.containsKey(productId)) {
+                CartProduct cartProduct2 = map2.get(productId);
+
+                // Increase quantity in cartProduct2
+                cartProduct2.increQuantity(cartProduct1.getQuantity());
+            } else {
+                // If map2 doesn't contain the product, add it
+                map2.put(productId, cartProduct1);
+            }
+        }
+        return map2;
     }
 }

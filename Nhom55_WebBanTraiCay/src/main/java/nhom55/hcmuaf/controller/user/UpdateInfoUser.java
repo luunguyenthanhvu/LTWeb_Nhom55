@@ -17,7 +17,7 @@ import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
-@WebServlet(name = "updateInfoUser", value = "/updateInfoUser")
+@WebServlet(name = "updateInfoUser", value = "/page/user/update-info")
 public class UpdateInfoUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -99,7 +99,7 @@ public class UpdateInfoUser extends HttpServlet {
                 }
             }
 
-            response.sendRedirect(request.getContextPath() + "/userProfile");
+            response.sendRedirect(request.getContextPath() + "/page/user/user-profile");
 
             // không checkValidate
         } else {

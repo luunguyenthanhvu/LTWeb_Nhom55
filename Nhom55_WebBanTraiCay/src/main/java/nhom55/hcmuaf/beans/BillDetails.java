@@ -1,6 +1,8 @@
 package nhom55.hcmuaf.beans;
 
-public class BillDetails {
+import java.io.Serializable;
+
+public class BillDetails implements Serializable {
     private int id;
     private int quantity;
     private double totalPrice;

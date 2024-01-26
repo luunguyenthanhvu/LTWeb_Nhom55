@@ -399,4 +399,31 @@ public class UsersDaoImpl implements UsersDao {
                     .execute();
         });
     }
+    @Override
+    public String addNewGoogleUser(String username,String email, String img) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
+
+        // add new user
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate(
+                            "INSERT INTO Users (username, email, status, img) VALUES (:username, :email, :status, :img)")
+                    .bind("username", username)
+                    .bind("email", email)
+                    .bind("status", 1)
+                    .bind("img", img)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
 }

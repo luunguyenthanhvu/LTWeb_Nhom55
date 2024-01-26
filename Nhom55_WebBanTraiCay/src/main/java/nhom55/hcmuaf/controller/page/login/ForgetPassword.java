@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "forgetPassword", value = "/forget-password")
+@WebServlet(name = "forgetPassword", value = "/page/login/forget-password")
 public class ForgetPassword extends HttpServlet {
     private ForgetPasswordService forgetPasswordService = new ForgetPasswordService();
 

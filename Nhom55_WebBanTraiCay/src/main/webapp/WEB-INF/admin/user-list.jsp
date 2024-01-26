@@ -41,8 +41,8 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Tài khoản</a></li>
-                    <li><a href="admin-profile">Thông tin tài khoản</a></li>
-                    <li><a href="updatePasswordAdmin">Đổi mật khẩu</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/profile">Thông tin tài khoản</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/profile/update-pass">Đổi mật khẩu</a></li>
                 </ul>
             </li>
             <li>
@@ -59,10 +59,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Chức năng</a></li>
-                    <li><a href="product-list">Danh sách sản phẩm</a></li>
-
-                    <li><a href="add-new-product">Thêm sản phẩm</a></li>
-                    <li><a href="time-expired-product.html">Sản phẩm hết hạn</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/product/product-list">Danh sách sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/product/add-new-product">Thêm sản phẩm</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/product/manage-expired">Sản phẩm hết hạn</a></li>
                 </ul>
             </li>
             <li>
@@ -79,7 +78,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Đơn hàng</a></li>
-                    <li><a href="OrderList">Quản lý đơn hàng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/order/order-list">Quản lý đơn hàng</a></li>
                 </ul>
             </li>
             <li>
@@ -96,8 +95,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Doanh thu</a></li>
-                    <li><a href="manage-sale.html"> Doanh số sản phẩm</a></li>
-                    <li><a href="see-each-product-bought-in-a-month.html">Chi tiết</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/monthly-revenue"> Doanh thu cửa hàng</a></li>
                 </ul>
             </li>
             <li>
@@ -114,10 +112,41 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Người dùng</a></li>
-                    <li><a href="#">Danh sách người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/user/user-list">Danh sách người dùng</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/user/add-user">Thêm người dùng</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M64 32C46.3 32 32 46.3 32 64V304v48 80c0 26.5 21.5 48 48 48H496c26.5 0 48-21.5 48-48V304 152.2c0-18.2-19.4-29.7-35.4-21.1L352 215.4V152.2c0-18.2-19.4-29.7-35.4-21.1L160 215.4V64c0-17.7-14.3-32-32-32H64z"/></svg>
+                        </i>
+                        <span class="link_name">Nhà cung cấp</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link_name" href="#">Nhà cung cấp</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/provider/provider-list">Danh sách nhà cung cấp</a></li>
+                    <li><a href="${pageContext.request.contextPath}/admin/provider/add-provider">Thêm nhà cung cấp</a></li>
                 </ul>
             </li>
 
+            <li>
+                <div class="iocn-link">
+                    <a href="#">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M384 48c8.8 0 16 7.2 16 16V448c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H384zM96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16H336c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80H208zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V80zM496 192c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V336z"/></svg>
+                        </i>
+                        <span class="link_name">Liên hệ</span>
+                    </a>
+                    <i class='bx bxs-chevron-down arrow'></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="${pageContext.request.contextPath}/admin/contact-form">Danh sách liên hệ của khách hàng</a></li>
+                </ul>
+            </li>
             <li>
                 <div class="profile-details">
                     <div class="profile-content">
@@ -128,15 +157,15 @@
                             </c:when>
                             <c:otherwise>
                                 <!-- Ảnh mặc định khi mới đăng ký -->
-                                <img src="/static/images/accountPicture.png" alt="profileImg">
+                                <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="profileImg">
                             </c:otherwise>
                         </c:choose>
                     </div>
                     <div class="name-job">
-                        <div class="profile_name">${admin.getUsername()}</div>
-                        <div class="job">Quản trị viên</div>
+                        <div class="profile_name">${loginedUser.getUsername()}</div>
+                        <div class="job">${role}</div>
                     </div>
-                    <a href="${pageContext.request.contextPath}/logout">
+                    <a href="${pageContext.request.contextPath}/page/logout">
                         <i style="transform: rotate(180deg); ">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                 <path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/>
@@ -144,7 +173,6 @@
                         </i>
                     </a>
                 </div>
-
             </li>
         </ul>
     </div>
@@ -156,7 +184,7 @@
             <span class="text">Danh sách người dùng</span>
         </div>
         <div class="find-product">
-            <form action="listController?index=1" method="post">
+            <form action="${pageContext.request.contextPath}/admin/user/list-controller?index=1" method="post">
                 <div class="fill-product">
                     <input id="find-product" type="text" placeholder="Tìm kiếm bằng ID hoặc tên người dùng" name="txtSearch">
                     <input style="width: 100px" type="submit" value="Tìm kiếm">
@@ -189,7 +217,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <!-- Ảnh mặc định khi mới đăng ký -->
-                                        <img src="/static/images/accountPicture.png" alt="">
+                                        <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="">
                                     </c:otherwise>
                                 </c:choose>
                             </td>
@@ -211,14 +239,14 @@
                                 </c:choose>
                             </td>
                             <td class="function-product">
-                                <a href="updateUser?id=${user.getId()}">
+                                <a href="${pageContext.request.contextPath}/admin/user/update-user?id=${user.getId()}">
                                     <svg class="fill-red" xmlns="http://www.w3.org/2000/svg" height="1em"
                                          viewBox="0 0 512 512">
                                         <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                         <path d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"/>
                                     </svg>
                                 </a>
-                                <a href="deleteUser?id=${user.getId()}">
+                                <a href="${pageContext.request.contextPath}/admin/user/delete-user?id=${user.getId()}">
                                     <svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em"
                                          viewBox="0 0 448 512">
                                         <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -239,7 +267,7 @@
                         <li><a>&lt;</a></li>
                         <c:forEach begin="1" end="${haveMaxPage}" var="i">
                             <li id="${i}"><a
-                                    href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                    href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
                             </li>
                         </c:forEach>
                         <li><a>></a></li>
@@ -251,33 +279,33 @@
                             <li><a>&lt;</a></li>
                             <c:forEach begin="1" end="${haveMaxPage}" var="i">
                                 <li id="${i}"><a
-                                        href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
                                 </li>
                             </c:forEach>
-                            <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                            <li><a href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
                             </li>
                         </c:if>
 
                         <%--  Còn trường hợp này nút nào cũng xài được--%>
                         <c:if test="${pageId >1 && pageId<haveMaxPage}">
-                            <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                            <li><a href="${pageContext.request.contextPath}/admin/user/list-user-forwardpageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
                             </li>
                             <c:forEach begin="1" end="${haveMaxPage}" var="i">
                                 <li id="${i}"><a
-                                        href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
                                 </li>
                             </c:forEach>
-                            <li><a href="listUserForward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
+                            <li><a href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${pageId+1}&sortBy=${sortBy}&order=${order}">&gt;</a>
                             </li>
                         </c:if>
                         <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
 
                         <c:if test="${pageId ==haveMaxPage}">
-                            <li><a href="listUserForward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
+                            <li><a href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${pageId-1}&sortBy=${sortBy}&order=${order}">&lt;</a>
                             </li>
                             <c:forEach begin="1" end="${haveMaxPage}" var="i">
                                 <li id="${i}"><a
-                                        href="listUserForward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
+                                        href="${pageContext.request.contextPath}/admin/user/list-user-forward?pageId=${i}&sortBy=${sortBy}&order=${order}">${i}</a>
                                 </li>
                             </c:forEach>
                             <li><a>></a></li>

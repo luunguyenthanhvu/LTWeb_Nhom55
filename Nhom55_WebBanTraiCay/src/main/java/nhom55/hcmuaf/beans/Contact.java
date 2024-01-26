@@ -1,6 +1,8 @@
 package nhom55.hcmuaf.beans;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private String fullName;
     private String email;
     private String topic;

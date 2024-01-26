@@ -37,4 +37,29 @@ public class LoginDao {
         }
         return "FAIL";
     }
+    public String authorizeLoginGoogle(String email) {
+
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery("SELECT id,username,email,status,img,role FROM Users WHERE email = :email")
+                        .bind("email", email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            Users user = users.get(0);
+            if (user.getStatus() == 0) {
+                return "ACCOUNT INACTIVE";
+            }
+            if (user.getEmail().equals(email)) {
+                if (user.getRole() == 1) {
+                    return "ADMIN";
+                } else if (user.getRole() == 2) {
+                    return "USER";
+                }
+            }
+        }
+        return "FAIL";
+    }
 }

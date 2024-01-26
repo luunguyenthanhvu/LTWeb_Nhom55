@@ -36,10 +36,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/web-css/fix.css">
 </head>
 <body class="goto-here">
-<nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+<nav class="navbar-container navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+     id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="index.html">Cửa Hàng Trái Cây</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái
+                Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,30 +67,17 @@
                             tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="About"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/About"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="Contact"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/Contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <c:choose>
-                    <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/cart"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/login"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">0</span>]
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+                <li class="nav-item cta cta-colored">
+                    <a href="${pageContext.request.contextPath}/cart"
+                       class="nav-link cart-info-container">
+                        <span class="icon-shopping_cart"></span>
+                        [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -101,10 +90,8 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <b>${loginedUser.getUsername()}</b>
                         </a>
-
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item"
-                               href="userProfile?id=${loginedUser.getId()}">
+                            <a class="account dropdown-item" href="user/user-profile.jsp">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>

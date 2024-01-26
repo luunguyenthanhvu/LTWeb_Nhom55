@@ -1,6 +1,8 @@
 package nhom55.hcmuaf.beans;
 
-public class LoginBean {
+import java.io.Serializable;
+
+public class LoginBean implements Serializable {
     private String email;
     private String password;
     private String hashPassword;

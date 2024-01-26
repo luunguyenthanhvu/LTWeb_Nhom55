@@ -1,31 +1,33 @@
 package nhom55.hcmuaf.util;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-import javax.servlet.http.Part;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.cart.Cart;
+import nhom55.hcmuaf.beans.cart.Cart;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.http.HttpSession;
 import java.util.Random;
 
 public class MyUtils {
+
     public static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
+
     public MyUtils() {
         super();
     }
+
     public static String encodePass(String pass) {
         return DigestUtils.md5Hex(pass);
     }
+
     public static String createHash() {
-        Random random = new Random ();
-        random.nextInt (999999);
-        return DigestUtils.md5Hex (random.toString ());
+        Random random = new Random();
+        random.nextInt(999999);
+        return DigestUtils.md5Hex(random.toString());
     }
 
     /**
      * Store user info in Session.
+     *
      * @param session
      * @param loginedUser
      */
@@ -36,15 +38,17 @@ public class MyUtils {
 
     /**
      * Create a new cart for user
+     *
      * @param session
      * @param cart
      */
     public static void storeCart(HttpSession session, Cart cart) {
-        session.setAttribute("cart",cart);
+        session.setAttribute("cart", cart);
     }
 
     /**
      * remove their cart from session
+     *
      * @param session
      */
     public static void removeCart(HttpSession session) {
@@ -52,7 +56,18 @@ public class MyUtils {
     }
 
     /**
+     * get cart from session
+     * @param session
+     * @return
+     */
+    public static Cart getCart(HttpSession session) {
+        Cart cart = (Cart) session.getAttribute("cart");
+        return cart;
+    }
+
+    /**
      * Get the user information stored in the session.
+     *
      * @param session
      * @return
      */
@@ -63,6 +78,7 @@ public class MyUtils {
 
     /**
      * logout user
+     *
      * @param session
      */
     public static void removeLoginedUser(HttpSession session) {
@@ -71,6 +87,7 @@ public class MyUtils {
 
     /**
      * set role for authentication
+     *
      * @param session
      * @param role
      */
@@ -78,14 +95,18 @@ public class MyUtils {
         session.setAttribute("role", role);
     }
 
+    public static String getUserRole(HttpSession session) {
+        return (String) session.getAttribute("role");
+    }
+
     /**
      * set url for session
+     *
      * @param session
      * @param url
      */
     public static void setPreviousURL(HttpSession session, String url) {
         session.setAttribute("previousURL", url);
     }
-
 
 }

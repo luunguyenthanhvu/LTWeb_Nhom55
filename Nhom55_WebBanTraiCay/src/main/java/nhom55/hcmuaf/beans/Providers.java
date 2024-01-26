@@ -1,6 +1,8 @@
 package nhom55.hcmuaf.beans;
 
-public class Providers {
+import java.io.Serializable;
+
+public class Providers implements Serializable {
   private int id;
   private String providerName;
   private String addressOfProvider;

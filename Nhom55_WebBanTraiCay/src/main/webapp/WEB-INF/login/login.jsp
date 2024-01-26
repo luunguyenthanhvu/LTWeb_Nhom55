@@ -58,7 +58,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
                 </c:if>
             </form>
+
             <div class="second-section w3_section">
+                <h3 style="text-align: center; padding-top: 20px">Hoặc đăng nhập với</h3>
+                <div class="social-links w3_social" style="padding-top: 20px">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/LoginGoogleHandler&response_type=code
+           &client_id=174314995784-lgfhhc5fpekub7nmg5plrovb89j9n2r5.apps.googleusercontent.com&approval_prompt=force">
+                        <img class="img-login"
+                             style=" width: 30px;height: 30px;box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);border-radius: 100px;"
+                             src="${pageContext.request.contextPath}/static/images/google-login.png" alt="">
+                    </a>
+                </div>
             </div>
 
             <div class="bottom-text w3_bottom_text">

@@ -283,7 +283,7 @@
             <td></td>
             <td>
               <div class="product-img">
-                <img id="previewImage" src="../images/product-demo.jpg">
+                <img id="previewImage" src="${product.getImg()}">
               </div>
             </td>
           </tr>

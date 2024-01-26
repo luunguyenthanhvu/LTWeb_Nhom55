@@ -77,30 +77,17 @@
                             tục thanh toán</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="About"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/About"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="Contact"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/Contact"
                                         class="nav-link">Liên Hệ</a></li>
-                <c:choose>
-                    <c:when test="${not empty loginedUser}">
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/cart"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">${cart.getTotal()}</span>]
-                            </a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item cta cta-colored">
-                            <a href="${pageContext.request.contextPath}/login"
-                               class="nav-link cart-info-container">
-                                <span class="icon-shopping_cart"></span>
-                                [<span class="cart-total-amount">0</span>]
-                            </a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+                <li class="nav-item cta cta-colored">
+                    <a href="${pageContext.request.contextPath}/cart"
+                       class="nav-link cart-info-container">
+                        <span class="icon-shopping_cart"></span>
+                        [<span class="cart-total-amount">${cart.getTotal()}</span>]
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -160,6 +147,7 @@
     </div>
 </div>
 <section class="ftco-section ftco-cart">
+    <input id="isUserLogined" type="hidden" value="${loginedUser}">
     <form action="submit-selected-products" method="post">
         <div class="container">
             <div class="row">
@@ -371,33 +359,36 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var form = document.querySelector("form");
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.querySelector("form");
 
-    form.addEventListener('submit', function (event) {
-      var selectedProductIds = [];
+        form.addEventListener('submit', function (event) {
+            var selectedProductIds = [];
 
-      // Lặp qua tất cả các checkbox được chọn
-      var checkboxes = document.querySelectorAll('input[name="selectedProducts"]:checked');
-      checkboxes.forEach(function (checkbox) {
-        selectedProductIds.push(checkbox.value);
-      });
-
-      // Kiểm tra nếu có sản phẩm được chọn
-      if (selectedProductIds.length > 0) {
-        // Thêm danh sách sản phẩm đã chọn vào form
-        var hiddenProduct = document.createElement('input');
-        hiddenProduct.type = 'hidden';
-        hiddenProduct.name = 'selectedProductIds';
-        hiddenProduct.value = JSON.stringify(selectedProductIds);
-        form.appendChild(hiddenProduct);
-      } else {
-        // Nếu không có sản phẩm nào được chọn, có thể thực hiện các hành động khác hoặc hiển thị thông báo
-        alert('Vui lòng chọn ít nhất một sản phẩm.');
-        event.preventDefault();
-      }
+            // Lặp qua tất cả các checkbox được chọn
+            var checkboxes = document.querySelectorAll('input[name="selectedProducts"]:checked');
+            checkboxes.forEach(function (checkbox) {
+                selectedProductIds.push(checkbox.value);
+            });
+            const isLogin = document.getElementById("isUserLogined").value;
+            if (isLogin === null || isLogin.length <= 0){
+                confirm("Để đặt đơn hàng vui lòng đăng nhập.");
+            }
+            // Kiểm tra nếu có sản phẩm được chọn
+            else if (selectedProductIds.length > 0) {
+                // Thêm danh sách sản phẩm đã chọn vào form
+                var hiddenProduct = document.createElement('input');
+                hiddenProduct.type = 'hidden';
+                hiddenProduct.name = 'selectedProductIds';
+                hiddenProduct.value = JSON.stringify(selectedProductIds);
+                form.appendChild(hiddenProduct);
+            } else {
+                // Nếu không có sản phẩm nào được chọn, có thể thực hiện các hành động khác hoặc hiển thị thông báo
+                alert('Vui lòng chọn ít nhất một sản phẩm.');
+                event.preventDefault();
+            }
+        });
     });
-  });
 
 </script>
 <script src="${pageContext.request.contextPath}/static/js/web-js/cart.js"></script>

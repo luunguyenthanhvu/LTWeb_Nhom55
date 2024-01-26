@@ -1,6 +1,8 @@
 package nhom55.hcmuaf.beans;
 
-public class RegisterBean {
+import java.io.Serializable;
+
+public class RegisterBean implements Serializable {
     private String username;
     private String password;
     private String hash;

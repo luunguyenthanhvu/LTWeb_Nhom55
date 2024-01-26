@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "FilterForAllUser", value = "/FilterForAllUser")
+@WebServlet(name = "FilterForAllUser", value = "/admin/user/filter-for-all-user")
 
 public class FilterForAllUser extends HttpServlet {
     @Override
@@ -46,7 +46,7 @@ public class FilterForAllUser extends HttpServlet {
 
         List<Users> list =  UserService.getInstance().sortByFilter(pageNumber,quantityDefault,sortBy,order);
 
-        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/admin/user-list.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/admin/user-list.jsp");
         request.setAttribute("sortBy",sortBy);
         request.setAttribute("order",order);
         request.setAttribute("haveMaxPage",haveMaxPage);

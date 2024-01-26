@@ -7,7 +7,7 @@ import java.io.IOException;
 import nhom55.hcmuaf.beans.cart.Cart;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "RemoveCartController", value = "/remove-product-cart")
+@WebServlet(name = "RemoveCartController", value = "/page/cart/remove-product-cart")
 public class RemoveCartController extends HttpServlet {
 
   @Override

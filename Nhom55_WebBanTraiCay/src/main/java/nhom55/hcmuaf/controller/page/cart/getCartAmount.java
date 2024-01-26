@@ -6,7 +6,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import nhom55.hcmuaf.beans.cart.Cart;
 
-@WebServlet(name = "getCartAmount", value = "/get-cart-amount")
+@WebServlet(name = "getCartAmount", value = "/page/cart/get-cart-amount")
 public class GetCartAmount extends HttpServlet {
 
   @Override

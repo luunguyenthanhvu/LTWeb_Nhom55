@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="login w3_login">
     <h2 class="login-header w3_header">Quên mật khẩu</h2>
     <div class="w3l_grid">
-      <form class="login-container" action="#" method="post">
+      <form class="login-container" action="${pageContext.request.contextPath}/page/login/forget-password" method="post">
         <input type="email" placeholder="email" Name="email" id="email_nd" value="${email_user}" >
         <span class="error" id="email-error" style="display: none;color: red; font-size: 14px"></span>
         <c:if test="${not empty error_email}">
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       </div>
 
       <div class="bottom-text w3_bottom_text">
-        <p>Quay lại Đăng nhập?<a href="${pageContext.request.contextPath}/login">Đăng nhập</a></p>
+        <p>Quay lại Đăng nhập?<a href="${pageContext.request.contextPath}/page/login">Đăng nhập</a></p>
       </div>
     </div>
   </div>
@@ -65,24 +65,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script>
   // validate for input
-  var email = document.getElementById("email_nd");
+  var email = document.getElementById("emailnd");
 
   function validateEmail() {
     var text = email.value;
-    var kyTuHopLe = /^[\p{L}\s']+$/u;
+    var kyTuHopLe = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/;
     var error = document.getElementById("email-error");
-
     if (text.length == 0 || text == null) {
-      error.textContent = "Vui lòng nhập email";
+      error.textContent = "Vui lòng nhập dữ liệu";
       error.style.display = "block";
       return false;
     } else if (!kyTuHopLe.test(text)) {
-      // Check if the email contains "@gmail.com"
-      if (!text.includes("@gmail.com")) {
-        error.textContent = "Email phải chứa địa chỉ @gmail.com";
-        error.style.display = "block";
-        return false;
-      }
+      error.textContent = "Địa chỉ email không hợp lệ.";
       error.style.display = "block";
       return false;
     } else {
@@ -93,6 +87,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
   // add event to check input
   email.addEventListener("blur", validateEmail);
+  var submitBtn = document.getElementById("submit-btn");
+  submitBtn.addEventListener("click", function (event) {
+    var isEmail = validateEmail();
+    if(!isEmail) {
+      event.preventDefault();
+    }
+  })
 
 </script>
 </body>

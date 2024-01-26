@@ -15,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AddUser", value = "/AddUser")
+@WebServlet(name = "AddUser", value = "/admin/user/add-user")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
 public class AddUser extends HttpServlet {
@@ -27,7 +27,7 @@ public class AddUser extends HttpServlet {
         List<Role> listRole = dao.getAllRoles();
         request.setAttribute("listRole",listRole);
         request.setAttribute("admin", admin);
-       RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/add-user.jsp");
+       RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/add-user.jsp");
        dispatcher.forward(request,response);
     }
 

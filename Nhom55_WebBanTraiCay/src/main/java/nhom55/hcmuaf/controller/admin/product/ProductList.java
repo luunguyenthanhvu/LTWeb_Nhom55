@@ -14,7 +14,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductList", value = "/product-list")
+@WebServlet(name = "ProductList", value = "/admin/product/product-list")
 public class ProductList extends HttpServlet {
 
     @Override

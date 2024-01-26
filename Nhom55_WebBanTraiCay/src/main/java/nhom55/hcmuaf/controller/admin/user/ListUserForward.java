@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ListUserForward", value = "/listUserForward")
+@WebServlet(name = "ListUserForward", value = "/admin/user/list-user-forward")
 
 public class ListUserForward extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +44,7 @@ public class ListUserForward extends HttpServlet {
 
             Users admin = MyUtils.getLoginedUser(session);
             request.setAttribute("admin", admin);
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/admin/user-list.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/admin/user-list.jsp");
             request.setAttribute("haveMaxPage",haveMaxPage);
             request.setAttribute("listOfUser",list);
             request.setAttribute("pageId",pageNumber);
@@ -52,7 +52,7 @@ public class ListUserForward extends HttpServlet {
         }
 //        Đây là trường hợp người dùng đã chọn Filter sẽ đưa FilterForAllUser xử lý
         else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("FilterForAllUser");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/user/filter-for-search-user");
             request.setAttribute("pageId",pageStr);
             request.setAttribute("sortBy",sortBy);
             request.setAttribute("order",order);

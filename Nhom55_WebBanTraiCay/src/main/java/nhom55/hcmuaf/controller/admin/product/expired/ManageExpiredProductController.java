@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ManageExpiredProductController", value = "/ManageExpiredProductController")
+@WebServlet(name = "ManageExpiredProductController", value = "/admin/product/expired-manage-controller")
 public class ManageExpiredProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

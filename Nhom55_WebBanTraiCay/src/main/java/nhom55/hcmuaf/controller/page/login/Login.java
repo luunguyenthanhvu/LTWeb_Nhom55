@@ -18,7 +18,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "login", value = "/login")
+@WebServlet(name = "login", value = "/page/login")
 public class Login extends HttpServlet {
 
     private LoginDao loginDao = new LoginDao();
@@ -86,12 +86,16 @@ public class Login extends HttpServlet {
 
                 if (result.equals("ADMIN")) {
                     // redirect to admin page
-                    MyUtils.setUserRole(session, result);
-                    response.sendRedirect(request.getContextPath() + "/admin-profile");
+                    MyUtils.setUserRole(session, "Quản trị viên");
+                    response.sendRedirect(request.getContextPath() + "/admin/profile");
                 } else if (result.equals("USER")) {
                     // redirect to home
-                    MyUtils.setUserRole(session, result);
-                    response.sendRedirect(request.getContextPath() + "/home");
+                    MyUtils.setUserRole(session, "Người dùng");
+                    response.sendRedirect(request.getContextPath() + "/page/home");
+                }  else if (result.equals("Manager")) {
+                    // redirect to home
+                    MyUtils.setUserRole(session, "Quản lý");
+                    response.sendRedirect(request.getContextPath() + "/admin/profile");
                 }
             }
         }

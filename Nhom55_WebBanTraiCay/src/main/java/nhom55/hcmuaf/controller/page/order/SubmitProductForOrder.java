@@ -10,7 +10,7 @@ import java.io.IOException;
 import nhom55.hcmuaf.util.MyUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 
-@WebServlet(name = "SubmitProductForOrder", value = "/submit-selected-products")
+@WebServlet(name = "SubmitProductForOrder", value = "/page/order/submit-selected-products")
 public class SubmitProductForOrder extends HttpServlet {
 
   @Override
@@ -32,10 +32,10 @@ public class SubmitProductForOrder extends HttpServlet {
           session.setAttribute("selectedProductIds", selectedProductIds);
 
           // chuyển hướng sang trang check out để tiến hành thanh toán
-          response.sendRedirect(request.getContextPath() + "/check-out");
+          response.sendRedirect(request.getContextPath() + "/page/order/check-out");
       } else if (MyUtils.getLoginedUser(request.getSession()) == null) {
           // chuyển hướng sang trang check out để tiến hành thanh toán
-          response.sendRedirect(request.getContextPath() + "/login");
+          response.sendRedirect(request.getContextPath() + "/page/login");
       }
   }
 }

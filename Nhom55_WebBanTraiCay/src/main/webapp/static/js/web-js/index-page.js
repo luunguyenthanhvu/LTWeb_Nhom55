@@ -1,13 +1,12 @@
-
 // ajax add to cart
 function addToCart(productId) {
-  const quantity = parseInt($('#quantity').val());
   $.ajax({
     type: 'POST',
-    url: '/add-cart',
+    url: '/page/cart/add-cart',
+    // value mặc định là 1
     data: {
       productId: productId,
-      quantity: quantity
+      quantity: 1
     },
     success: function (response) {
 
@@ -34,14 +33,14 @@ function addToCart(productId) {
 function updateCartAmount() {
   $.ajax({
     type: 'GET',
-    url: '/get-cart-amount',
+    url: '/page/cart/get-cart-amount',
     data: {},
     success: function (response) {
       $(".cart-total-amount").html(response);
     },
     error: function (error) {
       // Xử lý khi có lỗi
-      alert('Đã xảy ra lỗi khi thêm vào giỏ hàng');
+      console.log('Đã xảy ra lỗi khi thêm vào giỏ hàng');
     }
   })
 }

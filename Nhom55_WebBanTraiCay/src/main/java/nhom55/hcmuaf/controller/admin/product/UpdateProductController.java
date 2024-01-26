@@ -21,11 +21,11 @@ import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
-@WebServlet(name = "UpdateProductController", value = "/UpdateProductController")
+@WebServlet(name = "UpdateProductController", value = "/admin/product/update-controller")
 public class UpdateProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("product-list");
+        response.sendRedirect("/admin/product/product-list");
     }
 
     @Override

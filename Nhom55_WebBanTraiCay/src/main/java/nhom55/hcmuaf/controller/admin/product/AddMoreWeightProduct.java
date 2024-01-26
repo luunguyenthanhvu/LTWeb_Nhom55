@@ -9,7 +9,7 @@ import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ProductService;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "AddMoreWeightProduct", value = "/add-more-weight-product")
+@WebServlet(name = "AddMoreWeightProduct", value = "/admin/product/add-more-weight")
 public class AddMoreWeightProduct extends HttpServlet {
 
   @Override

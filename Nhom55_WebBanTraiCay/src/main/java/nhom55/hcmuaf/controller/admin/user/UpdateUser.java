@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "UpdateUser", value = "/updateUser")
+@WebServlet(name = "UpdateUser", value = "/admin/user/update-user")
 
 
 public class UpdateUser extends HttpServlet {
@@ -98,7 +98,7 @@ public class UpdateUser extends HttpServlet {
                     dispatcher.forward(request, response);
                 }
 
-                response.sendRedirect(request.getContextPath() + "/userList");
+                response.sendRedirect(request.getContextPath() + "/admin/user/user-list");
 
 
                 // không checkValidate

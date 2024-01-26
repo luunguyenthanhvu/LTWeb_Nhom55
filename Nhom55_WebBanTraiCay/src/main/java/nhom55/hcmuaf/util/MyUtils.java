@@ -83,6 +83,15 @@ public class MyUtils {
      */
     public static void removeLoginedUser(HttpSession session) {
         session.removeAttribute("loginedUser");
+        removeRole(session);
+    }
+
+    /**
+     *
+     * @param session
+     */
+    public static void removeRole(HttpSession session) {
+        session.removeAttribute("role");
     }
 
     /**

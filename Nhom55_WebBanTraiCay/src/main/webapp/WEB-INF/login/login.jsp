@@ -39,21 +39,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="login w3_login">
         <h2 class="login-header w3_header">Đăng nhập</h2>
         <div class="w3l_grid">
-            <form class="login-container" action="login" method="post">
-                <input type="email" placeholder="Email" name="email" id="email_nd" value="${email_user}">
-                <span class="error" id="email-error" style="display: none;color: red; font-size: 14px"></span>
+            <form class="login-container" action="${pageContext.request.contextPath}/page/login" method="post">
+                <input type="email" placeholder="Email" name="email" id="email_nd"
+                       value="${email_user}">
+                <span class="error" id="email-error"
+                      style="display: none;color: red; font-size: 14px"></span>
                 <c:if test="${not empty error_email}">
                     <p style="color: red; padding: 10px; text-align: center"> ${error_email}</p>
                 </c:if>
 
-                <input type="password" placeholder="Mật khẩu" name="password" id="password_nd" value="${pass_user}">
+                <input type="password" placeholder="Mật khẩu" name="password" id="password_nd"
+                       value="${pass_user}">
                 <span class="error" id="password-error"
                       style="display: none;color: red; font-size: 14px"></span>
                 <c:if test="${not empty error_password}">
                     <p style="color: red; padding: 10px; text-align: center"> ${error_password}</p>
                 </c:if>
 
-                <input type="submit" value="Đăng nhập">
+                <input id="submit-btn" type="submit" value="Đăng nhập">
                 <c:if test="${not empty result}">
                     <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
                 </c:if>
@@ -72,8 +75,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <div class="bottom-text w3_bottom_text">
-                <p>Bạn mới biết đến Shop?<a href="${pageContext.request.contextPath}/register">Đăng ký</a></p>
-                <h4><a href="${pageContext.request.contextPath}/forget-password">Quên mật khẩu?</a></h4>
+                <p>Bạn mới biết đến Shop?<a href="${pageContext.request.contextPath}/page/login/register">Đăng ký</a></p>
+                <h4><a href="${pageContext.request.contextPath}/page/login/forget-password">Quên mật khẩu?</a></h4>
             </div>
 
         </div>
@@ -90,20 +93,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     function validateEmail() {
         var text = email.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var kyTuHopLe = /^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}$/;
         var error = document.getElementById("email-error");
-
-        if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập email";
+        if (text.length == 0 ||  text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            // Check if the email contains "@gmail.com"
-            if (!text.includes("@gmail.com")) {
-                error.textContent = "Email phải chứa địa chỉ @gmail.com";
-                error.style.display = "block";
-                return false;
-            }
+            error.textContent = "Địa chỉ email không hợp lệ.";
             error.style.display = "block";
             return false;
         } else {
@@ -116,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         var text = document.getElementById("password_nd").value;
         var error = document.getElementById("password-error");
 
-        if (text.length === 0 || text === null) {
+        if (text.length == 0 || text == null) {
             error.textContent = "Vui lòng nhập mật khẩu";
             error.style.display = "block";
             return false;
@@ -130,6 +127,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     email.addEventListener("blur", validateEmail);
     password.addEventListener("blur", validatePassword);
 
+    var submitBtn = document.getElementById("submit-btn");
+    submitBtn.addEventListener("click", function (event) {
+        var isEmail = validateEmail();
+        var isPass = validatePassword();
+
+        if (!isEmail || !isPass ) {
+            event.preventDefault();
+        }
+    })
 </script>
 </body>
 </html>

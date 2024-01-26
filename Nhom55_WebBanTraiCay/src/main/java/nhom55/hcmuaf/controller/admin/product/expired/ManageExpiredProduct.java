@@ -12,7 +12,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ManageExpiredProduct", value = "/manage-expired-product")
+@WebServlet(name = "ManageExpiredProduct", value = "/admin/product/manage-expired")
 public class ManageExpiredProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

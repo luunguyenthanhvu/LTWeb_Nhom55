@@ -25,7 +25,7 @@ import nhom55.hcmuaf.sendmail.MailProperties;
 import nhom55.hcmuaf.util.MyUtils;
 import nhom55.hcmuaf.util.OrderValidator;
 
-@WebServlet(name = "CheckOut", value = "/check-out")
+@WebServlet(name = "CheckOut", value = "/page/order/check-out")
 public class CheckOut extends HttpServlet {
 
   @Override
@@ -49,7 +49,7 @@ public class CheckOut extends HttpServlet {
       request.setAttribute("totalPrice", subTotalPrice + 20000);
     }
     request.setAttribute("subTotalPrice", subTotalPrice);
-    RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/checkout.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/checkout.jsp");
     dispatcher.forward(request, response);
   }
 
@@ -96,8 +96,10 @@ public class CheckOut extends HttpServlet {
             if( billDao.addAProductToBillDetails(c.getProducts().getId(),id_bills,c.getQuantity(),c.getQuantity()*c.getProducts().getPrice())) {
               billDao.degreeAmountWhenOderingSuccessfully(c.getProducts().getId(),c.getQuantity());
             }
-
           }
+
+          // xoa san pham sau khi dat hang
+          deleteCart(session);
 
           //          Thông báo người mua đã đặt thành công
           Properties smtpProperties = MailProperties.getSMTPPro();
@@ -112,11 +114,11 @@ public class CheckOut extends HttpServlet {
             message.setFrom(new InternetAddress(MailProperties.getEmail()));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
             message.setSubject("DAT HANG");
-            message.setText("Don dat hang cua ban thanh cong. Xem don hang ban vua moi dat tai day : " + "http://localhost:8080/billDetail?idBills="
+            message.setText("Don dat hang cua ban thanh cong. Xem don hang ban vua moi dat tai day : " + "http://localhost:8080/page/bill/detail?idBills="
                     +id_bills);
             Transport.send(message);
             boolean  isOrderSuccessfully = true;
-            RequestDispatcher dispatcher = request.getRequestDispatcher("ShopForward");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/page/shop/shop-forward");
             request.setAttribute("isOrderSuccessfully",isOrderSuccessfully);
             dispatcher.forward(request,response);
           } catch (Exception e) {
@@ -188,6 +190,14 @@ public class CheckOut extends HttpServlet {
       return false;
     } else {
       return true;
+    }
+  }
+  public static void deleteCart(HttpSession session) {
+    List<String> selectedProductIds = (List<String>) session.getAttribute("selectedProductIds");
+    Cart cart = (Cart) session.getAttribute("cart");
+    for(String idProduct : selectedProductIds) {
+      int id = Integer.valueOf(idProduct);
+      cart.deleteProduct(id);
     }
   }
 }

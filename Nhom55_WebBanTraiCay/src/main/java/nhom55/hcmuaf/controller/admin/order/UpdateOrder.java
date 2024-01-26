@@ -1,4 +1,4 @@
-package nhom55.hcmuaf.controller.admin.provider;
+package nhom55.hcmuaf.controller.admin.order;
 
 
 import nhom55.hcmuaf.beans.BillDetails;
@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "UpdateOrder", value = "/UpdateOrder")
+@WebServlet(name = "UpdateOrder", value = "/admin/provider/updateOrder")
 public class UpdateOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class UpdateOrder extends HttpServlet {
         request.setAttribute("bill",bill);
         request.setAttribute("detailList",detailList);
         request.setAttribute("idBill",idBill);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/update-order.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/update-order.jsp");
         dispatcher.forward(request,response);
     }
 
@@ -41,7 +41,7 @@ public class UpdateOrder extends HttpServlet {
         String status = request.getParameter("selectedStatus");
         BillDao billDao = new BillDaoImpl();
         billDao.updateStatusABill(idBill,status);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("OrderList");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/order/order-list");
         dispatcher.forward(request,response);
     }
 }

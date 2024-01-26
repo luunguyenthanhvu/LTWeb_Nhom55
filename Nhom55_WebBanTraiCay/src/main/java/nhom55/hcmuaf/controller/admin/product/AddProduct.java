@@ -20,7 +20,7 @@ import nhom55.hcmuaf.services.ProviderService;
 import nhom55.hcmuaf.util.MyUtils;
 import nhom55.hcmuaf.util.ProductValidator;
 
-@WebServlet(name = "AddProduct", value = "/add-new-product")
+@WebServlet(name = "AddProduct", value = "/admin/product/add-new-product")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
     1024 * 1024 * 100)
 public class AddProduct extends HttpServlet {
@@ -116,7 +116,7 @@ public class AddProduct extends HttpServlet {
       ProductService.getInstance()
           .addNewProduct(productName, description, price, weightQuantity, weightDefault, dateImport,
               expirationDate, imgProduct, admin.getId(), provider);
-      response.sendRedirect(request.getContextPath() + "/add-new-product");
+      response.sendRedirect(request.getContextPath() + "/admin/product/add-new-product");
 
       // user Enter Wrong data
     } else {

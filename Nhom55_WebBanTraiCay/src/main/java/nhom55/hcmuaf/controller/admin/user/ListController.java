@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebServlet(name = "ListController", value = "/listController")
+@WebServlet(name = "ListController", value = "/admin/user/list-controller")
 
 public class ListController extends HttpServlet {
     @Override
@@ -61,7 +61,7 @@ public class ListController extends HttpServlet {
             request.setAttribute("indexEnd", indexEnd);
             request.setAttribute("txtSearch", txtSearch);
             request.setAttribute("admin", admin);
-            request.getRequestDispatcher("WEB-INF/admin/search-user-result.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/admin/search-user-result.jsp").forward(request, response);
         }
     }
 }

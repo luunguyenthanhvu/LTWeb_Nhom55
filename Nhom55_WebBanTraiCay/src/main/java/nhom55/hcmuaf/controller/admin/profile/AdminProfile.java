@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "AdminProfile", value = "/admin-profile")
+@WebServlet(name = "AdminProfile", value = "/admin/profile")
 public class AdminProfile extends HttpServlet {
 
   @Override

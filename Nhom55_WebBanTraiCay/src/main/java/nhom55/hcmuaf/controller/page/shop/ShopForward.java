@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "ShopForward", value = "/ShopForward")
+@WebServlet(name = "ShopForward", value = "/page/shop/shop-forward")
 public class ShopForward extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,7 +37,7 @@ public class ShopForward extends HttpServlet {
             int haveMaxPage = (totalRow/quantityDefault) +1;
             List<Products> list = ShopService.getInstance().get20ProductsForEachPage(pageNumber,quantityDefault);
 
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/shop.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/shop.jsp");
             request.setAttribute("haveMaxPage",haveMaxPage);
             request.setAttribute("listOfProduct",list);
             request.setAttribute("pageId",pageNumber);
@@ -45,7 +45,7 @@ public class ShopForward extends HttpServlet {
         }
 //        Đây là trường hợp người dùng đã chọn Filter sẽ đưa FilterForAllProduct xử lý
         else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("FilterForAllProduct");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/page/shop/filter-for-all-product");
             request.setAttribute("pageId",pageStr);
             request.setAttribute("sortBy",sortBy);
             request.setAttribute("order",order);

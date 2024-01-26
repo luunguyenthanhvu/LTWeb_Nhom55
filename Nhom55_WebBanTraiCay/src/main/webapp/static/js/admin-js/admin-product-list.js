@@ -1,18 +1,94 @@
-// ajax add to cart
-function addToCart(productId) {
+var productId;
+
+function addQuantity(id) {
+  resetInput();
+  productId = id;
+  // hiển thị popup
+  $(".overlay").show();
+
+  // Lấy vị trí cuộn trang hiện tại
+  var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+  // Đặt vị trí top cố định cho popup
+  var popupTop = 100;
+
+  // Đặt vị trí top cho popup
+  $("#popup-add-quantity").css("top", popupTop + "px");
+
+  // Hiển thị popup
+  $("#popup-add-quantity").removeClass("hide").addClass("show").show();
+
+  // Tạo một overlay và thêm vào body
+  var overlay = document.createElement('div');
+  overlay.classList.add('overlay');
+  document.body.appendChild(overlay);
+
+}
+
+function closePopup() {
+  console.log("Closing popup");
+  $(".overlay").hide();
+  $("#popup-add-quantity").removeClass("show").addClass("hide");
+  setTimeout(function () {
+    $("#popup-add-quantity").hide();
+  }, 500);
+}
+
+function hidePopup() {
+  $(".overlay").hide();
+  $("#popup-add-quantity").removeClass("show hide");
+}
+
+function resetInput() {
+  inputQuantity.value = '';
+}
+
+const inputQuantity = document.getElementById("input-quantity");
+
+function validateForInput() {
+  const text = inputQuantity.value;
+  const error = document.getElementById("input-quantity-error");
+  if (text.length == 0 || text == null) {
+    error.textContent = "Vui lòng nhập vào số lượng kg.";
+    error.style.display = "block";
+    return false;
+  } else if (isNaN(text) || text <= 0) {
+    error.textContent = "Vui lòng nhập vào số, không âm.";
+    error.style.display = "block";
+    return false;
+  } else {
+    error.style.display = "none";
+    return true;
+  }
+}
+
+inputQuantity.addEventListener('blur', validateForInput);
+
+const submitQuantity = document.getElementById("btn__submit-add-quantity");
+submitQuantity.addEventListener("click", function (event) {
+  var isQuantityValid = validateForInput();
+  if (!isQuantityValid) {
+    event.preventDefault();
+  } else {
+    addToCart(productId, inputQuantity.value);
+  }
+});
+
+function addToCart(productId, weight) {
   $.ajax({
     type: 'POST',
-    url: '/add-cart',
-    // value mặc định là 1
+    url: '/admin/product/add-more-weight',
     data: {
       productId: productId,
-      quantity: 1
+      weight: weight
     },
     success: function (response) {
-
+      hidePopup();
+      closePopup();
       showToast(response.message);
-      // cập nhập giỏ hàng
-      updateCartAmount();
+      const row = document.querySelector(
+          'tr[data-product-id="' + productId + '"]');
+      $(row).find('.weight-product').text(response.updatedWeight + ' kg');
     },
     error: function (error) {
       console.log(error); // Xem nội dung của error object trong console
@@ -24,28 +100,10 @@ function addToCart(productId) {
         alert("Lỗi không xác định");
       }
     }
-
   });
-
   return false;
 }
 
-function updateCartAmount() {
-  $.ajax({
-    type: 'GET',
-    url: '/get-cart-amount',
-    data: {},
-    success: function (response) {
-      $(".cart-total-amount").html(response);
-    },
-    error: function (error) {
-      // Xử lý khi có lỗi
-      console.log('Đã xảy ra lỗi khi thêm vào giỏ hàng');
-    }
-  })
-}
-
-// toast function
 function toast({
   title = '',
   message = '',
@@ -107,28 +165,14 @@ function toast({
 }
 
 function showToast(response) {
-  if(response === "Null User") {
-    toast({
-      title: 'Chưa đăng nhập',
-      message: 'Để sử dụng chức năng này bạn cần phải đăng nhập!',
-      type: 'warning',
-      duration: 3000
-    })
-  }  if(response === "Success") {
+  if (response === "Success") {
     toast({
       title: 'Thành công',
-      message: 'Sản phẩm đã được thêm vào giỏ hàng!',
+      message: 'Sản phẩm đã được thêm số lượng!',
       type: 'success',
       duration: 3000
     })
-  } else if(response === "Out of quantity") {
-    toast({
-      title: 'Tối đa sản phẩm',
-      message: 'Giỏ hàng không thể vượt quá tối đa sản phẩm tồn kho!',
-      type: 'info',
-      duration: 3000
-    })
-  } else if(response === "Product does not exist") {
+  } else if (response === "Product does not exist") {
     toast({
       title: 'Lỗi',
       message: 'Sản phẩm không tồn tại!',
@@ -136,5 +180,4 @@ function showToast(response) {
       duration: 3000
     })
   }
-
 }

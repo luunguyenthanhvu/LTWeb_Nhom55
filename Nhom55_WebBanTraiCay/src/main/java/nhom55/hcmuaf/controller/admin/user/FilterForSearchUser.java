@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "FilterForSearchUser", value = "/FilterForSearchUser")
+@WebServlet(name = "FilterForSearchUser", value = "/admin/user/filter-for-search-user")
 public class FilterForSearchUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,7 +49,7 @@ public class FilterForSearchUser extends HttpServlet {
         request.setAttribute("txtSearch", txtSearch);
         request.setAttribute("sortBy", sortBy);
         request.setAttribute("order", order);
-        request.getRequestDispatcher("WEB-INF/admin/search-user-result.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/admin/search-user-result.jsp").forward(request, response);
     }
 
     @Override

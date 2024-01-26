@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.security.Provider;
 import java.util.List;
 
-@WebServlet(name = "ProviderList", value = "/ProviderList")
+@WebServlet(name = "ProviderList", value = "/admin/provider/provider-list")
 public class ProviderList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

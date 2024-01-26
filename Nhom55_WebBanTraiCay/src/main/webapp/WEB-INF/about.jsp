@@ -43,7 +43,7 @@
      id="ftco-navbar">
     <div class="container navbar-container">
         <div class="navbar-brand">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/home">Cửa Hàng Trái
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/page/home">Cửa Hàng Trái
                 Cây</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -53,29 +53,16 @@
 
         <div class="nav-bar-link" id="ftco-nav">
             <ul class="navbar-nav">
-                <li class="nav-item active"><a href="${pageContext.request.contextPath}/home"
+                <li class="nav-item active"><a href="${pageContext.request.contextPath}/page/home"
                                                class="nav-link">Trang Chủ</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04"
-                       data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Mua Hàng</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item"
-                           href="${pageContext.request.contextPath}/ShopForward">Cửa
-                            hàng</a>
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/wishlist">Danh
-                            sách yêu thích</a>
-
-                        <a class="dropdown-item" href="${pageContext.request.contextPath}/checkout">Thủ
-                            tục thanh toán</a>
-                    </div>
-                </li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/About"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/page/shop/shop-forward"
+                                        class="nav-link">Cửa Hàng</a></li>
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/page/about"
                                         class="nav-link">Về Chúng Tôi</a></li>
-                <li class="nav-item"><a href="${pageContext.request.contextPath}/Contact"
+                <li class="nav-item"><a href="${pageContext.request.contextPath}/page/contact"
                                         class="nav-link">Liên Hệ</a></li>
                 <li class="nav-item cta cta-colored">
-                    <a href="${pageContext.request.contextPath}/cart"
+                    <a href="${pageContext.request.contextPath}/page/cart"
                        class="nav-link cart-info-container">
                         <span class="icon-shopping_cart"></span>
                         [<span class="cart-total-amount">${cart.getTotal()}</span>]
@@ -94,7 +81,8 @@
                             <b>${loginedUser.getUsername()}</b>
                         </a>
                         <div class="dropdown-menu account-menu" aria-labelledby="dropdown04">
-                            <a class="account dropdown-item" href="user/user-profile.jsp">
+                            <a class="account dropdown-item"
+                               href="${pageContext.request.contextPath}/page/user/user-profile">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 448 512">
                                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
@@ -102,7 +90,7 @@
                                 Thông tin
                             </a>
                             <a class="account dropdown-item"
-                               href="${pageContext.request.contextPath}/logout">
+                               href="${pageContext.request.contextPath}/page/logout">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                      viewBox="0 0 512 512">
                                     <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
@@ -114,7 +102,7 @@
                 </c:when>
                 <c:otherwise>
                     <div class="login-user">
-                        <a class="account" href="${pageContext.request.contextPath}/login">
+                        <a class="account" href="${pageContext.request.contextPath}/page/login">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                                  viewBox="0 0 512 512">
                                 <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/>
@@ -135,7 +123,7 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span>Về chúng tôi</span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/page/home">Trang chủ</a></span> <span>Về chúng tôi</span></p>
                 <h1 class="mb-0 bread">Về chúng tôi</h1>
             </div>
         </div>
@@ -168,32 +156,12 @@
                         nhận được những quả trái cây tươi sức sống được giao hàng tận nơi. Ngoài ra, chúng tôi
                         thường xuyên cập nhật các ưu đãi, khuyến mãi và chính sách hỗ trợ
                         khách hàng, tạo ra một trải nghiệm mua sắm trực tuyến an tâm và tiện lợi.</p>
-                    <p><a href="ShopForward" class="btn btn-primary">Mua ngay</a></p>
+                    <p><a href="${pageContext.request.contextPath}/page/shop/shop-forward" class="btn btn-primary">Xem cửa hàng</a></p>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
-    <div class="container py-4">
-        <div class="row d-flex justify-content-center py-5">
-            <div class="col-md-6">
-                <h2 style="font-size: 22px;" class="mb-0">Theo dõi bản tin của chúng tôi</h2>
-                <span>Hãy đăng ký bằng email để biết thêm về cửa hàng mới nhất và ưu đãi đặc biệt của chúng tôi</span>
-            </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <form action="#" class="subscribe-form">
-                    <div class="form-group d-flex">
-                        <input type="text" class="form-control" placeholder="Nhập email tại đây">
-                        <input type="submit" value="Đăng ký" class="submit px-3">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <section class="ftco-section testimony-section">
     <div class="container">
@@ -327,13 +295,12 @@
         </div>
         <div class="row mb-5">
             <div class="col-md">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Trái cây tươi ngon</h2>
-                    <p>Trúc xinh trúc mọc đầu đình, ai quen mua hoa quả lại càng thêm xinh.</p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <div class="ftco-footer-widget mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Menu</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/about" class="py-2 d-block">Về chúng tôi</a></li>
+                        <li><a  href="${pageContext.request.contextPath}/page/contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -407,7 +374,7 @@
 </div>
 
 
-<script src="${pageContext.request.contextPath}/static/js/web-js/index.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/web-js/index-page.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>

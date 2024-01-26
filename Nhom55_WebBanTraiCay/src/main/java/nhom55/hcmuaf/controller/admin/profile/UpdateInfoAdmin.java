@@ -20,7 +20,7 @@ import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 10, maxRequestSize =
         1024 * 1024 * 100)
-@WebServlet(name = "UpdateInfoAdmin", value = "/updateInfoAdmin")
+@WebServlet(name = "UpdateInfoAdmin", value = "/admin/profile/update-profile")
 public class UpdateInfoAdmin extends HttpServlet {
 
 
@@ -101,7 +101,7 @@ public class UpdateInfoAdmin extends HttpServlet {
                 }
             }
             request.setAttribute("result", "Cập nhật thành công");
-            response.sendRedirect(request.getContextPath() + "/admin-profile");
+            response.sendRedirect(request.getContextPath() + "/admin/profile");
             // không checkValidate
         } else {
             List<Users> listUser= UserService.getInstance().showInfoUser();

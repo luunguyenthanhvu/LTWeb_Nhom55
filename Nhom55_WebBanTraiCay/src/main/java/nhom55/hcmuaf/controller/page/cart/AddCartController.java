@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "add", value = "/add-cart")
+@WebServlet(name = "add", value = "/page/cart/add-cart")
 public class AddCartController extends HttpServlet {
 
     @Override

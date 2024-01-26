@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "CancelBill", value = "/CancelBill")
+@WebServlet(name = "CancelBill", value = "/page/bill/cancel-bill")
 public class CancelBill extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +19,7 @@ public class CancelBill extends HttpServlet {
        }
         BillDao orderDao = new BillDaoImpl();
        orderDao.updateStatusABill(idBills,status);
-       RequestDispatcher requestDispatcher = request.getRequestDispatcher("ListBills");
+       RequestDispatcher requestDispatcher = request.getRequestDispatcher("/page/bill/list-bill");
        requestDispatcher.forward(request,response);
     }
 

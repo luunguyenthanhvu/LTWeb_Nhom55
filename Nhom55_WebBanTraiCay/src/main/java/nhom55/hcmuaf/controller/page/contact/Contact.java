@@ -10,18 +10,18 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "Contact", value = "/Contact")
+@WebServlet(name = "Contact", value = "/page/contact")
 public class Contact extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Users users = MyUtils.getLoginedUser(session);
         if(users == null) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/contact.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/contact.jsp");
             dispatcher.forward(request,response);
         } else {
             request.setAttribute("user",users);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/contact.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/contact.jsp");
             dispatcher.forward(request,response);
         }
 
@@ -37,10 +37,10 @@ public class Contact extends HttpServlet {
              ContactDAO contactDAO = new ContactDAO();
              contactDAO.themLienHe(ten,email,deTai,tinNhan);
              request.setAttribute("notify","Đã gửi thành công");
-             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/contact.jsp");
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/contact.jsp");
              dispatcher.forward(request,response);
          } else {
-             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/contact.jsp");
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/contact.jsp");
              dispatcher.forward(request,response);
          }
 

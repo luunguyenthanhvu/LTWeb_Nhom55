@@ -33,11 +33,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="login w3_login">
         <h2 class="login-header w3_header">Đăng ký</h2>
         <div class="w3l_grid">
-            <form class="login-container" action="register" method="post">
-                <input type="text" placeholder="Tên người dùng" name="username">
-                <input type="text" placeholder="Số điện thoại" name="phoneNum">
-                <input type="text" placeholder="Địa chỉ" name="address">
-
+            <form class="login-container" action="${pageContext.request.contextPath}/page/login/register" method="post">
+                <input id="nameUser" type="text" placeholder="Tên người dùng" name="username" value="${name_user}">
+                <span class="error" id="error_name" style="display: none;color: red; font-size: 14px;"></span>
+                <c:if test="${not empty error_name}">
+                    <p style="color: red; padding: 10px; text-align: center"> ${error_name}</p>
+                </c:if>
+                <input id="phoneUser" type="text" placeholder="Số điện thoại" name="phoneNum" value="${phone_user}">
+                <span class="error" id="error_phone" style="display: none;color: red; font-size: 14px;"></span>
+                <c:if test="${not empty error_phone}">
+                    <p style="color: red; padding: 10px; text-align: center"> ${error_phone}</p>
+                </c:if>
+                <input id="addressUser"  type="text" placeholder="Địa chỉ" name="address" value="${address_user}">
+                <span class="error" id="error_address" style="display: none;color: red; font-size: 14px;"></span>
+                <c:if test="${not empty error_address}">
+                    <p style="color: red; padding: 10px; text-align: center"> ${error_address}</p>
+                </c:if>
                 <input type="email" placeholder="Email" name="email" id="email_nd" value="${email_user}">
                 <span class="error" id="email-error" style="display: none;color: red; font-size: 14px;"></span>
                 <c:if test="${not empty error_email}">
@@ -53,13 +64,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <c:if test="${not empty result}" >
                     <p style="color: red;padding: 10px; text-align: center"> ${result}</p>
                 </c:if>
-                <input type="submit" value="Đăng ký">
+                <input id="submit-btn" type="submit" value="Đăng ký">
             </form>
             <div class="second-section w3_section">
             </div>
 
             <div class="bottom-text w3_bottom_text">
-                <p>Bạn đã có tài khoản?<a href="${pageContext.request.contextPath}/login">Đăng nhập</a></p>
+                <p>Bạn đã có tài khoản?<a href="${pageContext.request.contextPath}/page/login">Đăng nhập</a></p>
             </div>
         </div>
     </div>
@@ -72,25 +83,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <script>
     // validate for input
-    var email = document.getElementById("email_nd");
-    var password = document.getElementById("password_nd");
+    var name1 = document.getElementById("nameUser");
+    var phone1 = document.getElementById("phoneUser");
+    var address1 = document.getElementById("addressUser");
+    var email1 = document.getElementById("email_nd");
+    var password1 = document.getElementById("password_nd");
 
-    function validateEmail() {
-        var text = email.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
-        var error = document.getElementById("email-error");
 
+    function validateName() {
+        var text = name1.value;
+        var kyTuHopLe = /^[a-zA-ZÀ-ỹ ]+$/;
+        var error = document.getElementById("error_name");
         if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập email";
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            // Check if the email contains "@gmail.com"
-            if (!text.includes("@gmail.com")) {
-                error.textContent = "Email phải chứa địa chỉ @gmail.com";
-                error.style.display = "block";
-                return false;
-            }
+            error.textContent = "Tên chỉ chứa ký tự chữ cái, khoảng trắng.";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+    function validatePhone(){
+        var text = phone1.value;
+        var kyTuHopLe = /^(?:\+|0)[0-9]{6,14}[0-9]$/;
+        var error = document.getElementById("error_phone");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Số điện thoại chỉ chứa số từ 0 - 9";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+    function validateAddress() {
+        var text = address1.value;
+        var error = document.getElementById("error_address");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else {
+            error.style.display = "none";
+            return true;
+        }
+    }
+    function validateEmail() {
+        var text = email1.value;
+        var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        var error = document.getElementById("email-error");
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
+            error.style.display = "block";
+            return false;
+        } else if (!kyTuHopLe.test(text)) {
+            error.textContent = "Địa chỉ email không hợp lệ.";
             error.style.display = "block";
             return false;
         } else {
@@ -100,7 +155,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     }
 
     function validatePassword() {
-        var text = document.getElementById("password_nd").value;
+        var text = password1.value;
         var error = document.getElementById("password-error");
 
         if (text.length === 0) {
@@ -119,8 +174,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
     // add event to check input
-    email.addEventListener("blur", validateEmail);
-    password.addEventListener("blur", validatePassword);
+    name1.addEventListener("blur",validateName);
+    phone1.addEventListener("blur",validatePhone);
+    address1.addEventListener("blur",validateAddress);
+    email1.addEventListener("blur", validateEmail);
+    password1.addEventListener("blur", validatePassword);
+    var submitBtn = document.getElementById("submit-btn");
+    submitBtn.addEventListener("click", function (event) {
+        var isName = validateName();
+        var isPhone = validatePhone();
+        var isAddress  = validateAddress();
+        var isEmail = validateEmail();
+        var isPass = validatePassword();
+        if (!isName || !isPhone || !isAddress || !isEmail
+            || !isPass ) {
+            event.preventDefault();
+        }
+    })
 
 </script>
 

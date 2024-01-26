@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "updatePasswordUser", value = "/updatePasswordUser")
+@WebServlet(name = "updatePasswordUser", value = "/page/user/update-pass")
 public class UpdatePasswordUser extends HttpServlet {
 
   @Override

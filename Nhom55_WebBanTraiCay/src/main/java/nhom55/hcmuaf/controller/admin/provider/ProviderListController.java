@@ -13,7 +13,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProviderListController", value = "/ProviderListController")
+@WebServlet(name = "ProviderListController", value = "/admin/provider/provider-list-controller")
 public class ProviderListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

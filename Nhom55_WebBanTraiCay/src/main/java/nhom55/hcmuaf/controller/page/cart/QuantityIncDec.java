@@ -7,7 +7,7 @@ import java.io.IOException;
 import nhom55.hcmuaf.beans.cart.Cart;
 import nhom55.hcmuaf.util.MyUtils;
 
-@WebServlet(name = "QuantityIncDec", value = "/quantity-inc-dec")
+@WebServlet(name = "QuantityIncDec", value = "/page/cart/quantity-inc-dec")
 public class QuantityIncDec extends HttpServlet {
 
   @Override

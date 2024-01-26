@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ForwardToListBills", value = "/ForwardToListBills")
+@WebServlet(name = "ForwardToListBills", value = "/page/bill/forward-to-list-bill")
 public class ForwardToListBills extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class ForwardToListBills extends HttpServlet {
         List<Bills> listBills = new ArrayList<>();
         listBills = orderDao.getListBills(users.getId());
         request.setAttribute("listBills",listBills);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ListBills");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/page/bill/list-bill");
         dispatcher.forward(request, response);
     }
 

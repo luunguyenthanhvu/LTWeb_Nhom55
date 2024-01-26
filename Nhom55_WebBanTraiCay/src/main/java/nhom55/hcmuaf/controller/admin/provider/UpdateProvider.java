@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "UpdateProvider", value = "/UpdateProvider")
+@WebServlet(name = "UpdateProvider", value = "/admin/provider/update-provider")
 public class UpdateProvider extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class UpdateProvider extends HttpServlet {
         }
               request.setAttribute("admin", admin);
              request.setAttribute("provider",provider);
-             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/update-provider.jsp");
+             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/update-provider.jsp");
              dispatcher.forward(request,response);
     }
 

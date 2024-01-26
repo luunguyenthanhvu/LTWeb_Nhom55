@@ -7,13 +7,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteExpiredProduct", value = "/DeleteExpiredProduct")
+@WebServlet(name = "DeleteExpiredProduct", value = "/admin/product/delete-expired")
 public class DeleteExpiredProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idProduct = Integer.valueOf(request.getParameter("id"));
         DeleteProductServiceForAdmin.getInstance().deleteProduct(idProduct);
-        response.sendRedirect("manage-expired-product");
+        response.sendRedirect("/admin/product/manage-expired");
     }
 
     @Override

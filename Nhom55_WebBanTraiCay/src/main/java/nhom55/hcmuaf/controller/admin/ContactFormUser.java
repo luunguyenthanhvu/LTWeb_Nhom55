@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ContactFormUser", value = "/ContactFormUser")
+@WebServlet(name = "ContactFormUser", value = "/admin/contact-form")
 public class ContactFormUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class ContactFormUser extends HttpServlet {
         List<Contact> listContact = contactDAO.layHetLienHeCuaKhachHang();
         request.setAttribute("listContact",listContact);
         request.setAttribute("admin", admin);
-       RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin/contact-from-user.jsp");
+       RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/contact-from-user.jsp");
        dispatcher.forward(request,response);
     }
 

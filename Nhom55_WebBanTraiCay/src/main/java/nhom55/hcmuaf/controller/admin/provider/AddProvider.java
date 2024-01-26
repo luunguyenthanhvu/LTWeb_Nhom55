@@ -11,11 +11,13 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "AddProvider", value = "/AddProvider")
+@WebServlet(name = "AddProvider", value = "/admin/provider/add-provider")
 public class AddProvider extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      response.sendRedirect("AdminAddProvider");
+        RequestDispatcher requestDispatcher = this.getServletContext()
+                .getRequestDispatcher("/WEB-INF/admin/add-provider.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     @Override

@@ -187,7 +187,7 @@
         </div>
 
         <div class="content-container">
-            <form action="updateUser" method="post" class="main-content">
+            <form action="${pageContext.request.contextPath}/admin/user/update-user" method="post" class="main-content">
                 <div class="user-info">
                     <div class="img-user">
                         <c:choose>
@@ -433,20 +433,14 @@
 
     function validateEmailUser() {
         var text = emailUser.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         var error = document.getElementById("email-error");
-
         if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập email";
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            // Check if the email contains "@gmail.com"
-            if (!text.includes("@gmail.com")) {
-                error.textContent = "Email phải chứa địa chỉ @gmail.com";
-                error.style.display = "block";
-                return false;
-            }
+            error.textContent = "Địa chỉ email không hợp lệ.";
             error.style.display = "block";
             return false;
         } else {
@@ -457,14 +451,9 @@
 
     function validateAddressUser() {
         var text = addressUser.value;
-        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
         var error = document.getElementById("address-error");
         if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập địa chỉ.";
-            error.style.display = "block";
-            return false;
-        } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else {
@@ -528,7 +517,7 @@
     var submit = document.getElementById("saveUserInfo");
     submit.addEventListener("click", function (event) {
         var isTenUser = validateTenUser();
-        var isEmail = validateEmail();
+        var isEmail = validateEmailUser();
         var isGenderUser = validateGenderUser();
         var isAddressUser = validateAddressUser();
         var isPhoneNumberUser = validatePhoneNumberUser();

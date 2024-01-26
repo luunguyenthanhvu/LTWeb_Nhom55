@@ -94,7 +94,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/page/user/user-profile?id=${user.getId()}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                         Thông tin người dùng
                     </a>
@@ -131,7 +131,7 @@
         <div class="container-child-right">
             <h4>Đổi mật khẩu</h4>
             <hr style="border-top: 1px solid #000000;">
-            <form class="change-password" action="updatePasswordUser" method="post">
+            <form class="change-password" action="${pageContext.request.contextPath}/page/user/update-pass" method="post">
                 <table style="border-collapse:collapse;
                     border: none; ">
                     <tr>

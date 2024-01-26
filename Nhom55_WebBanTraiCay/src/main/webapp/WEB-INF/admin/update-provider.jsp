@@ -199,7 +199,7 @@
     <div class="container">
       <!--       code thêm ở đây-->
       <div class="form-sp">
-        <form style="width: 700px" id="FormThemSanPham" action="UpdateProviderController" method="post"
+        <form style="width: 700px" id="FormThemSanPham" action="${pageContext.request.contextPath}/admin/provider/update-provider-controller" method="post"
         >
           <table style="border-collapse:collapse;
                 border: none; ">

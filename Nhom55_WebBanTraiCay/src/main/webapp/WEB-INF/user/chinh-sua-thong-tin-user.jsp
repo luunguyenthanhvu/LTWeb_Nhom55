@@ -93,7 +93,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="${pageContext.request.contextPath}/page/user/user-profile?id=${user.getId()}">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
                         Thông tin người dùng
                     </a>
@@ -133,7 +133,7 @@
             <br>
 
 
-            <form class="update-info" action="updateInfoUser" method="post" enctype="multipart/form-data">
+            <form class="update-info" action="${pageContext.request.contextPath}/page/user/update-info" method="post" enctype="multipart/form-data">
                 <div class="user-info">
                     <div class="basic-info">
                         <table style="border-collapse:collapse;
@@ -262,11 +262,11 @@
                         <c:choose>
                             <c:when test="${not empty user.getImg()}">
                                 <!-- Ảnh mới từ sau khi đổi ảnh -->
-                                <img id="previewImage" src="${user.getImg()}" alt="">
+                                <img style="width: 170px; height:170px; object-fit:cover" id="previewImage" src="${user.getImg()}" alt="">
                             </c:when>
                             <c:otherwise>
                                 <!-- Ảnh mặc định khi mới đăng ký -->
-                                <img id="previewImage" src="/static/images/accountPicture.png" alt="">
+                                <img style="width: 170px; height:170px; object-fit:cover" id="previewImage" src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="">
                             </c:otherwise>
                         </c:choose>
                         <div class="chose-new-img">
@@ -368,20 +368,14 @@
 
     function validateEmailUser() {
         var text = emailUser.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         var error = document.getElementById("email-error");
-
         if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập email";
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            // Check if the email contains "@gmail.com"
-            if (!text.includes("@gmail.com")) {
-                error.textContent = "Email phải chứa địa chỉ @gmail.com";
-                error.style.display = "block";
-                return false;
-            }
+            error.textContent = "Địa chỉ email không hợp lệ.";
             error.style.display = "block";
             return false;
         } else {
@@ -408,14 +402,9 @@
 
     function validateAddressUser() {
         var text = addressUser.value;
-        var kyTuHopLe = /^[a-zA-Z0-9\s.,\/;_-]*$/;
         var error = document.getElementById("address-error");
-        if (text.trim() === "") {
-            error.textContent = "Vui lòng nhập địa chỉ.";
-            error.style.display = "block";
-            return false;
-        } else if (!kyTuHopLe.test(text)) {
-            error.textContent = "Có ký tự không hợp lệ. Vui lòng nhập lại";
+        if (text.length == 0 || text == null) {
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else {

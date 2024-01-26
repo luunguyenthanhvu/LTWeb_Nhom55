@@ -29,7 +29,7 @@ public class ManageExpiredProduct extends HttpServlet {
         int quantityDefault =20;
         int totalRow = ShopService.getInstance().countTotalRowProductInDatabase();
         int haveMaxPage = (totalRow/quantityDefault) +1;
-        List<Products> listProduct = new ProductDaoImpl().printExpiredProduct();
+        List<Products> listProduct = new ProductDaoImpl().printExpiredProduct(pageNumber,quantityDefault);
         RequestDispatcher dispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/time-expired-product.jsp");
         request.setAttribute("listProduct",listProduct);

@@ -70,7 +70,7 @@ public class UserValidator {
 
 
     public static String validateMatKhau(String matKhau) {
-        String regex = "^(?=.*[A-Za-z0-9.@#$%!~]{6,})[A-Za-z0-9.@#$%!~]+$";
+        String regex = "^.{6,}$";
         if (matKhau == null || matKhau.isEmpty()) {
             return "Vui lòng nhập mật khẩu.";
         }
@@ -119,8 +119,8 @@ public class UserValidator {
         }
 
         // Adjust the regular expression to match your requirements
-        if (!address.matches("^[a-zA-Z0-9\\s.,/;:_-]*$")) {
-            return "Địa chỉ chỉ chứa chữ cái, chữ số";
+        if (!address.matches("^[\\s\\S]*$")) {
+            return "Địa chỉ chứa chữ cái, chữ số ,/ và ,.";
         }
         return "";
     }

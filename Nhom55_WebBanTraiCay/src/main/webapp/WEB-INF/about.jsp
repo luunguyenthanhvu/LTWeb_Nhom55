@@ -308,9 +308,12 @@
                 <div class="ftco-footer-widget mb-4 ml-md-5">
                     <h2 class="ftco-heading-2">Menu</h2>
                     <ul class="list-unstyled">
-                        <li><a href="ShopForward" class="py-2 d-block">Cửa hàng chúng tôi</a></li>
-                        <li><a href="About" class="py-2 d-block">Về chúng tôi</a></li>
-                        <li><a href="Contact" class="py-2 d-block">Liên hệ với chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/shop/shop-forward" class="py-2 d-block">Cửa
+                            hàng chúng tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/about" class="py-2 d-block">Về chúng
+                            tôi</a></li>
+                        <li><a href="${pageContext.request.contextPath}/page/contact" class="py-2 d-block">Liên hệ với
+                            chúng tôi</a></li>
                     </ul>
                 </div>
             </div>

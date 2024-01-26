@@ -512,7 +512,6 @@
 
   function validateAddress() {
     var text = diaChi.value;
-
       var error = document.getElementById("address_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập dữ liệu";

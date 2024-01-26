@@ -191,7 +191,7 @@
                     <h4>Thông tin người đặt hàng</h4>
                     <div class="user-name-img">
                         <div class="img-user">
-                            <img src="">
+                            <img src="${user.getImg()}">
                         </div>
                         <div class="user-name">
                             <span>${bill.getLastName()} ${bill.getFirstName()}</span>
@@ -217,7 +217,7 @@
                 <div class="right-container">
                     <form action="" method="post">
                         <div class="update-status">
-                            <form action="UpdateOrder" method="post">
+                            <form action="${pageContext.request.contextPath}/admin/provider/updateOrder" method="post">
                             <h3>Cập nhập trạng thái</h3>
                                 <input type="hidden" name="idBill" value="${idBill}">
                             <select class="option-status"  name="selectedStatus">

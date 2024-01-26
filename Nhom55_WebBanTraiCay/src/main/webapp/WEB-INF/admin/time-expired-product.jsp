@@ -183,7 +183,7 @@
         <span class="text">Danh sách sản phẩm hết hạn sử dụng</span>
     </div>
     <div class="find-product">
-        <form action="ManageExpiredProductController?index=1" method="post">
+        <form action="${pageContext.request.contextPath}/admin/product/expired-manage-controller?index=1" method="post">
             <div class="fill-product">
                 <input id="find-product" type="text" placeholder="Tìm kiếm tên sản phẩm" name="txtSearch">
 
@@ -216,7 +216,7 @@
                         <td>${product.getDateOfImporting()}</td>
                         <td>${product.getExpriredDay()}</td>
                         <td class="function-product">
-                            <a href="DeleteExpiredProduct?id=${product.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
+                            <a href="${pageContext.request.contextPath}/admin/product/delete-expired?id=${product.getId()}"><svg class="fill-black" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg></a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -228,7 +228,7 @@
             <c:if test="${pageId== 1 && haveMaxPage ==1}">
                 <a >&laquo;</a>
                 <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                    <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                    <a id="${i}" href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${i}">${i}</a>
                 </c:forEach>
                 <a >&raquo;</a>
             </c:if>
@@ -237,24 +237,24 @@
                 <c:if test="${pageId ==1}" >
                     <a >&laquo;</a>
                     <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                        <a id="${i}" href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${i}">${i}</a>
                     </c:forEach>
-                    <a href="manage-expired-product?pageId=${pageId+1}">&raquo;</a>
+                    <a href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${pageId+1}">&raquo;</a>
                 </c:if>
                 <%--  Còn trường hợp này nút nào cũng xài được--%>
                 <c:if test="${pageId >1 && pageId<haveMaxPage}" >
-                    <a href="manage-expired-product?pageId=${pageId-1}">&laquo;</a>
+                    <a href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${pageId-1}">&laquo;</a>
                     <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                        <a id="${i}" href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${i}">${i}</a>
                     </c:forEach>
-                    <a href="manage-expired-product?pageId=${pageId+1}">&raquo;</a>
+                    <a href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${pageId+1}">&raquo;</a>
                 </c:if>
 
                 <%-- Trường hợp đang ở trang cuối thì chỉ ko được xài nút >--%>
                 <c:if test="${pageId ==haveMaxPage}" >
-                    <a href="manage-expired-product?pageId=${pageId-1}">&laquo;</a>
+                    <a href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${pageId-1}">&laquo;</a>
                     <c:forEach begin="1" end="${haveMaxPage}" var= "i">
-                        <a id="${i}" href="manage-expired-product?pageId=${i}">${i}</a>
+                        <a id="${i}" href="${pageContext.request.contextPath}/admin/product/manage-expired?pageId=${i}">${i}</a>
                     </c:forEach>
                     <a >&raquo;</a>
                 </c:if>

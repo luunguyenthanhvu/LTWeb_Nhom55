@@ -166,11 +166,11 @@
 
                         <!-- Dropdown Filter -->
                         <div style="top: -30px;left: 250px" id="filterDropdown" class="filter-dropdown">
-                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
-                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
-                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
-                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
-                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-all-product?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-search-product?sortBy=price&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá tăng dần</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-search-product?sortBy=price&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp giá giảm dần</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-search-product?sortBy=nameOfProduct&order=asc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  A-Z</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-search-product?sortBy=nameOfProduct&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo tên từ  Z-A</a>
+                            <a href="${pageContext.request.contextPath}/page/shop/filter-for-search-product?sortBy=dateOfImporting&order=desc&pageId=1&txtSearch=${txtSearch}" >Sắp xếp theo ngày nhập kho mới nhất</a>
                         </div>
                     </form>
 

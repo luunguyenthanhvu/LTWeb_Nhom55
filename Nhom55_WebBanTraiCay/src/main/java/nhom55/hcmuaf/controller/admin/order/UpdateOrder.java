@@ -5,9 +5,7 @@ import nhom55.hcmuaf.beans.BillDetails;
 import nhom55.hcmuaf.beans.Bills;
 import nhom55.hcmuaf.beans.Products;
 import nhom55.hcmuaf.beans.Users;
-import nhom55.hcmuaf.dao.BillDao;
-import nhom55.hcmuaf.dao.BillDaoImpl;
-import nhom55.hcmuaf.dao.ProductDaoImpl;
+import nhom55.hcmuaf.dao.*;
 import nhom55.hcmuaf.util.MyUtils;
 
 import javax.servlet.*;
@@ -25,8 +23,18 @@ public class UpdateOrder extends HttpServlet {
         HttpSession session = request.getSession();
         Users admin = MyUtils.getLoginedUser(session);
         BillDao orderDao = new BillDaoImpl();
+        UsersDao usersDao = new UsersDaoImpl();
         List<BillDetails> detailList = orderDao.getListProductInABill(idBill);
         Bills bill = orderDao.getABill(idBill);
+        int idUser = orderDao.getIdUser(idBill);
+        Users users = null;
+        for(Users u: usersDao.showInfoUser() ) {
+            if(u.getId() == idUser) {
+                users = u;
+                break;
+            }
+        }
+        request.setAttribute("user", users);
         request.setAttribute("admin", admin);
         request.setAttribute("bill",bill);
         request.setAttribute("detailList",detailList);

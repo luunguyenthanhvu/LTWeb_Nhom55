@@ -51,7 +51,7 @@ public interface ProductDao {
 
   public void deleteProduct(int idProduct);
 
-  public List<Products> printExpiredProduct();
+  public List<Products> printExpiredProduct(int index, int quantityDefault);
 
   public List<Products> searchExpiredProduct(String search, int index, int sizePage);
   boolean addMoreWeight(int id, double weight);

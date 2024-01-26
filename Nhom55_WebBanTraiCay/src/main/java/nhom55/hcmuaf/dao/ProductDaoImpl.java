@@ -278,13 +278,20 @@ public class ProductDaoImpl implements ProductDao {
     );
   }
 
-  public List<Products> printExpiredProduct() {
-    return JDBIConnector.get().withHandle(h ->
-        h.createQuery("SELECT * FROM Products where expriredDay <= CURDATE()")
-            .mapToBean(Products.class)
-            .stream()
-            .collect(Collectors.toList())
+  public List<Products> printExpiredProduct(int index, int quantityDefault) {
+    List<Products> result = new ArrayList<>();
+    int start = (index - 1) * quantityDefault;
+
+    result = JDBIConnector.get().withHandle(h ->
+            h.createQuery(
+                            "SELECT * FROM products WHERE expriredDay <= CURDATE() ORDER BY dateOfImporting DESC LIMIT :start, :quantityDefault")
+                    .bind("start", start)
+                    .bind("quantityDefault", quantityDefault)
+                    .mapToBean(Products.class)
+                    .list()
     );
+
+    return result;
   }
 
   public List<Products> searchExpiredProduct(String search, int index, int sizePage) {

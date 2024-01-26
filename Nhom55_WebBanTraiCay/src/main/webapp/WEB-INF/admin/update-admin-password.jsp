@@ -188,7 +188,7 @@
 
     <!--code thêm ở đây-->
     <div class="main-content">
-      <form class="change-password" action="updatePasswordAdmin" method="post">
+      <form class="change-password" action="${pageContext.request.contextPath}/admin/profile/update-pass" method="post">
         <table>
           <tr>
             <td>

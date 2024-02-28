@@ -17,7 +17,7 @@ public class SecurityFilter implements Filter {
 
   @Override
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-      FilterChain filterChain) throws IOException, ServletException {
+                       FilterChain filterChain) throws IOException, ServletException {
     HttpServletRequest request = (HttpServletRequest) servletRequest;
     HttpServletResponse response = (HttpServletResponse) servletResponse;
 
@@ -49,18 +49,19 @@ public class SecurityFilter implements Filter {
       // Nếu người dùng chưa đăng nhập,
       // Redirect (chuyển hướng) tới trang đăng nhập.
       if (user == null) {
-        request.getSession().setAttribute("message", "Ban chua dang nhap!");
+        request.getSession().setAttribute("result", "Bạn cần phải đăng nhập để sử dụng chức năng!");
         request.getSession().setAttribute("status", false);
-        response.sendRedirect(request.getContextPath() + "/login");
+        response.sendRedirect(request.getContextPath() + "/page/login");
         return;
       }
 
       // Kiểm tra người dùng có vai trò hợp lệ hay không?
       boolean hasPermission = SecurityHelper.hasPermission(request);
       if (!hasPermission) {
-        request.getSession().setAttribute("message", "Ban khong co quyen truy cap vao trang nay!");
-        request.getSession().setAttribute("status", false);
-        response.sendRedirect(request.getContextPath() + "/home");
+        request.getSession().setAttribute("message1", "Ban khong co quyen");
+        request.getSession().setAttribute("message2", "truy cap trang nay!");
+        request.getSession().setAttribute("status", "Truy cap bi cam!");
+        response.sendRedirect(request.getContextPath() + "/access-for-bidden");
         return;
       }
     } else {

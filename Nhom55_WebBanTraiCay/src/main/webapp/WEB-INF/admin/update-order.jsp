@@ -8,7 +8,7 @@
     <fmt:setLocale value="vi_VN"/>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title>Quản lý cửa hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 
@@ -190,9 +190,17 @@
                 <div class="left-container">
                     <h4>Thông tin người đặt hàng</h4>
                     <div class="user-name-img">
-                        <div class="img-user">
-                            <img src="${user.getImg()}">
-                        </div>
+                        <c:if test="${not empty user.getImg() }">
+                            <div class="img-user">
+                                <img src="${user.getImg()}" alt="profileImg">
+                            </div>
+                        </c:if>
+                        <c:if test="${empty user.getImg() }">
+                            <div class="img-user">
+                                <img src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="profileImg">
+                            </div>
+                        </c:if>
+
                         <div class="user-name">
                             <span>${bill.getLastName()} ${bill.getFirstName()}</span>
                         </div>
@@ -246,6 +254,7 @@
                                 <tr>
                                     <td>${loopStatus.index}</td>
                                     <td>${billDetail.getProducts().getNameOfProduct()}</td>
+
                                     <td class="img-product">
                                         <img src="${billDetail.getProducts().getImg()}">
                                     </td>

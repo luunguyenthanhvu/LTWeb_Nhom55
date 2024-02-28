@@ -73,7 +73,7 @@ public class Login extends HttpServlet {
                 dispatcher.forward(request, response);
             } else if (result.equals("ACCOUNT INACTIVE")) {
                 request.setAttribute("result",
-                        "Tài khoản đã bị khóa vui lòng liên hệ admin để được mở khóa!");
+                        "Tài khoản chưa xác thực! Vui lòng kiểm tra email!");
                 RequestDispatcher dispatcher = this.getServletContext()
                         .getRequestDispatcher("/WEB-INF/login/login.jsp");
                 dispatcher.forward(request, response);
@@ -86,15 +86,15 @@ public class Login extends HttpServlet {
 
                 if (result.equals("ADMIN")) {
                     // redirect to admin page
-                    MyUtils.setUserRole(session, "Quản trị viên");
+                    MyUtils.setUserRole(session, "Admin");
                     response.sendRedirect(request.getContextPath() + "/admin/profile");
                 } else if (result.equals("USER")) {
                     // redirect to home
-                    MyUtils.setUserRole(session, "Người dùng");
+                    MyUtils.setUserRole(session, "User");
                     response.sendRedirect(request.getContextPath() + "/page/home");
-                }  else if (result.equals("Manager")) {
+                }  else if (result.equals("MANAGER")) {
                     // redirect to home
-                    MyUtils.setUserRole(session, "Quản lý");
+                    MyUtils.setUserRole(session, "Manager");
                     response.sendRedirect(request.getContextPath() + "/admin/profile");
                 }
             }

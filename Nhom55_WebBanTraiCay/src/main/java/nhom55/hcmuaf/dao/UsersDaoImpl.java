@@ -1,5 +1,6 @@
 package nhom55.hcmuaf.dao;
 
+import java.time.LocalDateTime;
 import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.database.JDBIConnector;
 
@@ -7,6 +8,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import nhom55.hcmuaf.util.MyUtils;
 
 public class UsersDaoImpl implements UsersDao {
 
@@ -18,7 +20,7 @@ public class UsersDaoImpl implements UsersDao {
     public Users getUserByEmail(String email) {
         List<Users> users = JDBIConnector.get().withHandle(h ->
                 h.createQuery(
-                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                                "SELECT * FROM Users WHERE email = ?")
                         .bind(0, email)
                         .mapToBean(Users.class)
                         .stream()
@@ -61,7 +63,7 @@ public class UsersDaoImpl implements UsersDao {
         // add new user
         return JDBIConnector.get().withHandle(handle -> {
             handle.createUpdate(
-                            "INSERT INTO Users (username, password, hash, email, phoneNumber, address, status) VALUES (:username, :password, :hash, :email, :phoneNumber, :address, :status)")
+                            "INSERT INTO Users (username, password, hash, email, phoneNumber, address, status, creationTime) VALUES (:username, :password, :hash, :email, :phoneNumber, :address, :status, :creationTime)")
                     .bind("username", username)
                     .bind("password", password)
                     .bind("hash", hash)
@@ -69,6 +71,59 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("phoneNumber", phoneNumber)
                     .bind("address", address)
                     .bind("status", 0)
+                    .bind("creationTime", LocalDateTime.now())
+                    .execute();
+            return "SUCCESS";
+        });
+    }
+
+    @Override
+    public String addNewGoogleUser(String username, String email, String img) {
+        // check if exist
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
+                        .bind(0, email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (!users.isEmpty()) {
+            return "FAIL";
+        }
+
+        // add new user
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate(
+                            "INSERT INTO Users (username, email, status, img) VALUES (:username, :email, :status, :img)")
+                    .bind("username", username)
+                    .bind("email", email)
+                    .bind("status", 1)
+                    .bind("img", img)
+                    .execute();
+            return "SUCCESS";
+        });
+    }
+
+    @Override
+    public String updateTimeStampUser(String email) {
+        // check is exit
+        List<Users> users = JDBIConnector.get().withHandle(h ->
+                h.createQuery(
+                                "SELECT email, hash, status  FROM Users WHERE email = :email AND status = 0")
+                        .bind("email", email)
+                        .mapToBean(Users.class)
+                        .stream()
+                        .collect(Collectors.toList())
+        );
+        if (users.isEmpty()) {
+            return "FAIL";
+        }
+        Users user = users.get(0);
+        return JDBIConnector.get().withHandle(handle -> {
+            handle.createUpdate("update Users set creationTime = :creationTime where email = :email ")
+                    .bind("creationTime", LocalDateTime.now())
+                    .bind("email", email)
                     .execute();
             return "SUCCESS";
         });
@@ -133,7 +188,9 @@ public class UsersDaoImpl implements UsersDao {
     }
 
     @Override
-    public String addNewUserOfAdmin(String username, String password, String hash, String email, String phoneNumber, String address, java.util.Date dob, String gioiTinh, String img, int quyenHan) {
+    public String addNewUserOfAdmin(String username, String password, String hash, String email,
+                                    String phoneNumber, String address, java.util.Date dob, String gioiTinh, String img,
+                                    int quyenHan) {
         // check if exist
         List<Users> users = JDBIConnector.get().withHandle(h ->
                 h.createQuery(
@@ -158,20 +215,21 @@ public class UsersDaoImpl implements UsersDao {
                     .bind("phoneNumber", phoneNumber)
                     .bind("address", address)
                     .bind("status", 1)
-                    .bind("img",img)
-                    .bind("sexual",gioiTinh)
-                    .bind("dateOfBirth",dob)
-                    .bind("role",quyenHan)
+                    .bind("img", img)
+                    .bind("sexual", gioiTinh)
+                    .bind("dateOfBirth", dob)
+                    .bind("role", quyenHan)
                     .execute();
             return "SUCCESS";
         });
     }
 
 
-
     /**
      * show List user
-     * @return  id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status, role
+     *
+     * @return id , username, hash ,password, email, address, phoneNumber, dateOfBirth, img , status,
+     * role
      */
     @Override
     public List<Users> showInfoUser() {
@@ -186,7 +244,8 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * get User show profile
-     * @return  id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
+     *
+     * @return id , username, password, email, address, phoneNumber, dateOfBirth, img , status, role
      */
     @Override
     public Users getUserById(int userId) {
@@ -198,6 +257,7 @@ public class UsersDaoImpl implements UsersDao {
                         .orElse(null)
         );
     }
+
     @Override
     public boolean checkPassUser(int id, String password) {
         Users user = JDBIConnector.get().withHandle(handle ->
@@ -212,11 +272,15 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * update profile: change one or more than
+     *
      * @return username, email, address, phoneNumber, datOfBirth
      */
-    public void updateProfile(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, java.util.Date newDateOfBirth, String newSexual, int newStatus, int newRole) {
+    public void updateProfile(int userId, String newUserName, String newEmail, String newAddress,
+                              String newPhoneNumber, java.util.Date newDateOfBirth, String newSexual, int newStatus,
+                              int newRole) {
         JDBIConnector.get().withHandle(handle ->
-                handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual, status = :status, role = :role WHERE id = :id")
+                handle.createUpdate(
+                                "UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth, sexual = :sexual, status = :status, role = :role WHERE id = :id")
                         .bind("id", userId)
                         .bind("username", newUserName)
                         .bind("email", newEmail)
@@ -233,12 +297,16 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * update profile: change one or more than
+     *
      * @return username, email, address, phoneNumber, datOfBirth, img
      */
     @Override
-    public String updateProfileWithImage(int userId, String newUserName, String newEmail, String newAddress, String newPhoneNumber, java.util.Date newDateOfBirth, String img, String newSexual) {
+    public String updateProfileWithImage(int userId, String newUserName, String newEmail,
+                                         String newAddress, String newPhoneNumber, java.util.Date newDateOfBirth, String img,
+                                         String newSexual) {
         boolean updateSuccess = JDBIConnector.get().withHandle(handle -> {
-            int updateResult = handle.createUpdate("UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
+            int updateResult = handle.createUpdate(
+                            "UPDATE Users SET username = :username, email = :email, address = :address, phoneNumber = :phoneNumber, dateOfBirth = :dateOfBirth , img = :img, sexual = :sexual WHERE id = :id")
                     .bind("id", userId)
                     .bind("username", newUserName)
                     .bind("email", newEmail)
@@ -255,7 +323,8 @@ public class UsersDaoImpl implements UsersDao {
 
     /**
      * update new password for user in user-profile
-     * @return  id, password
+     *
+     * @return id, password
      */
     public String updatePassWordUser(int id, String password) {
         Users user = JDBIConnector.get().withHandle(handle ->
@@ -297,8 +366,10 @@ public class UsersDaoImpl implements UsersDao {
             try {
                 // Thực hiện câu lệnh SQL với giá trị của index và sizePage thay thế trực tiếp
                 List<Users> resultList = handle.createQuery(
-                                "with testThu as (select ROW_NUMBER() over (order by id asc) as r, id, username, hash, email, phoneNumber, address, status, img, dateOfBirth, sexual, role from users where userName LIKE ? or id = ?)\n" +
-                                        "select * FROM testThu where r between " + (index * sizePage - 4) + " and " + (index * sizePage))
+                                "with testThu as (select ROW_NUMBER() over (order by id asc) as r, id, username, hash, email, phoneNumber, address, status, img, dateOfBirth, sexual, role from users where userName LIKE ? or id = ?)\n"
+                                        +
+                                        "select * FROM testThu where r between " + (index * sizePage - 4) + " and " + (index
+                                        * sizePage))
                         .bind(0, "%" + search + "%")
                         .bind(1, search) // Bind giá trị cho tham số thứ hai
                         .mapToBean(Users.class)
@@ -315,6 +386,7 @@ public class UsersDaoImpl implements UsersDao {
         });
         return result;
     }
+
     @Override
     public List<Users> searchFilter(String sortBy, String order, String search, int index,
                                     int sizePage) {
@@ -397,33 +469,6 @@ public class UsersDaoImpl implements UsersDao {
             return h.createUpdate("DELETE from users where id = :id")
                     .bind("id", id)
                     .execute();
-        });
-    }
-    @Override
-    public String addNewGoogleUser(String username,String email, String img) {
-        // check if exist
-        List<Users> users = JDBIConnector.get().withHandle(h ->
-                h.createQuery(
-                                "SELECT id,username,email,phoneNumber,address,status,img,dateOfBirth,sexual FROM Users WHERE email = ?")
-                        .bind(0, email)
-                        .mapToBean(Users.class)
-                        .stream()
-                        .collect(Collectors.toList())
-        );
-        if (!users.isEmpty()) {
-            return "FAIL";
-        }
-
-        // add new user
-        return JDBIConnector.get().withHandle(handle -> {
-            handle.createUpdate(
-                            "INSERT INTO Users (username, email, status, img) VALUES (:username, :email, :status, :img)")
-                    .bind("username", username)
-                    .bind("email", email)
-                    .bind("status", 1)
-                    .bind("img", img)
-                    .execute();
-            return "SUCCESS";
         });
     }
 }

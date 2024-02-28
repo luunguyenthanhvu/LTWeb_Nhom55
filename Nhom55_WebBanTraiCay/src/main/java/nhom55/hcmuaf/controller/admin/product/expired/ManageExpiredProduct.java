@@ -27,7 +27,7 @@ public class ManageExpiredProduct extends HttpServlet {
         }
 
         int quantityDefault =20;
-        int totalRow = ShopService.getInstance().countTotalRowProductInDatabase();
+        int totalRow = ShopService.getInstance().countTotalRowProductInDatabaseForExpiredProduct();
         int haveMaxPage = (totalRow/quantityDefault) +1;
         List<Products> listProduct = new ProductDaoImpl().printExpiredProduct(pageNumber,quantityDefault);
         RequestDispatcher dispatcher = this.getServletContext()

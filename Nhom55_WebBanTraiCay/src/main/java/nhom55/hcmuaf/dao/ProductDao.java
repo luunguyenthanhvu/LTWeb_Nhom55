@@ -56,4 +56,6 @@ public interface ProductDao {
   public List<Products> searchExpiredProduct(String search, int index, int sizePage);
   boolean addMoreWeight(int id, double weight);
   double getTotalMoneyMonth(int month);
+  public int countTotalRowProductInDatabaseForExpiredProduct();
+  public int countResultSearchingProductForExpiredProduct(String txtSearch);
 };

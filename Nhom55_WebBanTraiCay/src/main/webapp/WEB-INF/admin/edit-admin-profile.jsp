@@ -6,7 +6,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Đổi thông tin quản trị viên </title>
+    <title>Quản lý cửa hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/edit-admin.css">
 

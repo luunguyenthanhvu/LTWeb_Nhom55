@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -249,7 +249,7 @@
                                 <c:if test="${pageId >1 && pageId<indexEnd}" >
                                     <li><a href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${pageId-1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&lt;</a></li>
                                     <c:forEach begin="1" end="${indexEnd}" var= "i">
-                                        <li id="${i}" ><a  href="ShopController?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
+                                        <li id="${i}" ><a  href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${i}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">${i}</a></li>
                                     </c:forEach>
                                     <li><a href="${pageContext.request.contextPath}/page/shop/shop-controller?index=${pageId+1}&txtSearch=${txtSearch}&sortBy=${sortBy}&order=${order}">&gt;</a></li>
                                 </c:if>

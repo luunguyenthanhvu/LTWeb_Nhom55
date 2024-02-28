@@ -12,7 +12,7 @@
 <html>
 <head>
     <fmt:setLocale value="vi_VN"/>
-    <title>Thủ tục thanh toán</title>
+    <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

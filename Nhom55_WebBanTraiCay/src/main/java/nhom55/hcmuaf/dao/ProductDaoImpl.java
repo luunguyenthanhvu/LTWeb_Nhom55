@@ -33,7 +33,7 @@ public class ProductDaoImpl implements ProductDao {
   @Override
   public List<Products> getProduct() {
     return JDBIConnector.get().withHandle(h ->
-        h.createQuery("SELECT * FROM Products ORDER BY dateOfImporting ASC LIMIT 8")
+        h.createQuery("SELECT * FROM Products where expriredDay >=  CURDATE() ORDER BY dateOfImporting ASC LIMIT 8")
             .mapToBean(Products.class)
             .stream()
             .collect(Collectors.toList())
@@ -69,9 +69,18 @@ public class ProductDaoImpl implements ProductDao {
   @Override
   public int countResultSearchingProduct(String txtSearch) {
     return JDBIConnector.get().withHandle(h ->
-        h.select("SELECT count(*)  FROM products where nameOfProduct like ?", "%" + txtSearch + "%")
+        h.select("SELECT count(*)  FROM products where nameOfProduct like ? and expriredDay >= CURDATE() ", "%" + txtSearch + "%")
             .mapTo(Integer.class)
             .one()
+
+    );
+  }
+  @Override
+  public int countResultSearchingProductForExpiredProduct(String txtSearch) {
+    return JDBIConnector.get().withHandle(h ->
+            h.select("SELECT count(*)  FROM products where nameOfProduct like ? and expriredDay < CURDATE() ", "%" + txtSearch + "%")
+                    .mapTo(Integer.class)
+                    .one()
 
     );
   }
@@ -80,25 +89,27 @@ public class ProductDaoImpl implements ProductDao {
   @Override
   public List<Products> search(String search, int index, int sizePage) {
     List<Products> result = JDBIConnector.get().withHandle(handle -> {
-      // Mở kết nối đến cơ sở dữ liệu
       handle.begin();
       try {
-        // Thực hiện câu lệnh SQL với giá trị của index và sizePage thay thế trực tiếp
+        int startIndex = (index - 1) * sizePage + 1;
+        int endIndex = index * sizePage;
+
         List<Products> resultList = handle.createQuery(
-                "with testThu as (select ROW_NUMBER() over (order by " + "dateOfImporting"
-                    + "  desc) as r,id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like ?)\n"
-                    +
-                    "\n" +
-                    "select * FROM testThu where r between " + (index * sizePage - 19) + " and " + (
-                    index * sizePage))
-            .bind(0, "%" + search + "%")
-            .mapToBean(Products.class)
-            .list();
-        // Commit kết nối
+                        "WITH testThu AS (" +
+                                "SELECT ROW_NUMBER() OVER (ORDER BY dateOfImporting DESC) AS r, " +
+                                "id, nameOfProduct, description, price, weight, weightDefault, " +
+                                "dateOfImporting, expriredDay, img, adminCreate, provider " +
+                                "FROM products WHERE nameOfProduct LIKE ? AND expriredDay >= CURDATE())\n" +
+                                "SELECT * FROM testThu WHERE r BETWEEN ? AND ?")
+                .bind(0, "%" + search + "%")
+                .bind(1, startIndex)
+                .bind(2, endIndex)
+                .mapToBean(Products.class)
+                .list();
+
         handle.commit();
         return resultList;
       } catch (Exception e) {
-        // Xử lý ngoại lệ và rollback kết nối nếu có lỗi
         handle.rollback();
         throw e;
       }
@@ -112,7 +123,7 @@ public class ProductDaoImpl implements ProductDao {
       int sizePage) {
     List<Products> resultList = JDBIConnector.get().withHandle(h ->
         h.createQuery("with testThu as (select ROW_NUMBER() over (order by " + sortBy + " " + order
-                + ") as r, id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like :search)\n"
+                + ") as r, id, nameOfProduct, description, price, weight, weightDefault, dateOfImporting, expriredDay, img, adminCreate, provider from products where nameOfProduct like :search  AND expriredDay >= CURDATE())\n"
                 +
                 "\n" +
                 "select * FROM testThu where r between :startIndex and :endIndex")
@@ -133,7 +144,7 @@ public class ProductDaoImpl implements ProductDao {
 
     result = JDBIConnector.get().withHandle(h ->
         h.createQuery(
-                "SELECT * FROM products ORDER BY dateOfImporting DESC LIMIT :start, :quantityDefault")
+                "SELECT * FROM products where expriredDay >= CURDATE() ORDER BY dateOfImporting DESC LIMIT :start, :quantityDefault")
             .bind("start", start)
             .bind("quantityDefault", quantityDefault)
             .mapToBean(Products.class)
@@ -148,9 +159,16 @@ public class ProductDaoImpl implements ProductDao {
   @Override
   public int countTotalRowProductInDatabase() {
     return JDBIConnector.get().withHandle(h ->
-        h.createQuery("SELECT COUNT(id) FROM products").mapTo(Integer.class).one()
+        h.createQuery("SELECT COUNT(id) FROM products where expriredDay >= CURDATE()").mapTo(Integer.class).one()
     );
   }
+  @Override
+  public int countTotalRowProductInDatabaseForExpiredProduct(){
+    return JDBIConnector.get().withHandle(h ->
+            h.createQuery("SELECT COUNT(id) FROM products where expriredDay < CURDATE()").mapTo(Integer.class).one()
+    );
+  }
+
 
   //    Filter
 //    Sắp xếp theo điều kiện filter (option: tên, giá, ngày nhập khẩu, filter:asc,desc)
@@ -170,7 +188,7 @@ public class ProductDaoImpl implements ProductDao {
 
     }
 
-    String query = String.format("SELECT * FROM products %s LIMIT :start, :quantityDefault",
+    String query = String.format("SELECT * FROM products where expriredDay >= CURDATE() %s LIMIT :start, :quantityDefault",
         orderByClause);
 
     result = JDBIConnector.get().withHandle(h ->

@@ -23,7 +23,7 @@ public class ManageExpiredProductController extends HttpServlet {
         String txtSearch = request.getParameter("txtSearch");
         HttpSession session = request.getSession();
         Users admin = MyUtils.getLoginedUser(session);
-        int quantity = ShopService.getInstance().countResultSearchingProduct(txtSearch);
+        int quantity = ShopService.getInstance().countResultSearchingProductForExpiredProduct(txtSearch);
 //        số lượng mặc định 1 trang
         int defaultQuantityProductOnAPage = 20;
 //        index user bấm vào phân trang

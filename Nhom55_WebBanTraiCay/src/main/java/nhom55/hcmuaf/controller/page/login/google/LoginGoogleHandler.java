@@ -35,7 +35,7 @@ public class LoginGoogleHandler extends HttpServlet {
   }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     String code = request.getParameter("code");
     if (code == null || code.isEmpty()) {
       RequestDispatcher dis = request.getRequestDispatcher("login.jsp");
@@ -58,22 +58,22 @@ public class LoginGoogleHandler extends HttpServlet {
       String result = loginDao.authorizeLoginGoogle(googlePojo.getEmail());
       if (result.equals("ADMIN")) {
         // redirect to admin page
-        MyUtils.setUserRole(session, "Quản trị viên");
+        MyUtils.setUserRole(session, "Admin");
         response.sendRedirect(request.getContextPath() + "/admin/profile");
       } else if (result.equals("USER")) {
         // redirect to home
-        MyUtils.setUserRole(session, "Người dùng");
+        MyUtils.setUserRole(session, "User");
         response.sendRedirect(request.getContextPath() + "/page/home");
       }  else if (result.equals("Manager")) {
         // redirect to home
-        MyUtils.setUserRole(session, "Quản lý");
+        MyUtils.setUserRole(session, "MANAGER");
         response.sendRedirect(request.getContextPath() + "/admin/profile");
       }
     }
   }
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+          throws ServletException, IOException {
     doGet(request, response);
   }
   private static String extractUsernameFromEmail(String email) {

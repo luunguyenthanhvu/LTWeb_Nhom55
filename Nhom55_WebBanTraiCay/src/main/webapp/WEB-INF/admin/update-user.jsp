@@ -6,7 +6,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title>Quản lý cửa hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/update-user.css">
 
@@ -296,6 +296,7 @@
                             <td>
                                 <select id="role_user" name="role">
                                     <option value="2" ${user.getRole() == 2 ? 'selected' : ''}>Người dùng</option>
+                                    <option value="3" ${user.getRole() == 3 ? 'selected' : ''}>Quản lý</option>
                                     <option value="1" ${user.getRole() == 1 ? 'selected' : ''}>Quản trị viên</option>
                                 </select>
                             </td>
@@ -399,7 +400,7 @@
 
     function validateTenUser() {
         var text = tenUser.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var kyTuHopLe = /^[a-zA-ZÀ-ỹ ]+$/;
         var error = document.getElementById("username-error");
         if (text.length == 0 || text == null) {
             error.textContent = "Vui lòng nhập tên";
@@ -414,23 +415,6 @@
             return true;
         }
     }
-
-    function validateGenderUser() {
-        var maleCheckbox = document.getElementById("male");
-        var femaleCheckbox = document.getElementById("female");
-        var error = document.getElementById("gender-error");
-
-        // Kiểm tra xem người dùng đã chọn cả hai giới tính hay không
-        if (!maleCheckbox.checked && !femaleCheckbox.checked) {
-            error.textContent = "Vui lòng chọn giới tính";
-            error.style.display = "block";
-            return false;
-        } else {
-            error.style.display = "none";
-            return true;
-        }
-    }
-
     function validateEmailUser() {
         var text = emailUser.value;
         var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -508,7 +492,6 @@
 
     tenUser.addEventListener("blur", validateTenUser);
     emailUser.addEventListener("blur", validateEmailUser);
-    genderUser.addEventListener("blur", validateGenderUser);
     addressUser.addEventListener("blur", validateAddressUser);
     phoneNumberUser.addEventListener("blur", validatePhoneNumberUser);
     dateOfBirthUser.addEventListener("blur", validateDateOfBirth);
@@ -518,12 +501,12 @@
     submit.addEventListener("click", function (event) {
         var isTenUser = validateTenUser();
         var isEmail = validateEmailUser();
-        var isGenderUser = validateGenderUser();
         var isAddressUser = validateAddressUser();
         var isPhoneNumberUser = validatePhoneNumberUser();
         var isDateOfBirth = validateDateOfBirth();
-        var isFileUpLoad = validateFileUpload();
-        if (!isTenUser || !isEmail || !isGenderUser || !isAddressUser
+
+
+        if (!isTenUser || !isEmail  || !isAddressUser
             || !isPhoneNumberUser || !isDateOfBirth) {
             event.preventDefault();
         }

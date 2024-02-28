@@ -32,6 +32,8 @@ public class LoginDao {
                     return "ADMIN";
                 } else if (user.getRole() == 2) {
                     return "USER";
+                } else if (user.getRole() == 3) {
+                    return "MANAGER";
                 }
             }
         }
@@ -57,6 +59,8 @@ public class LoginDao {
                     return "ADMIN";
                 } else if (user.getRole() == 2) {
                     return "USER";
+                } else if (user.getRole() == 3) {
+                    return "MANAGER";
                 }
             }
         }

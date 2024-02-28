@@ -1,6 +1,14 @@
 package nhom55.hcmuaf.controller.page.login;
 
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import nhom55.hcmuaf.beans.RegisterBean;
+import nhom55.hcmuaf.sendmail.MailProperties;
 import nhom55.hcmuaf.services.RegisterService;
 import nhom55.hcmuaf.util.MyUtils;
 import nhom55.hcmuaf.util.UserValidator;

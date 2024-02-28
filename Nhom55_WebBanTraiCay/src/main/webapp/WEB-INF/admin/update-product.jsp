@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <%@ page isELIgnored="false" %>
   <meta charset="UTF-8">
-  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <title>Quản lý cửa hàng</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
 
 

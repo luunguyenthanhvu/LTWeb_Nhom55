@@ -23,5 +23,6 @@ public interface BillDao {
     public List<Bills> search(String search, int index, int sizePage);
     public Bills getABill(int id);
     public void updateStatusABill(int idBill, String status);
+    public int getIdUser(int idBill);
 
 }

@@ -12,7 +12,7 @@
 <html>
 <head>
     <fmt:setLocale value="vi_VN"/>
-    <title>Thủ tục thanh toán</title>
+    <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -512,7 +512,6 @@
 
   function validateAddress() {
     var text = diaChi.value;
-
       var error = document.getElementById("address_error");
     if (text.length == 0 || text == null) {
       error.textContent = "Vui lòng nhập dữ liệu";

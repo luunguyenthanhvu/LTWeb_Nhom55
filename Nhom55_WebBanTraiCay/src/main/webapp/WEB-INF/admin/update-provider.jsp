@@ -11,7 +11,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <title>Quản lý cửa hàng</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
 
   <!-- Boxiocns CDN Link -->
@@ -199,7 +199,7 @@
     <div class="container">
       <!--       code thêm ở đây-->
       <div class="form-sp">
-        <form style="width: 700px" id="FormThemSanPham" action="UpdateProviderController" method="post"
+        <form style="width: 700px" id="FormThemSanPham" action="${pageContext.request.contextPath}/admin/provider/update-provider-controller" method="post"
         >
           <table style="border-collapse:collapse;
                 border: none; ">

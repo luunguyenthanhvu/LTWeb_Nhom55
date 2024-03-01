@@ -11,7 +11,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <title>Quản lý cửa hàng</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
 
   <!-- Boxiocns CDN Link -->
@@ -201,7 +201,7 @@
       <!--       code thêm ở đây-->
 <%--      Chỉnh thêm 1 xíu css cho form--%>
       <div style="padding:10px; width:570px;height: 920px" class="form-sp">
-        <form id="FormThemSanPham" action="AddUser" method="post"
+        <form id="FormThemSanPham" action="${pageContext.request.contextPath}/admin/user/add-user" method="post"
               enctype="multipart/form-data">
           <table style="border-collapse:collapse;
                 border: none; ">
@@ -318,7 +318,7 @@
               <td></td>
               <td>
                 <div class="product-img">
-                  <img id="previewImage" src="../images/product-demo.jpg">
+                  <img id="previewImage" src="${pageContext.request.contextPath}static/images/product-demo.jpg">
                 </div>
               </td>
             </tr>

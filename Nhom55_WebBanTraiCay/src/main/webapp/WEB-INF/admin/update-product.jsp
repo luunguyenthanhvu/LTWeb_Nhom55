@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <%@ page isELIgnored="false" %>
   <meta charset="UTF-8">
-  <title> Drop Down Sidebar Menu | CodingLab </title>
+  <title>Quản lý cửa hàng</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
 
 
@@ -188,7 +188,7 @@
   <div class="container">
     <!--       code thêm ở đây-->
     <div class="form-sp">
-      <form id="FormThemSanPham" action="UpdateProductController" method="post" enctype="multipart/form-data">
+      <form id="FormThemSanPham" action="${pageContext.request.contextPath}/admin/product/update-controller" method="post" enctype="multipart/form-data">
         <table style="border-collapse:collapse;
                 border: none; ">
 

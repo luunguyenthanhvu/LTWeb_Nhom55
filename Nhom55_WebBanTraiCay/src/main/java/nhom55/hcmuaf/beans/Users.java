@@ -2,6 +2,7 @@ package nhom55.hcmuaf.beans;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Users implements Serializable {
 
@@ -17,6 +18,17 @@ public class Users implements Serializable {
   private LocalDate dateOfBirth;
   private String sexual;
   private int role;
+  private LocalDateTime creationTime;
+
+  public Users(String username, String password, String hash, String email, String address,
+               String phoneNumber) {
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+  }
 
   public Users(int id, String username, String password, String hash, String email, String address, String phoneNumber, int status, String img, LocalDate dateOfBirth, String sexual, int role) {
     this.id = id;
@@ -30,6 +42,20 @@ public class Users implements Serializable {
     this.img = img;
     this.dateOfBirth = dateOfBirth;
     this.sexual = sexual;
+    this.role = role;
+  }
+
+  public Users(int id, String username, String password, String hash, String email, String address,
+               String phoneNumber, int status, String img, int role) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.img = img;
     this.role = role;
   }
 
@@ -48,7 +74,7 @@ public class Users implements Serializable {
   }
 
   public Users(int id, String username, String email, String address, String phoneNumber,
-      int status, String img, LocalDate dateOfBirth, String sexual, int role) {
+               int status, String img, LocalDate dateOfBirth, String sexual, int role) {
     this.id = id;
     this.username = username;
     this.email = email;
@@ -62,7 +88,7 @@ public class Users implements Serializable {
   }
 
   public Users(String username, String password, String hash, String email, String address,
-      String phoneNum, int status) {
+               String phoneNum, int status) {
     this.username = username;
     this.password = password;
     this.hash = hash;
@@ -70,6 +96,15 @@ public class Users implements Serializable {
     this.address = address;
     this.phoneNumber = phoneNum;
     this.status = status;
+  }
+
+  public Users(int id, String username, String email, int status, String img, int role) {
+    this.id = id;
+    this.username = username;
+    this.email = email;
+    this.status = status;
+    this.img = img;
+    this.role = role;
   }
 
   public Users(String email, String hash, int status) {
@@ -97,6 +132,32 @@ public class Users implements Serializable {
     this.role = role;
     this.dateOfBirth = dateOfBirth;
     this.sexual = gender;
+  }
+
+  public Users(int id, String username, String password, String hash, String email, String address,
+               String phoneNumber, int status, String img, LocalDate dateOfBirth, String sexual, int role,
+               LocalDateTime creationTime) {
+    this.id = id;
+    this.username = username;
+    this.password = password;
+    this.hash = hash;
+    this.email = email;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.status = status;
+    this.img = img;
+    this.dateOfBirth = dateOfBirth;
+    this.sexual = sexual;
+    this.role = role;
+    this.creationTime = creationTime;
+  }
+
+  public LocalDateTime getCreationTime() {
+    return creationTime;
+  }
+
+  public void setCreationTime(LocalDateTime creationTime) {
+    this.creationTime = creationTime;
   }
 
   public String getHash() {

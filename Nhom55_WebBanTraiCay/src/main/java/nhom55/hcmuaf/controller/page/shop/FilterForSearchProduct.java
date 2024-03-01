@@ -29,6 +29,7 @@ public class FilterForSearchProduct extends HttpServlet {
         }
         int indexInitial = Integer.parseInt(indexPage);
 
+
         int indexEnd = quantity / defaultQuantityProductOnAPage;
         if (quantity % defaultQuantityProductOnAPage != 0) {
             indexEnd++;

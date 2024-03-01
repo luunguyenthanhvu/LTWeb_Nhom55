@@ -72,9 +72,9 @@ public class RegisterService {
       message.addHeader("Content-type", "text/HTML; charset= UTF-8");
       message.setFrom(new InternetAddress(MailProperties.getEmail()));
       message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-      message.setSubject("Xác thực tài khoản");
-      message.setText("Click Here : " + "http://localhost:8080//page/login/account-active?key1="
-          + email + "&key2=" + hash);
+      message.setSubject("Xac thuc tai khoan. Thoi han 30 phut.");
+      message.setText("Chon vao day : " + "http://localhost:8080//page/login/account-active?key1="
+              + email + "&key2=" + hash);
       Transport.send(message);
     } catch (Exception e) {
       System.out.println("SendEmail File Error " + e);

@@ -6,7 +6,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Kết quả tìm kiếm người dùng </title>
+    <title>Quản lý cửa hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/dssp.css">
 

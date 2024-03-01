@@ -218,6 +218,14 @@ public class BillDaoImpl implements BillDao {
                     .execute();
         });
   }
+    @Override
+    public int getIdUser(int idBill){
+        return JDBIConnector.get().withHandle(h ->{
+            return h.createQuery("Select userId from bills where id = :idBill")
+                    .bind("idBill",idBill)
+                    .mapTo(Integer.class).one();
+        });
+    }
 
     public static void main(String[] args) {
         BillDaoImpl billDao = new BillDaoImpl();

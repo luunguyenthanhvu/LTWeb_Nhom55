@@ -6,7 +6,7 @@
 <head>
     <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Đổi thông tin quản trị viên </title>
+    <title>Quản lý cửa hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/edit-admin.css">
 
@@ -191,7 +191,7 @@
         <div class="main-content">
             <div class="admin-profile">
                 <div class="table-info">
-                    <Form action="updateInfoAdmin" method="post" enctype="multipart/form-data">
+                    <Form action="${pageContext.request.contextPath}/admin/profile/update-profile" method="post" enctype="multipart/form-data">
                         <div class="basic-info">
                             <table>
                                 <tr>
@@ -415,20 +415,14 @@
 
     function validateEmailUser() {
         var text = emailUser.value;
-        var kyTuHopLe = /^[\p{L}\s']+$/u;
+        var kyTuHopLe = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         var error = document.getElementById("email-error");
-
         if (text.length == 0 || text == null) {
-            error.textContent = "Vui lòng nhập email";
+            error.textContent = "Vui lòng nhập dữ liệu";
             error.style.display = "block";
             return false;
         } else if (!kyTuHopLe.test(text)) {
-            // Check if the email contains "@gmail.com"
-            if (!text.includes("@gmail.com")) {
-                error.textContent = "Email phải chứa địa chỉ @gmail.com";
-                error.style.display = "block";
-                return false;
-            }
+            error.textContent = "Địa chỉ email không hợp lệ.";
             error.style.display = "block";
             return false;
         } else {

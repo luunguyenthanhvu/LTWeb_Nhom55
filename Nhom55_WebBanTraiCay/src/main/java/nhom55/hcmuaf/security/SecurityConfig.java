@@ -4,9 +4,9 @@ import java.util.*;
 
 public class SecurityConfig {
 
-  public static final String ROLE_ADMIN = "admin";
-  public static final String ROLE_USER = "user";
-  public static final String ROLE_MANAGE = "manage";
+  public static final String ROLE_ADMIN = "Admin";
+  public static final String ROLE_USER = "User";
+  public static final String ROLE_MANAGE = "Manager";
 
   private static final Map<String, List<String>> mapRole = new HashMap<>();
 
@@ -17,38 +17,30 @@ public class SecurityConfig {
 
   public static void init() {
     List<String> roleUsers = new ArrayList<>();
-//        roleUsers.add("/cart");
-    roleUsers.add("/contacts*");
-    roleUsers.add("/page/news*");
-    roleUsers.add("/user/order*");
-    roleUsers.add("/payment*");
-    roleUsers.add("/profile*");
-    roleUsers.add("/user/info-account*");
+    roleUsers.add("/page/user/*");
+    roleUsers.add("/page/order/*");
+    roleUsers.add("/page/bill/*");
 
     List<String> roleManages = new ArrayList<>();
     roleUsers.forEach(r -> roleManages.add(r));
-    roleManages.add("/admin/revenue-statistics*");
-    roleManages.add("/update-order*");
-    roleManages.add("/admin/manage_manufacturer*");
-    roleManages.add("/admin/manage_capacity*");
-    roleManages.add("/admin/manage_discount*");
-    roleManages.add("/admin/product/edit_product*");
-    roleManages.add("/admin/product/manage_product*");
-    roleManages.add("/admin/manage_color*");
-    roleManages.add("/admin/product/add_product*");
-    roleManages.add("/admin/manage_order*");
-    roleManages.add("/admin/manage_warranty*");
+    roleManages.add("/admin/product/*");
+    roleManages.add("/admin/contact-form*");
+    roleManages.add("/admin/order/*");
+    roleManages.add("/admin/profile/*");
+    roleManages.add("/admin/provider/*");
+    roleManages.add("/admin/profile*");
 
     List<String> roleAdmins = new ArrayList<>();
     roleManages.forEach(r -> roleAdmins.add(r));
     roleUsers.forEach(r -> roleAdmins.add(r));
-    roleAdmins.add("/page/news*");
-    roleAdmins.add("/admin/user/update_user*");
-    roleAdmins.add("/add-news*");
-    roleAdmins.add("/manage-news*");
-    roleAdmins.add("/add-news*");
-    roleAdmins.add("/update-news*");
-    roleAdmins.add("/admin/user/manage_user*");
+    roleAdmins.add("/admin/product/*");
+    roleAdmins.add("/admin/contact-form*");
+    roleAdmins.add("/admin/order/*");
+    roleAdmins.add("/admin/profile/*");
+    roleAdmins.add("/admin/provider/*");
+    roleAdmins.add("/admin/user/*");
+    roleAdmins.add("/admin/profile*");
+    roleAdmins.add("/admin/monthly-revenue*");
 
     mapRole.put(ROLE_USER, roleUsers);
     mapRole.put(ROLE_MANAGE, roleManages);

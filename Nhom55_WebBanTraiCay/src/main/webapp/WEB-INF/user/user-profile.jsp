@@ -190,11 +190,11 @@
           <c:choose>
             <c:when test="${not empty user.getImg()}">
               <!-- Ảnh đã chỉnh sửa -->
-              <img style="width: 300px" src="${user.getImg()}" alt="">
+              <img  style="width: 170px; height:170px; object-fit:cover" src="${user.getImg()}" alt="">
             </c:when>
             <c:otherwise>
               <!-- Ảnh mặc định khi mới đăng ký -->
-              <img style="width: 200px" src="/static/images/accountPicture.png" alt="">
+              <img style="width: 170px; height:170px; object-fit:cover" src="${pageContext.request.contextPath}/static/images/accountPicture.png" alt="">
             </c:otherwise>
           </c:choose>
         </div>

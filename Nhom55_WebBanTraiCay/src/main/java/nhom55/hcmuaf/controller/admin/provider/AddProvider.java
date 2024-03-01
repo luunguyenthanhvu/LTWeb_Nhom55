@@ -15,6 +15,9 @@ import java.io.IOException;
 public class AddProvider extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Users admin = MyUtils.getLoginedUser(session);
+        request.setAttribute("admin",admin);
         RequestDispatcher requestDispatcher = this.getServletContext()
                 .getRequestDispatcher("/WEB-INF/admin/add-provider.jsp");
         requestDispatcher.forward(request,response);
@@ -30,6 +33,7 @@ public class AddProvider extends HttpServlet {
             ProviderService.getInstance().addNewProvider(nhaCungCap,diaChiNhaCungCap);
             doGet(request,response);
         } else {
+            request.setAttribute("admin",admin);
             RequestDispatcher dispatcher = this.getServletContext()
                     .getRequestDispatcher("/WEB-INF/admin/add-provider.jsp");
             dispatcher.forward(request, response);

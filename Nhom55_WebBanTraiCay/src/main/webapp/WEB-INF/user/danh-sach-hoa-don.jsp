@@ -8,7 +8,7 @@
 <head>
 
   <%@ page isELIgnored="false" %>
-  <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+  <title>Danh sách hóa đơn</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -77,7 +77,7 @@
       </div>
       <ul>
         <li>
-          <a href="#">
+          <a href="${pageContext.request.contextPath}/page/user/user-profile?id=${user.getId()}">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 288A144 144 0 1 0 256 0a144 144 0 1 0 0 288zm-94.7 32C72.2 320 0 392.2 0 481.3c0 17 13.8 30.7 30.7 30.7H481.3c17 0 30.7-13.8 30.7-30.7C512 392.2 439.8 320 350.7 320H161.3z"/></svg>
             Thông tin người dùng
           </a>
@@ -168,7 +168,7 @@
     </div>
   </div>
 </div>
-</div>
+
 
 
 <!-- loader -->

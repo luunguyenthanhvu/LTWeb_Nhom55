@@ -1,6 +1,7 @@
 package nhom55.hcmuaf.services;
 
 import nhom55.hcmuaf.beans.Products;
+import nhom55.hcmuaf.dao.ProductDao;
 import nhom55.hcmuaf.dao.ProductDaoImpl;
 
 import java.util.List;
@@ -49,6 +50,14 @@ public class ShopService {
     public List<Products> searchExpiredProduct(String search, int index, int sizePage){
         ProductDaoImpl productDaoImpl = new ProductDaoImpl();
         return  productDaoImpl.searchExpiredProduct(search,index,sizePage);
+    }
+    public int countTotalRowProductInDatabaseForExpiredProduct() {
+        ProductDao productDao = new ProductDaoImpl();
+        return  productDao.countTotalRowProductInDatabaseForExpiredProduct();
+    }
+    public int countResultSearchingProductForExpiredProduct(String txtSearch){
+        ProductDao productDao = new ProductDaoImpl();
+        return  productDao.countResultSearchingProductForExpiredProduct(txtSearch);
     }
 
 }

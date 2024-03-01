@@ -6,7 +6,10 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+
+import nhom55.hcmuaf.beans.Users;
 import nhom55.hcmuaf.services.ProductService;
+import nhom55.hcmuaf.util.MyUtils;
 
 @WebServlet(name = "MonthlyRevenue", value = "/admin/monthly-revenue")
 public class MonthlyRevenue extends HttpServlet {
@@ -34,6 +37,8 @@ public class MonthlyRevenue extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     request.setCharacterEncoding("UTF-8");
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+    HttpSession session = request.getSession();
+    Users admin = MyUtils.getLoginedUser(session);
 
     double totalMoneyMonth1 = ProductService.getInstance().getTotalMoneyMonth(1);
     double totalMoneyMonth2 = ProductService.getInstance().getTotalMoneyMonth(2);
@@ -60,7 +65,7 @@ public class MonthlyRevenue extends HttpServlet {
     request.setAttribute("totalMoneyMonth10", totalMoneyMonth10);
     request.setAttribute("totalMoneyMonth11", totalMoneyMonth11);
     request.setAttribute("totalMoneyMonth12", totalMoneyMonth12);
-
+    request.setAttribute("admin",admin);
     RequestDispatcher dispatcher = this.getServletContext()
         .getRequestDispatcher("/WEB-INF/admin/monthly-revenue.jsp");
     dispatcher.forward(request, response);

@@ -6,7 +6,7 @@
 <head>
   <%@ page isELIgnored="false" %>
   <meta charset="UTF-8">
-  <title> Đổi mật khẩu </title>
+  <title>Quản lý cửa hàng</title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/update-admin-password.css">
 
@@ -188,7 +188,7 @@
 
     <!--code thêm ở đây-->
     <div class="main-content">
-      <form class="change-password" action="updatePasswordAdmin" method="post">
+      <form class="change-password" action="${pageContext.request.contextPath}/admin/profile/update-pass" method="post">
         <table>
           <tr>
             <td>

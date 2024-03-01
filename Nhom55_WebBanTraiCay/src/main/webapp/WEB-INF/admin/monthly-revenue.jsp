@@ -6,10 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" dir="ltr">
 <head>
+    <%@ page isELIgnored="false" %>
     <meta charset="UTF-8">
-    <title> Drop Down Sidebar Menu | CodingLab </title>
+    <title>Quản lý cửa hàng</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin-css/style.css">
 
     <!-- Boxiocns CDN Link -->

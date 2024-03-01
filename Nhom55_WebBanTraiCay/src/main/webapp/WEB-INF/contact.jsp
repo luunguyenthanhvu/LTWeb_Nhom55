@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <%@ page isELIgnored="false" %>
-    <title>Vegefoods - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Cửa hàng trái cây</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -118,7 +118,7 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang chủ</a></span> <span>Liên hệ</span>
+                <p class="breadcrumbs"><span class="mr-2"><a href="${pageContext.request.contextPath}/page/home">Trang chủ</a></span> <span>Liên hệ</span>
                 </p>
                 <h1 class="mb-0 bread">Liên hệ</h1>
             </div>
@@ -153,7 +153,7 @@
         </div>
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
-                <form  action="Contact" class="bg-white p-5 contact-form" method="post">
+                <form  action="${pageContext.request.contextPath}/page/contact" class="bg-white p-5 contact-form" method="post">
                     <div class="form-group">
                         <input id="tenKhachHang" value="${tenNguoiDung}" type="text" class="form-control" placeholder="Tên của bạn" name="ten">
                         <div style="color: red; display: none" id="name_error"></div>
@@ -191,8 +191,8 @@
             </div>
 
             <div class="col-md-6 d-flex">
-                <div id="map" class="bg-white">
-
+                <div>
+                    <img style="width: 550px; height: 550px;object-fit: cover" src="${pageContext.request.contextPath}/static/images/PhuongVy - Photo_ Thiên Hào.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -297,7 +297,7 @@
     // Nếu đặt hàng thành công, hiển thị thông báo và chuyển hướng trang
     if (notify !== 'null' && notify !== undefined && notify !== '') {
         alert(notify);
-        window.location.href = "http://localhost:8080/Contact";
+        window.location.href = "http://localhost:8080/page/contact";
     }
 </script>
 <script>

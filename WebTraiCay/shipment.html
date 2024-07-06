@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhập kho</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1, h2, h3 {
+    margin: 0 0 20px 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+}
+
+.overview, .inventory-management, .inventory-history {
+    margin-bottom: 40px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.stat {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+.stat span {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.inventory-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.inventory-item h3 {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.item-details {
+    display: flex;
+}
+
+.item-details img {
+    max-width: 150px;
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.details p {
+    margin: 5px 0;
+}
+
+.status {
+    text-align: right;
+}
+
+.status-label {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-label.soon-expired {
+    background-color: #ff0000;
+}
+
+.status-label.normal {
+    background-color: #28a745;
+}
+
+.inventory-history table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.inventory-history th, .inventory-history td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.inventory-history th {
+    background-color: #f1f1f1;
+    font-size: 14px;
+}
+
+.inventory-history td {
+    font-size: 14px;
+}
+
+.inventory-history .positive {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.inventory-history .negative {
+    color: #ff0000;
+    font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Tổng quan nhập kho -->
+        <div class="overview">
+            <h1>Tổng quan nhập kho</h1>
+            <div class="stats">
+                <div class="stat">
+                    <span>242</span>
+                    <p>Phân loại còn hàng</p>
+                </div>
+                <div class="stat">
+                    <span>73</span>
+                    <p>Phân loại bị ẩn & đã bị khóa</p>
+                </div>
+                <div class="stat">
+                    <span>8</span>
+                    <p>Phân loại sắp hết hàng</p>
+                </div>
+                <div class="stat">
+                    <span>24</span>
+                    <p>Phân loại đã hết hàng</p>
+                </div>
+                <div class="stat">
+                    <span>0</span>
+                    <p>Phân loại đã hết hàng</p>
+                </div>
+            </div>
+        </div>
+        <!-- Trình quản lý tồn kho -->
+        <div class="inventory-management">
+            <h2>Trình quản lý tồn kho</h2>
+            <div class="inventory-item">
+                <h3>Mã lô hàng: xxxx</h3>
+                <div class="item-details">
+                    <img src="image1.png" alt="Product Image">
+                    <div class="details">
+                        <p><strong>Mã sản phẩm:</strong> xxx</p>
+                        <p><strong>Tên sản phẩm:</strong> Cao Sâm Thượng Hạng Daedong 240gr</p>
+                        <p><strong>Số lượng có sẵn trong lô:</strong> 21</p>
+                        <p><strong>Ngày hết hạn sử dụng:</strong> 30 - 04 - 2024</p>
+                        <p><strong>Bên cung cấp:</strong> Seon Gold</p>
+                        <p><strong>Ngày biến động gần nhất:</strong> 25 - 04 - 2024</p>
+                        <p><strong>Số bán 7 ngày qua:</strong> 61 sản phẩm</p>
+                        <p><strong>Số bán 30 ngày qua:</strong> 65 sản phẩm</p>
+                    </div>
+                    <div class="status">
+                        <p><strong>Mức độ phân loại lô hàng này:</strong></p>
+                        <span class="status-label soon-expired">Sắp hết hạn</span>
+                    </div>
+                </div>
+            </div>
+            <div class="inventory-item">
+                <h3>Mã lô hàng: xxxx</h3>
+                <div class="item-details">
+                    <img src="image2.png" alt="Product Image">
+                    <div class="details">
+                        <p><strong>Mã sản phẩm:</strong> xxx</p>
+                        <p><strong>Tên sản phẩm:</strong> Hắc Sâm Củ Khô Hàn Quốc 150g</p>
+                        <p><strong>Số lượng có sẵn trong lô:</strong> 100</p>
+                        <p><strong>Ngày hết hạn sử dụng:</strong> 30 - 04 - 2031</p>
+                        <p><strong>Bên cung cấp:</strong> Seon Gold</p>
+                        <p><strong>Ngày biến động gần nhất:</strong> 22 - 04 - 2024</p>
+                        <p><strong>Số bán 7 ngày qua:</strong> 123 sản phẩm</p>
+                        <p><strong>Số bán 30 ngày qua:</strong> 222 sản phẩm</p>
+                    </div>
+                    <div class="status">
+                        <p><strong>Mức độ phân loại lô hàng này:</strong></p>
+                        <span class="status-label normal">Bình thường</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Lịch sử biến động tồn kho -->
+        <div class="inventory-history">
+            <h2>Lịch sử biến động tồn kho</h2>
+            <table id="inventory-history-table" class="display">
+                <thead>
+                    <tr>
+                        <th>Mã lô hàng</th>
+                        <th>Biến động tồn kho</th>
+                        <th>Loại biến động</th>
+                        <th>Thời gian</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>xxxxx</td>
+                        <td class="positive">+ 79</td>
+                        <td>Thêm hàng</td>
+                        <td>22 - 04 - 2024</td>
+                        <td>Nhập thêm lô hàng mới để cung ứng kịp thời</td>
+                    </tr>
+                    <tr>
+                        <td>xxxxx</td>
+                        <td class="negative">- 33</td>
+                        <td>Bán cho khách (<a href="#">#332</a>)</td>
+                        <td>20 - 04 - 2024</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        $(document).ready(function() {
+            var data = [
+                {
+                    batchCode: '001',
+                    status: 'Sắp hết hạn',
+                    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
+                    productCode: 'A001',
+                    stockQuantity: '61 cái',
+                    supplier: 'Công Ty TNHH Seon Gold HCM',
+                    monthlySales: '61 sản phẩm',
+                    productName: 'This is a very long product name with fully description, Lorem ipsum...',
+                    expiryDate: '30 - 04 - 2024',
+                    lastUpdate: '25 - 04 - 2024',
+                    monthlyRevenue: '2.730.000 vnd'
+                },
+                {
+                    batchCode: '002',
+                    status: 'Còn hạn sử dụng',
+                    imageUrl: 'https://via.placeholder.com/150',
+                    productCode: 'A002',
+                    stockQuantity: '120 cái',
+                    supplier: 'Công Ty TNHH ABC',
+                    monthlySales: '30 sản phẩm',
+                    productName: 'Another product with detailed description, Lorem ipsum...',
+                    expiryDate: '15 - 12 - 2024',
+                    lastUpdate: '05 - 04 - 2024',
+                    monthlyRevenue: '1.500.000 vnd'
+                }
+            ];
+
+            var tbody = $('#table-body');
+
+            data.forEach(function(item) {
+                var cardHtml = `
+            <tr>
+                <td>
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="batch-code">Mã lô hàng: ${item.batchCode}</span>
+                            <span class="status">${item.status}</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="product-image">
+                                <img src="${item.imageUrl}" alt="Product Image">
+                            </div>
+                            <div class="product-details">
+                                <div class="product-code">
+                                    <label>Mã sản phẩm</label>
+                                    <span>${item.productCode}</span>
+                                </div>
+                                <div class="stock-quantity">
+                                    <label>Số lượng có sẵn trong kho</label>
+                                    <span>${item.stockQuantity}</span>
+                                </div>
+                                <div class="product-supplier">
+                                    <label>Bên cung cấp sản phẩm</label>
+                                    <span>${item.supplier}</span>
+                                </div>
+                                <div class="monthly-sales">
+                                    <label>Số bán trong tháng</label>
+                                    <span>${item.monthlySales}</span>
+                                </div>
+                                <div class="product-name">
+                                    <label>Tên sản phẩm</label>
+                                    <span>${item.productName}</span>
+                                </div>
+                                <div class="expiry-date">
+                                    <label>Ngày hết hạn</label>
+                                    <span>${item.expiryDate}</span>
+                                </div>
+                                <div class="last-update">
+                                    <label>Ngày biến động gần nhất</label>
+                                    <span>${item.lastUpdate}</span>
+                                </div>
+                                <div class="monthly-revenue">
+                                    <label>Doanh thu tháng này</label>
+                                    <span>${item.monthlyRevenue}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>`;
+
+                tbody.append(cardHtml);
+            });
+
+            $('#inventory-table').DataTable({
+                paging: false,
+                searching: false,
+                info: false,
+                columnDefs: [
+                    { targets: '_all', className: 'dt-body-left' }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

@@ -42,212 +42,77 @@ function showPage() {
 $('.tab').on('click', function () {
   $('.tab').removeClass('active');
   $(this).addClass('active');
-
 });
 
-var data = [
-  {
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
-    productCode: 'A001',
-    stockQuantity: '61 ',
-    supplier: 'Công Ty TNHH Seon Gold HCM',
-    monthlySales: '61 sản phẩm',
-    productName: 'Dưa hấu',
-    expiryDate: '30 - 04 - 2024',
-    lastUpdate: '25 - 04 - 2024',
-    monthlyRevenue: '2.730.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Hết hàng',
-    imageUrl: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/294491648_571890434421859_2466714619768542754_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF7h6pIxPQiw4ZFJNFufBaPo14pXz6aCZGjXilfPpoJkSKmtr6q0N95d2Mk_orTFoSe6O0g4-hYqfzQ-o8YzoRC&_nc_ohc=TuE_z7sumOkQ7kNvgGeP2DP&_nc_ht=scontent.fsgn2-8.fna&oh=00_AYCNjXSL2KJtk_7lL2vQJ23NIC051rupGl4MTOQUdFBqYA&oe=668CECDD',
-    productCode: 'A002',
-    stockQuantity: '120 ',
-    supplier: 'Công Ty TNHH ABC',
-    monthlySales: '30 sản phẩm',
-    productName: 'Cam',
-    expiryDate: '15 - 12 - 2024',
-    lastUpdate: '05 - 04 - 2024',
-    monthlyRevenue: '1.500.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Còn hàng',
-    imageUrl: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/294491648_571890434421859_2466714619768542754_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF7h6pIxPQiw4ZFJNFufBaPo14pXz6aCZGjXilfPpoJkSKmtr6q0N95d2Mk_orTFoSe6O0g4-hYqfzQ-o8YzoRC&_nc_ohc=TuE_z7sumOkQ7kNvgGeP2DP&_nc_ht=scontent.fsgn2-8.fna&oh=00_AYCNjXSL2KJtk_7lL2vQJ23NIC051rupGl4MTOQUdFBqYA&oe=668CECDD',
-    productCode: 'A002',
-    stockQuantity: '120 ',
-    supplier: 'Công Ty TNHH ABC',
-    monthlySales: '30 sản phẩm',
-    productName: 'Cam',
-    expiryDate: '15 - 12 - 2024',
-    lastUpdate: '05 - 04 - 2024',
-    monthlyRevenue: '1.500.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
-    productCode: 'A001',
-    stockQuantity: '61 ',
-    supplier: 'Công Ty TNHH Seon Gold HCM',
-    monthlySales: '61 sản phẩm',
-    productName: 'Dưa hấu',
-    expiryDate: '30 - 04 - 2024',
-    lastUpdate: '25 - 04 - 2024',
-    monthlyRevenue: '2.730.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/294491648_571890434421859_2466714619768542754_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF7h6pIxPQiw4ZFJNFufBaPo14pXz6aCZGjXilfPpoJkSKmtr6q0N95d2Mk_orTFoSe6O0g4-hYqfzQ-o8YzoRC&_nc_ohc=TuE_z7sumOkQ7kNvgGeP2DP&_nc_ht=scontent.fsgn2-8.fna&oh=00_AYCNjXSL2KJtk_7lL2vQJ23NIC051rupGl4MTOQUdFBqYA&oe=668CECDD',
-    productCode: 'A002',
-    stockQuantity: '120 ',
-    supplier: 'Công Ty TNHH ABC',
-    monthlySales: '30 sản phẩm',
-    productName: 'Cam',
-    expiryDate: '15 - 12 - 2024',
-    lastUpdate: '05 - 04 - 2024',
-    monthlyRevenue: '1.500.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
-    productCode: 'A001',
-    stockQuantity: '61 ',
-    supplier: 'Công Ty TNHH Seon Gold HCM',
-    monthlySales: '61 sản phẩm',
-    productName: 'Dưa hấu',
-    expiryDate: '30 - 04 - 2024',
-    lastUpdate: '25 - 04 - 2024',
-    monthlyRevenue: '2.730.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Còn hàng',
-    imageUrl: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/294491648_571890434421859_2466714619768542754_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF7h6pIxPQiw4ZFJNFufBaPo14pXz6aCZGjXilfPpoJkSKmtr6q0N95d2Mk_orTFoSe6O0g4-hYqfzQ-o8YzoRC&_nc_ohc=TuE_z7sumOkQ7kNvgGeP2DP&_nc_ht=scontent.fsgn2-8.fna&oh=00_AYCNjXSL2KJtk_7lL2vQJ23NIC051rupGl4MTOQUdFBqYA&oe=668CECDD',
-    productCode: 'A002',
-    stockQuantity: '120 ',
-    supplier: 'Công Ty TNHH ABC',
-    monthlySales: '30 sản phẩm',
-    productName: 'Cam',
-    expiryDate: '15 - 12 - 2024',
-    lastUpdate: '05 - 04 - 2024',
-    monthlyRevenue: '1.500.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Hết hàng',
-    imageUrl: 'https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-6/294491648_571890434421859_2466714619768542754_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeF7h6pIxPQiw4ZFJNFufBaPo14pXz6aCZGjXilfPpoJkSKmtr6q0N95d2Mk_orTFoSe6O0g4-hYqfzQ-o8YzoRC&_nc_ohc=TuE_z7sumOkQ7kNvgGeP2DP&_nc_ht=scontent.fsgn2-8.fna&oh=00_AYCNjXSL2KJtk_7lL2vQJ23NIC051rupGl4MTOQUdFBqYA&oe=668CECDD',
-    productCode: 'A002',
-    stockQuantity: '120 ',
-    supplier: 'Công Ty TNHH ABC',
-    monthlySales: '30 sản phẩm',
-    productName: 'Cam',
-    expiryDate: '15 - 12 - 2024',
-    lastUpdate: '05 - 04 - 2024',
-    monthlyRevenue: '1.500.000 vnd'
-  },
-  {
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
-    productCode: 'A001',
-    stockQuantity: '61 ',
-    supplier: 'Công Ty TNHH Seon Gold HCM',
-    monthlySales: '61 sản phẩm',
-    productName: 'Dưa hấu',
-    expiryDate: '30 - 04 - 2024',
-    lastUpdate: '25 - 04 - 2024',
-    monthlyRevenue: '2.730.000 vnd'
-  },{
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
-    productCode: 'A001',
-    stockQuantity: '61 ',
-    supplier: 'Công Ty TNHH Seon Gold HCM',
-    monthlySales: '61 sản phẩm',
-    productName: 'Dưa hấu',
-    expiryDate: '30 - 04 - 2024',
-    lastUpdate: '25 - 04 - 2024',
-    monthlyRevenue: '2.730.000 vnd'
-  },{
-    batchCode: '001',
-    status: 'Sắp hết hạn',
-    imageUrl: 'https://scontent.fsgn2-11.fna.fbcdn.net/v/t39.30808-6/309007133_628584232085812_416912229949138941_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHlqmYdhbA38kSphv3DFzrcgFxm5iJU6dOAXGbmIlTp02GGdwbtdHVKbD6q7hKgW2KweD8KOfhPboGSq24Twaeg&_nc_ohc=Btp-GpCRWHsQ7kNvgH4AD0u&_nc_ht=scontent.fsgn2-11.fna&oh=00_AYDTVXVE-WNVkOghDcqwceyvfcm2NrA7iVmzKNGluEVVsQ&oe=668CF243',
-    productCode: 'A001',
-    stockQuantity: '61 ',
-    supplier: 'Công Ty TNHH Seon Gold HCM',
-    monthlySales: '61 sản phẩm',
-    productName: 'Dưa hấu',
-    expiryDate: '30 - 04 - 2024',
-    lastUpdate: '25 - 04 - 2024',
-    monthlyRevenue: '2.730.000 vnd'
-  }
-];
-
-function renderTableBody(data) {
-  var tbody = $('#table-body');
-  data.forEach(function(item) {
-    var statusElement = applyStatusColor(item.status);
-    var cardHtml = `
-                <tr>
-                    <td>
+const inventoryTable = new DataTable("#inventory-table", {
+  searching: false,
+  bDeferRender: true,
+  searchDelay: 500,
+  scrollY: '600px',
+  scrollCollapse: true,
+  ajax: 'thong-tin-lo-hang.json',
+  serverSide: true,
+  processing: true,
+  columns: [
+    {
+      data: undefined,
+      render: function (data, type, row) {
+        var statusElement = applyStatusColor(row.status);
+        return `
                         <div class="card">
                             <div class="card-header">
-                                <span class="batch-code">Mã lô hàng: ${item.batchCode}</span>
+                                <span class="batch-code">Mã lô hàng: ${row.batchCode}</span>
                                  ${statusElement.outerHTML}
                             </div>
                             <div class="card-body">
                                 <div class="product-image">
-                                    <img src="${item.imageUrl}" alt="Product Image">
+                                    <img src="${row.imageUrl}" alt="Product Image">
                                 </div>
                                 <div class="product-details">
                                     <div class="product-code">
                                         <label>Mã sản phẩm</label>
-                                        <span>${item.productCode}</span>
+                                        <span>${row.productCode}</span>
                                     </div>
                                     <div class="stock-quantity">
                                         <label>Số lượng có sẵn trong kho</label>
-                                        <span>${item.stockQuantity}</span>
+                                        <span>${row.stockQuantity}</span>
                                     </div>
                                     <div class="product-supplier">
                                         <label>Bên cung cấp sản phẩm</label>
-                                        <span>${item.supplier}</span>
+                                        <span>${row.supplier}</span>
                                     </div>
                                     <div class="monthly-sales">
                                         <label>Số bán trong tháng</label>
-                                        <span>${item.monthlySales}</span>
+                                        <span>${row.monthlySales}</span>
                                     </div>
                                     <div class="product-name">
                                         <label>Tên sản phẩm</label>
-                                        <span>${item.productName}</span>
+                                        <span>${row.productName}</span>
                                     </div>
                                     <div class="expiry-date">
                                         <label>Ngày hết hạn</label>
-                                        <span>${item.expiryDate}</span>
+                                        <span>${row.expiryDate}</span>
                                     </div>
                                     <div class="last-update">
                                         <label>Ngày biến động gần nhất</label>
-                                        <span>${item.lastUpdate}</span>
+                                        <span>${row.lastUpdate}</span>
                                     </div>
                                     <div class="monthly-revenue">
                                         <label>Doanh thu tháng này</label>
-                                        <span>${item.monthlyRevenue}</span>
+                                        <span>${row.monthlyRevenue}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </td>
-                </tr>`;
-    tbody.append(cardHtml);
-  });
-}
+                `;
+      }
+    }
+  ],
+  columnDefs: [
+    {targets: '_all', className: 'dt-body-left'}
+  ],
+});
 
-renderTableBody(data);
 function applyStatusColor(status) {
   var statusElement = document.createElement('span');
   statusElement.textContent = status;
@@ -264,27 +129,15 @@ function applyStatusColor(status) {
   return statusElement;
 }
 
-new DataTable("#inventory-table", {
-  searching: false,
-  bDeferRender: true,
-  searchDelay: 500,
-  scrollY: '600px',
-  scrollCollapse: true,
-  columnDefs: [
-    { targets: '_all', className: 'dt-body-left' }
-  ]
-})
-
-
 // table for date
 let table = new DataTable("#inventory-history-table", {
   searching: false,
   bDeferRender: true,
   searchDelay: 500,
   columnDefs: [
-    { targets: '_all', className: 'dt-body-left' }
+    {targets: '_all', className: 'dt-body-left'}
   ],
-  createdRow: function(row, data, dataIndex) {
+  createdRow: function (row, data, dataIndex) {
     // Add color class based on positive or negative change
     let change = data[1];
     if (change.includes('+')) {
@@ -330,7 +183,7 @@ function getDataByDate(date) {
   return data[date] || [];
 }
 
-$('.tab-date').on('click', function() {
+$('.tab-date').on('click', function () {
   $('.tab-date').removeClass('active');
   $(this).addClass('active');
   let date = $(this).data('date');
